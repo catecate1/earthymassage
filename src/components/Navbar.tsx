@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 const links = [
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -11,9 +12,9 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-foreground/10 backdrop-blur-md border-b border-border/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md border-b border-border/30">
       <div className="container flex items-center justify-between h-16">
-        <a href="#" className="font-display text-xl text-cream tracking-wide">
+        <a href="#" className="font-display text-xl text-foreground tracking-wide">
           Healing Touch
         </a>
 
@@ -23,7 +24,7 @@ const Navbar = () => {
             <a
               key={l.label}
               href={l.href}
-              className="font-body text-sm text-cream/80 hover:text-cream transition-colors tracking-wide"
+              className="font-body text-sm text-muted-foreground hover:text-primary transition-colors tracking-wide"
             >
               {l.label}
             </a>
@@ -37,20 +38,20 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setOpen(!open)} className="md:hidden text-cream">
+        <button onClick={() => setOpen(!open)} className="md:hidden text-foreground">
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-foreground/90 backdrop-blur-md border-t border-border/10 py-4">
+        <div className="md:hidden bg-cream backdrop-blur-md border-t border-border/30 py-4">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block px-6 py-3 font-body text-sm text-cream/80 hover:text-cream"
+              className="block px-6 py-3 font-body text-sm text-muted-foreground hover:text-primary"
             >
               {l.label}
             </a>
