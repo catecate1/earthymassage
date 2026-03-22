@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 bg-sage-light">
+    <section id="about" className="py-24 bg-gradient-to-br from-spring-green via-sage-light to-blush/30">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -34,11 +34,11 @@ const AboutSection = () => {
             </div>
             <div className="flex gap-8 mt-8">
               {[
-                { num: "8+", label: "Years Experience" },
-                { num: "2k+", label: "Happy Clients" },
-                { num: "5", label: "Modalities" },
+                { num: "8+", label: "Years Experience", bg: "bg-petal" },
+                { num: "2k+", label: "Happy Clients", bg: "bg-spring-green" },
+                { num: "5", label: "Modalities", bg: "bg-lavender" },
               ].map((stat) => (
-                <div key={stat.label} className="text-center">
+                <div key={stat.label} className={`text-center ${stat.bg} rounded-lg px-4 py-3`}>
                   <div className="font-display text-3xl text-primary">{stat.num}</div>
                   <div className="font-body text-xs text-muted-foreground tracking-wide uppercase mt-1">{stat.label}</div>
                 </div>
@@ -53,9 +53,9 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="relative"
           >
-            <div className="aspect-[3/4] rounded-lg bg-gradient-to-br from-primary/10 via-secondary to-accent/30 flex items-center justify-center">
+            <div className="aspect-[3/4] rounded-lg bg-gradient-to-br from-spring-green via-blush/40 to-petal flex items-center justify-center shadow-card">
               <div className="text-center p-8">
-                <div className="w-24 h-24 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center">
+                <div className="w-24 h-24 rounded-full bg-cream mx-auto mb-4 flex items-center justify-center shadow-soft">
                   <span className="font-display text-4xl text-primary">S</span>
                 </div>
                 <p className="font-display text-xl text-foreground">Sarah Mitchell, LMT</p>
