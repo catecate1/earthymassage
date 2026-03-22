@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Activity, Heart, Brain, Moon, Eye, Stretch } from "lucide-react";
+import { Activity, Heart, Brain, Moon, Eye, Move } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";

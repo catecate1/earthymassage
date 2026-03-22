@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-spa.jpg";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -29,16 +31,20 @@ const HeroSection = () => {
             Find Your <em className="italic text-primary">Serenity</em>
           </h1>
           <p className="text-cream/80 font-body text-lg leading-relaxed mb-8 max-w-md">
-            Experience the gentle art of massage in a warm, welcoming space 
+            Experience the gentle art of massage in a warm, welcoming space
             designed for deep relaxation and lasting renewal.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-body tracking-wide text-base px-8 py-6">
-              Book Your Session
-            </Button>
-            <Button size="lg" variant="outline" className="border-cream/40 text-cream hover:bg-cream/10 font-body tracking-wide text-base px-8 py-6">
-              Explore Services
-            </Button>
+            <Link to="/book">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-body tracking-wide text-base px-8 py-6">
+                Book Your Session <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+            <Link to="/services">
+              <Button size="lg" variant="outline" className="border-cream/40 text-cream hover:bg-cream/10 font-body tracking-wide text-base px-8 py-6">
+                Explore Services
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>
