@@ -6,6 +6,13 @@ const footerLinks = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Specials", to: "/specials" },
+  { label: "What's New", to: "/whats-new" },
+  { label: "Availability", to: "/availability" },
+  { label: "Testimonials", to: "/testimonials" },
+  { label: "Informed Choices", to: "/informed-choices" },
+  { label: "Payment", to: "/payment" },
+  { label: "Policies", to: "/policies" },
+  { label: "Directions", to: "/directions" },
   { label: "Book Online", to: "/book" },
 ];
 
@@ -13,12 +20,12 @@ const Footer = () => {
   return (
     <footer className="py-12 bg-foreground">
       <div className="container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col items-center gap-6">
           <Link to="/" className="flex items-center gap-2">
             <Flower2 className="w-4 h-4 text-primary" />
             <span className="font-display text-lg text-cream">Healing Touch</span>
           </Link>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {footerLinks.map((l) => (
               <Link
                 key={l.label}
