@@ -1,4 +1,4 @@
-import { Leaf } from "lucide-react";
+import { Flower2 } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -6,15 +6,15 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <Leaf className="w-4 h-4 text-spring-green" />
+            <Flower2 className="w-4 h-4 text-primary" />
             <span className="font-display text-lg text-cream">Healing Touch</span>
           </div>
           <div className="flex gap-6">
-            {["Services", "About", "Contact"].map((l) => (
+            {["Services", "About", "Testimonials", "Contact"].map((l) => (
               <a
                 key={l}
                 href={`#${l.toLowerCase()}`}
-                className="font-body text-sm text-cream/50 hover:text-blush transition-colors"
+                className="font-body text-sm text-cream/50 hover:text-primary transition-colors"
               >
                 {l}
               </a>
