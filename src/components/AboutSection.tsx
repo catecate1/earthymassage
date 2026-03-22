@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const features = [
   {
     icon: Sparkles,
-    title: "Healing Touch",
+    title: "Earthy Massage",
     description: "Personalized Swedish massage tailored to your body's unique needs.",
   },
   {
@@ -65,7 +65,10 @@ const AboutSection = () => {
             Your journey to wellness begins with a single step. Book your Swedish massage session today.
           </p>
           <Link to="/book">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-body tracking-wide text-base px-10 py-6">
+            <Button
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-body tracking-wide text-base px-10 py-6"
+            >
               Schedule Now
             </Button>
           </Link>
