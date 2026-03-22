@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <Leaf className="w-4 h-4 text-primary" />
+            <Leaf className="w-4 h-4 text-spring-green" />
             <span className="font-display text-lg text-cream">Healing Touch</span>
           </div>
           <div className="flex gap-6">
@@ -14,7 +14,7 @@ const Footer = () => {
               <a
                 key={l}
                 href={`#${l.toLowerCase()}`}
-                className="font-body text-sm text-cream/50 hover:text-cream/80 transition-colors"
+                className="font-body text-sm text-cream/50 hover:text-blush transition-colors"
               >
                 {l}
               </a>

@@ -8,6 +8,7 @@ const services = [
     description: "Gentle, flowing strokes to promote deep relaxation and relieve everyday tension.",
     duration: "60 / 90 min",
     price: "From $95",
+    accent: "bg-spring-green",
   },
   {
     icon: Droplets,
@@ -15,6 +16,7 @@ const services = [
     description: "Targeted pressure to release chronic muscle knots and restore mobility.",
     duration: "60 / 90 min",
     price: "From $110",
+    accent: "bg-lavender",
   },
   {
     icon: Sun,
@@ -22,6 +24,7 @@ const services = [
     description: "Warm basalt stones melt away stress while improving circulation and energy flow.",
     duration: "75 min",
     price: "From $120",
+    accent: "bg-petal",
   },
   {
     icon: Heart,
@@ -29,6 +32,7 @@ const services = [
     description: "Gentle, nurturing care designed for the comfort and wellness of expecting mothers.",
     duration: "60 min",
     price: "From $105",
+    accent: "bg-blush",
   },
 ];
 
@@ -44,11 +48,13 @@ const item = {
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-24 bg-background">
+    <section id="services" className="py-24 bg-gradient-to-b from-cream to-background">
       <div className="container">
         <div className="text-center mb-16">
           <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">What I Offer</p>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">Therapeutic Services</h2>
+          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
+            Therapeutic <em className="italic text-blush-dark">Services</em>
+          </h2>
           <p className="text-muted-foreground font-body max-w-lg mx-auto">
             Each session is tailored to your unique needs, blending technique with intuition.
           </p>
@@ -65,9 +71,9 @@ const ServicesSection = () => {
             <motion.div
               key={service.title}
               variants={item}
-              className="group bg-card rounded-lg p-8 shadow-soft hover:shadow-card transition-shadow duration-300 border border-border/50"
+              className="group bg-card rounded-lg p-8 shadow-soft hover:shadow-card transition-all duration-300 border border-border/50 hover:-translate-y-1"
             >
-              <div className="w-12 h-12 rounded-full bg-sage-light flex items-center justify-center mb-5 group-hover:bg-secondary transition-colors">
+              <div className={`w-12 h-12 rounded-full ${service.accent} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
                 <service.icon className="w-5 h-5 text-primary" />
               </div>
               <h3 className="font-display text-xl text-foreground mb-2">{service.title}</h3>

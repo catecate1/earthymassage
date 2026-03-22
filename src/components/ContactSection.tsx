@@ -4,7 +4,7 @@ import { MapPin, Phone, Clock, Mail } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 bg-secondary/40">
+    <section id="contact" className="py-24 bg-gradient-to-br from-blush/30 via-lavender/40 to-spring-green/30">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-16">
           <motion.div
@@ -24,13 +24,13 @@ const ContactSection = () => {
 
             <div className="space-y-5">
               {[
-                { icon: MapPin, text: "123 Blossom Lane, Suite 4, Springfield" },
-                { icon: Phone, text: "(555) 123-4567" },
-                { icon: Mail, text: "hello@healingtouchmassage.com" },
-                { icon: Clock, text: "Mon–Sat: 9am – 7pm" },
+                { icon: MapPin, text: "123 Blossom Lane, Suite 4, Springfield", bg: "bg-spring-green" },
+                { icon: Phone, text: "(555) 123-4567", bg: "bg-petal" },
+                { icon: Mail, text: "hello@healingtouchmassage.com", bg: "bg-lavender" },
+                { icon: Clock, text: "Mon–Sat: 9am – 7pm", bg: "bg-blush" },
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-sage-light flex items-center justify-center flex-shrink-0">
+                  <div className={`w-10 h-10 rounded-full ${item.bg} flex items-center justify-center flex-shrink-0`}>
                     <item.icon className="w-4 h-4 text-primary" />
                   </div>
                   <span className="font-body text-foreground text-sm">{item.text}</span>

@@ -6,26 +6,31 @@ const testimonials = [
     name: "Emily R.",
     text: "Sarah's deep tissue massage changed my life. After years of back pain, I finally feel like myself again. Her space is so calming — I look forward to every visit.",
     rating: 5,
+    accent: "border-t-4 border-t-primary",
   },
   {
     name: "Michael T.",
     text: "The hot stone therapy is absolutely incredible. Sarah has an intuitive understanding of where tension lives in the body. Cannot recommend enough!",
     rating: 5,
+    accent: "border-t-4 border-t-blush-dark",
   },
   {
     name: "Jessica L.",
     text: "I started seeing Sarah during my pregnancy and it made such a difference. She's gentle, knowledgeable, and genuinely cares about her clients' well-being.",
     rating: 5,
+    accent: "border-t-4 border-t-warm-gold",
   },
 ];
 
 const TestimonialsSection = () => {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-gradient-to-b from-background to-petal/40">
       <div className="container">
         <div className="text-center mb-16">
           <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">Testimonials</p>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground">Kind Words</h2>
+          <h2 className="font-display text-4xl md:text-5xl text-foreground">
+            Kind <em className="italic text-blush-dark">Words</em>
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -36,7 +41,7 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-card rounded-lg p-8 shadow-soft border border-border/50"
+              className={`bg-card rounded-lg p-8 shadow-soft border border-border/50 ${t.accent} hover:shadow-card transition-shadow`}
             >
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: t.rating }).map((_, j) => (
