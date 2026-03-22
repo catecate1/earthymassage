@@ -62,6 +62,9 @@ export default {
         cream: "hsl(var(--cream))",
         "warm-gold": "hsl(var(--warm-gold))",
         earth: "hsl(var(--earth))",
+        petal: "hsl(var(--petal))",
+        "spring-green": "hsl(var(--spring-green))",
+        lavender: "hsl(var(--lavender))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

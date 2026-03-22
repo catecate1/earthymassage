@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 80 25% 97%;
+    --background: 75 35% 96%;
     --foreground: 150 15% 18%;
 
-    --card: 60 30% 96%;
+    --card: 60 40% 97%;
     --card-foreground: 150 15% 18%;
 
-    --popover: 80 25% 97%;
+    --popover: 75 35% 96%;
     --popover-foreground: 150 15% 18%;
 
-    --primary: 145 30% 38%;
-    --primary-foreground: 60 30% 97%;
+    --primary: 152 38% 42%;
+    --primary-foreground: 60 40% 97%;
 
-    --secondary: 340 30% 90%;
-    --secondary-foreground: 340 25% 35%;
+    --secondary: 338 45% 88%;
+    --secondary-foreground: 338 30% 35%;
 
-    --muted: 100 15% 92%;
-    --muted-foreground: 150 10% 45%;
+    --muted: 90 20% 92%;
+    --muted-foreground: 150 10% 42%;
 
-    --accent: 38 45% 82%;
-    --accent-foreground: 38 35% 25%;
+    --accent: 42 55% 80%;
+    --accent-foreground: 42 40% 22%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 100 15% 88%;
-    --input: 100 15% 88%;
-    --ring: 145 30% 38%;
+    --border: 90 18% 86%;
+    --input: 90 18% 86%;
+    --ring: 152 38% 42%;
 
     --radius: 0.75rem;
 
@@ -46,19 +46,22 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
 
     /* Custom tokens */
-    --sage: 145 30% 38%;
-    --sage-light: 145 25% 92%;
-    --blush: 340 30% 90%;
-    --blush-dark: 340 25% 55%;
-    --cream: 40 40% 95%;
-    --warm-gold: 38 45% 55%;
+    --sage: 152 38% 42%;
+    --sage-light: 140 35% 92%;
+    --blush: 338 50% 90%;
+    --blush-dark: 338 35% 55%;
+    --cream: 45 50% 95%;
+    --warm-gold: 42 60% 55%;
     --earth: 30 20% 35%;
+    --petal: 20 60% 92%;
+    --spring-green: 135 45% 88%;
+    --lavender: 270 30% 92%;
 
     --font-display: 'Playfair Display', serif;
     --font-body: 'Lato', sans-serif;
 
-    --shadow-soft: 0 4px 20px -4px hsl(145 20% 30% / 0.08);
-    --shadow-card: 0 8px 30px -8px hsl(145 20% 30% / 0.1);
+    --shadow-soft: 0 4px 20px -4px hsl(152 25% 30% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(152 25% 30% / 0.12);
   }
 
   .dark {
