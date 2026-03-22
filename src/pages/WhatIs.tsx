@@ -18,7 +18,7 @@ const benefits = [
   { icon: Brain, title: "Pain Reduction", description: "Gentle pressure releases muscle tension and reduces chronic pain conditions." },
   { icon: Moon, title: "Better Sleep", description: "Regular sessions promote deeper, more restful sleep patterns." },
   { icon: Eye, title: "Mental Clarity", description: "Reduces mental fatigue and enhances focus through deep relaxation." },
-  { icon: Stretch, title: "Increased Flexibility", description: "Helps keep joints and muscles supple, improving range of motion." },
+  { icon: Move, title: "Increased Flexibility", description: "Helps keep joints and muscles supple, improving range of motion." },
 ];
 
 const WhatIs = () => {
