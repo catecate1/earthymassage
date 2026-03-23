@@ -7,7 +7,7 @@ const Directions = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <PageHeader title="Directions" subtitle="Find us easily — we look forward to welcoming you" />
+      <PageHeader title="Directions" subtitle="Find us easily — I look forward to welcoming you" />
 
       <section className="py-16">
         <div className="container max-w-4xl">
