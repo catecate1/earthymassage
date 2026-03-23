@@ -31,7 +31,7 @@ const sections = [
   {
     icon: Armchair,
     title: "About The Table",
-    text: "The face cradle is built into the table. It is not adjustable. I've added extra padding for comfort.",
+    text: "The face cradle is built into the table and is not adjustable. I've added extra padding for comfort. During winter months or chilly days, the table is heated.",
   },
   {
     icon: Droplets,
