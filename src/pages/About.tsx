@@ -1,26 +1,8 @@
 import { motion } from "framer-motion";
-import { Award, Clock, Heart } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import massageRoom from "@/assets/massage-room.jpg";
-
-const credentials = [
-{
-  icon: Award,
-  title: "Licensed ",
-  description: "Licensed massage therapist with training in Swedish techniques."
-},
-{
-  icon: Clock,
-  title: "10+ Years Experience",
-  description: "Over a decade of dedicated practice in therapeutic massage."
-},
-{
-  icon: Heart,
-  title: "Client-Centered Care",
-  description: "Every session is tailored to your unique needs and comfort level."
-}];
 
 
 const About = () => {
