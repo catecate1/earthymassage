@@ -6,8 +6,8 @@ import { Sparkles, Calendar } from "lucide-react";
 const updates = [
   {
     date: "March 2026",
-    title: "Spring Renewal Special",
-    body: "Welcome the season with our new Spring Renewal package — a 90-minute session combining Swedish massage with warm aromatherapy towels and a complimentary scalp treatment.",
+    title: "New Hours",
+    body: "8am - 6pm Monday - Saturday",
   },
   {
     date: "February 2026",
