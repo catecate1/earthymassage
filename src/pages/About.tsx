@@ -6,22 +6,22 @@ import PageHeader from "@/components/PageHeader";
 import massageRoom from "@/assets/massage-room.jpg";
 
 const credentials = [
-  {
-    icon: Award,
-    title: "Licensed & Certified",
-    description: "Fully licensed massage therapist with advanced training in Swedish techniques.",
-  },
-  {
-    icon: Clock,
-    title: "10+ Years Experience",
-    description: "Over a decade of dedicated practice in therapeutic massage.",
-  },
-  {
-    icon: Heart,
-    title: "Client-Centered Care",
-    description: "Every session is tailored to your unique needs and comfort level.",
-  },
-];
+{
+  icon: Award,
+  title: "Licensed & Certified",
+  description: "Fully licensed massage therapist with advanced training in Swedish techniques."
+},
+{
+  icon: Clock,
+  title: "10+ Years Experience",
+  description: "Over a decade of dedicated practice in therapeutic massage."
+},
+{
+  icon: Heart,
+  title: "Client-Centered Care",
+  description: "Every session is tailored to your unique needs and comfort level."
+}];
+
 
 const About = () => {
   return (
@@ -29,8 +29,8 @@ const About = () => {
       <Navbar />
       <PageHeader
         title="About Me"
-        subtitle="Dedicated to your wellness journey through the healing power of touch."
-      />
+        subtitle="Dedicated to your wellness journey through the healing power of touch." />
+      
 
       <section className="py-16 bg-background">
         <div className="container">
@@ -39,23 +39,23 @@ const About = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+              transition={{ duration: 0.6 }}>
+              
               <img
                 src={massageRoom}
                 alt="Massage therapy space"
-                className="rounded-lg shadow-card w-full object-cover"
-              />
+                className="rounded-lg shadow-card w-full object-cover" />
+              
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-            >
+              transition={{ duration: 0.6, delay: 0.15 }}>
+              
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
-                Hello, I'm <em className="italic text-primary">Sarah</em>
+                Hello, I'm <em className="italic text-primary">Deb</em>
               </h2>
               <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
                 <p>
@@ -87,24 +87,24 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-20"
-          >
-            {credentials.map((c) => (
-              <div key={c.title} className="bg-card rounded-lg p-8 shadow-soft border border-border/30 text-center">
+            className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-20">
+            
+            {credentials.map((c) =>
+            <div key={c.title} className="bg-card rounded-lg p-8 shadow-soft border border-border/30 text-center">
                 <div className="w-12 h-12 rounded-full bg-petal flex items-center justify-center mx-auto mb-4">
                   <c.icon className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="font-display text-lg text-foreground mb-2">{c.title}</h3>
                 <p className="font-body text-sm text-muted-foreground leading-relaxed">{c.description}</p>
               </div>
-            ))}
+            )}
           </motion.div>
         </div>
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>);
+
 };
 
 export default About;
