@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import swedishMassage from "@/assets/swedish-massage.jpg";
+import massageChair from "@/assets/massage-chair.jpg";
 
 const services = [
   {
@@ -39,9 +40,7 @@ const services = [
 ];
 
 const enhancements = [
-  { title: "Aromatherapy", price: "+$10", description: "Custom essential oil blend added to your session." },
-  { title: "Hot Towel Treatment", price: "+$15", description: "Warm towels applied to key areas for deeper muscle release." },
-  { title: "Scalp Massage Enhancement", price: "+$10", description: "Extended focus on scalp and temples for ultimate relaxation." },
+  { title: "Coming Soon", price: "", description: "New enhancements are on the way. Stay tuned!" },
 ];
 
 const Services = () => {
@@ -65,7 +64,12 @@ const Services = () => {
               <img
                 src={swedishMassage}
                 alt="Swedish massage"
-                className="rounded-lg shadow-card w-full object-cover sticky top-24"
+                className="rounded-lg shadow-card w-full object-cover"
+              />
+              <img
+                src={massageChair}
+                alt="Massage chair"
+                className="rounded-lg shadow-card w-full object-cover mt-4"
               />
             </motion.div>
 
