@@ -49,6 +49,11 @@ const policies = [
     title: "Website Linking",
     text: "You may not link to this website without my express written permission.",
   },
+  {
+    icon: AlertTriangle,
+    title: "Harassment Policy",
+    text: "Any inappropriate behavior or requests will result in immediate termination of the session. The full session fee will be charged. Earthy Massage maintains a zero-tolerance policy.",
+  },
 ];
 
 const Policies = () => {
