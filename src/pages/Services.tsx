@@ -64,7 +64,12 @@ const Services = () => {
               <img
                 src={swedishMassage}
                 alt="Swedish massage"
-                className="rounded-lg shadow-card w-full object-cover sticky top-24"
+                className="rounded-lg shadow-card w-full object-cover"
+              />
+              <img
+                src={massageChair}
+                alt="Massage chair"
+                className="rounded-lg shadow-card w-full object-cover mt-4"
               />
             </motion.div>
 
