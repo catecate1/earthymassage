@@ -12,8 +12,8 @@ const HeroSection = () => {
           src={heroImage}
           alt="Serene massage therapy setting with botanicals"
           className="w-full h-full object-cover"
-          loading="eager"
-        />
+          loading="eager" />
+        
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/50 via-foreground/20 to-transparent" />
       </div>
 
@@ -22,13 +22,13 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-xl"
-        >
+          className="max-w-xl">
+          
           <p className="text-rose-light font-body text-sm tracking-[0.3em] uppercase mb-4">
             Swedish Massage Therapy
           </p>
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-cream leading-tight mb-6">
-            Find Your <em className="italic text-primary">Serenity</em>
+            Find Your <em className="italic text-cream">Serenity</em>
           </h1>
           <p className="text-cream/80 font-body text-lg leading-relaxed mb-8 max-w-md">
             Experience the gentle art of massage in a warm, welcoming space
@@ -48,8 +48,8 @@ const HeroSection = () => {
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
