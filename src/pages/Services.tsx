@@ -104,7 +104,7 @@ const Services = () => {
           {/* Enhancements */}
           <div className="max-w-5xl mx-auto mt-20">
             <h2 className="font-display text-3xl text-foreground text-center mb-10">Enhancements</h2>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="flex justify-center">
               {enhancements.map((e, i) => (
                 <motion.div
                   key={e.title}
