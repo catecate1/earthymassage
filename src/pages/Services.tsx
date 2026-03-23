@@ -40,9 +40,7 @@ const services = [
 ];
 
 const enhancements = [
-  { title: "Aromatherapy", price: "+$10", description: "Custom essential oil blend added to your session." },
-  { title: "Hot Towel Treatment", price: "+$15", description: "Warm towels applied to key areas for deeper muscle release." },
-  { title: "Scalp Massage Enhancement", price: "+$10", description: "Extended focus on scalp and temples for ultimate relaxation." },
+  { title: "Coming Soon", price: "", description: "New enhancements are on the way. Stay tuned!" },
 ];
 
 const Services = () => {
