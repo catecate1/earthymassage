@@ -40,7 +40,11 @@ const AboutSection = () => {
           className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto mb-20"
         >
           {features.map((f) => (
-        
+            <div key={f.title} className="text-center space-y-3">
+              <f.icon className="w-8 h-8 text-primary mx-auto" />
+              <h3 className="font-display text-xl text-foreground">{f.title}</h3>
+              <p className="font-body text-muted-foreground text-sm leading-relaxed">{f.description}</p>
+            </div>
           ))}
         </motion.div>
 
