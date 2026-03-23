@@ -10,7 +10,7 @@ const sections = [
     items: [
       "A brief health intake form will be completed before your first session.",
       "You will be draped with sheets at all times — only the area being worked on is uncovered.",
-      "You may undress to your comfort level. Underwear may be left on.",
+      "You may undress to your comfort level.",
     ],
   },
   {
