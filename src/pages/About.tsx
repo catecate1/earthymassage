@@ -8,8 +8,8 @@ import massageRoom from "@/assets/massage-room.jpg";
 const credentials = [
 {
   icon: Award,
-  title: "Licensed & Certified",
-  description: "Fully licensed massage therapist with advanced training in Swedish techniques."
+  title: "Licensed ",
+  description: "Licensed massage therapist with training in Swedish techniques."
 },
 {
   icon: Clock,
