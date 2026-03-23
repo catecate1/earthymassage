@@ -16,20 +16,20 @@ const specials = [
     description: "New clients receive $20 off their first 60-minute Classic Swedish session. Experience the Healing Touch difference!",
   },
   {
-    badge: "Referral",
-    icon: Users,
-    title: "Refer a Friend",
-    salePrice: "$15 off",
-    originalPrice: "",
-    description: "Refer a friend and you both receive $15 off your next session. There's no limit on referrals — the more friends you send, the more you save!",
-  },
-  {
     badge: "Limited Time",
     icon: Tag,
     title: "75-Minute Massage Special",
     salePrice: "$75",
     originalPrice: "$85",
     description: "Enjoy a 75-minute Swedish massage session at a special rate. Extra time for deeper relaxation and renewal.",
+  },
+  {
+    badge: "Referral",
+    icon: Users,
+    title: "Refer a Friend",
+    salePrice: "$15 off",
+    originalPrice: "",
+    description: "Refer a friend and you both receive $15 off your next session. There's no limit on referrals — the more friends you send, the more you save!",
   },
 ];
 
