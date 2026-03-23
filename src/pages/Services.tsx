@@ -30,13 +30,6 @@ const services = [
     description: "An indulgent session allowing extra time for each section of the body including the feet.",
     popular: false,
   },
-  {
-    title: "Ultimate Retreat",
-    duration: "120 min",
-    price: "$150",
-    description: "The complete experience. Two full hours of unhurried Swedish massage for profound relaxation and renewal.",
-    popular: false,
-  },
 ];
 
 const enhancements = [
