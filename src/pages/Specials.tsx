@@ -18,10 +18,10 @@ const specials = [
   {
     badge: "Limited Time",
     icon: Tag,
-    title: "75-Minute Massage Special",
-    salePrice: "$75",
-    originalPrice: "$85",
-    description: "Enjoy a 75-minute Swedish massage session at a special rate. Extra time for deeper relaxation and renewal.",
+    title: "First Visit Special",
+    salePrice: "$100",
+    originalPrice: "$115",
+    description: "New clients receive $15 off their first 75-minute Classic Swedish session. Experience the Healing Touch difference!",
   },
   {
     badge: "Referral",
