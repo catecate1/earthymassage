@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import { Clock, Ban, CalendarX, ShieldCheck, Baby, Accessibility } from "lucide-react";
+import { Clock, Ban, DollarSign, CreditCard, Weight, AlertTriangle, RotateCcw, Link2 } from "lucide-react";
 
 const policies = [
   {
@@ -10,29 +10,44 @@ const policies = [
     text: "Please arrive 10–15 minutes early for your appointment, especially for first-time visits. This allows time for paperwork and a brief consultation with your therapist.",
   },
   {
-    icon: CalendarX,
-    title: "Cancellation Policy",
-    text: "We require at least 24 hours' notice for cancellations or rescheduling. Late cancellations or no-shows may be subject to a fee equal to 50% of the scheduled service.",
-  },
-  {
     icon: Ban,
+    title: "No Walk-Ins",
+    text: "Absolutely NO WALK-INS!",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Fragrance Free Zone",
+    text: "Perfumes and colognes are toxins. Do not be wearing any of that when you come in.",
+  },
+  {
+    icon: DollarSign,
+    title: "Cash Policy",
+    text: "I do not accept $100 bills and do not make change.",
+  },
+  {
+    icon: CreditCard,
+    title: "Credit Cards",
+    text: "I do not process credit cards in the office.",
+  },
+  {
+    icon: Weight,
+    title: "Table Weight Limit",
+    text: "I do not allow anyone weighing more than 300 lbs. on my table.",
+  },
+  {
+    icon: Clock,
     title: "Late Arrivals",
-    text: "If you arrive late, your session may be shortened to avoid impacting other clients' appointments. The full session fee will still apply.",
+    text: "If you are late I will try to go over the scheduled time but might not be able to due to other commitments. That means your time will be cut short but you still owe for the time blocked on the calendar. If you are more than five (5) minutes late and I haven't heard from you, the appointment will be cancelled.",
   },
   {
-    icon: ShieldCheck,
-    title: "Health & Safety",
-    text: "Please inform your therapist of any health conditions, allergies, injuries, or medications. If you are feeling unwell or have a contagious condition, we ask that you reschedule.",
+    icon: RotateCcw,
+    title: "No Refunds",
+    text: "No refunds.",
   },
   {
-    icon: Baby,
-    title: "Minors",
-    text: "Clients under 18 must have a parent or guardian present during the session and must provide written consent prior to treatment.",
-  },
-  {
-    icon: Accessibility,
-    title: "Accessibility",
-    text: "Our studio is wheelchair accessible. Please let us know of any special accommodations you may need so we can ensure your comfort.",
+    icon: Link2,
+    title: "Website Linking",
+    text: "You may not link to this website without my express written permission.",
   },
 ];
 
