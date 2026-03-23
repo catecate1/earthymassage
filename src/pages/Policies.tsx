@@ -7,7 +7,7 @@ const policies = [
   {
     icon: Clock,
     title: "Arrival Time",
-    text: "First-time visitors should arrive at least five [5] minutes early. This allows time for paperwork and a brief consultation with your therapist. Give yourself time to get lost.",
+    text: "First-time visitors should arrive at least five [5] minutes early. This allows time for paperwork and a brief consultation with your therapist.  Give yourself time to get lost.",
   },
   {
     icon: Ban,
