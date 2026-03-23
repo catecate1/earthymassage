@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Users, Tag, ArrowRight } from "lucide-react";
+import { Star, Users, Tag, ArrowRight, Gift } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -76,6 +76,26 @@ const Specials = () => {
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="bg-card rounded-lg p-8 shadow-soft border border-border/30 max-w-md mx-auto mt-8 text-center"
+          >
+            <span className="inline-block bg-petal text-primary text-xs font-body px-3 py-1 rounded-full mb-4">
+              Loyalty Reward
+            </span>
+            <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4 mx-auto">
+              <Gift className="w-4 h-4 text-primary" />
+            </div>
+            <h3 className="font-display text-xl text-foreground mb-2">Every 3rd Consecutive Standard Rate Service</h3>
+            <p className="font-display text-2xl text-primary mb-4">50% Off Standard Rate</p>
+            <p className="text-muted-foreground font-body text-sm leading-relaxed">
+              Of equal value — I'll keep track! No codes to enter.
+            </p>
+          </motion.div>
         </div>
       </section>
 
