@@ -37,7 +37,7 @@ const Footer = () => {
             ))}
           </div>
           <p className="font-body text-xs text-cream/30">
-            © {new Date().getFullYear()} Earthy Massage And Wellness. All rights reserved.
+            © {new Date().getFullYear()} Earthy Massage. All rights reserved.
           </p>
         </div>
       </div>
