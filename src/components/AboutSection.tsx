@@ -27,7 +27,7 @@ const AboutSection = () => {
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
-            Why Choose <em className="italic text-primary">Healing Touch</em>
+            Why Choose <em className="italic text-primary">Earthy Massage</em>
           </h2>
           <div className="w-16 h-0.5 bg-primary mx-auto mt-2" />
         </div>
