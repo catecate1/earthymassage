@@ -90,10 +90,10 @@ const Specials = () => {
             <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4 mx-auto">
               <Gift className="w-4 h-4 text-primary" />
             </div>
-            <h3 className="font-display text-xl text-foreground mb-2">Every 3rd Consecutive Standard Rate Service</h3>
+            <h3 className="font-display text-xl text-foreground mb-2">Every 3rd Consecutive Standard Rate Service Of Equal Value        </h3>
             <p className="font-display text-2xl text-primary mb-4">50% Off Standard Rate</p>
             <p className="text-muted-foreground font-body text-sm leading-relaxed">
-              Of equal value — I'll keep track! No codes to enter.
+               I'll keep track! No codes to enter.
             </p>
           </motion.div>
         </div>
