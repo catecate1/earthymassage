@@ -9,21 +9,6 @@ const updates = [
     title: "New Hours",
     body: "8am - 6pm Monday - Saturday",
   },
-  {
-    date: "February 2026",
-    title: "Extended Evening Hours",
-    body: "We now offer appointments until 8:00 PM on Tuesdays and Thursdays, making it easier to fit self-care into your busy schedule.",
-  },
-  {
-    date: "January 2026",
-    title: "New Hot Stone Add-On",
-    body: "Enhance any massage with our new hot basalt stone therapy. Warm stones melt away tension and promote deeper relaxation.",
-  },
-  {
-    date: "December 2025",
-    title: "Gift Certificates Available Online",
-    body: "Give the gift of relaxation! Digital gift certificates are now available for purchase and can be emailed directly to your loved ones.",
-  },
 ];
 
 const WhatsNew = () => {
