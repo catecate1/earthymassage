@@ -46,7 +46,7 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-cream/40 text-cream hover:bg-primary/90 font-body tracking-wide text-base px-8 py-6"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-body tracking-wide text-base px-8 py-6"
               >
                 Explore Services
               </Button>
