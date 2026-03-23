@@ -9,24 +9,24 @@ import swedishMassage from "@/assets/swedish-massage.jpg";
 
 const services = [
   {
-    title: "Express Relief",
+    title: "Chair Massage",
     duration: "30 min",
-    price: "$45",
-    description: "A focused session targeting specific areas of tension. Perfect for a quick reset during a busy day.",
+    price: "$40",
+    description: "A focused session targeting the back, shoulders and neck. Perfect for a quick reset during a busy day.",
     popular: false,
   },
   {
     title: "Classic Swedish",
     duration: "60 min",
-    price: "$80",
-    description: "Our signature full-body Swedish massage. Flowing strokes promote deep relaxation and improved circulation.",
+    price: "$60",
+    description: "Signature full-body Swedish massage. Flowing strokes promote deep relaxation and improved circulation.",
     popular: true,
   },
   {
     title: "Extended Bliss",
     duration: "90 min",
     price: "$115",
-    description: "An indulgent session allowing extra time for thorough work on problem areas alongside full-body relaxation.",
+    description: "An indulgent session allowing extra time for each section of the body including the feet.",
     popular: false,
   },
   {
