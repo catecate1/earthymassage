@@ -4,14 +4,14 @@ import PageHeader from "@/components/PageHeader";
 import { Clock, Sun, Moon, Phone } from "lucide-react";
 
 const hours = [
-  { day: "Monday", time: "9:00 AM – 6:00 PM" },
-  { day: "Tuesday", time: "9:00 AM – 8:00 PM" },
-  { day: "Wednesday", time: "9:00 AM – 6:00 PM" },
-  { day: "Thursday", time: "9:00 AM – 8:00 PM" },
-  { day: "Friday", time: "9:00 AM – 5:00 PM" },
-  { day: "Saturday", time: "10:00 AM – 4:00 PM" },
-  { day: "Sunday", time: "Closed" },
-];
+{ day: "Monday", time: "9:00 AM – 6:00 PM" },
+{ day: "Tuesday", time: "9:00 AM – 8:00 PM" },
+{ day: "Wednesday", time: "9:00 AM – 6:00 PM" },
+{ day: "Thursday", time: "9:00 AM – 8:00 PM" },
+{ day: "Friday", time: "9:00 AM – 5:00 PM" },
+{ day: "Saturday", time: "10:00 AM – 4:00 PM" },
+{ day: "Sunday", time: "Closed" }];
+
 
 const Availability = () => {
   return (
@@ -27,14 +27,14 @@ const Availability = () => {
               <h2 className="font-display text-xl text-foreground">Office Hours</h2>
             </div>
             <div className="divide-y divide-border/40">
-              {hours.map((h) => (
-                <div key={h.day} className="flex justify-between items-center px-6 py-4">
+              {hours.map((h) =>
+              <div key={h.day} className="flex justify-between items-center px-6 py-4">
                   <span className="font-body text-sm font-semibold text-foreground">{h.day}</span>
                   <span className={`font-body text-sm ${h.time === "Closed" ? "text-primary" : "text-muted-foreground"}`}>
                     {h.time}
                   </span>
                 </div>
-              ))}
+              )}
             </div>
           </div>
 
@@ -42,20 +42,20 @@ const Availability = () => {
             <div className="bg-petal rounded-lg p-6 text-center">
               <Sun className="w-6 h-6 text-primary mx-auto mb-3" />
               <h3 className="font-display text-lg text-foreground mb-2">Same-Day Appointments</h3>
-              <p className="font-body text-sm text-muted-foreground">Subject to availability. Call or text to check for openings.</p>
+              <p className="font-body text-sm text-muted-foreground font-semibold">​Please book at least two [2] hours in advance.  Plan ahead.                     </p>
             </div>
             <div className="bg-petal rounded-lg p-6 text-center">
               <Phone className="w-6 h-6 text-primary mx-auto mb-3" />
               <h3 className="font-display text-lg text-foreground mb-2">Booking</h3>
-              <p className="font-body text-sm text-muted-foreground">Book online or call (555) 123-4567 to schedule your appointment.</p>
+              <p className="font-body text-sm text-muted-foreground font-semibold">Book online or call (413) 327-8496 to schedule your appointment.</p>
             </div>
           </div>
         </div>
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>);
+
 };
 
 export default Availability;
