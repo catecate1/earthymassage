@@ -1,26 +1,8 @@
 import { motion } from "framer-motion";
-import { Award, Clock, Heart } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import massageRoom from "@/assets/massage-room.jpg";
-
-const credentials = [
-{
-  icon: Award,
-  title: "Licensed ",
-  description: "Licensed massage therapist with training in Swedish techniques."
-},
-{
-  icon: Clock,
-  title: "10+ Years Experience",
-  description: "Over a decade of dedicated practice in therapeutic massage."
-},
-{
-  icon: Heart,
-  title: "Client-Centered Care",
-  description: "Every session is tailored to your unique needs and comfort level."
-}];
 
 
 const About = () => {
@@ -81,24 +63,6 @@ const About = () => {
             </motion.div>
           </div>
 
-          {/* Credentials */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-20">
-            
-            {credentials.map((c) =>
-            <div key={c.title} className="bg-card rounded-lg p-8 shadow-soft border border-border/30 text-center">
-                <div className="w-12 h-12 rounded-full bg-petal flex items-center justify-center mx-auto mb-4">
-                  <c.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-display text-lg text-foreground mb-2">{c.title}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{c.description}</p>
-              </div>
-            )}
-          </motion.div>
         </div>
       </section>
 
