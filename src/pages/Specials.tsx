@@ -16,7 +16,7 @@ const specials = [
   description: "New clients receive $5 off their first 60-minute Classic Swedish session. Experience the Healing Touch difference!"
 },
 {
-  badge: "Limited Time",
+  badge: "New Clients",
   icon: Tag,
   title: "First Visit Special",
   salePrice: "$75",
@@ -24,7 +24,7 @@ const specials = [
   description: "New clients receive $10 off their first 75-minute Classic Swedish session. Experience the Healing Touch difference!"
 },
 {
-  badge: "Limited Time",
+  badge: "New Clients",
   icon: Tag,
   title: "First Visit Special",
   salePrice: "$100",
