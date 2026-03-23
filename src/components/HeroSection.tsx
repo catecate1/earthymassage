@@ -25,7 +25,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-xl">
           
-          <p className="text-rose-light font-body text-sm tracking-[0.3em] uppercase mb-4">Swedish Massage Therapy</p>
+          <p className="text-rose-light font-body text-sm tracking-[0.3em] uppercase mb-4 font-medium">Swedish Massage Therapy</p>
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-cream leading-tight mb-6">
             Find Your <em className="italic text-cream">Serenity</em>
           </h1>
