@@ -27,7 +27,7 @@ const ContactSection = () => {
             {[
               { icon: MapPin, label: "Location", text: "123 Blossom Lane, Suite 4, Springfield" },
               { icon: Phone, label: "Phone", text: "(555) 123-4567" },
-              { icon: Mail, label: "Email", text: "hello@healingtouchmassage.com" },
+              { icon: Mail, label: "Email", text: "hello@earthymassage.com" },
               { icon: Clock, label: "Hours", text: "Mon–Sat: 9am – 7pm" },
             ].map((item) => (
               <div key={item.text} className="flex items-start gap-4">
@@ -35,7 +35,9 @@ const ContactSection = () => {
                   <item.icon className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <p className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-0.5">{item.label}</p>
+                  <p className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-0.5">
+                    {item.label}
+                  </p>
                   <span className="font-body text-foreground text-sm">{item.text}</span>
                 </div>
               </div>
@@ -53,7 +55,9 @@ const ContactSection = () => {
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">Full Name *</label>
+                  <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">
+                    Full Name *
+                  </label>
                   <input
                     type="text"
                     placeholder="Jane Smith"
@@ -61,7 +65,9 @@ const ContactSection = () => {
                   />
                 </div>
                 <div>
-                  <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">Email *</label>
+                  <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">
+                    Email *
+                  </label>
                   <input
                     type="email"
                     placeholder="jane@email.com"
@@ -71,7 +77,9 @@ const ContactSection = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">Phone</label>
+                  <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">
+                    Phone
+                  </label>
                   <input
                     type="tel"
                     placeholder="(555) 000-0000"
@@ -79,7 +87,9 @@ const ContactSection = () => {
                   />
                 </div>
                 <div>
-                  <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">Service *</label>
+                  <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">
+                    Service *
+                  </label>
                   <select className="w-full rounded-md border border-border bg-background px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
                     <option value="">Choose a session</option>
                     <option>Swedish Massage</option>
@@ -90,7 +100,9 @@ const ContactSection = () => {
                 </div>
               </div>
               <div>
-                <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">Special Requests or Notes</label>
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1 block">
+                  Special Requests or Notes
+                </label>
                 <textarea
                   placeholder="Any areas of concern, allergies, preferences..."
                   rows={3}
