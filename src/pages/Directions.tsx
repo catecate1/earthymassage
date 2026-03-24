@@ -17,7 +17,7 @@ const Directions = () => {
               <MapPin className="w-8 h-8 text-primary mx-auto mb-2" />
               <p className="font-body text-sm text-muted-foreground">Interactive map coming soon</p>
               <a
-                href="https://www.google.com/maps/dir//362+Front+St,+Chicopee,+MA+01013/@42.1479326,-72.68539,12z/data=!3m1!4b1!4m9!4m8!1m1!4e2!1m5!1m1!1s0x89e6ddf789408d77:0xf7ce963fe3a81200!2m2!1d-72.6029892!2d42.1479621?entry=ttu"
+                href="https://www.google.com/maps/place/362+Front+St,+Chicopee,+MA+01013/@42.1479531,-72.6055898,17z/data=!3m1!4b1!4m6!3m5!1s0x89e6ddf789408d77:0xf7ce963fe3a81200!8m2!3d42.1479492!4d-72.6030149!16s%2Fg%2F11cpfdyw90?entry=ttu&g_ep=EgoyMDI2MDMyMi4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body text-sm text-primary hover:underline mt-1 inline-block"
