@@ -21,7 +21,7 @@ const Book = () => {
       <Navbar />
       <PageHeader
         title="Book Online"
-        subtitle="Request your appointment and I'll confirm within 24 hours."
+        subtitle=""
       />
 
       <section className="py-16">
