@@ -24,6 +24,13 @@ const services = [
     popular: true,
   },
   {
+    title: "Classic Swedish Extended",
+    duration: "75 min",
+    price: "$85",
+    description: "Signature full-body Swedish massage with a tad more work on the hamstrings, calves and feet. Flowing strokes promote deep relaxation and improved circulation.",
+    popular: false,
+  },
+  {
     title: "Extended Bliss",
     duration: "90 min",
     price: "$115",
