@@ -17,28 +17,28 @@ const About = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+              transition={{ duration: 0.6 }}>
+              
               <img
                 src={massageRoom}
                 alt="Massage therapy space"
-                className="rounded-lg shadow-card w-full object-cover"
-              />
+                className="rounded-lg shadow-card w-full object-cover" />
+              
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-            >
+              transition={{ duration: 0.6, delay: 0.15 }}>
+              
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
                 Hello, I'm <em className="italic text-primary">Deb</em>
               </h2>
               <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
                 <p>
-                  Welcome to Earthy Massge. I'm a licensed massage therapist specializing exclusively in Swedish massage
-                  — the gentle, flowing technique that promotes deep relaxation and overall wellness.
+                  Welcome to Earthy Massage. I'm a licensed massage therapist specializing exclusively in Swedish massage — the gentle, flowing technique that promotes deep relaxation and overall wellness.
+                
                 </p>
                 <p>
                   I have always had a keen interest in health and wellness and taken various related courses over the
@@ -60,8 +60,8 @@ const About = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>);
+
 };
 
 export default About;
