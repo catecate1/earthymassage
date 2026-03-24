@@ -8,7 +8,7 @@ const About = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <PageHeader title="About Me" subtitle="Dedicated to your wellness journey through the healing power of touch." />
+      <PageHeader title="About" subtitle="Dedicated to your wellness journey through the healing power of touch." />
 
       <section className="py-16 bg-background">
         <div className="container">
