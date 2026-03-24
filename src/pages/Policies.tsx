@@ -42,7 +42,7 @@ const policies = [
   {
     icon: RotateCcw,
     title: "No Refunds",
-    text: "No refunds.",
+    text: "No refunds.  This includes prepaid no-shows.",
   },
   {
     icon: Link2,
