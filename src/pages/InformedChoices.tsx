@@ -9,7 +9,7 @@ const sections = [
     title: "What to Expect",
     items: [
       "A brief health intake form will be completed before your first session.",
-      "You will be draped with sheets at all times — only the area being worked on is uncovered.",
+      "You will be draped with a sheet at all times — only the area being worked on is uncovered.",
       "You may undress to your comfort level.",
     ],
   },
