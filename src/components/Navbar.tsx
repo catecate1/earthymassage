@@ -51,12 +51,20 @@ const Navbar = () => {
           )}
 
           {/* More dropdown */}
-          <div className="relative" onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
-            <button className="font-body text-sm tracking-wide text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+          <div
+            className="relative"
+            onMouseEnter={() => { clearTimeout((window as any).__moreTimer); setMoreOpen(true); }}
+            onMouseLeave={() => { (window as any).__moreTimer = setTimeout(() => setMoreOpen(false), 300); }}
+          >
+            <button
+              onClick={() => setMoreOpen((v) => !v)}
+              className="font-body text-sm tracking-wide text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+            >
               More <ChevronDown className="w-3 h-3" />
             </button>
             {moreOpen &&
-            <div className="absolute top-full right-0 mt-1 bg-card rounded-lg shadow-card border border-border/40 py-2 min-w-[180px]">
+            <div className="absolute top-full right-0 pt-2">
+              <div className="bg-card rounded-lg shadow-card border border-border/40 py-2 min-w-[180px]">
                 {moreLinks.map((l) =>
               <Link
                 key={l.label}
@@ -67,11 +75,11 @@ const Navbar = () => {
                 "text-primary font-semibold" :
                 "text-muted-foreground hover:text-primary hover:bg-petal"}`
                 }>
-                
                     {l.label}
                   </Link>
               )}
               </div>
+            </div>
             }
           </div>
 
