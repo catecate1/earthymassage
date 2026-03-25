@@ -16,7 +16,7 @@ const Book = () => {
             <h2 className="text-2xl font-semibold text-primary">Ready to Book Your Session?</h2>
             <p className="text-foreground/70">Click below to view availability and schedule your appointment.</p>
             <Button asChild size="lg" className="text-lg px-10 py-6">
-              <a href="https://bookeo.com/earthymassage.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://bookeo.com/earthymassage" target="_blank" rel="noopener noreferrer">
                 Book Now <ExternalLink className="ml-2" />
               </a>
             </Button>
