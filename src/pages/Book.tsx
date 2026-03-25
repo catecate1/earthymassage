@@ -32,17 +32,17 @@ const Book = () => {
               <div>
                 <p className="font-medium text-foreground mb-1">New Clients</p>
                 <p className="text-foreground/70">Please call us to schedule your appointment:</p>
-                <a href="tel:+15551234567" className="inline-block mt-2 text-lg font-semibold text-primary hover:underline">
+                <a href="tel:+14133278496" className="inline-block mt-2 text-lg font-semibold text-primary hover:underline">
                   📞 Call to Book
                 </a>
               </div>
               <div className="border-t border-primary/10 pt-4">
                 <p className="font-medium text-foreground mb-1">Existing Clients</p>
                 <p className="text-foreground/70">You may call or text us to book:</p>
-                <a href="tel:+15551234567" className="inline-block mt-2 text-lg font-semibold text-primary hover:underline mr-4">
+                <a href="tel:+14133278496" className="inline-block mt-2 text-lg font-semibold text-primary hover:underline mr-4">
                   📞 Call
                 </a>
-                <a href="sms:+15551234567" className="inline-block mt-2 text-lg font-semibold text-primary hover:underline">
+                <a href="sms:+14133278496" className="inline-block mt-2 text-lg font-semibold text-primary hover:underline">
                   💬 Text
                 </a>
               </div>
