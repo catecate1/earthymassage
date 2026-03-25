@@ -1,8 +1,21 @@
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 
 const Book = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://bookeo.com/widget.js?a=2119X9M9P17F61D856AF";
+    script.type = "text/javascript";
+    script.async = true;
+    document.getElementById("bookeo-container")?.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -10,13 +23,7 @@ const Book = () => {
 
       <section className="py-16">
         <div className="container max-w-4xl mx-auto">
-          <iframe
-            src="https://bookeo.com/earthymassage"
-            title="Book an appointment"
-            className="w-full border-0 rounded-lg"
-            style={{ minHeight: "800px" }}
-            allow="payment"
-          />
+          <div id="bookeo-container" className="min-h-[800px]" />
         </div>
       </section>
 
