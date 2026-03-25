@@ -39,16 +39,25 @@ const Availability = () => {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-3 gap-6">
             <div className="bg-petal rounded-lg p-6 text-center">
               <Sun className="w-6 h-6 text-primary mx-auto mb-3" />
               <h3 className="font-display text-lg text-foreground mb-2">Same-Day Appointments</h3>
-              <p className="font-body text-sm text-muted-foreground font-semibold">​Please book at least two [2] hours in advance.  Plan ahead.                     </p>
+              <p className="font-body text-sm text-muted-foreground font-semibold">Please book at least two [2] hours in advance. Plan ahead.</p>
             </div>
             <div className="bg-petal rounded-lg p-6 text-center">
               <Phone className="w-6 h-6 text-primary mx-auto mb-3" />
+              <h3 className="font-display text-lg text-foreground mb-2">Contact</h3>
+              <p className="font-body text-sm text-muted-foreground font-semibold mb-3">Call or text to schedule your appointment.</p>
+              <a href="tel:+14133278496" className="inline-flex items-center gap-2 font-body text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                <Phone className="w-4 h-4" />
+                (413) 327-8496
+              </a>
+            </div>
+            <div className="bg-petal rounded-lg p-6 text-center">
+              <Moon className="w-6 h-6 text-primary mx-auto mb-3" />
               <h3 className="font-display text-lg text-foreground mb-2">Booking</h3>
-              <p className="font-body text-sm text-muted-foreground font-semibold">Book online or call (413) 327-8496 to schedule your appointment.</p>
+              <p className="font-body text-sm text-muted-foreground font-semibold">Book online anytime — we'll confirm your appointment promptly.</p>
             </div>
           </div>
         </div>
