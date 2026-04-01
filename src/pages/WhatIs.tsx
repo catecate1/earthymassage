@@ -3,6 +3,7 @@ import { Activity, Heart, Brain, Moon, Eye, Move } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import AnatomyBody from "@/components/AnatomyBody";
 
 const techniques = [
   { title: "Effleurage", description: "Long, gliding strokes that warm up the muscles and promote relaxation. This is the foundational technique of Swedish massage." },
@@ -50,6 +51,12 @@ const WhatIs = () => {
               The technique works with the body's natural systems to encourage healing and balance.
             </p>
           </motion.div>
+
+          {/* Interactive Anatomy */}
+          <div className="mb-20">
+            <h2 className="font-display text-3xl text-foreground text-center mb-8">Major Muscle Groups</h2>
+            <AnatomyBody />
+          </div>
 
           {/* Techniques */}
           <h2 className="font-display text-3xl text-foreground text-center mb-10">The Five Core Techniques</h2>
