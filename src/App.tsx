@@ -8,6 +8,7 @@ import About from "./pages/About.tsx";
 import Services from "./pages/Services.tsx";
 import Specials from "./pages/Specials.tsx";
 import WhatIs from "./pages/WhatIs.tsx";
+import Anatomy from "./pages/Anatomy.tsx";
 import Book from "./pages/Book.tsx";
 import Payment from "./pages/Payment.tsx";
 import WhatsNew from "./pages/WhatsNew.tsx";
