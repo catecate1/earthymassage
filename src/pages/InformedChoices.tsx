@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import AnatomyBody from "@/components/AnatomyBody";
 import { Info, HandHelping, ShieldCheck, Droplets, Clock, Armchair, Gift } from "lucide-react";
 
 const sections = [
@@ -75,6 +76,12 @@ const InformedChoices = () => {
               )}
             </div>
           ))}
+
+          {/* Interactive Anatomy */}
+          <div className="mt-10">
+            <h2 className="font-display text-2xl text-foreground text-center mb-6">Major Muscle Groups</h2>
+            <AnatomyBody />
+          </div>
         </div>
       </section>
 
