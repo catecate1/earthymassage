@@ -11,6 +11,7 @@ const mainLinks = [
 
 
 const moreLinks = [
+{ label: "Anatomy", to: "/anatomy" },
 { label: "What's New", to: "/whats-new" },
 { label: "Availability", to: "/availability" },
 { label: "Testimonials", to: "/testimonials" },
