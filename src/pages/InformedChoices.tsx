@@ -77,11 +77,6 @@ const InformedChoices = () => {
             </div>
           ))}
 
-          {/* Interactive Anatomy */}
-          <div className="mt-10">
-            <h2 className="font-display text-2xl text-foreground text-center mb-6">Major Muscle Groups</h2>
-            <AnatomyBody />
-          </div>
         </div>
       </section>
 
