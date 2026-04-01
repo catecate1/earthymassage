@@ -3,7 +3,7 @@ import { Activity, Heart, Brain, Moon, Eye, Move } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import AnatomyBody from "@/components/AnatomyBody";
+
 
 const techniques = [
   { title: "Effleurage", description: "Long, gliding strokes that warm up the muscles and promote relaxation. This is the foundational technique of Swedish massage." },
