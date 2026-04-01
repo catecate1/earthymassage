@@ -52,6 +52,12 @@ const WhatIs = () => {
             </p>
           </motion.div>
 
+          {/* Interactive Anatomy */}
+          <div className="mb-20">
+            <h2 className="font-display text-3xl text-foreground text-center mb-8">Major Muscle Groups</h2>
+            <AnatomyBody />
+          </div>
+
           {/* Techniques */}
           <h2 className="font-display text-3xl text-foreground text-center mb-10">The Five Core Techniques</h2>
           <div className="space-y-4 mb-20">
