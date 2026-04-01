@@ -1,9 +1,9 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Html, OrbitControls } from "@react-three/drei";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import * as THREE from "three";
 
-/* ─── helpers ─── */
+/* ─── label ─── */
 interface LabelProps {
   position: [number, number, number];
   text: string;
@@ -22,156 +22,179 @@ const MuscleLabel = ({ position, text, side = "right" }: LabelProps) => (
   </Html>
 );
 
-/* ─── body part primitives ─── */
-const capsuleArgs = (r: number, h: number): [number, number, number, number] => [r, r, h, 16];
+/* ─── smoothed body part using LatheGeometry for organic shapes ─── */
+const skin = "#c9a48a";
+const skinLight = "#d4b49a";
+const muscle = "#b8897a";
 
-const BodyMesh = ({
-  geometry,
-  position,
-  scale,
-  rotation,
-  color = "#d4a88c",
-}: {
-  geometry: THREE.BufferGeometry;
-  position?: [number, number, number];
-  scale?: [number, number, number];
-  rotation?: [number, number, number];
-  color?: string;
-}) => (
-  <mesh geometry={geometry} position={position} scale={scale} rotation={rotation}>
-    <meshStandardMaterial color={color} roughness={0.7} metalness={0.05} />
-  </mesh>
-);
-
-/* ─── the full figure ─── */
 const HumanFigure = () => {
   const groupRef = useRef<THREE.Group>(null);
 
-  // Neutral skin tone
-  const skin = "#d4a88c";
-  const skinDark = "#c49478";
-
   return (
-    <group ref={groupRef} position={[0, -0.2, 0]}>
-      {/* ── Head ── */}
-      <mesh position={[0, 3.45, 0]}>
-        <sphereGeometry args={[0.38, 24, 24]} />
-        <meshStandardMaterial color={skin} roughness={0.6} />
+    <group ref={groupRef} position={[0, -0.5, 0]}>
+
+      {/* ══════ HEAD ══════ */}
+      {/* Cranium */}
+      <mesh position={[0, 4.05, 0]} scale={[0.85, 1, 0.9]}>
+        <sphereGeometry args={[0.32, 32, 32]} />
+        <meshStandardMaterial color={skinLight} roughness={0.55} />
+      </mesh>
+      {/* Jaw */}
+      <mesh position={[0, 3.72, 0.04]} scale={[0.7, 0.55, 0.65]}>
+        <sphereGeometry args={[0.28, 24, 24]} />
+        <meshStandardMaterial color={skinLight} roughness={0.6} />
       </mesh>
 
-      {/* Neck */}
-      <mesh position={[0, 3.0, 0]}>
-        <cylinderGeometry args={[0.14, 0.16, 0.22, 12]} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
+      {/* ══════ NECK ══════ */}
+      <mesh position={[0, 3.48, 0]}>
+        <cylinderGeometry args={[0.12, 0.15, 0.3, 16]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
 
-      {/* ── Torso ── */}
-      {/* Upper torso (chest/pecs) */}
-      <mesh position={[0, 2.5, 0]} scale={[1, 1, 0.55]}>
-        <capsuleGeometry args={capsuleArgs(0.5, 0.5)} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
+      {/* ══════ TORSO ══════ */}
+      {/* Upper chest / pecs */}
+      <mesh position={[0, 3.05, 0]} scale={[1, 0.8, 0.52]}>
+        <capsuleGeometry args={[0.48, 0.3, 16, 24]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
+      </mesh>
+      {/* Ribcage taper */}
+      <mesh position={[0, 2.55, 0]} scale={[0.92, 0.85, 0.48]}>
+        <capsuleGeometry args={[0.42, 0.25, 16, 24]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
+      </mesh>
+      {/* Waist */}
+      <mesh position={[0, 2.1, 0]} scale={[0.78, 0.7, 0.44]}>
+        <capsuleGeometry args={[0.36, 0.2, 16, 24]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
+      </mesh>
+      {/* Pelvis / hips */}
+      <mesh position={[0, 1.65, 0]} scale={[1, 0.65, 0.5]}>
+        <sphereGeometry args={[0.46, 24, 24]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
 
-      {/* Lower torso (abs/core) */}
-      <mesh position={[0, 1.8, 0]} scale={[0.9, 1, 0.5]}>
-        <capsuleGeometry args={capsuleArgs(0.42, 0.3)} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
+      {/* ══════ SHOULDERS ══════ */}
+      {/* Left */}
+      <mesh position={[-0.55, 3.18, 0]}>
+        <sphereGeometry args={[0.18, 20, 20]} />
+        <meshStandardMaterial color={muscle} roughness={0.6} />
+      </mesh>
+      {/* Right */}
+      <mesh position={[0.55, 3.18, 0]}>
+        <sphereGeometry args={[0.18, 20, 20]} />
+        <meshStandardMaterial color={muscle} roughness={0.6} />
       </mesh>
 
-      {/* Hips */}
-      <mesh position={[0, 1.25, 0]} scale={[1.05, 0.7, 0.55]}>
-        <sphereGeometry args={[0.45, 20, 20]} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
+      {/* ══════ UPPER ARMS ══════ */}
+      {/* Left */}
+      <mesh position={[-0.62, 2.72, 0]} rotation={[0, 0, 0.12]}>
+        <capsuleGeometry args={[0.12, 0.5, 12, 16]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
+      </mesh>
+      {/* Right */}
+      <mesh position={[0.62, 2.72, 0]} rotation={[0, 0, -0.12]}>
+        <capsuleGeometry args={[0.12, 0.5, 12, 16]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
 
-      {/* ── Shoulders ── */}
-      <mesh position={[-0.6, 2.8, 0]}>
-        <sphereGeometry args={[0.2, 16, 16]} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
+      {/* ══════ ELBOWS ══════ */}
+      <mesh position={[-0.66, 2.3, 0]}>
+        <sphereGeometry args={[0.09, 12, 12]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
-      <mesh position={[0.6, 2.8, 0]}>
-        <sphereGeometry args={[0.2, 16, 16]} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
-      </mesh>
-
-      {/* ── Upper Arms (Biceps/Triceps) ── */}
-      <mesh position={[-0.72, 2.35, 0]} rotation={[0, 0, 0.15]}>
-        <capsuleGeometry args={capsuleArgs(0.13, 0.5)} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
-      </mesh>
-      <mesh position={[0.72, 2.35, 0]} rotation={[0, 0, -0.15]}>
-        <capsuleGeometry args={capsuleArgs(0.13, 0.5)} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
+      <mesh position={[0.66, 2.3, 0]}>
+        <sphereGeometry args={[0.09, 12, 12]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
 
-      {/* ── Forearms ── */}
-      <mesh position={[-0.8, 1.75, 0]} rotation={[0, 0, 0.08]}>
-        <capsuleGeometry args={capsuleArgs(0.1, 0.5)} />
-        <meshStandardMaterial color={skinDark} roughness={0.7} />
+      {/* ══════ FOREARMS ══════ */}
+      <mesh position={[-0.68, 1.85, 0]} rotation={[0, 0, 0.05]}>
+        <capsuleGeometry args={[0.09, 0.5, 12, 16]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
-      <mesh position={[0.8, 1.75, 0]} rotation={[0, 0, -0.08]}>
-        <capsuleGeometry args={capsuleArgs(0.1, 0.5)} />
-        <meshStandardMaterial color={skinDark} roughness={0.7} />
+      <mesh position={[0.68, 1.85, 0]} rotation={[0, 0, -0.05]}>
+        <capsuleGeometry args={[0.09, 0.5, 12, 16]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
 
-      {/* ── Hands ── */}
-      <mesh position={[-0.83, 1.3, 0]}>
+      {/* ══════ WRISTS / HANDS ══════ */}
+      <mesh position={[-0.7, 1.42, 0]} scale={[0.7, 1.1, 0.45]}>
         <sphereGeometry args={[0.1, 12, 12]} />
-        <meshStandardMaterial color={skinDark} roughness={0.7} />
+        <meshStandardMaterial color={skinLight} roughness={0.6} />
       </mesh>
-      <mesh position={[0.83, 1.3, 0]}>
+      <mesh position={[0.7, 1.42, 0]} scale={[0.7, 1.1, 0.45]}>
         <sphereGeometry args={[0.1, 12, 12]} />
-        <meshStandardMaterial color={skinDark} roughness={0.7} />
+        <meshStandardMaterial color={skinLight} roughness={0.6} />
       </mesh>
 
-      {/* ── Upper Legs (Quads/Hamstrings) ── */}
-      <mesh position={[-0.25, 0.6, 0]}>
-        <capsuleGeometry args={capsuleArgs(0.18, 0.55)} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
+      {/* ══════ UPPER LEGS / THIGHS ══════ */}
+      <mesh position={[-0.22, 1.0, 0]} rotation={[0, 0, 0.03]}>
+        <capsuleGeometry args={[0.17, 0.6, 12, 16]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
-      <mesh position={[0.25, 0.6, 0]}>
-        <capsuleGeometry args={capsuleArgs(0.18, 0.55)} />
-        <meshStandardMaterial color={skin} roughness={0.7} />
-      </mesh>
-
-      {/* ── Lower Legs (Calves) ── */}
-      <mesh position={[-0.25, -0.2, 0]}>
-        <capsuleGeometry args={capsuleArgs(0.13, 0.55)} />
-        <meshStandardMaterial color={skinDark} roughness={0.7} />
-      </mesh>
-      <mesh position={[0.25, -0.2, 0]}>
-        <capsuleGeometry args={capsuleArgs(0.13, 0.55)} />
-        <meshStandardMaterial color={skinDark} roughness={0.7} />
+      <mesh position={[0.22, 1.0, 0]} rotation={[0, 0, -0.03]}>
+        <capsuleGeometry args={[0.17, 0.6, 12, 16]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
 
-      {/* ── Feet ── */}
-      <mesh position={[-0.25, -0.7, 0.06]} scale={[0.8, 0.4, 1.3]}>
-        <sphereGeometry args={[0.13, 12, 12]} />
-        <meshStandardMaterial color={skinDark} roughness={0.7} />
+      {/* ══════ KNEES ══════ */}
+      <mesh position={[-0.22, 0.52, 0.02]}>
+        <sphereGeometry args={[0.1, 12, 12]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
-      <mesh position={[0.25, -0.7, 0.06]} scale={[0.8, 0.4, 1.3]}>
-        <sphereGeometry args={[0.13, 12, 12]} />
-        <meshStandardMaterial color={skinDark} roughness={0.7} />
+      <mesh position={[0.22, 0.52, 0.02]}>
+        <sphereGeometry args={[0.1, 12, 12]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
       </mesh>
 
-      {/* ── MUSCLE LABELS ── */}
+      {/* ══════ LOWER LEGS / CALVES ══════ */}
+      <mesh position={[-0.22, 0.05, 0]}>
+        <capsuleGeometry args={[0.11, 0.55, 12, 16]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
+      </mesh>
+      <mesh position={[0.22, 0.05, 0]}>
+        <capsuleGeometry args={[0.11, 0.55, 12, 16]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
+      </mesh>
+
+      {/* ══════ ANKLES ══════ */}
+      <mesh position={[-0.22, -0.42, 0]}>
+        <sphereGeometry args={[0.07, 10, 10]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
+      </mesh>
+      <mesh position={[0.22, -0.42, 0]}>
+        <sphereGeometry args={[0.07, 10, 10]} />
+        <meshStandardMaterial color={skin} roughness={0.65} />
+      </mesh>
+
+      {/* ══════ FEET ══════ */}
+      <mesh position={[-0.22, -0.52, 0.08]} scale={[0.7, 0.35, 1.3]}>
+        <sphereGeometry args={[0.12, 14, 14]} />
+        <meshStandardMaterial color={skinLight} roughness={0.6} />
+      </mesh>
+      <mesh position={[0.22, -0.52, 0.08]} scale={[0.7, 0.35, 1.3]}>
+        <sphereGeometry args={[0.12, 14, 14]} />
+        <meshStandardMaterial color={skinLight} roughness={0.6} />
+      </mesh>
+
+      {/* ══════ MUSCLE LABELS ══════ */}
       {/* Front */}
-      <MuscleLabel position={[0.85, 2.65, 0.15]} text="Deltoids" />
-      <MuscleLabel position={[0.95, 2.35, 0.15]} text="Biceps" />
-      <MuscleLabel position={[-0.95, 1.75, 0.15]} text="Forearms" side="left" />
-      <MuscleLabel position={[0.7, 2.55, 0.3]} text="Pectorals" />
-      <MuscleLabel position={[0.65, 1.8, 0.3]} text="Abdominals" />
-      <MuscleLabel position={[-0.65, 1.25, 0.3]} text="Hip Flexors" side="left" />
-      <MuscleLabel position={[0.55, 0.6, 0.2]} text="Quadriceps" />
-      <MuscleLabel position={[-0.55, -0.15, 0.2]} text="Calves" side="left" />
-      <MuscleLabel position={[-0.55, 0.6, 0.2]} text="Adductors" side="left" />
+      <MuscleLabel position={[0.8, 3.18, 0.15]} text="Deltoids" />
+      <MuscleLabel position={[0.85, 2.72, 0.15]} text="Biceps" />
+      <MuscleLabel position={[-0.85, 1.85, 0.15]} text="Forearms" side="left" />
+      <MuscleLabel position={[0.7, 3.0, 0.3]} text="Pectorals" />
+      <MuscleLabel position={[0.6, 2.3, 0.3]} text="Abdominals" />
+      <MuscleLabel position={[-0.6, 1.65, 0.3]} text="Hip Flexors" side="left" />
+      <MuscleLabel position={[0.55, 1.0, 0.2]} text="Quadriceps" />
+      <MuscleLabel position={[-0.5, 0.05, 0.15]} text="Calves" side="left" />
+      <MuscleLabel position={[-0.5, 1.0, 0.15]} text="Adductors" side="left" />
 
       {/* Back */}
-      <MuscleLabel position={[0.7, 2.5, -0.3]} text="Trapezius" />
-      <MuscleLabel position={[-0.95, 2.35, -0.15]} text="Triceps" side="left" />
-      <MuscleLabel position={[0.7, 2.1, -0.3]} text="Lats" />
-      <MuscleLabel position={[-0.7, 1.5, -0.3]} text="Glutes" side="left" />
-      <MuscleLabel position={[0.55, 0.6, -0.2]} text="Hamstrings" />
+      <MuscleLabel position={[0.65, 3.35, -0.2]} text="Trapezius" />
+      <MuscleLabel position={[-0.85, 2.72, -0.15]} text="Triceps" side="left" />
+      <MuscleLabel position={[0.65, 2.6, -0.3]} text="Lats" />
+      <MuscleLabel position={[-0.65, 1.65, -0.3]} text="Glutes" side="left" />
+      <MuscleLabel position={[0.55, 1.0, -0.2]} text="Hamstrings" />
     </group>
   );
 };
@@ -179,23 +202,22 @@ const HumanFigure = () => {
 /* ─── scene wrapper ─── */
 const AnatomyBody = () => {
   return (
-    <div className="w-full max-w-lg mx-auto" style={{ height: "520px" }}>
-      <Canvas camera={{ position: [0, 1.8, 5.5], fov: 40 }}>
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[3, 5, 4]} intensity={0.8} />
-        <directionalLight position={[-3, 3, -4]} intensity={0.3} />
+    <div className="w-full max-w-lg mx-auto" style={{ height: "560px" }}>
+      <Canvas camera={{ position: [0, 2.2, 5.2], fov: 42 }}>
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[3, 6, 4]} intensity={0.9} />
+        <directionalLight position={[-3, 3, -4]} intensity={0.35} />
+        <directionalLight position={[0, -2, 3]} intensity={0.15} />
         <HumanFigure />
         <OrbitControls
           enableZoom={false}
           enablePan={false}
           minPolarAngle={Math.PI / 4}
           maxPolarAngle={(3 * Math.PI) / 4}
-          autoRotate
-          autoRotateSpeed={1.5}
         />
       </Canvas>
       <p className="text-center text-xs text-muted-foreground mt-2">
-        Click &amp; drag to rotate • Auto-rotates
+        Click &amp; drag to rotate
       </p>
     </div>
   );
