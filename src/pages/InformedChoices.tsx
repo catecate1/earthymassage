@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import AnatomyBody from "@/components/AnatomyBody";
 import { Info, HandHelping, ShieldCheck, Droplets, Clock, Armchair, Gift } from "lucide-react";
 
 const sections = [
