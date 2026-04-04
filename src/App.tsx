@@ -16,6 +16,7 @@ import InformedChoices from "./pages/InformedChoices.tsx";
 import Testimonials from "./pages/Testimonials.tsx";
 import Policies from "./pages/Policies.tsx";
 import Directions from "./pages/Directions.tsx";
+import Anatomy from "./pages/Anatomy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
