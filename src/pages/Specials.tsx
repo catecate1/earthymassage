@@ -32,6 +32,19 @@ const specials = [
   description: "New clients receive $15 off their first 90-minute Classic Swedish session. Experience the Healing Touch difference!"
 }];
 
+const ladiesNightSpecials = [
+  {
+    title: "60 Minutes",
+    salePrice: "$36",
+    originalPrice: "$60",
+  },
+  {
+    title: "75 Minutes",
+    salePrice: "$51",
+    originalPrice: "$85",
+  },
+];
+
 
 const Specials = () => {
   return (
