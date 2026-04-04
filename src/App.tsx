@@ -16,6 +16,7 @@ import InformedChoices from "./pages/InformedChoices.tsx";
 import Testimonials from "./pages/Testimonials.tsx";
 import Policies from "./pages/Policies.tsx";
 import Directions from "./pages/Directions.tsx";
+import Anatomy from "./pages/Anatomy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/policies" element={<Policies />} />
           <Route path="/directions" element={<Directions />} />
+          <Route path="/anatomy" element={<Anatomy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
