@@ -109,8 +109,12 @@ const MuscleOverlay = ({
         const labelX = m.labelSide === "left" ? m.x - offset : m.x + offset;
         const labelY = m.y;
         const textAnchor = m.labelSide === "left" ? "end" : "start";
-        // Dot sits on the far side of the label text
-        const dotX = m.labelSide === "left" ? labelX - 1.5 : labelX + 1.5;
+        // Approximate text width: ~1.4 SVG units per character at fontSize 2.4
+        const approxTextWidth = m.name.length * 1.4;
+        // Dot on the true outside of the text (before the word for left, after for right)
+        const dotX = m.labelSide === "left"
+          ? labelX - approxTextWidth - 1.5
+          : labelX + approxTextWidth + 1.5;
 
         return (
           <g
@@ -166,7 +170,7 @@ const MuscleOverlay = ({
               cx={dotX}
               cy={labelY}
               r={isActive ? "1.2" : "0.9"}
-              fill={isActive ? "hsl(var(--primary))" : "hsl(var(--primary))"}
+              fill="hsl(var(--primary))"
               fillOpacity={isActive ? 1 : 0.7}
             />
           </g>
