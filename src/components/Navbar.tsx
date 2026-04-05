@@ -40,7 +40,10 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
           <Flower2 className="w-5 h-5 text-primary" />
-          <span className="font-display text-xl text-foreground tracking-wide">Earthy Massage </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-display text-xl text-foreground tracking-wide">Earthy Massage</span>
+            <em className="font-display text-xs text-foreground italic tracking-wide">Home Of The Go-To-Sleep Massage</em>
+          </div>
         </Link>
 
         {/* Desktop */}
