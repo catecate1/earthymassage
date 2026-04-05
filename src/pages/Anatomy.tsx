@@ -275,6 +275,45 @@ const Anatomy = () => {
         </div>
       </section>
 
+      {/* Major Muscle Groups */}
+      <section className="py-16 bg-background">
+        <div className="container max-w-4xl">
+          <h2 className="font-display text-3xl text-foreground text-center mb-4">
+            Major Muscle Groups & Massage Benefits
+          </h2>
+          <p className="text-muted-foreground font-body text-center mb-10 max-w-2xl mx-auto">
+            Swedish massage targets these key muscle groups to relieve tension, improve circulation, and restore balance to your body.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { name: "Trapezius & Neck", desc: "Relieves tension headaches and stiffness caused by desk work, stress, and poor posture." },
+              { name: "Deltoids", desc: "Eases tightness from carrying bags, repetitive arm movements, and overhead activities." },
+              { name: "Pectoralis Major", desc: "Opens the chest and counteracts the forward-hunching posture common with screen use." },
+              { name: "Latissimus Dorsi", desc: "Reduces mid and lower back pain while improving overall posture and mobility." },
+              { name: "Erector Spinae", desc: "Supports spinal alignment and relieves chronic low-back tension from prolonged sitting." },
+              { name: "Forearm Flexors & Extensors", desc: "Helps with repetitive strain injuries, carpal tunnel symptoms, and grip discomfort." },
+              { name: "Quadriceps", desc: "Loosens tight legs from sitting, standing, walking, or exercise." },
+              { name: "Hamstrings", desc: "Relieves tightness in the back of the thighs that contributes to lower back strain." },
+              { name: "Gluteus Maximus", desc: "Relieves lower back strain, supports hip mobility, and eases sciatic discomfort." },
+              { name: "Gastrocnemius (Calves)", desc: "Relieves cramping, improves circulation to the feet, and reduces leg fatigue." },
+              { name: "Tibialis Anterior", desc: "Supports ankle stability, reduces shin tension, and helps prevent shin splints." },
+            ].map((a, i) => (
+              <motion.div
+                key={a.name}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="bg-card rounded-lg p-5 shadow-soft border border-border/30"
+              >
+                <h3 className="font-display text-lg text-foreground mb-1">{a.name}</h3>
+                <p className="text-muted-foreground font-body text-sm leading-relaxed">{a.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Adductor Muscles Detail */}
       <section className="py-16 bg-petal/30">
         <div className="container max-w-4xl">
