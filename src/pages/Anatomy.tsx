@@ -59,8 +59,8 @@ interface LabelledMuscle extends MuscleHotspot {
 const addLabelSides = (muscles: MuscleHotspot[]): LabelledMuscle[] =>
   muscles.map((m) => ({
     ...m,
-    labelSide: m.x < 50 ? "left" : m.x > 50 ? "right" : (m.y % 2 === 0 ? "left" : "right"),
-    labelOffset: m.x < 30 || m.x > 70 ? 18 : 28,
+    labelSide: m.x <= 50 ? "left" : "right",
+    labelOffset: m.x < 25 || m.x > 75 ? 12 : 22,
   }));
 
 const MuscleOverlay = ({
