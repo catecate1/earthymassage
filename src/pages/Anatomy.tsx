@@ -189,9 +189,9 @@ const Anatomy = () => {
       />
 
       {/* Interactive Illustrations */}
-      <section className="py-16 bg-background">
-        <div className="container max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-8">
+      <section className="py-16 bg-background overflow-visible">
+        <div className="container max-w-6xl px-16">
+          <div className="grid md:grid-cols-2 gap-12">
             {/* Front */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
