@@ -59,8 +59,8 @@ interface LabelledMuscle extends MuscleHotspot {
 const addLabelSides = (muscles: MuscleHotspot[]): LabelledMuscle[] =>
   muscles.map((m) => ({
     ...m,
-    labelSide: m.x < 50 ? "left" : m.x > 50 ? "right" : (m.y % 2 === 0 ? "left" : "right"),
-    labelOffset: m.x < 30 || m.x > 70 ? 18 : 28,
+    labelSide: m.x <= 50 ? "left" : "right",
+    labelOffset: m.x < 25 || m.x > 75 ? 12 : 22,
   }));
 
 const MuscleOverlay = ({
@@ -77,7 +77,7 @@ const MuscleOverlay = ({
   return (
     <svg
       className="absolute inset-0 w-full h-full z-10"
-      viewBox="0 0 100 100"
+      viewBox="-15 0 130 100"
       preserveAspectRatio="none"
       style={{ overflow: "visible" }}
     >
@@ -189,9 +189,9 @@ const Anatomy = () => {
       />
 
       {/* Interactive Illustrations */}
-      <section className="py-16 bg-background">
-        <div className="container max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-8">
+      <section className="py-16 bg-background overflow-visible">
+        <div className="container max-w-6xl px-16">
+          <div className="grid md:grid-cols-2 gap-12">
             {/* Front */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -200,7 +200,7 @@ const Anatomy = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <div className="relative inline-block max-w-sm w-full mx-auto">
+              <div className="relative inline-block max-w-sm w-full mx-auto overflow-visible">
                 <img
                   src={anatomyFront}
                   alt="Anterior muscular system"
@@ -229,7 +229,7 @@ const Anatomy = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <div className="relative inline-block max-w-sm w-full mx-auto">
+              <div className="relative inline-block max-w-sm w-full mx-auto overflow-visible">
                 <img
                   src={anatomyBack}
                   alt="Posterior muscular system"
