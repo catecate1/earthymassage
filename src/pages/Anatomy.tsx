@@ -109,6 +109,8 @@ const MuscleOverlay = ({
         const labelX = m.labelSide === "left" ? m.x - offset : m.x + offset;
         const labelY = m.y;
         const textAnchor = m.labelSide === "left" ? "end" : "start";
+        // Dot sits on the far side of the label text
+        const dotX = m.labelSide === "left" ? labelX - 1.5 : labelX + 1.5;
 
         return (
           <g
@@ -118,7 +120,7 @@ const MuscleOverlay = ({
             role="button"
             aria-label={m.name}
           >
-            {/* Line from label to muscle point */}
+            {/* Line from label to muscle point with arrow */}
             <line
               x1={labelX}
               y1={labelY}
@@ -128,14 +130,6 @@ const MuscleOverlay = ({
               strokeWidth={isActive ? "0.4" : "0.25"}
               strokeOpacity={isActive ? 1 : 0.7}
               markerEnd={isActive ? "url(#arrowhead-active)" : "url(#arrowhead)"}
-            />
-            {/* Small circle at muscle point */}
-            <circle
-              cx={m.x}
-              cy={m.y}
-              r={isActive ? "1.2" : "0.8"}
-              fill="hsl(var(--primary))"
-              fillOpacity={isActive ? 1 : 0.8}
             />
             {/* Glow ring when active */}
             {isActive && (
@@ -167,6 +161,14 @@ const MuscleOverlay = ({
             >
               {m.name}
             </text>
+            {/* Clickable dot on the outside of the label */}
+            <circle
+              cx={dotX}
+              cy={labelY}
+              r={isActive ? "1.2" : "0.9"}
+              fill={isActive ? "hsl(var(--primary))" : "hsl(var(--primary))"}
+              fillOpacity={isActive ? 1 : 0.7}
+            />
           </g>
         );
       })}
