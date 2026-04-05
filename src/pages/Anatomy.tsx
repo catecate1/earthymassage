@@ -26,12 +26,12 @@ const frontMuscles: MuscleHotspot[] = [
   { id: "adductor-r", name: "Adductor Group", location: "Inner thigh", benefit: "Includes pectineus, adductor brevis, adductor longus, gracilis, and adductor magnus. Stabilizes the hip and relieves inner-thigh tension.", x: 54, y: 52 },
   { id: "quad-l", name: "Quadriceps", location: "Front of upper legs", benefit: "Loosens tight legs from sitting, standing, or exercise.", x: 42, y: 58 },
   { id: "quad-r", name: "Quadriceps", location: "Front of upper legs", benefit: "Loosens tight legs from sitting, standing, or exercise.", x: 58, y: 58 },
-  { id: "calf-front-l", name: "Tibialis Anterior", location: "Front of lower legs", benefit: "Supports ankle stability and reduces shin tension.", x: 44, y: 75 },
-  { id: "calf-front-r", name: "Tibialis Anterior", location: "Front of lower legs", benefit: "Supports ankle stability and reduces shin tension.", x: 56, y: 75 },
+  { id: "calf-front-l", name: "Tibialis Anterior", location: "Front of lower legs", benefit: "Supports ankle stability and reduces shin tension.", x: 40, y: 73 },
+  { id: "calf-front-r", name: "Tibialis Anterior", location: "Front of lower legs", benefit: "Supports ankle stability and reduces shin tension.", x: 60, y: 73 },
 ];
 
 const backMuscles: MuscleHotspot[] = [
-  { id: "trap-back", name: "Trapezius", location: "Upper back and neck", benefit: "Relieves tension headaches and stiffness from desk work.", x: 50, y: 24 },
+  { id: "trap-back", name: "Trapezius", location: "Upper back and neck", benefit: "Relieves tension headaches and stiffness from desk work.", x: 43, y: 20 },
   { id: "deltoid-back-l", name: "Deltoids", location: "Shoulder caps", benefit: "Eases tightness from carrying bags or repetitive arm movements.", x: 34, y: 24 },
   { id: "deltoid-back-r", name: "Deltoids", location: "Shoulder caps", benefit: "Eases tightness from carrying bags or repetitive arm movements.", x: 66, y: 24 },
   { id: "lats-l", name: "Latissimus Dorsi", location: "Mid to lower back", benefit: "Reduces back pain and improves posture.", x: 38, y: 29 },
@@ -39,8 +39,8 @@ const backMuscles: MuscleHotspot[] = [
   { id: "erector", name: "Erector Spinae", location: "Along the spine", benefit: "Supports spinal alignment and relieves chronic low-back tension.", x: 50, y: 33 },
   { id: "forearm-back-l", name: "Forearm Extensors", location: "Back of forearms", benefit: "Helps with repetitive strain and improves grip comfort.", x: 27, y: 42 },
   { id: "forearm-back-r", name: "Forearm Extensors", location: "Back of forearms", benefit: "Helps with repetitive strain and improves grip comfort.", x: 73, y: 42 },
-  { id: "glute-l", name: "Gluteus Maximus", location: "Buttocks", benefit: "Relieves lower back strain and supports hip mobility.", x: 44, y: 47 },
-  { id: "glute-r", name: "Gluteus Maximus", location: "Buttocks", benefit: "Relieves lower back strain and supports hip mobility.", x: 56, y: 47 },
+  { id: "glute-l", name: "Gluteus Maximus", location: "Buttocks", benefit: "Relieves lower back strain and supports hip mobility.", x: 44, y: 51 },
+  { id: "glute-r", name: "Gluteus Maximus", location: "Buttocks", benefit: "Relieves lower back strain and supports hip mobility.", x: 56, y: 51 },
   { id: "hamstring-l", name: "Hamstrings", location: "Back of upper legs", benefit: "Loosens tight legs from sitting, standing, or exercise.", x: 43, y: 60 },
   { id: "hamstring-r", name: "Hamstrings", location: "Back of upper legs", benefit: "Loosens tight legs from sitting, standing, or exercise.", x: 57, y: 60 },
   { id: "calf-back-l", name: "Gastrocnemius", location: "Calves", benefit: "Relieves cramping and improves circulation to the feet.", x: 44, y: 78 },
@@ -89,7 +89,7 @@ const MuscleOverlay = ({
           refY="2"
           orient="auto"
         >
-          <polygon points="0 0, 6 2, 0 4" fill="hsl(var(--primary))" />
+          <polygon points="0 0, 6 2, 0 4" fill="black" />
         </marker>
         <marker
           id="arrowhead-active"
@@ -99,7 +99,7 @@ const MuscleOverlay = ({
           refY="2"
           orient="auto"
         >
-          <polygon points="0 0, 6 2, 0 4" fill="hsl(var(--primary))" />
+          <polygon points="0 0, 6 2, 0 4" fill="black" />
         </marker>
       </defs>
       {muscles.map((m) => {
@@ -129,7 +129,7 @@ const MuscleOverlay = ({
               y1={labelY}
               x2={m.x}
               y2={m.y}
-              stroke="hsl(var(--primary))"
+              stroke="black"
               strokeWidth={isActive ? "0.4" : "0.25"}
               strokeOpacity={isActive ? 1 : 0.7}
               markerEnd={isActive ? "url(#arrowhead-active)" : "url(#arrowhead)"}
