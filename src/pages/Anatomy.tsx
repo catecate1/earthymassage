@@ -229,7 +229,7 @@ const Anatomy = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <div className="relative inline-block max-w-sm w-full mx-auto">
+              <div className="relative inline-block max-w-sm w-full mx-auto overflow-visible">
                 <img
                   src={anatomyBack}
                   alt="Posterior muscular system"
