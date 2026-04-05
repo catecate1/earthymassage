@@ -89,7 +89,7 @@ const MuscleOverlay = ({
           refY="2"
           orient="auto"
         >
-          <polygon points="0 0, 6 2, 0 4" fill="hsl(var(--primary))" />
+          <polygon points="0 0, 6 2, 0 4" fill="black" />
         </marker>
         <marker
           id="arrowhead-active"
@@ -99,7 +99,7 @@ const MuscleOverlay = ({
           refY="2"
           orient="auto"
         >
-          <polygon points="0 0, 6 2, 0 4" fill="hsl(var(--primary))" />
+          <polygon points="0 0, 6 2, 0 4" fill="black" />
         </marker>
       </defs>
       {muscles.map((m) => {
