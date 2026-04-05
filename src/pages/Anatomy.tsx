@@ -193,6 +193,14 @@ const Anatomy = () => {
         subtitle="Tap any muscle point to learn how Swedish massage benefits that area."
       />
 
+      {/* Interactive hint */}
+      <div className="bg-primary/5 border-b border-primary/10 py-3">
+        <p className="text-center text-sm font-body text-muted-foreground">
+          <span className="inline-block w-2 h-2 rounded-full bg-primary mr-2 align-middle" />
+          <span className="text-foreground font-medium">Interactive model</span> — click the dots next to any muscle name to learn more.
+        </p>
+      </div>
+
       {/* Interactive Illustrations */}
       <section className="py-16 bg-background overflow-visible">
         <div className="container max-w-6xl px-16">
