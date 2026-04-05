@@ -78,37 +78,6 @@ const Specials = () => {
             )}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-card rounded-lg p-8 shadow-soft border border-border/30 max-w-lg mx-auto mt-8 text-center">
-            
-            <span className="inline-block bg-petal text-primary font-body px-3 py-1 rounded-full mb-4 text-sm">
-              Limited Event
-            </span>
-            <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4 mx-auto">
-              <PartyPopper className="w-4 h-4 text-primary" />
-            </div>
-            <h3 className="font-display text-xl text-foreground mb-2">Ladies Night Special</h3>
-            <p className="text-muted-foreground font-body text-sm mb-1">April 4th, 2026 • 4:00 PM – 8:00 PM</p>
-            <p className="font-display text-2xl text-primary mb-6">40% Off</p>
-            <div className="flex justify-center gap-6 mb-6">
-              {ladiesNightSpecials.map((item) => (
-                <div key={item.title} className="text-center">
-                  <p className="font-display text-lg text-foreground mb-1">{item.title}</p>
-                  <span className="font-display text-xl text-primary">{item.salePrice}</span>
-                  <span className="font-body text-sm text-muted-foreground line-through ml-2">{item.originalPrice}</span>
-                </div>
-              ))}
-            </div>
-            <Link to="/book">
-              <Button variant="outline" className="border-border hover:bg-petal font-body text-sm group">
-                Book Now <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
