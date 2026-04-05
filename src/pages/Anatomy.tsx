@@ -48,8 +48,23 @@ const backMuscles: MuscleHotspot[] = [
   { id: "calf-back-r", name: "Gastrocnemius", location: "Calves", benefit: "Relieves cramping and improves circulation to the feet.", x: 61, y: 74 },
 ];
 
+interface LabelledMuscle extends MuscleHotspot {
+  /** Label anchor position: which side the label sits on */
+  labelSide: "left" | "right";
+  /** How far (%) the label extends from the point */
+  labelOffset?: number;
+}
+
+/** Add label sides so lines don't overlap the body */
+const addLabelSides = (muscles: MuscleHotspot[]): LabelledMuscle[] =>
+  muscles.map((m) => ({
+    ...m,
+    labelSide: m.x < 50 ? "left" : m.x > 50 ? "right" : (m.y % 2 === 0 ? "left" : "right"),
+    labelOffset: m.x < 30 || m.x > 70 ? 18 : 28,
+  }));
+
 const MuscleOverlay = ({
-  muscles,
+  muscles: rawMuscles,
   activeId,
   onSelect,
 }: {
@@ -57,40 +72,105 @@ const MuscleOverlay = ({
   activeId: string | null;
   onSelect: (m: MuscleHotspot | null) => void;
 }) => {
+  const muscles = addLabelSides(rawMuscles);
+
   return (
-    <>
+    <svg
+      className="absolute inset-0 w-full h-full z-10"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      style={{ overflow: "visible" }}
+    >
+      <defs>
+        <marker
+          id="arrowhead"
+          markerWidth="6"
+          markerHeight="4"
+          refX="5"
+          refY="2"
+          orient="auto"
+        >
+          <polygon points="0 0, 6 2, 0 4" fill="hsl(var(--primary))" />
+        </marker>
+        <marker
+          id="arrowhead-active"
+          markerWidth="6"
+          markerHeight="4"
+          refX="5"
+          refY="2"
+          orient="auto"
+        >
+          <polygon points="0 0, 6 2, 0 4" fill="hsl(var(--primary))" />
+        </marker>
+      </defs>
       {muscles.map((m) => {
         const isActive = activeId === m.id;
+        const offset = m.labelOffset ?? 24;
+        const labelX = m.labelSide === "left" ? m.x - offset : m.x + offset;
+        const labelY = m.y;
+        const textAnchor = m.labelSide === "left" ? "end" : "start";
+
         return (
-          <button
+          <g
             key={m.id}
             onClick={() => onSelect(isActive ? null : m)}
-            className="absolute z-10 group"
-            style={{ left: `${m.x}%`, top: `${m.y}%`, transform: "translate(-50%, -50%)" }}
+            className="cursor-pointer"
+            role="button"
             aria-label={m.name}
           >
-            {/* Dot */}
-            <span
-              className={`block w-3.5 h-3.5 rounded-full border-2 border-white/90 transition-all duration-300 ${
-                isActive
-                  ? "bg-primary scale-150 shadow-[0_0_14px_4px_hsl(var(--primary)/0.6)]"
-                  : "bg-primary/60 group-hover:bg-primary group-hover:scale-125 group-hover:shadow-[0_0_10px_2px_hsl(var(--primary)/0.4)]"
-              }`}
+            {/* Line from label to muscle point */}
+            <line
+              x1={labelX}
+              y1={labelY}
+              x2={m.x}
+              y2={m.y}
+              stroke="hsl(var(--primary))"
+              strokeWidth={isActive ? "0.4" : "0.25"}
+              strokeOpacity={isActive ? 1 : 0.7}
+              markerEnd={isActive ? "url(#arrowhead-active)" : "url(#arrowhead)"}
             />
-            {/* Label */}
-            <span
-              className={`absolute left-1/2 -translate-x-1/2 -top-6 whitespace-nowrap text-[10px] font-body font-semibold px-1.5 py-0.5 rounded transition-all duration-300 pointer-events-none ${
-                isActive
-                  ? "bg-primary text-primary-foreground opacity-100 scale-100"
-                  : "bg-foreground/80 text-background opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100"
-              }`}
+            {/* Small circle at muscle point */}
+            <circle
+              cx={m.x}
+              cy={m.y}
+              r={isActive ? "1.2" : "0.8"}
+              fill="hsl(var(--primary))"
+              fillOpacity={isActive ? 1 : 0.8}
+            />
+            {/* Glow ring when active */}
+            {isActive && (
+              <circle
+                cx={m.x}
+                cy={m.y}
+                r="2.5"
+                fill="none"
+                stroke="hsl(var(--primary))"
+                strokeWidth="0.3"
+                strokeOpacity="0.5"
+              >
+                <animate attributeName="r" from="1.5" to="3.5" dur="1.2s" repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity" from="0.6" to="0" dur="1.2s" repeatCount="indefinite" />
+              </circle>
+            )}
+            {/* Label text */}
+            <text
+              x={labelX}
+              y={labelY}
+              textAnchor={textAnchor}
+              dominantBaseline="middle"
+              className="select-none"
+              fill={isActive ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
+              fontSize="2.4"
+              fontWeight={isActive ? "700" : "500"}
+              fontFamily="var(--font-body, sans-serif)"
+              style={{ paintOrder: "stroke", stroke: "hsl(var(--background))", strokeWidth: "0.5", strokeLinecap: "round", strokeLinejoin: "round" }}
             >
               {m.name}
-            </span>
-          </button>
+            </text>
+          </g>
         );
       })}
-    </>
+    </svg>
   );
 };
 
