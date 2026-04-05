@@ -42,7 +42,7 @@ const Navbar = () => {
           <Flower2 className="w-5 h-5 text-primary" />
           <div className="flex flex-col leading-tight">
             <span className="font-display text-xl text-foreground tracking-wide">Earthy Massage</span>
-            <em className="font-display text-xs text-foreground italic tracking-wide font-normal">Home Of The Go-To-Sleep Massage</em>
+            <em className="font-display text-sm text-foreground italic tracking-wide font-normal">Home Of The Go-To-Sleep Massage</em>
           </div>
         </Link>
 
