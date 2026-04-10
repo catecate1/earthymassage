@@ -32,6 +32,18 @@ const specials = [
   description: "New clients receive $15 off their first 90-minute Classic Swedish session. Experience the Healing Touch difference!"
 }];
 
+const ladiesNight = [
+  {
+    title: "20% Off 60 Minutes",
+    salePrice: "$48",
+    originalPrice: "$60",
+  },
+  {
+    title: "20% Off 75 Minutes",
+    salePrice: "$68",
+    originalPrice: "$85",
+  },
+];
 
 
 const Specials = () => {
@@ -78,6 +90,41 @@ const Specials = () => {
             )}
           </div>
 
+          {/* Ladies Night Special */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-card rounded-lg p-8 shadow-soft border border-border/30 max-w-2xl mx-auto mt-8 text-center">
+            
+            <span className="inline-block bg-petal text-primary font-body px-3 py-1 rounded-full mb-4 text-sm">
+              One Night Only
+            </span>
+            <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4 mx-auto">
+              <Star className="w-4 h-4 text-primary" />
+            </div>
+            <h3 className="font-display text-xl text-foreground mb-1">Ladies Night</h3>
+            <p className="text-muted-foreground font-body text-sm mb-6">
+              Friday, April 10 &#8226; 4:00 PM – 8:00 PM
+            </p>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {ladiesNight.map((item) => (
+                <div key={item.title} className="flex flex-col items-center">
+                  <h4 className="font-display text-lg text-foreground mb-2">{item.title}</h4>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="font-display text-2xl text-primary">{item.salePrice}</span>
+                    <span className="font-body text-sm text-muted-foreground line-through">{item.originalPrice}</span>
+                  </div>
+                  <Link to="/book">
+                    <Button variant="outline" className="border-border hover:bg-petal font-body text-sm group">
+                      Book Now <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
