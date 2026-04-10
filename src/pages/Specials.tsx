@@ -106,7 +106,7 @@ const Specials = () => {
             </div>
             <h3 className="font-display text-xl text-foreground mb-1">Ladies Night</h3>
             <p className="text-muted-foreground font-body text-sm mb-6">
-              Friday, April 10 &bull; 4:00 PM – 8:00 PM
+              Friday, April 10 &#8226; 4:00 PM – 8:00 PM
             </p>
             <div className="grid sm:grid-cols-2 gap-6">
               {ladiesNight.map((item) => (
