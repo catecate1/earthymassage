@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Users, Tag, ArrowRight, Gift } from "lucide-react";
+import { Star, Users, Tag, ArrowRight, Gift, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -96,6 +96,29 @@ const Specials = () => {
             <p className="font-display text-2xl text-primary mb-4">50% Off Standard Rate</p>
             <p className="text-muted-foreground font-body text-sm leading-relaxed">
                I'll keep track! No codes to enter.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-card rounded-lg p-8 shadow-soft border border-border/30 max-w-md mx-auto mt-8 text-center">
+            
+            <span className="inline-block bg-petal text-primary font-body px-3 py-1 rounded-full mb-4 text-sm">
+              Early Bird
+            </span>
+            <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4 mx-auto">
+              <Sun className="w-4 h-4 text-primary" />
+            </div>
+            <h3 className="font-display text-xl text-foreground mb-2">Early Bird Special</h3>
+            <p className="font-display text-2xl text-primary mb-4">25% Off Standard Rate Swedish Massage</p>
+            <p className="text-muted-foreground font-body text-sm leading-relaxed mb-2">
+              Available between 8am and 12pm.
+            </p>
+            <p className="text-muted-foreground font-body text-xs leading-relaxed italic">
+              Cannot be combined with other services/discounts. No back to back appointments.
             </p>
           </motion.div>
         </div>
