@@ -98,8 +98,11 @@ const Specials = () => {
               <p className="text-muted-foreground font-body text-sm leading-relaxed mb-2">
                 Available between 8am and 12pm.
               </p>
-              <p className="text-muted-foreground font-body text-xs leading-relaxed italic">
+              <p className="text-muted-foreground font-body text-xs leading-relaxed italic mb-3">
                 Cannot be combined with other services/discounts. No back to back appointments.
+              </p>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed font-semibold">
+                Enter code: <span className="text-primary">eb25</span>
               </p>
             </motion.div>
 
