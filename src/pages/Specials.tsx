@@ -71,12 +71,17 @@ const Specials = () => {
                 <span className="font-body text-sm text-muted-foreground line-through">{s.originalPrice}</span>
                 }
                 </div>
-                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6">{s.description}</p>
+                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-3">{s.description}</p>
+                {s.code && (
+                  <p className="text-muted-foreground font-body text-sm leading-relaxed font-semibold mb-6">
+                    Enter code: <span className="text-primary">{s.code}</span>
+                  </p>
+                )}
                 <Link to="/book">
-                  <Button variant="outline" className="w-full border-border hover:bg-petal font-body text-sm group">
-                    Book Now <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
+                   <Button variant="outline" className="w-full border-border hover:bg-petal font-body text-sm group">
+                     Book Now <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                   </Button>
+                 </Link>
               </motion.div>
             )}
           </div>
