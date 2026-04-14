@@ -11,6 +11,14 @@ const Directions = () => {
 
       <section className="py-16">
         <div className="container max-w-4xl">
+          {/* Parking note */}
+          <div className="mb-8 flex items-start gap-3 bg-petal/50 border border-primary/20 rounded-lg p-5">
+            <TrafficCone className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+            <p className="font-body text-sm text-foreground">
+              Please park in the space marked with the <span className="font-semibold text-primary">orange parking cone</span> and use the <span className="font-semibold">rear entrance</span>.
+            </p>
+          </div>
+
           {/* Map placeholder */}
           <div className="bg-muted rounded-lg h-64 flex items-center justify-center border border-border/40">
             <div className="text-center">
@@ -25,14 +33,6 @@ const Directions = () => {
                 Open in Google Maps →
               </a>
             </div>
-          </div>
-
-          {/* Parking note */}
-          <div className="mt-8 flex items-start gap-3 bg-petal/50 border border-primary/20 rounded-lg p-5">
-            <TrafficCone className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-            <p className="font-body text-sm text-foreground">
-              Please park in the space marked with the <span className="font-semibold text-primary">orange parking cone</span> and use the <span className="font-semibold">rear entrance</span>.
-            </p>
           </div>
         </div>
       </section>
