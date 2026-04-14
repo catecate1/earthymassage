@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import { MapPin } from "lucide-react";
+import { MapPin, TrafficCone } from "lucide-react";
 
 const Directions = () => {
   return (
@@ -25,6 +25,14 @@ const Directions = () => {
                 Open in Google Maps →
               </a>
             </div>
+          </div>
+
+          {/* Parking note */}
+          <div className="mt-8 flex items-start gap-3 bg-petal/50 border border-primary/20 rounded-lg p-5">
+            <TrafficCone className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+            <p className="font-body text-sm text-foreground">
+              Please park in the space marked with the <span className="font-semibold text-primary">orange parking cone</span> and use the <span className="font-semibold">rear entrance</span>.
+            </p>
           </div>
         </div>
       </section>
