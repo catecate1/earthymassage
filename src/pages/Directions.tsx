@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import { MapPin } from "lucide-react";
+import { MapPin, ConeIcon } from "lucide-react";
 
 const Directions = () => {
   return (
