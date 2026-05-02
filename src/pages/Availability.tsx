@@ -24,7 +24,7 @@ const Availability = () => {
         <div className="container max-w-3xl">
           <div className="bg-petal border border-primary/30 rounded-lg px-6 py-4 mb-6 text-center">
             <p className="font-body font-semibold text-foreground text-2xl">
-              Extended hours today, May 2 — open until 8:00 PM.
+              I will be open Sunday, May 3.
             </p>
           </div>
           <div className="bg-card rounded-lg shadow-soft border border-border/40 overflow-hidden mb-10">
