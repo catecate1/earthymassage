@@ -22,11 +22,6 @@ const Availability = () => {
 
       <section className="py-16">
         <div className="container max-w-3xl">
-          <div className="bg-petal border border-primary/30 rounded-lg px-6 py-4 mb-6 text-center">
-            <p className="font-body font-semibold text-foreground text-2xl">
-              I will be open Sunday, May 3.
-            </p>
-          </div>
           <div className="bg-card rounded-lg shadow-soft border border-border/40 overflow-hidden mb-10">
             <div className="bg-primary/10 px-6 py-4 flex items-center gap-2">
               <Clock className="w-5 h-5 text-primary" />
