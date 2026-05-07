@@ -23,7 +23,7 @@ const Availability = () => {
       <section className="py-16">
         <div className="container max-w-3xl">
           <div className="bg-petal border border-primary/30 rounded-lg px-6 py-4 mb-6 text-center">
-            <p className="font-body text-sm text-foreground font-semibold">
+            <p className="font-body text-foreground font-semibold text-xl">
               Closing hours have temporarily resumed back to 8:00 PM.
             </p>
           </div>
