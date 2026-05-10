@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import { Clock, Ban, DollarSign, CreditCard, Weight, AlertTriangle, RotateCcw, Link2 } from "lucide-react";
+import { Clock, Ban, DollarSign, CreditCard, Weight, AlertTriangle, RotateCcw, Link2, Phone } from "lucide-react";
 
 const policies = [
   {
@@ -53,6 +53,11 @@ const policies = [
     icon: AlertTriangle,
     title: "Harassment Policy",
     text: "Any inappropriate behavior or requests will result in immediate termination of the session. The full session fee will be charged. Earthy Massage maintains a zero-tolerance policy.",
+  },
+  {
+    icon: Phone,
+    title: "Contact Information",
+    text: "Any phone number you provide must be a mobile number with voicemail enabled. Landlines and numbers without voicemail will not be accepted.",
   },
 ];
 
