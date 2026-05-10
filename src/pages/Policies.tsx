@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import { Clock, Ban, DollarSign, CreditCard, Weight, AlertTriangle, RotateCcw, Link2 } from "lucide-react";
+import { Clock, Ban, DollarSign, CreditCard, Weight, AlertTriangle, RotateCcw, Link2, Phone } from "lucide-react";
 
 const policies = [
   {
