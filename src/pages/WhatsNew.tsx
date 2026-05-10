@@ -19,6 +19,11 @@ const WhatsNew = () => {
 
       <section className="py-16">
         <div className="container max-w-3xl">
+          <div className="bg-petal border border-primary/30 rounded-lg px-6 py-4 mb-6 text-center">
+            <p className="font-body text-foreground font-semibold text-2xl">
+              Closing hours have temporarily resumed back to 8:00 PM, including Sunday.
+            </p>
+          </div>
           <div className="space-y-8">
             {updates.map((u, i) => (
               <div key={i} className="bg-card rounded-lg p-6 shadow-soft border border-border/40">
