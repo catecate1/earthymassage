@@ -10,39 +10,35 @@ const WIDGET_SRC = "https://bookeo.com/widget.js?a=2119X9M9P17F61D856AF";
 const Book = () => {
   useEffect(() => {
     const w = window as any;
+    const pos = document.getElementById("bookeo_position");
+    if (pos) pos.innerHTML = "";
 
-    const start = () => {
-      try {
-        // Reset any prior init so the widget can re-render on SPA navigation
-        w.axiomct_project = null;
-        w.axiomct_iframe = null;
-        w.axiomct_socket = null;
-        w.axiomct_div = null;
-        w.axiomct_spinner = null;
-        if (typeof w.bookeo_start === "function") w.bookeo_start();
-      } catch (e) {
-        // no-op
-      }
-    };
+    // Guard against React StrictMode double-invoke and SPA re-mounts
+    if (w.__bookeoLoading) return;
+    w.__bookeoLoading = true;
 
-    // If script was already loaded once, just (re)start the widget
-    if (document.querySelector(`script[src="${WIDGET_SRC}"]`)) {
-      start();
-      return () => {
-        const pos = document.getElementById("bookeo_position");
-        if (pos) pos.innerHTML = "";
-      };
-    }
+    // If the script tag already exists, remove it so we get a fresh init
+    document.querySelectorAll(`script[src^="https://bookeo.com/widget.js"]`).forEach((s) => s.remove());
+
+    // Reset Bookeo internal globals
+    w.axiomct_project = null;
+    w.axiomct_iframe = null;
+    w.axiomct_socket = null;
+    w.axiomct_div = null;
+    w.axiomct_spinner = null;
 
     const script = document.createElement("script");
     script.src = WIDGET_SRC;
     script.async = true;
-    script.onload = start;
+    script.onload = () => {
+      w.__bookeoLoading = false;
+    };
     document.body.appendChild(script);
 
     return () => {
-      const pos = document.getElementById("bookeo_position");
-      if (pos) pos.innerHTML = "";
+      w.__bookeoLoading = false;
+      const p = document.getElementById("bookeo_position");
+      if (p) p.innerHTML = "";
     };
   }, []);
 
