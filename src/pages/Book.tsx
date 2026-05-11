@@ -5,15 +5,44 @@ import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageSquare } from "lucide-react";
 
+const WIDGET_SRC = "https://bookeo.com/widget.js?a=2119X9M9P17F61D856AF";
+
 const Book = () => {
   useEffect(() => {
+    const w = window as any;
+
+    const start = () => {
+      try {
+        // Reset any prior init so the widget can re-render on SPA navigation
+        w.axiomct_project = null;
+        w.axiomct_iframe = null;
+        w.axiomct_socket = null;
+        w.axiomct_div = null;
+        w.axiomct_spinner = null;
+        if (typeof w.bookeo_start === "function") w.bookeo_start();
+      } catch (e) {
+        // no-op
+      }
+    };
+
+    // If script was already loaded once, just (re)start the widget
+    if (document.querySelector(`script[src="${WIDGET_SRC}"]`)) {
+      start();
+      return () => {
+        const pos = document.getElementById("bookeo_position");
+        if (pos) pos.innerHTML = "";
+      };
+    }
+
     const script = document.createElement("script");
-    script.src = "https://bookeo.com/widget.js?a=2119X9M9P17F61D856AF";
+    script.src = WIDGET_SRC;
     script.async = true;
-    const container = document.getElementById("bookeo-container");
-    container?.appendChild(script);
+    script.onload = start;
+    document.body.appendChild(script);
+
     return () => {
-      if (container) container.innerHTML = "";
+      const pos = document.getElementById("bookeo_position");
+      if (pos) pos.innerHTML = "";
     };
   }, []);
 
@@ -24,7 +53,8 @@ const Book = () => {
 
       <section className="py-12">
         <div className="container max-w-4xl mx-auto">
-          <div id="bookeo-container" className="min-h-[600px]" />
+          {/* Bookeo widget mounts itself into this div */}
+          <div id="bookeo_position" className="min-h-[600px]" />
 
           <div className="border-t border-primary/10 pt-8 mt-12 space-y-3 text-center">
             <p className="text-foreground/60 text-sm">Prefer to reach me directly?</p>
