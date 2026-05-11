@@ -12,12 +12,15 @@ const Book = () => {
 
       <section className="py-12">
         <div className="container max-w-2xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold text-primary">Ready to Book Your Session?</h2>
-            <p className="text-foreground/70">Click below to view availability and schedule your appointment.</p>
+          <div className="space-y-4 rounded-lg border border-primary/20 bg-primary/5 p-6">
+            <h2 className="text-2xl font-semibold text-primary">Online Booking Temporarily Unavailable</h2>
+            <p className="text-foreground/80">
+              I'm so sorry — I'm having some technical difficulty with online booking right now.
+              Please give me a call to schedule your appointment, and thank you for your patience!
+            </p>
             <Button asChild size="lg" className="text-lg px-10 py-6">
-              <a href="https://bookeo.com/earthymassage/customer" target="_blank" rel="noopener noreferrer">
-                Book Now <ExternalLink className="ml-2" />
+              <a href="tel:+14133278496">
+                <Phone className="mr-2" /> Call 413-327-8496
               </a>
             </Button>
           </div>
