@@ -170,20 +170,6 @@ const SpinWheel = () => {
           You've already used your spin on this device.
         </p>
       )}
-
-      {alreadySpun && (
-        <button
-          onClick={() => {
-            localStorage.removeItem(STORAGE_KEY);
-            setAlreadySpun(false);
-            setResult(null);
-            setRotation(0);
-          }}
-          className="text-xs text-foreground/40 hover:text-primary underline font-body"
-        >
-          Reset spin (testing)
-        </button>
-      )}
     </div>
   );
 };
