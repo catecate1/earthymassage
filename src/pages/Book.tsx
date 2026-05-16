@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import SpinWheel from "@/components/SpinWheel";
+
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Phone, MessageSquare } from "lucide-react";
 
@@ -47,18 +47,6 @@ const Book = () => {
               </Button>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 bg-petal/20">
-        <div className="container max-w-2xl mx-auto text-center space-y-6">
-          <div className="space-y-2">
-            <h2 className="font-display text-3xl text-primary">Spin to Save!</h2>
-            <p className="text-foreground/70 font-body">
-              One free spin per visitor. Win an extra <span className="font-semibold text-primary">$5.00 off</span> any Early Bird Special.
-            </p>
-          </div>
-          <SpinWheel />
         </div>
       </section>
 
