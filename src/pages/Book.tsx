@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import SpinWheel from "@/components/SpinWheel";
+
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Phone, MessageSquare } from "lucide-react";
 
