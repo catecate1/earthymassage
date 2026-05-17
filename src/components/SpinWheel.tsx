@@ -29,14 +29,7 @@ const SpinWheel = () => {
   const [alreadySpun, setAlreadySpun] = useState(false);
   const wheelRef = useRef<HTMLDivElement>(null);
 
-  // TESTING MODE: allow re-spinning by clearing saved result on load
-  const TESTING_MODE = true;
-
   useEffect(() => {
-    if (TESTING_MODE) {
-      localStorage.removeItem(STORAGE_KEY);
-      return;
-    }
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
