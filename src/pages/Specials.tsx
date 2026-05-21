@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import SpinWheel from "@/components/SpinWheel";
 
 const specials = [
 {
@@ -113,6 +114,25 @@ const Specials = () => {
                 Enter code: <span className="text-primary">eb25</span>
               </p>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="md:col-span-2 bg-card rounded-lg p-8 shadow-soft border border-border/30 text-center">
+
+              <span className="inline-block bg-petal text-primary font-body px-3 py-1 rounded-full mb-4 text-sm">
+                Spin to Save
+              </span>
+              <h3 className="font-display text-xl text-foreground mb-2">Try Your Luck</h3>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6">
+                One spin per visitor — every spin wins a discount on a standard rate Classic Swedish session.
+              </p>
+              <SpinWheel />
+            </motion.div>
+
+
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
