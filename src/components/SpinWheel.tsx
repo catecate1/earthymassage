@@ -137,10 +137,11 @@ const SpinWheel = () => {
       {alreadySpun && result && (
         <div className="text-center space-y-2 max-w-md">
           <p className="font-display text-2xl text-primary">You won {result.amount} off!</p>
-          <p className="text-foreground/80 font-body">
+          <p className="text-foreground/80 font-body whitespace-nowrap">
             Enter code{" "}
             <span className="font-semibold text-primary tracking-wide">{result.code}</span>{" "}
-            at checkout for {result.amount} off a standard rate {result.duration} Classic Swedish session.
+            at checkout for {result.amount} off a standard rate{" "}
+            {result.duration} Classic Swedish session.
           </p>
         </div>
       )}
