@@ -31,7 +31,7 @@ const Book = () => {
           </div>
 
           <div className="border-t border-primary/10 pt-8 space-y-3">
-            <p className="text-foreground/60 text-sm">Prefer to reach us directly?</p>
+            <p className="text-foreground/60 text-sm font-semibold">Prefer to reach us directly?</p>
             <p className="text-foreground/70 text-sm">
               New clients please call. Existing clients can call or text.
             </p>
