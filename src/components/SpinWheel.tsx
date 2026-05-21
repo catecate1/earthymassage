@@ -2,22 +2,24 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Gift } from "lucide-react";
 
-const STORAGE_KEY = "earthy_spin_wheel_v1";
+const STORAGE_KEY = "earthy_spin_wheel_v2";
 
 type Segment = {
   label: string;
-  win: boolean;
+  code: string;
+  amount: string;
+  duration: string;
   color: string;
 };
 
-// 6 alternating segments: win, lose, win, lose, win, lose
+// 6 segments alternating between two accent colors — everyone wins
 const SEGMENTS: Segment[] = [
-  { label: "$5 OFF", win: true, color: "hsl(var(--primary))" },
-  { label: "Next Time!", win: false, color: "hsl(var(--petal))" },
-  { label: "$5 OFF", win: true, color: "hsl(var(--primary))" },
-  { label: "Next Time!", win: false, color: "hsl(var(--petal))" },
-  { label: "$5 OFF", win: true, color: "hsl(var(--primary))" },
-  { label: "Next Time!", win: false, color: "hsl(var(--petal))" },
+  { label: "$10 OFF", code: "as10", amount: "$10", duration: "60-minute", color: "hsl(var(--primary))" },
+  { label: "$20 OFF", code: "as20", amount: "$20", duration: "75-minute", color: "hsl(var(--petal))" },
+  { label: "$30 OFF", code: "as30", amount: "$30", duration: "90-minute", color: "hsl(var(--primary))" },
+  { label: "$10 OFF", code: "as10", amount: "$10", duration: "60-minute", color: "hsl(var(--petal))" },
+  { label: "$20 OFF", code: "as20", amount: "$20", duration: "75-minute", color: "hsl(var(--primary))" },
+  { label: "$30 OFF", code: "as30", amount: "$30", duration: "90-minute", color: "hsl(var(--petal))" },
 ];
 
 const SEG_ANGLE = 360 / SEGMENTS.length;
@@ -49,16 +51,7 @@ const SpinWheel = () => {
     if (spinning || alreadySpun) return;
     setSpinning(true);
 
-    const winIndices = SEGMENTS.map((s, i) => (s.win ? i : -1)).filter((i) => i >= 0);
-    const loseIndices = SEGMENTS.map((s, i) => (!s.win ? i : -1)).filter((i) => i >= 0);
-    // 50/50 odds — 3 win, 3 lose
-    const pool = Math.random() < 0.5 ? winIndices : loseIndices;
-    const targetIndex = pool[Math.floor(Math.random() * pool.length)];
-
-    // Pointer is at top (12 o'clock). Segment 0 is drawn starting at top going clockwise.
-    // Center of segment i is at angle (i * SEG_ANGLE + SEG_ANGLE/2) from top, clockwise.
-    // We rotate the wheel by -segCenter so that segment lands under top pointer,
-    // plus extra full rotations for drama.
+    const targetIndex = Math.floor(Math.random() * SEGMENTS.length);
     const segCenter = targetIndex * SEG_ANGLE + SEG_ANGLE / 2;
     const extraSpins = 6;
     const finalRotation = extraSpins * 360 + (360 - segCenter);
@@ -76,7 +69,6 @@ const SpinWheel = () => {
     }, 4200);
   };
 
-  // Build conic-gradient for wheel
   const conic = SEGMENTS.map((s, i) => {
     const start = i * SEG_ANGLE;
     const end = (i + 1) * SEG_ANGLE;
@@ -112,7 +104,6 @@ const SpinWheel = () => {
           }}
         >
           {SEGMENTS.map((s, i) => {
-            // Label placed along radius at center of segment
             const angle = i * SEG_ANGLE + SEG_ANGLE / 2;
             return (
               <div
@@ -145,23 +136,12 @@ const SpinWheel = () => {
 
       {alreadySpun && result && (
         <div className="text-center space-y-2 max-w-md">
-          {result.win ? (
-            <>
-              <p className="font-display text-2xl text-primary">You won $5 off!</p>
-              <p className="text-foreground/80 font-body">
-                Enter code{" "}
-                <span className="font-semibold text-primary tracking-wide">ex5</span>{" "}
-                at checkout for an extra $5.00 off any Early Bird Special.
-              </p>
-            </>
-          ) : (
-            <>
-              <p className="font-display text-2xl text-primary">Next time!</p>
-              <p className="text-foreground/80 font-body">
-                No discount this spin — but you can still book an Early Bird Special and save 25%.
-              </p>
-            </>
-          )}
+          <p className="font-display text-2xl text-primary">You won {result.amount} off!</p>
+          <p className="text-foreground/80 font-body">
+            Enter code{" "}
+            <span className="font-semibold text-primary tracking-wide">{result.code}</span>{" "}
+            at checkout for {result.amount} off a standard rate {result.duration} Classic Swedish session.
+          </p>
         </div>
       )}
 
