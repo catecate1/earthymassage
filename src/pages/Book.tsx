@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import SpinWheel from "@/components/SpinWheel";
 
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Phone, MessageSquare } from "lucide-react";
@@ -47,6 +48,16 @@ const Book = () => {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-secondary/20">
+        <div className="container max-w-2xl mx-auto text-center space-y-4">
+          <h2 className="font-display text-3xl text-primary">Spin to Save!</h2>
+          <p className="text-foreground/70 font-body">
+            One spin per visitor — every spin wins a discount on a standard rate Classic Swedish session.
+          </p>
+          <SpinWheel />
         </div>
       </section>
 
