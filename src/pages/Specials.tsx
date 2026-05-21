@@ -147,7 +147,7 @@ const Specials = () => {
               Spin to Save
             </span>
             <h3 className="font-display text-xl text-foreground mb-1">Try Your Luck</h3>
-            <p className="text-primary font-body text-xs italic mb-4">For a limited time.</p>
+            <p className="text-primary font-body italic mb-4 text-sm">For a limited time.</p>
             <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6">
               One spin per visitor — every spin wins a discount on a standard rate Classic Swedish session.
             </p>
