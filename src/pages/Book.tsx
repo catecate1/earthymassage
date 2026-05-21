@@ -55,7 +55,7 @@ const Book = () => {
         <div className="container max-w-2xl mx-auto text-center space-y-4">
           <h2 className="font-display text-3xl text-primary mb-1">Spin to Save!</h2>
           <p className="text-primary font-body text-xs italic">For a limited time.</p>
-          <p className="text-foreground/70 font-body">
+          <p className="text-foreground/70 font-body whitespace-nowrap">
             One spin per visitor — every spin wins a discount on a standard rate Classic Swedish session.
           </p>
           <SpinWheel />
