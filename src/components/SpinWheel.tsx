@@ -85,15 +85,15 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <div className="relative w-72 h-72 sm:w-80 sm:h-80">
+      <div className={`relative ${sizeClass}`}>
         {/* Pointer */}
         <div className="absolute left-1/2 -translate-x-1/2 -top-2 z-10">
           <div
             className="w-0 h-0"
             style={{
-              borderLeft: "14px solid transparent",
-              borderRight: "14px solid transparent",
-              borderTop: "22px solid hsl(var(--primary))",
+              borderLeft: compact ? "10px solid transparent" : "14px solid transparent",
+              borderRight: compact ? "10px solid transparent" : "14px solid transparent",
+              borderTop: compact ? "16px solid hsl(var(--primary))" : "22px solid hsl(var(--primary))",
               filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.2))",
             }}
           />
