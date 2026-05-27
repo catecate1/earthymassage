@@ -13,52 +13,56 @@ const Book = () => {
       <PageHeader title="Book Online" subtitle="" />
 
       <section className="py-12">
-        <div className="container max-w-2xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold text-primary">Ready to Book Your Session?</h2>
-            <p className="text-foreground/70">
-              Click below to view availability and schedule your appointment.
-            </p>
-            <Button asChild size="lg" className="text-lg px-10 py-6">
-              <a
-                href="https://bookeo.com/earthymassage/customer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book Now <ExternalLink className="ml-2" />
-              </a>
-            </Button>
-          </div>
+        <div className="container max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Left: Spin Wheel */}
+            <div className="text-center space-y-4">
+              <h2 className="font-display text-2xl text-primary mb-1">Spin to Save!</h2>
+              <p className="text-primary font-body italic text-sm">For a limited time.</p>
+              <p className="text-foreground/70 font-body text-sm whitespace-nowrap">
+                One spin per visitor — every spin wins a discount on a standard rate Classic Swedish session.
+              </p>
+              <SpinWheel compact />
+            </div>
 
-          <div className="border-t border-primary/10 pt-8 space-y-3">
-            <p className="text-foreground/60 text-sm font-semibold">Prefer to reach us directly?</p>
-            <p className="text-foreground/70 text-sm">
-              New clients please call. Existing clients can call or text.
-            </p>
-            <div className="flex justify-center gap-4 flex-wrap">
-              <Button asChild variant="outline">
-                <a href="tel:+14133278496">
-                  <Phone className="mr-2 h-4 w-4" /> Call
-                </a>
-              </Button>
-              <Button asChild variant="outline">
-                <a href="sms:+14133278496">
-                  <MessageSquare className="mr-2 h-4 w-4" /> Text
-                </a>
-              </Button>
+            {/* Right: Book Now + Contact */}
+            <div className="text-center space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-2xl font-semibold text-primary">Ready to Book Your Session?</h2>
+                <p className="text-foreground/70">
+                  Click below to view availability and schedule your appointment.
+                </p>
+                <Button asChild size="lg" className="text-lg px-10 py-6">
+                  <a
+                    href="https://bookeo.com/earthymassage/customer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book Now <ExternalLink className="ml-2" />
+                  </a>
+                </Button>
+              </div>
+
+              <div className="border-t border-primary/10 pt-8 space-y-3">
+                <p className="text-foreground/60 text-sm font-semibold">Prefer to reach us directly?</p>
+                <p className="text-foreground/70 text-sm">
+                  New clients please call. Existing clients can call or text.
+                </p>
+                <div className="flex justify-center gap-4 flex-wrap">
+                  <Button asChild variant="outline">
+                    <a href="tel:+14133278496">
+                      <Phone className="mr-2 h-4 w-4" /> Call
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <a href="sms:+14133278496">
+                      <MessageSquare className="mr-2 h-4 w-4" /> Text
+                    </a>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 bg-secondary/20">
-        <div className="container max-w-2xl mx-auto text-center space-y-4">
-          <h2 className="font-display text-3xl text-primary mb-1">Spin to Save!</h2>
-          <p className="text-primary font-body italic mb-4 text-sm">For a limited time.</p>
-          <p className="text-foreground/70 font-body whitespace-nowrap">
-            One spin per visitor — every spin wins a discount on a standard rate Classic Swedish session.
-          </p>
-          <SpinWheel />
         </div>
       </section>
 
