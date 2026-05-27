@@ -131,8 +131,8 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
         </div>
 
         {/* Center hub */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card border-4 border-primary/40 shadow-soft flex items-center justify-center">
-          <Gift className="w-5 h-5 text-primary" />
+        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${hubSize} rounded-full bg-card border-4 border-primary/40 shadow-soft flex items-center justify-center`}>
+          <Gift className={`${iconSize} text-primary`} />
         </div>
       </div>
 
