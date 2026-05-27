@@ -49,6 +49,24 @@ const Specials = () => {
 
       <section className="py-16 bg-background">
         <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="max-w-3xl mx-auto bg-card rounded-lg p-8 shadow-soft border border-border/30 text-center mb-8">
+
+            <span className="inline-block bg-petal text-primary font-body px-3 py-1 rounded-full mb-4 text-sm">
+              Spin to Save
+            </span>
+            <h3 className="font-display text-xl text-foreground mb-1">Try Your Luck</h3>
+            <p className="text-primary font-body italic mb-4 text-sm">For a limited time.</p>
+            <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6">
+              One spin per visitor — every spin wins a discount on a standard rate Classic Swedish session.
+            </p>
+            <SpinWheel />
+          </motion.div>
+
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {specials.map((s, i) =>
             <motion.div
@@ -135,24 +153,6 @@ const Specials = () => {
               </p>
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="max-w-3xl mx-auto mt-8 bg-card rounded-lg p-8 shadow-soft border border-border/30 text-center">
-
-            <span className="inline-block bg-petal text-primary font-body px-3 py-1 rounded-full mb-4 text-sm">
-              Spin to Save
-            </span>
-            <h3 className="font-display text-xl text-foreground mb-1">Try Your Luck</h3>
-            <p className="text-primary font-body italic mb-4 text-sm">For a limited time.</p>
-            <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6">
-              One spin per visitor — every spin wins a discount on a standard rate Classic Swedish session.
-            </p>
-            <SpinWheel />
-          </motion.div>
         </div>
       </section>
 
