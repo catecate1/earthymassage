@@ -24,12 +24,15 @@ const SEGMENTS: Segment[] = [
 
 const SEG_ANGLE = 360 / SEGMENTS.length;
 
-const SpinWheel = () => {
-  const [rotation, setRotation] = useState(0);
-  const [spinning, setSpinning] = useState(false);
-  const [result, setResult] = useState<Segment | null>(null);
-  const [alreadySpun, setAlreadySpun] = useState(false);
-  const wheelRef = useRef<HTMLDivElement>(null);
+interface SpinWheelProps {
+  compact?: boolean;
+}
+
+const SpinWheel = ({ compact = false }: SpinWheelProps) => {
+  const sizeClass = compact ? "w-52 h-52 sm:w-56 sm:h-56" : "w-72 h-72 sm:w-80 sm:h-80";
+  const hubSize = compact ? "w-9 h-9" : "w-12 h-12";
+  const iconSize = compact ? "w-4 h-4" : "w-5 h-5";
+  const textSize = compact ? "text-xs sm:text-sm" : "text-sm sm:text-base";
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
