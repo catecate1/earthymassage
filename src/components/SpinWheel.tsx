@@ -24,7 +24,15 @@ const SEGMENTS: Segment[] = [
 
 const SEG_ANGLE = 360 / SEGMENTS.length;
 
-const SpinWheel = () => {
+interface SpinWheelProps {
+  compact?: boolean;
+}
+
+const SpinWheel = ({ compact = false }: SpinWheelProps) => {
+  const sizeClass = compact ? "w-52 h-52 sm:w-56 sm:h-56" : "w-72 h-72 sm:w-80 sm:h-80";
+  const hubSize = compact ? "w-9 h-9" : "w-12 h-12";
+  const iconSize = compact ? "w-4 h-4" : "w-5 h-5";
+  const textSize = compact ? "text-xs sm:text-sm" : "text-sm sm:text-base";
   const [rotation, setRotation] = useState(0);
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState<Segment | null>(null);
@@ -77,15 +85,15 @@ const SpinWheel = () => {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <div className="relative w-72 h-72 sm:w-80 sm:h-80">
+      <div className={`relative ${sizeClass}`}>
         {/* Pointer */}
         <div className="absolute left-1/2 -translate-x-1/2 -top-2 z-10">
           <div
             className="w-0 h-0"
             style={{
-              borderLeft: "14px solid transparent",
-              borderRight: "14px solid transparent",
-              borderTop: "22px solid hsl(var(--primary))",
+              borderLeft: compact ? "10px solid transparent" : "14px solid transparent",
+              borderRight: compact ? "10px solid transparent" : "14px solid transparent",
+              borderTop: compact ? "16px solid hsl(var(--primary))" : "22px solid hsl(var(--primary))",
               filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.2))",
             }}
           />
@@ -114,7 +122,7 @@ const SpinWheel = () => {
                   width: "50%",
                 }}
               >
-                <span className="block text-center font-display text-sm sm:text-base text-foreground whitespace-nowrap">
+                <span className={`block text-center font-display ${textSize} text-foreground whitespace-nowrap`}>
                   {s.label}
                 </span>
               </div>
@@ -123,8 +131,8 @@ const SpinWheel = () => {
         </div>
 
         {/* Center hub */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card border-4 border-primary/40 shadow-soft flex items-center justify-center">
-          <Gift className="w-5 h-5 text-primary" />
+        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${hubSize} rounded-full bg-card border-4 border-primary/40 shadow-soft flex items-center justify-center`}>
+          <Gift className={`${iconSize} text-primary`} />
         </div>
       </div>
 
