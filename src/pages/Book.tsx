@@ -19,9 +19,6 @@ const Book = () => {
             <div className="text-center space-y-4">
               <h2 className="font-display text-2xl text-primary mb-1">Spin to Save!</h2>
               <p className="text-primary font-body italic text-sm">For a limited time.</p>
-              <p className="text-foreground/70 font-body text-sm whitespace-nowrap">
-                One spin per visitor — every spin wins a discount on a standard rate Classic Swedish session.
-              </p>
               <SpinWheel compact />
             </div>
 
