@@ -122,7 +122,7 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
                   width: "50%",
                 }}
               >
-                <span className="block text-center font-display text-sm sm:text-base text-foreground whitespace-nowrap">
+                <span className={`block text-center font-display ${textSize} text-foreground whitespace-nowrap`}>
                   {s.label}
                 </span>
               </div>
