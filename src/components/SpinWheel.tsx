@@ -15,11 +15,11 @@ type Segment = {
 // 6 segments alternating between two accent colors — everyone wins
 const SEGMENTS: Segment[] = [
   { label: "$10 OFF", code: "as10", amount: "$10", duration: "60-minute", color: "hsl(var(--primary))" },
-  { label: "$20 OFF", code: "as20", amount: "$20", duration: "75-minute", color: "hsl(var(--petal))" },
-  { label: "$30 OFF", code: "as30", amount: "$30", duration: "90-minute", color: "hsl(var(--primary))" },
+  { label: "$20 OFF", code: "as21", amount: "$20", duration: "75-minute", color: "hsl(var(--petal))" },
+  { label: "$30 OFF", code: "as32", amount: "$30", duration: "90-minute", color: "hsl(var(--primary))" },
   { label: "$10 OFF", code: "as10", amount: "$10", duration: "60-minute", color: "hsl(var(--petal))" },
-  { label: "$20 OFF", code: "as20", amount: "$20", duration: "75-minute", color: "hsl(var(--primary))" },
-  { label: "$30 OFF", code: "as30", amount: "$30", duration: "90-minute", color: "hsl(var(--petal))" },
+  { label: "$20 OFF", code: "as21", amount: "$20", duration: "75-minute", color: "hsl(var(--primary))" },
+  { label: "$30 OFF", code: "as32", amount: "$30", duration: "90-minute", color: "hsl(var(--petal))" },
 ];
 
 const SEG_ANGLE = 360 / SEGMENTS.length;
