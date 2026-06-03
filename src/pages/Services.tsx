@@ -10,13 +10,6 @@ import massageChair from "@/assets/massage-chair.jpg";
 
 const services = [
   {
-    title: "Chair Massage",
-    duration: "30 min",
-    price: "$40",
-    description: "A focused session targeting the back, shoulders and neck. Perfect for a quick reset during a busy day.",
-    popular: false,
-  },
-  {
     title: "Classic Swedish",
     duration: "60 min",
     price: "$60",
@@ -35,6 +28,13 @@ const services = [
     duration: "90 min",
     price: "$115",
     description: "An indulgent session allowing extra time for each section of the body including the feet.",
+    popular: false,
+  },
+  {
+    title: "Chair Massage",
+    duration: "30 min",
+    price: "$40",
+    description: "A focused session targeting the back, shoulders and neck. Perfect for a quick reset during a busy day.",
     popular: false,
   },
 ];
