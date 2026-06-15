@@ -140,6 +140,18 @@ const ChatWidget = () => {
               e.preventDefault();
               send();
             }}
+            className="flex flex-col gap-1 border-t border-border bg-background px-3 py-2"
+          >
+            <p className="text-[10px] font-body text-muted-foreground text-center">
+              Chats are logged for quality and safety.
+            </p>
+            <div className="flex items-center gap-2">
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              send();
+            }}
             className="flex items-center gap-2 border-t border-border bg-background px-3 py-2"
           >
             <input
