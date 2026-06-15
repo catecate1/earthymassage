@@ -146,33 +146,27 @@ const ChatWidget = () => {
               Chats are logged for quality and safety.
             </p>
             <div className="flex items-center gap-2">
-
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              send();
-            }}
-            className="flex items-center gap-2 border-t border-border bg-background px-3 py-2"
-          >
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type a message…"
-              className="flex-1 rounded-full border border-input bg-background px-3 py-2 text-sm font-body outline-none focus:ring-2 focus:ring-primary/40"
-              disabled={loading}
-            />
-            <Button
-              type="submit"
-              size="icon"
-              disabled={loading || !input.trim()}
-              className="rounded-full"
-              aria-label="Send"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type a message…"
+                className="flex-1 rounded-full border border-input bg-background px-3 py-2 text-sm font-body outline-none focus:ring-2 focus:ring-primary/40"
+                disabled={loading}
+              />
+              <Button
+                type="submit"
+                size="icon"
+                disabled={loading || !input.trim()}
+                className="rounded-full"
+                aria-label="Send"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
           </form>
         </div>
+
       )}
     </>
   );
