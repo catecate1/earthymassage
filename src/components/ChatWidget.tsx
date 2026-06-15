@@ -48,7 +48,10 @@ const ChatWidget = () => {
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("chat", {
-        body: { messages: next.map((m) => ({ role: m.role, content: m.content })) },
+        body: {
+          messages: next.map((m) => ({ role: m.role, content: m.content })),
+          ownerOnline: debOnline,
+        },
       });
       if (error) throw error;
       const reply = (data as { reply?: string })?.reply ?? "Sorry — something went wrong.";
