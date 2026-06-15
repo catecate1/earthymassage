@@ -30,7 +30,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { messages } = await req.json();
+    const { messages, ownerOnline } = await req.json();
     if (!Array.isArray(messages)) {
       return new Response(JSON.stringify({ error: "messages must be an array" }), {
         status: 400,
@@ -64,6 +64,34 @@ Deno.serve(async (req) => {
 
     const data = await upstream.json();
     const reply = data?.choices?.[0]?.message?.content ?? "Sorry — I couldn't generate a reply.";
+
+    // Log this exchange (fire-and-forget; never block the chat on logging)
+    try {
+      const supabaseUrl = Deno.env.get("SUPABASE_URL");
+      const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+      const lastUser = [...messages].reverse().find((m: { role: string }) => m.role === "user");
+      if (supabaseUrl && serviceKey && lastUser?.content) {
+        const fwd = req.headers.get("x-forwarded-for") ?? "";
+        const ip = fwd.split(",")[0].trim() || req.headers.get("cf-connecting-ip") || null;
+        const ua = req.headers.get("user-agent") ?? null;
+        fetch(`${supabaseUrl}/rest/v1/chat_logs`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: serviceKey,
+            Authorization: `Bearer ${serviceKey}`,
+            Prefer: "return=minimal",
+          },
+          body: JSON.stringify({
+            ip_address: ip,
+            user_agent: ua,
+            user_message: lastUser.content,
+            ai_reply: reply,
+            owner_online: !!ownerOnline,
+          }),
+        }).catch(() => {});
+      }
+    } catch { /* ignore logging errors */ }
 
     return new Response(JSON.stringify({ reply }), {
       status: 200,
