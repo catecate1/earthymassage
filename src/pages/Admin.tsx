@@ -8,6 +8,7 @@ const Admin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [session, setSession] = useState<unknown>(null);
 
   useEffect(() => {
@@ -16,13 +17,23 @@ const Admin = () => {
     return () => sub.subscription.unsubscribe();
   }, []);
 
-  const signIn = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } =
+      mode === "signin"
+        ? await supabase.auth.signInWithPassword({ email, password })
+        : await supabase.auth.signUp({
+            email,
+            password,
+            options: { emailRedirectTo: `${window.location.origin}/admin` },
+          });
     setLoading(false);
     if (error) {
-      toast({ title: "Sign in failed", description: error.message, variant: "destructive" });
+      toast({ title: `${mode === "signin" ? "Sign in" : "Sign up"} failed`, description: error.message, variant: "destructive" });
+    } else if (mode === "signup") {
+      toast({ title: "Account created", description: "You can now sign in." });
+      setMode("signin");
     } else {
       toast({ title: "Signed in", description: "You're now marked online." });
     }
@@ -51,7 +62,7 @@ const Admin = () => {
             </Button>
           </div>
         ) : (
-          <form onSubmit={signIn} className="space-y-3">
+          <form onSubmit={submit} className="space-y-3">
             <Input
               type="email"
               placeholder="Email"
@@ -66,11 +77,19 @@ const Admin = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              autoComplete="current-password"
+              autoComplete={mode === "signin" ? "current-password" : "new-password"}
+              minLength={6}
             />
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Signing in…" : "Sign in"}
+              {loading ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}
             </Button>
+            <button
+              type="button"
+              onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
+              className="w-full text-xs font-body text-muted-foreground hover:text-foreground"
+            >
+              {mode === "signin" ? "First time? Create owner account" : "Already have an account? Sign in"}
+            </button>
           </form>
         )}
       </div>
