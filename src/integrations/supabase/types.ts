@@ -14,7 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_logs: {
+        Row: {
+          ai_reply: string | null
+          created_at: string
+          id: string
+          ip_address: string | null
+          owner_online: boolean
+          user_agent: string | null
+          user_message: string
+        }
+        Insert: {
+          ai_reply?: string | null
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          owner_online?: boolean
+          user_agent?: string | null
+          user_message: string
+        }
+        Update: {
+          ai_reply?: string | null
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          owner_online?: boolean
+          user_agent?: string | null
+          user_message?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

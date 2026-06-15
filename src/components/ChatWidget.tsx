@@ -48,7 +48,10 @@ const ChatWidget = () => {
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("chat", {
-        body: { messages: next.map((m) => ({ role: m.role, content: m.content })) },
+        body: {
+          messages: next.map((m) => ({ role: m.role, content: m.content })),
+          ownerOnline: debOnline,
+        },
       });
       if (error) throw error;
       const reply = (data as { reply?: string })?.reply ?? "Sorry — something went wrong.";
@@ -137,27 +140,33 @@ const ChatWidget = () => {
               e.preventDefault();
               send();
             }}
-            className="flex items-center gap-2 border-t border-border bg-background px-3 py-2"
+            className="flex flex-col gap-1 border-t border-border bg-background px-3 py-2"
           >
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type a message…"
-              className="flex-1 rounded-full border border-input bg-background px-3 py-2 text-sm font-body outline-none focus:ring-2 focus:ring-primary/40"
-              disabled={loading}
-            />
-            <Button
-              type="submit"
-              size="icon"
-              disabled={loading || !input.trim()}
-              className="rounded-full"
-              aria-label="Send"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
+            <p className="text-[10px] font-body text-muted-foreground text-center">
+              Chats are logged for quality and safety.
+            </p>
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type a message…"
+                className="flex-1 rounded-full border border-input bg-background px-3 py-2 text-sm font-body outline-none focus:ring-2 focus:ring-primary/40"
+                disabled={loading}
+              />
+              <Button
+                type="submit"
+                size="icon"
+                disabled={loading || !input.trim()}
+                className="rounded-full"
+                aria-label="Send"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
           </form>
         </div>
+
       )}
     </>
   );
