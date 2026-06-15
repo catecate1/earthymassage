@@ -18,6 +18,8 @@ import Policies from "./pages/Policies.tsx";
 import Directions from "./pages/Directions.tsx";
 import Anatomy from "./pages/Anatomy.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Admin from "./pages/Admin.tsx";
+import ChatWidget from "./components/ChatWidget.tsx";
 
 const queryClient = new QueryClient();
 
@@ -42,9 +44,11 @@ const App = () => (
           <Route path="/policies" element={<Policies />} />
           <Route path="/directions" element={<Directions />} />
           <Route path="/anatomy" element={<Anatomy />} />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ChatWidget />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
