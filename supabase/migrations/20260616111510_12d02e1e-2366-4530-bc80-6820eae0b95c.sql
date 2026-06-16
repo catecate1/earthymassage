@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Authenticated can update owner status" ON public.owner_status;
