@@ -11,6 +11,8 @@ type ChatLog = {
   user_agent: string | null;
   user_message: string;
   ai_reply: string | null;
+  owner_reply: string | null;
+  owner_replied_at: string | null;
   owner_online: boolean;
 };
 
@@ -23,6 +25,8 @@ const Admin = () => {
   const [logs, setLogs] = useState<ChatLog[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [filter, setFilter] = useState("");
+  const [replyDrafts, setReplyDrafts] = useState<Record<string, string>>({});
+  const [savingReplyId, setSavingReplyId] = useState<string | null>(null);
   const [onlineStatus, setOnlineStatus] = useState<"checking" | "online" | "error">("checking");
   const [heartbeatError, setHeartbeatError] = useState("");
 
@@ -45,6 +49,13 @@ const Admin = () => {
       return;
     }
     setLogs((data ?? []) as ChatLog[]);
+    setReplyDrafts((drafts) => {
+      const next = { ...drafts };
+      (data ?? []).forEach((log) => {
+        if (next[log.id] === undefined) next[log.id] = log.owner_reply ?? "";
+      });
+      return next;
+    });
   }, []);
 
   useEffect(() => {
@@ -133,6 +144,31 @@ const Admin = () => {
     }
     setLogs([]);
     toast({ title: "All logs deleted" });
+  };
+
+  const saveReply = async (log: ChatLog) => {
+    const reply = (replyDrafts[log.id] ?? "").trim();
+    if (!reply) {
+      toast({ title: "Reply is empty", description: "Type a reply before sending it." });
+      return;
+    }
+    setSavingReplyId(log.id);
+    const repliedAt = new Date().toISOString();
+    const { error } = await supabase
+      .from("chat_logs")
+      .update({ owner_reply: reply, owner_replied_at: repliedAt } as never)
+      .eq("id", log.id);
+    setSavingReplyId(null);
+    if (error) {
+      toast({ title: "Reply failed", description: error.message, variant: "destructive" });
+      return;
+    }
+    setLogs((current) =>
+      current.map((item) =>
+        item.id === log.id ? { ...item, owner_reply: reply, owner_replied_at: repliedAt } : item,
+      ),
+    );
+    toast({ title: "Reply sent", description: "It will appear in that visitor's chat window if they are still there." });
   };
 
   const filtered = logs.filter((l) => {
@@ -234,6 +270,33 @@ const Admin = () => {
                   {l.ai_reply && (
                     <p className="text-sm font-body mt-1 text-muted-foreground"><span className="font-semibold text-foreground">Reply:</span> {l.ai_reply}</p>
                   )}
+                  <div className="mt-3 space-y-2">
+                    <label className="block text-xs font-body font-semibold text-foreground" htmlFor={`reply-${l.id}`}>
+                      Deb's reply
+                    </label>
+                    <textarea
+                      id={`reply-${l.id}`}
+                      value={replyDrafts[l.id] ?? l.owner_reply ?? ""}
+                      onChange={(e) => setReplyDrafts((drafts) => ({ ...drafts, [l.id]: e.target.value }))}
+                      className="min-h-20 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm font-body text-foreground outline-none focus:ring-2 focus:ring-primary/30"
+                      placeholder="Type your reply to this visitor…"
+                    />
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="text-xs font-body text-muted-foreground">
+                        {l.owner_replied_at
+                          ? `Last sent ${new Date(l.owner_replied_at).toLocaleString()}`
+                          : "Not replied yet"}
+                      </p>
+                      <Button
+                        type="button"
+                        size="sm"
+                        onClick={() => saveReply(l)}
+                        disabled={savingReplyId === l.id || !(replyDrafts[l.id] ?? l.owner_reply ?? "").trim()}
+                      >
+                        {savingReplyId === l.id ? "Sending…" : l.owner_reply ? "Update reply" : "Send reply"}
+                      </Button>
+                    </div>
+                  </div>
                   {l.user_agent && (
                     <p className="text-[10px] font-body text-muted-foreground/70 mt-1 truncate" title={l.user_agent}>
                       {l.user_agent}
