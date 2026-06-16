@@ -44,6 +44,21 @@ export type Database = {
         }
         Relationships: []
       }
+      owner_status: {
+        Row: {
+          id: boolean
+          last_seen: string
+        }
+        Insert: {
+          id?: boolean
+          last_seen?: string
+        }
+        Update: {
+          id?: boolean
+          last_seen?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
