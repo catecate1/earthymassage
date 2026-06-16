@@ -73,6 +73,17 @@ const Admin = () => {
       setHeartbeatError("");
       return;
     }
+    if (!showOnline) {
+      // Push last_seen into the past so the widget shows offline.
+      supabase
+        .from("owner_status")
+        .update({ last_seen: new Date(Date.now() - 5 * 60_000).toISOString() })
+        .eq("id", true)
+        .then(() => {});
+      setOnlineStatus("checking");
+      setHeartbeatError("");
+      return;
+    }
     let cancelled = false;
     const beat = async () => {
       if (cancelled) return;
@@ -97,7 +108,21 @@ const Admin = () => {
       cancelled = true;
       clearInterval(interval);
     };
-  }, [session]);
+  }, [session, showOnline]);
+
+  const toggleShowOnline = (next: boolean) => {
+    setShowOnline(next);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("owner_show_online", String(next));
+    }
+    toast({
+      title: next ? "Showing as online" : "Showing as offline",
+      description: next
+        ? "Visitors will see that Deb is available to chat."
+        : "Visitors will see the AI assistant instead.",
+    });
+  };
+
 
 
   const submit = async (e: React.FormEvent) => {
