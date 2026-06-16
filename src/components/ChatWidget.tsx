@@ -161,6 +161,28 @@ const ChatWidget = () => {
     }
   };
 
+  const welcomeMessage: ChatMsg = {
+    role: "assistant",
+    content:
+      "Hi there! I'm Earthy Massage's friendly AI helper. Ask me about services, booking, or policies — and I'll do my best to help.",
+  };
+
+  const endChat = () => {
+    setMessages([welcomeMessage]);
+    setInput("");
+    setChatActive(false);
+    seenOwnerRepliesRef.current = new Set();
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem(chatActiveKey);
+      window.localStorage.removeItem(seenRepliesKey);
+      // Rotate the visitor token so any future replies to old logs don't reappear.
+      const newToken = window.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      window.localStorage.setItem(visitorTokenKey, newToken);
+    }
+    setOpen(false);
+  };
+
+
   return (
     <>
       {/* Floating launcher */}
