@@ -29,6 +29,11 @@ const Admin = () => {
   const [savingReplyId, setSavingReplyId] = useState<string | null>(null);
   const [onlineStatus, setOnlineStatus] = useState<"checking" | "online" | "error">("checking");
   const [heartbeatError, setHeartbeatError] = useState("");
+  const [showOnline, setShowOnline] = useState<boolean>(() => {
+    if (typeof window === "undefined") return true;
+    const v = window.localStorage.getItem("owner_show_online");
+    return v === null ? true : v === "true";
+  });
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session));
