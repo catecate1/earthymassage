@@ -134,12 +134,17 @@ const Admin = () => {
         .from("owner_status")
         .update({ is_online: true, last_seen: new Date().toISOString() })
         .eq("id", true)
-        .select("last_seen")
+        .select("last_seen,is_online")
         .maybeSingle();
       if (cancelled) return;
       if (error || !data?.last_seen) {
         setOnlineStatus("error");
         setHeartbeatError(error?.message ?? "The online status row was not found.");
+        return;
+      }
+      if (!data.is_online) {
+        setOnlineStatus("checking");
+        setHeartbeatError("");
         return;
       }
       setOnlineStatus("online");
@@ -163,6 +168,7 @@ const Admin = () => {
         .from("owner_status")
         .update({ is_online: true, last_seen: new Date().toISOString(), offline_until: null })
         .eq("id", true);
+      setOnlineStatus("online");
     } else {
       await supabase
         .from("owner_status")
@@ -172,6 +178,7 @@ const Admin = () => {
           offline_until: new Date(Date.now() + 12 * 60 * 60_000).toISOString(),
         })
         .eq("id", true);
+      setOnlineStatus("checking");
     }
     toast({
       title: next ? "Showing as online" : "Showing as offline",
