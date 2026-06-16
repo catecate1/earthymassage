@@ -20,16 +20,18 @@ const ChatWidget = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let mounted = true;
-    supabase.auth.getSession().then(({ data }) => {
-      if (mounted) setDebOnline(!!data.session);
-    });
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      setDebOnline(!!session);
-    });
+    const channel = supabase.channel("owner-presence");
+    channel
+      .on("presence", { event: "sync" }, () => {
+        const state = channel.presenceState() as Record<string, unknown[]>;
+        const online = Object.values(state).some(
+          (arr) => Array.isArray(arr) && arr.some((p: any) => p?.role === "owner")
+        );
+        setDebOnline(online);
+      })
+      .subscribe();
     return () => {
-      mounted = false;
-      sub.subscription.unsubscribe();
+      supabase.removeChannel(channel);
     };
   }, []);
 
