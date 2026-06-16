@@ -49,6 +49,19 @@ const Admin = () => {
     if (session) loadLogs();
   }, [session, loadLogs]);
 
+  useEffect(() => {
+    if (!session) return;
+    const channel = supabase.channel("owner-presence");
+    channel.subscribe(async (status) => {
+      if (status === "SUBSCRIBED") {
+        await channel.track({ role: "owner", at: Date.now() });
+      }
+    });
+    return () => {
+      channel.untrack().finally(() => supabase.removeChannel(channel));
+    };
+  }, [session]);
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
