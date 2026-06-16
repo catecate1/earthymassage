@@ -5,12 +5,31 @@ import { Button } from "@/components/ui/button";
 
 type ChatMsg = { role: "user" | "assistant"; content: string };
 
+type OwnerReply = {
+  id: string;
+  owner_reply: string | null;
+  owner_replied_at: string | null;
+};
+
+const visitorTokenKey = "earthy_chat_visitor_token";
+const seenRepliesKey = "earthy_chat_seen_owner_replies";
+
+const getStoredVisitorToken = () => {
+  if (typeof window === "undefined") return "";
+  const existing = window.localStorage.getItem(visitorTokenKey);
+  if (existing) return existing;
+  const token = window.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  window.localStorage.setItem(visitorTokenKey, token);
+  return token;
+};
+
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [debOnline, setDebOnline] = useState(false);
   const [ownerSignedIn, setOwnerSignedIn] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [visitorToken] = useState(getStoredVisitorToken);
   const [messages, setMessages] = useState<ChatMsg[]>([
     {
       role: "assistant",
@@ -19,6 +38,13 @@ const ChatWidget = () => {
     },
   ]);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const seenOwnerRepliesRef = useRef<Set<string>>(
+    new Set(
+      typeof window === "undefined"
+        ? []
+        : JSON.parse(window.localStorage.getItem(seenRepliesKey) ?? "[]"),
+    ),
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -85,6 +111,44 @@ const ChatWidget = () => {
     }
   }, [messages, loading, open]);
 
+  useEffect(() => {
+    if (!visitorToken) return;
+
+    let cancelled = false;
+    const checkReplies = async () => {
+      const { data, error } = await supabase.functions.invoke("chat", {
+        body: { action: "owner-replies", visitorToken },
+      });
+      if (cancelled || error) return;
+
+      const replies = ((data as { replies?: OwnerReply[] })?.replies ?? []).filter(
+        (reply) => reply.owner_reply && !seenOwnerRepliesRef.current.has(reply.id),
+      );
+      if (replies.length === 0) return;
+
+      replies.forEach((reply) => seenOwnerRepliesRef.current.add(reply.id));
+      window.localStorage.setItem(
+        seenRepliesKey,
+        JSON.stringify(Array.from(seenOwnerRepliesRef.current)),
+      );
+      setMessages((current) => [
+        ...current,
+        ...replies.map((reply) => ({
+          role: "assistant" as const,
+          content: `Deb replied: ${reply.owner_reply}`,
+        })),
+      ]);
+      setOpen(true);
+    };
+
+    checkReplies();
+    const interval = setInterval(checkReplies, 8000);
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, [visitorToken]);
+
   const send = async () => {
     const text = input.trim();
     if (!text || loading) return;
@@ -97,6 +161,7 @@ const ChatWidget = () => {
         body: {
           messages: next.map((m) => ({ role: m.role, content: m.content })),
           ownerOnline: debOnline,
+          visitorToken,
         },
       });
       if (error) throw error;
