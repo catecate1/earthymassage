@@ -60,11 +60,11 @@ const ChatWidget = () => {
     const check = async () => {
       const { data } = await supabase
         .from("owner_status")
-        .select("last_seen")
+        .select("last_seen,is_online")
         .eq("id", true)
         .maybeSingle();
       if (cancelled) return;
-      if (data?.last_seen) {
+      if (data?.last_seen && data.is_online) {
         const ageMs = Date.now() - new Date(data.last_seen).getTime();
         setDebOnline(ageMs < 60_000);
       } else {

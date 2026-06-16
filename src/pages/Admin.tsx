@@ -107,12 +107,14 @@ const Admin = () => {
     const pushOffline = async () => {
       await supabase
         .from("owner_status")
-        .update({ last_seen: new Date(Date.now() - 5 * 60_000).toISOString() })
+        .update({
+          is_online: false,
+          last_seen: new Date(Date.now() - 5 * 60_000).toISOString(),
+          offline_until: new Date(Date.now() + 12 * 60 * 60_000).toISOString(),
+        })
         .eq("id", true);
     };
     if (!showOnline) {
-      // Aggressively keep last_seen in the past so any stale in-flight
-      // heartbeat write can't make us look online to visitors.
       pushOffline();
       const t1 = setTimeout(pushOffline, 500);
       const t2 = setTimeout(pushOffline, 1500);
@@ -130,14 +132,19 @@ const Admin = () => {
       if (cancelled) return;
       const { data, error } = await supabase
         .from("owner_status")
-        .update({ last_seen: new Date().toISOString() })
+        .update({ is_online: true, last_seen: new Date().toISOString() })
         .eq("id", true)
-        .select("last_seen")
+        .select("last_seen,is_online")
         .maybeSingle();
       if (cancelled) return;
       if (error || !data?.last_seen) {
         setOnlineStatus("error");
         setHeartbeatError(error?.message ?? "The online status row was not found.");
+        return;
+      }
+      if (!data.is_online) {
+        setOnlineStatus("checking");
+        setHeartbeatError("");
         return;
       }
       setOnlineStatus("online");
@@ -151,10 +158,27 @@ const Admin = () => {
     };
   }, [session, showOnline]);
 
-  const toggleShowOnline = (next: boolean) => {
+  const toggleShowOnline = async (next: boolean) => {
     setShowOnline(next);
     if (typeof window !== "undefined") {
       window.localStorage.setItem("owner_show_online", String(next));
+    }
+    if (next) {
+      await supabase
+        .from("owner_status")
+        .update({ is_online: true, last_seen: new Date().toISOString(), offline_until: null })
+        .eq("id", true);
+      setOnlineStatus("online");
+    } else {
+      await supabase
+        .from("owner_status")
+        .update({
+          is_online: false,
+          last_seen: new Date(Date.now() - 5 * 60_000).toISOString(),
+          offline_until: new Date(Date.now() + 12 * 60 * 60_000).toISOString(),
+        })
+        .eq("id", true);
+      setOnlineStatus("checking");
     }
     toast({
       title: next ? "Showing as online" : "Showing as offline",
@@ -191,7 +215,11 @@ const Admin = () => {
   const signOut = async () => {
     await supabase
       .from("owner_status")
-      .update({ last_seen: new Date(Date.now() - 5 * 60_000).toISOString() })
+      .update({
+        is_online: false,
+        last_seen: new Date(Date.now() - 5 * 60_000).toISOString(),
+        offline_until: new Date(Date.now() + 12 * 60 * 60_000).toISOString(),
+      })
       .eq("id", true);
     await supabase.auth.signOut();
     toast({ title: "Signed out", description: "You're now offline." });
