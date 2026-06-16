@@ -21,6 +21,8 @@ export type Database = {
           id: string
           ip_address: string | null
           owner_online: boolean
+          owner_replied_at: string | null
+          owner_reply: string | null
           user_agent: string | null
           user_message: string
         }
@@ -30,6 +32,8 @@ export type Database = {
           id?: string
           ip_address?: string | null
           owner_online?: boolean
+          owner_replied_at?: string | null
+          owner_reply?: string | null
           user_agent?: string | null
           user_message: string
         }
@@ -39,6 +43,8 @@ export type Database = {
           id?: string
           ip_address?: string | null
           owner_online?: boolean
+          owner_replied_at?: string | null
+          owner_reply?: string | null
           user_agent?: string | null
           user_message?: string
         }
