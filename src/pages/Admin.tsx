@@ -23,6 +23,8 @@ const Admin = () => {
   const [logs, setLogs] = useState<ChatLog[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [filter, setFilter] = useState("");
+  const [onlineStatus, setOnlineStatus] = useState<"checking" | "online" | "error">("checking");
+  const [heartbeatError, setHeartbeatError] = useState("");
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session));
@@ -50,14 +52,28 @@ const Admin = () => {
   }, [session, loadLogs]);
 
   useEffect(() => {
-    if (!session) return;
+    if (!session) {
+      setOnlineStatus("checking");
+      setHeartbeatError("");
+      return;
+    }
     let cancelled = false;
     const beat = async () => {
       if (cancelled) return;
-      await supabase
+      const { data, error } = await supabase
         .from("owner_status")
         .update({ last_seen: new Date().toISOString() })
-        .eq("id", true);
+        .eq("id", true)
+        .select("last_seen")
+        .maybeSingle();
+      if (cancelled) return;
+      if (error || !data?.last_seen) {
+        setOnlineStatus("error");
+        setHeartbeatError(error?.message ?? "The online status row was not found.");
+        return;
+      }
+      setOnlineStatus("online");
+      setHeartbeatError("");
     };
     beat();
     const interval = setInterval(beat, 20000);
@@ -91,6 +107,10 @@ const Admin = () => {
   };
 
   const signOut = async () => {
+    await supabase
+      .from("owner_status")
+      .update({ last_seen: new Date(Date.now() - 5 * 60_000).toISOString() })
+      .eq("id", true);
     await supabase.auth.signOut();
     toast({ title: "Signed out", description: "You're now offline." });
   };
@@ -154,9 +174,19 @@ const Admin = () => {
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm">
           <div>
             <h1 className="font-heading text-2xl text-foreground">Owner Dashboard</h1>
-            <p className="font-body text-sm text-muted-foreground">
-              You are signed in and showing as <span className="font-semibold text-green-600">online</span> in the chat widget.
-            </p>
+            {onlineStatus === "online" ? (
+              <p className="font-body text-sm text-muted-foreground">
+                You are signed in and showing as <span className="font-semibold text-green-600">online</span> in the chat widget.
+              </p>
+            ) : onlineStatus === "error" ? (
+              <p className="font-body text-sm text-destructive">
+                Online status is not updating: {heartbeatError}
+              </p>
+            ) : (
+              <p className="font-body text-sm text-muted-foreground">
+                Checking your online status…
+              </p>
+            )}
           </div>
           <Button onClick={signOut} variant="secondary">Sign out (go offline)</Button>
         </div>
