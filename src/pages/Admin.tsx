@@ -107,7 +107,11 @@ const Admin = () => {
     const pushOffline = async () => {
       await supabase
         .from("owner_status")
-        .update({ is_online: false, last_seen: new Date(Date.now() - 5 * 60_000).toISOString() })
+        .update({
+          is_online: false,
+          last_seen: new Date(Date.now() - 5 * 60_000).toISOString(),
+          offline_until: new Date(Date.now() + 12 * 60 * 60_000).toISOString(),
+        })
         .eq("id", true);
     };
     if (!showOnline) {
@@ -128,7 +132,7 @@ const Admin = () => {
       if (cancelled) return;
       const { data, error } = await supabase
         .from("owner_status")
-        .update({ is_online: true, last_seen: new Date().toISOString() })
+        .update({ is_online: true, last_seen: new Date().toISOString(), offline_until: null })
         .eq("id", true)
         .select("last_seen")
         .maybeSingle();
@@ -189,7 +193,11 @@ const Admin = () => {
   const signOut = async () => {
     await supabase
       .from("owner_status")
-      .update({ is_online: false, last_seen: new Date(Date.now() - 5 * 60_000).toISOString() })
+      .update({
+        is_online: false,
+        last_seen: new Date(Date.now() - 5 * 60_000).toISOString(),
+        offline_until: new Date(Date.now() + 12 * 60 * 60_000).toISOString(),
+      })
       .eq("id", true);
     await supabase.auth.signOut();
     toast({ title: "Signed out", description: "You're now offline." });
