@@ -8,6 +8,7 @@ type ChatMsg = { role: "user" | "assistant"; content: string };
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [debOnline, setDebOnline] = useState(false);
+  const [ownerSignedIn, setOwnerSignedIn] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMsg[]>([
@@ -18,6 +19,40 @@ const ChatWidget = () => {
     },
   ]);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    supabase.auth.getSession().then(({ data }) => {
+      if (!cancelled) setOwnerSignedIn(Boolean(data.session));
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setOwnerSignedIn(Boolean(session));
+    });
+    return () => {
+      cancelled = true;
+      sub.subscription.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!ownerSignedIn) return;
+    let cancelled = false;
+    const beat = async () => {
+      const { data, error } = await supabase
+        .from("owner_status")
+        .update({ last_seen: new Date().toISOString() })
+        .eq("id", true)
+        .select("last_seen")
+        .maybeSingle();
+      if (!cancelled && !error && data?.last_seen) setDebOnline(true);
+    };
+    beat();
+    const interval = setInterval(beat, 20000);
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, [ownerSignedIn]);
 
   useEffect(() => {
     let cancelled = false;
