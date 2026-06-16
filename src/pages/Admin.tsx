@@ -29,6 +29,11 @@ const Admin = () => {
   const [savingReplyId, setSavingReplyId] = useState<string | null>(null);
   const [onlineStatus, setOnlineStatus] = useState<"checking" | "online" | "error">("checking");
   const [heartbeatError, setHeartbeatError] = useState("");
+  const [showOnline, setShowOnline] = useState<boolean>(() => {
+    if (typeof window === "undefined") return true;
+    const v = window.localStorage.getItem("owner_show_online");
+    return v === null ? true : v === "true";
+  });
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session));
@@ -68,6 +73,17 @@ const Admin = () => {
       setHeartbeatError("");
       return;
     }
+    if (!showOnline) {
+      // Push last_seen into the past so the widget shows offline.
+      supabase
+        .from("owner_status")
+        .update({ last_seen: new Date(Date.now() - 5 * 60_000).toISOString() })
+        .eq("id", true)
+        .then(() => {});
+      setOnlineStatus("checking");
+      setHeartbeatError("");
+      return;
+    }
     let cancelled = false;
     const beat = async () => {
       if (cancelled) return;
@@ -92,7 +108,21 @@ const Admin = () => {
       cancelled = true;
       clearInterval(interval);
     };
-  }, [session]);
+  }, [session, showOnline]);
+
+  const toggleShowOnline = (next: boolean) => {
+    setShowOnline(next);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("owner_show_online", String(next));
+    }
+    toast({
+      title: next ? "Showing as online" : "Showing as offline",
+      description: next
+        ? "Visitors will see that Deb is available to chat."
+        : "Visitors will see the AI assistant instead.",
+    });
+  };
+
 
 
   const submit = async (e: React.FormEvent) => {
@@ -210,9 +240,13 @@ const Admin = () => {
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm">
           <div>
             <h1 className="font-heading text-2xl text-foreground">Owner Dashboard</h1>
-            {onlineStatus === "online" ? (
+            {!showOnline ? (
               <p className="font-body text-sm text-muted-foreground">
-                You are signed in and showing as <span className="font-semibold text-green-600">online</span> in the chat widget.
+                You are signed in but showing as <span className="font-semibold text-muted-foreground">offline</span>. Visitors will chat with the AI.
+              </p>
+            ) : onlineStatus === "online" ? (
+              <p className="font-body text-sm text-muted-foreground">
+                You are showing as <span className="font-semibold text-green-600">online</span> in the chat widget.
               </p>
             ) : onlineStatus === "error" ? (
               <p className="font-body text-sm text-destructive">
@@ -224,7 +258,23 @@ const Admin = () => {
               </p>
             )}
           </div>
-          <Button onClick={signOut} variant="secondary">Sign out (go offline)</Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              type="button"
+              variant={showOnline ? "default" : "outline"}
+              onClick={() => toggleShowOnline(true)}
+            >
+              Show online
+            </Button>
+            <Button
+              type="button"
+              variant={!showOnline ? "default" : "outline"}
+              onClick={() => toggleShowOnline(false)}
+            >
+              Show offline
+            </Button>
+            <Button onClick={signOut} variant="secondary">Sign out</Button>
+          </div>
         </div>
 
         <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
