@@ -64,7 +64,37 @@ const Admin = () => {
   }, []);
 
   useEffect(() => {
-    if (session) loadLogs();
+    if (!session) return;
+    loadLogs();
+    const channel = supabase
+      .channel("admin-chat-logs")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "chat_logs" },
+        (payload) => {
+          if (payload.eventType === "INSERT") {
+            const row = payload.new as ChatLog;
+            setLogs((current) =>
+              current.some((l) => l.id === row.id) ? current : [row, ...current],
+            );
+            setReplyDrafts((drafts) =>
+              drafts[row.id] === undefined
+                ? { ...drafts, [row.id]: row.owner_reply ?? "" }
+                : drafts,
+            );
+          } else if (payload.eventType === "UPDATE") {
+            const row = payload.new as ChatLog;
+            setLogs((current) => current.map((l) => (l.id === row.id ? row : l)));
+          } else if (payload.eventType === "DELETE") {
+            const row = payload.old as { id?: string };
+            if (row?.id) setLogs((current) => current.filter((l) => l.id !== row.id));
+          }
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [session, loadLogs]);
 
   useEffect(() => {
