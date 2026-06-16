@@ -22,6 +22,44 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    const body = await req.json();
+
+    if (body?.action === "owner-replies") {
+      const visitorToken = typeof body.visitorToken === "string" ? body.visitorToken : "";
+      if (!supabaseUrl || !serviceKey || !visitorToken) {
+        return new Response(JSON.stringify({ replies: [] }), {
+          status: 200,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
+      const repliesRes = await fetch(
+        `${supabaseUrl}/rest/v1/chat_logs?select=id,owner_reply,owner_replied_at&visitor_token=eq.${encodeURIComponent(visitorToken)}&owner_reply=not.is.null&order=owner_replied_at.asc`,
+        {
+          headers: {
+            apikey: serviceKey,
+            Authorization: `Bearer ${serviceKey}`,
+          },
+        },
+      );
+
+      if (!repliesRes.ok) {
+        console.error("owner replies fetch failed", repliesRes.status, await repliesRes.text());
+        return new Response(JSON.stringify({ replies: [] }), {
+          status: 200,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
+      const replies = await repliesRes.json();
+      return new Response(JSON.stringify({ replies }), {
+        status: 200,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const apiKey = Deno.env.get("LOVABLE_API_KEY");
     if (!apiKey) {
       return new Response(JSON.stringify({ error: "Missing LOVABLE_API_KEY" }), {
@@ -30,7 +68,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { messages, ownerOnline } = await req.json();
+    const { messages, ownerOnline, visitorToken } = body;
     if (!Array.isArray(messages)) {
       return new Response(JSON.stringify({ error: "messages must be an array" }), {
         status: 400,
@@ -66,9 +104,8 @@ Deno.serve(async (req) => {
     const reply = data?.choices?.[0]?.message?.content ?? "Sorry — I couldn't generate a reply.";
 
     // Log this exchange — await so the insert actually completes before the function returns
+    let logId: string | null = null;
     try {
-      const supabaseUrl = Deno.env.get("SUPABASE_URL");
-      const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
       const lastUser = [...messages].reverse().find((m: { role: string }) => m.role === "user");
       if (supabaseUrl && serviceKey && lastUser?.content) {
         const fwd = req.headers.get("x-forwarded-for") ?? "";
@@ -80,7 +117,7 @@ Deno.serve(async (req) => {
             "Content-Type": "application/json",
             apikey: serviceKey,
             Authorization: `Bearer ${serviceKey}`,
-            Prefer: "return=minimal",
+            Prefer: "return=representation",
           },
           body: JSON.stringify({
             ip_address: ip,
@@ -88,10 +125,14 @@ Deno.serve(async (req) => {
             user_message: lastUser.content,
             ai_reply: reply,
             owner_online: !!ownerOnline,
+            visitor_token: typeof visitorToken === "string" ? visitorToken : null,
           }),
         });
         if (!logRes.ok) {
           console.error("chat_logs insert failed", logRes.status, await logRes.text());
+        } else {
+          const inserted = await logRes.json();
+          logId = inserted?.[0]?.id ?? null;
         }
       } else {
         console.warn("chat_logs insert skipped", { hasUrl: !!supabaseUrl, hasKey: !!serviceKey, hasUser: !!lastUser?.content });
@@ -100,7 +141,7 @@ Deno.serve(async (req) => {
       console.error("chat_logs insert threw", e);
     }
 
-    return new Response(JSON.stringify({ reply }), {
+    return new Response(JSON.stringify({ reply, logId }), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
