@@ -13,6 +13,7 @@ type OwnerReply = {
 
 const visitorTokenKey = "earthy_chat_visitor_token";
 const seenRepliesKey = "earthy_chat_seen_owner_replies";
+const chatActiveKey = "earthy_chat_active";
 
 const getStoredVisitorToken = () => {
   if (typeof window === "undefined") return "";
@@ -30,6 +31,9 @@ const ChatWidget = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [visitorToken] = useState(getStoredVisitorToken);
+  const [chatActive, setChatActive] = useState(
+    () => typeof window !== "undefined" && window.localStorage.getItem(chatActiveKey) === "true",
+  );
   const [messages, setMessages] = useState<ChatMsg[]>([
     {
       role: "assistant",
@@ -118,7 +122,7 @@ const ChatWidget = () => {
   }, [messages, loading, open]);
 
   useEffect(() => {
-    if (!visitorToken) return;
+    if (!visitorToken || !chatActive) return;
 
     let cancelled = false;
     const checkReplies = async () => {
@@ -156,13 +160,15 @@ const ChatWidget = () => {
       cancelled = true;
       clearInterval(interval);
     };
-  }, [visitorToken]);
+  }, [chatActive, visitorToken]);
 
   const send = async () => {
     const text = input.trim();
     if (!text || loading) return;
     const next = [...messages, { role: "user" as const, content: text }];
     setMessages(next);
+    setChatActive(true);
+    window.localStorage.setItem(chatActiveKey, "true");
     setInput("");
     setLoading(true);
     try {
