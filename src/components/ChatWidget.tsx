@@ -42,7 +42,13 @@ const ChatWidget = () => {
     new Set(
       typeof window === "undefined"
         ? []
-        : JSON.parse(window.localStorage.getItem(seenRepliesKey) ?? "[]"),
+        : (() => {
+            try {
+              return JSON.parse(window.localStorage.getItem(seenRepliesKey) ?? "[]");
+            } catch {
+              return [];
+            }
+          })(),
     ),
   );
 
@@ -121,12 +127,15 @@ const ChatWidget = () => {
       });
       if (cancelled || error) return;
 
-      const replies = ((data as { replies?: OwnerReply[] })?.replies ?? []).filter(
-        (reply) => reply.owner_reply && !seenOwnerRepliesRef.current.has(reply.id),
-      );
+      const replies = ((data as { replies?: OwnerReply[] })?.replies ?? []).filter((reply) => {
+        const replyKey = `${reply.id}:${reply.owner_replied_at ?? ""}`;
+        return reply.owner_reply && !seenOwnerRepliesRef.current.has(replyKey);
+      });
       if (replies.length === 0) return;
 
-      replies.forEach((reply) => seenOwnerRepliesRef.current.add(reply.id));
+      replies.forEach((reply) => {
+        seenOwnerRepliesRef.current.add(`${reply.id}:${reply.owner_replied_at ?? ""}`);
+      });
       window.localStorage.setItem(
         seenRepliesKey,
         JSON.stringify(Array.from(seenOwnerRepliesRef.current)),
@@ -210,7 +219,7 @@ const ChatWidget = () => {
                   aria-hidden="true"
                 />
                 {debOnline ? (
-                  <span>Deb is online — I'll answer personally.</span>
+                  <span>Deb is online and can reply here.</span>
                 ) : (
                   <span>Deb is away — our AI helper is here.</span>
                 )}
