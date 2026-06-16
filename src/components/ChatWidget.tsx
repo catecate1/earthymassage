@@ -27,7 +27,6 @@ const getStoredVisitorToken = () => {
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [debOnline, setDebOnline] = useState(false);
-  const [ownerSignedIn, setOwnerSignedIn] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [visitorToken] = useState(getStoredVisitorToken);
