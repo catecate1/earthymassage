@@ -103,18 +103,29 @@ const Admin = () => {
       setHeartbeatError("");
       return;
     }
-    if (!showOnline) {
-      // Push last_seen into the past so the widget shows offline.
-      supabase
+    let cancelled = false;
+    const pushOffline = async () => {
+      await supabase
         .from("owner_status")
         .update({ last_seen: new Date(Date.now() - 5 * 60_000).toISOString() })
-        .eq("id", true)
-        .then(() => {});
+        .eq("id", true);
+    };
+    if (!showOnline) {
+      // Aggressively keep last_seen in the past so any stale in-flight
+      // heartbeat write can't make us look online to visitors.
+      pushOffline();
+      const t1 = setTimeout(pushOffline, 500);
+      const t2 = setTimeout(pushOffline, 1500);
+      const offInterval = setInterval(pushOffline, 10_000);
       setOnlineStatus("checking");
       setHeartbeatError("");
-      return;
+      return () => {
+        cancelled = true;
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearInterval(offInterval);
+      };
     }
-    let cancelled = false;
     const beat = async () => {
       if (cancelled) return;
       const { data, error } = await supabase
