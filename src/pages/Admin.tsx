@@ -156,7 +156,7 @@ const Admin = () => {
     const repliedAt = new Date().toISOString();
     const { error } = await supabase
       .from("chat_logs")
-      .update({ owner_reply: reply, owner_replied_at: repliedAt } as never)
+      .update({ owner_reply: reply, owner_replied_at: repliedAt })
       .eq("id", log.id);
     setSavingReplyId(null);
     if (error) {
