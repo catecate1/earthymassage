@@ -240,9 +240,13 @@ const Admin = () => {
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm">
           <div>
             <h1 className="font-heading text-2xl text-foreground">Owner Dashboard</h1>
-            {onlineStatus === "online" ? (
+            {!showOnline ? (
               <p className="font-body text-sm text-muted-foreground">
-                You are signed in and showing as <span className="font-semibold text-green-600">online</span> in the chat widget.
+                You are signed in but showing as <span className="font-semibold text-muted-foreground">offline</span>. Visitors will chat with the AI.
+              </p>
+            ) : onlineStatus === "online" ? (
+              <p className="font-body text-sm text-muted-foreground">
+                You are showing as <span className="font-semibold text-green-600">online</span> in the chat widget.
               </p>
             ) : onlineStatus === "error" ? (
               <p className="font-body text-sm text-destructive">
@@ -254,7 +258,23 @@ const Admin = () => {
               </p>
             )}
           </div>
-          <Button onClick={signOut} variant="secondary">Sign out (go offline)</Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              type="button"
+              variant={showOnline ? "default" : "outline"}
+              onClick={() => toggleShowOnline(true)}
+            >
+              Show online
+            </Button>
+            <Button
+              type="button"
+              variant={!showOnline ? "default" : "outline"}
+              onClick={() => toggleShowOnline(false)}
+            >
+              Show offline
+            </Button>
+            <Button onClick={signOut} variant="secondary">Sign out</Button>
+          </div>
         </div>
 
         <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
