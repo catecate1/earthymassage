@@ -132,7 +132,7 @@ const Admin = () => {
       if (cancelled) return;
       const { data, error } = await supabase
         .from("owner_status")
-        .update({ is_online: true, last_seen: new Date().toISOString(), offline_until: null })
+        .update({ is_online: true, last_seen: new Date().toISOString() })
         .eq("id", true)
         .select("last_seen")
         .maybeSingle();
@@ -153,10 +153,25 @@ const Admin = () => {
     };
   }, [session, showOnline]);
 
-  const toggleShowOnline = (next: boolean) => {
+  const toggleShowOnline = async (next: boolean) => {
     setShowOnline(next);
     if (typeof window !== "undefined") {
       window.localStorage.setItem("owner_show_online", String(next));
+    }
+    if (next) {
+      await supabase
+        .from("owner_status")
+        .update({ is_online: true, last_seen: new Date().toISOString(), offline_until: null })
+        .eq("id", true);
+    } else {
+      await supabase
+        .from("owner_status")
+        .update({
+          is_online: false,
+          last_seen: new Date(Date.now() - 5 * 60_000).toISOString(),
+          offline_until: new Date(Date.now() + 12 * 60 * 60_000).toISOString(),
+        })
+        .eq("id", true);
     }
     toast({
       title: next ? "Showing as online" : "Showing as offline",
