@@ -65,7 +65,7 @@ Deno.serve(async (req) => {
     const data = await upstream.json();
     const reply = data?.choices?.[0]?.message?.content ?? "Sorry — I couldn't generate a reply.";
 
-    // Log this exchange (fire-and-forget; never block the chat on logging)
+    // Log this exchange — await so the insert actually completes before the function returns
     try {
       const supabaseUrl = Deno.env.get("SUPABASE_URL");
       const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
@@ -74,7 +74,7 @@ Deno.serve(async (req) => {
         const fwd = req.headers.get("x-forwarded-for") ?? "";
         const ip = fwd.split(",")[0].trim() || req.headers.get("cf-connecting-ip") || null;
         const ua = req.headers.get("user-agent") ?? null;
-        fetch(`${supabaseUrl}/rest/v1/chat_logs`, {
+        const logRes = await fetch(`${supabaseUrl}/rest/v1/chat_logs`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -89,9 +89,16 @@ Deno.serve(async (req) => {
             ai_reply: reply,
             owner_online: !!ownerOnline,
           }),
-        }).catch(() => {});
+        });
+        if (!logRes.ok) {
+          console.error("chat_logs insert failed", logRes.status, await logRes.text());
+        }
+      } else {
+        console.warn("chat_logs insert skipped", { hasUrl: !!supabaseUrl, hasKey: !!serviceKey, hasUser: !!lastUser?.content });
       }
-    } catch { /* ignore logging errors */ }
+    } catch (e) {
+      console.error("chat_logs insert threw", e);
+    }
 
     return new Response(JSON.stringify({ reply }), {
       status: 200,
