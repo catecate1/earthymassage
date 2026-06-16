@@ -58,16 +58,19 @@ export type Database = {
           id: boolean
           is_online: boolean
           last_seen: string
+          offline_until: string | null
         }
         Insert: {
           id?: boolean
           is_online?: boolean
           last_seen?: string
+          offline_until?: string | null
         }
         Update: {
           id?: boolean
           is_online?: boolean
           last_seen?: string
+          offline_until?: string | null
         }
         Relationships: []
       }
