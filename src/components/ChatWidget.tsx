@@ -20,20 +20,29 @@ const ChatWidget = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const channel = supabase.channel("owner-presence");
-    channel
-      .on("presence", { event: "sync" }, () => {
-        const state = channel.presenceState() as Record<string, unknown[]>;
-        const online = Object.values(state).some(
-          (arr) => Array.isArray(arr) && arr.some((p: any) => p?.role === "owner")
-        );
-        setDebOnline(online);
-      })
-      .subscribe();
+    let cancelled = false;
+    const check = async () => {
+      const { data } = await supabase
+        .from("owner_status")
+        .select("last_seen")
+        .eq("id", true)
+        .maybeSingle();
+      if (cancelled) return;
+      if (data?.last_seen) {
+        const ageMs = Date.now() - new Date(data.last_seen).getTime();
+        setDebOnline(ageMs < 60_000);
+      } else {
+        setDebOnline(false);
+      }
+    };
+    check();
+    const interval = setInterval(check, 15000);
     return () => {
-      supabase.removeChannel(channel);
+      cancelled = true;
+      clearInterval(interval);
     };
   }, []);
+
 
   useEffect(() => {
     if (scrollRef.current) {

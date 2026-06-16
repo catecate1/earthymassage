@@ -51,16 +51,22 @@ const Admin = () => {
 
   useEffect(() => {
     if (!session) return;
-    const channel = supabase.channel("owner-presence");
-    channel.subscribe(async (status) => {
-      if (status === "SUBSCRIBED") {
-        await channel.track({ role: "owner", at: Date.now() });
-      }
-    });
+    let cancelled = false;
+    const beat = async () => {
+      if (cancelled) return;
+      await supabase
+        .from("owner_status")
+        .update({ last_seen: new Date().toISOString() })
+        .eq("id", true);
+    };
+    beat();
+    const interval = setInterval(beat, 20000);
     return () => {
-      channel.untrack().finally(() => supabase.removeChannel(channel));
+      cancelled = true;
+      clearInterval(interval);
     };
   }, [session]);
+
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
