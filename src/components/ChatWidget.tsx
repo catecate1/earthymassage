@@ -218,14 +218,23 @@ const ChatWidget = () => {
                 )}
               </div>
             </div>
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Close chat"
-              className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-            >
-              <X className="h-4 w-4" />
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={endChat}
+                className="rounded-md px-2 py-1 text-xs font-body text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              >
+                End chat
+              </button>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close chat"
+                className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
           </div>
 
           {/* Messages */}
