@@ -25,6 +25,7 @@ export type Database = {
           owner_reply: string | null
           user_agent: string | null
           user_message: string
+          visitor_token: string | null
         }
         Insert: {
           ai_reply?: string | null
@@ -36,6 +37,7 @@ export type Database = {
           owner_reply?: string | null
           user_agent?: string | null
           user_message: string
+          visitor_token?: string | null
         }
         Update: {
           ai_reply?: string | null
@@ -47,6 +49,7 @@ export type Database = {
           owner_reply?: string | null
           user_agent?: string | null
           user_message?: string
+          visitor_token?: string | null
         }
         Relationships: []
       }
