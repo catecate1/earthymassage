@@ -56,14 +56,17 @@ export type Database = {
       owner_status: {
         Row: {
           id: boolean
+          is_online: boolean
           last_seen: string
         }
         Insert: {
           id?: boolean
+          is_online?: boolean
           last_seen?: string
         }
         Update: {
           id?: boolean
+          is_online?: boolean
           last_seen?: string
         }
         Relationships: []
