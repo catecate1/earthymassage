@@ -4,13 +4,13 @@ import PageHeader from "@/components/PageHeader";
 import { Clock, Sun, Moon, Phone } from "lucide-react";
 
 const hours = [
-  { day: "Monday", time: "8:00 AM – 6:00 PM" },
-  { day: "Tuesday", time: "8:00 AM – 6:00 PM" },
-  { day: "Wednesday", time: "8:00 AM – 6:00 PM" },
-  { day: "Thursday", time: "8:00 AM – 6:00 PM" },
-  { day: "Friday", time: "8:00 AM – 6:00 PM" },
-  { day: "Saturday", time: "8:00 AM – 6:00 PM" },
-  { day: "Sunday", time: "Closed" }
+  { day: "Monday", time: "8:00 AM – 8:00 PM" },
+  { day: "Tuesday", time: "8:00 AM – 8:00 PM" },
+  { day: "Wednesday", time: "8:00 AM – 8:00 PM" },
+  { day: "Thursday", time: "8:00 AM – 8:00 PM" },
+  { day: "Friday", time: "8:00 AM – 8:00 PM" },
+  { day: "Saturday", time: "8:00 AM – 8:00 PM" },
+  { day: "Sunday", time: "8:00 AM – 8:00 PM" }
 ];
 
 
