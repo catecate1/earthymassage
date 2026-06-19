@@ -16,6 +16,17 @@ type ChatLog = {
   owner_online: boolean;
 };
 
+type VisitorSession = {
+  id: string;
+  visitor_token: string;
+  ip_address: string | null;
+  user_agent: string | null;
+  current_page: string | null;
+  pages: Array<{ path: string; at: string }> | null;
+  first_seen: string;
+  last_seen: string;
+};
+
 const Admin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
