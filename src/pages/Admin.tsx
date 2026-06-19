@@ -111,6 +111,49 @@ const Admin = () => {
   }, [session, loadLogs]);
 
   useEffect(() => {
+    if (!session) return;
+    const load = async () => {
+      const since = new Date(Date.now() - 60 * 60_000).toISOString();
+      const { data } = await supabase
+        .from("visitor_sessions")
+        .select("*")
+        .gte("last_seen", since)
+        .order("last_seen", { ascending: false })
+        .limit(100);
+      setVisitors((data ?? []) as VisitorSession[]);
+    };
+    load();
+    const channel = supabase
+      .channel("admin-visitor-sessions")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "visitor_sessions" },
+        (payload) => {
+          if (payload.eventType === "DELETE") {
+            const row = payload.old as { id?: string };
+            if (row?.id) setVisitors((cur) => cur.filter((v) => v.id !== row.id));
+            return;
+          }
+          const row = payload.new as VisitorSession;
+          setVisitors((cur) => {
+            const without = cur.filter((v) => v.id !== row.id);
+            return [row, ...without].slice(0, 100);
+          });
+        },
+      )
+      .subscribe();
+    const refresh = setInterval(load, 60_000);
+    const tick = setInterval(() => setNowTick((n) => n + 1), 15_000);
+    return () => {
+      supabase.removeChannel(channel);
+      clearInterval(refresh);
+      clearInterval(tick);
+    };
+  }, [session]);
+
+
+
+  useEffect(() => {
     if (!session) {
       setOnlineStatus("checking");
       setHeartbeatError("");
