@@ -74,6 +74,39 @@ export type Database = {
         }
         Relationships: []
       }
+      visitor_sessions: {
+        Row: {
+          current_page: string | null
+          first_seen: string
+          id: string
+          ip_address: string | null
+          last_seen: string
+          pages: Json
+          user_agent: string | null
+          visitor_token: string
+        }
+        Insert: {
+          current_page?: string | null
+          first_seen?: string
+          id?: string
+          ip_address?: string | null
+          last_seen?: string
+          pages?: Json
+          user_agent?: string | null
+          visitor_token: string
+        }
+        Update: {
+          current_page?: string | null
+          first_seen?: string
+          id?: string
+          ip_address?: string | null
+          last_seen?: string
+          pages?: Json
+          user_agent?: string | null
+          visitor_token?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
