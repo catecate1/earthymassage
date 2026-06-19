@@ -34,6 +34,8 @@ const Admin = () => {
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [session, setSession] = useState<unknown>(null);
   const [logs, setLogs] = useState<ChatLog[]>([]);
+  const [visitors, setVisitors] = useState<VisitorSession[]>([]);
+  const [, setNowTick] = useState(0);
   const [logsLoading, setLogsLoading] = useState(false);
   const [filter, setFilter] = useState("");
   const [replyDrafts, setReplyDrafts] = useState<Record<string, string>>({});
