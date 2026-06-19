@@ -20,6 +20,7 @@ import Anatomy from "./pages/Anatomy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Admin from "./pages/Admin.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
+import VisitorTracker from "./components/VisitorTracker.tsx";
 
 const queryClient = new QueryClient();
 
