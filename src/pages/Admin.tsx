@@ -404,6 +404,69 @@ const Admin = () => {
 
         <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <h2 className="font-heading text-xl text-foreground">
+              Live visitors{" "}
+              <span className="text-sm font-body text-muted-foreground">
+                ({visitors.filter((v) => Date.now() - new Date(v.last_seen).getTime() < 2 * 60_000).length} on site now)
+              </span>
+            </h2>
+            <p className="text-xs font-body text-muted-foreground">
+              Updates in real time · shows last hour
+            </p>
+          </div>
+          {visitors.length === 0 ? (
+            <p className="font-body text-sm text-muted-foreground py-6 text-center">
+              No visitors in the last hour.
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {visitors.map((v) => {
+                const ageMs = Date.now() - new Date(v.last_seen).getTime();
+                const live = ageMs < 2 * 60_000;
+                const mins = Math.floor(ageMs / 60_000);
+                const ago = ageMs < 60_000 ? "just now" : `${mins} min ago`;
+                const recentPages = (v.pages ?? []).slice(-8);
+                return (
+                  <li key={v.id} className="rounded-xl border border-border bg-background p-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-body text-muted-foreground mb-1">
+                      <span className="flex items-center gap-2">
+                        <span
+                          className={`inline-block h-2 w-2 rounded-full ${live ? "bg-green-500" : "bg-muted-foreground/40"}`}
+                          aria-hidden
+                        />
+                        <span className={live ? "text-green-700 font-semibold" : ""}>
+                          {live ? "On site now" : `Last seen ${ago}`}
+                        </span>
+                        <span>· IP {v.ip_address ?? "unknown"}</span>
+                      </span>
+                      <span>First seen {new Date(v.first_seen).toLocaleString()}</span>
+                    </div>
+                    <p className="text-sm font-body">
+                      <span className="font-semibold">Current page:</span>{" "}
+                      <span className="font-mono">{v.current_page ?? "—"}</span>
+                    </p>
+                    {recentPages.length > 0 && (
+                      <p className="text-xs font-body text-muted-foreground mt-1">
+                        <span className="font-semibold text-foreground">Path:</span>{" "}
+                        {recentPages.map((p) => p.path).join(" → ")}
+                      </p>
+                    )}
+                    {v.user_agent && (
+                      <p className="text-[10px] font-body text-muted-foreground/70 mt-1 truncate" title={v.user_agent}>
+                        {v.user_agent}
+                      </p>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+
+
+
+        <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <h2 className="font-heading text-xl text-foreground">Chat logs</h2>
             <div className="flex items-center gap-2">
               <Input
