@@ -60,6 +60,7 @@ const testimonials = [
   "You just give a super awesome massage.",
   "Thank you! I slept great last night!",
   "Thank you Deb for a wonderful massage I literally fell asleep at one point. Best massage I've had in a while. Thank you.",
+  "Deb I really enjoyed the massage. I will schedule another appointment on my way back.",
 ];
 
 const Testimonials = () => {
