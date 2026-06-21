@@ -47,6 +47,7 @@ const specials = [
 
 
 const Specials = () => {
+  const isTestMode = new URLSearchParams(window.location.search).has("test");
   return (
     <div className="min-h-screen">
       <Navbar />
