@@ -72,7 +72,7 @@ const Specials = () => {
                 appointments on June 21, 22, or 23, 2026. One spin per device.
               </p>
             </div>
-            <SpinWheel />
+            <SpinWheel testMode={isTestMode} />
           </div>
         </section>
       )}
