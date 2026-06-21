@@ -10,14 +10,14 @@ type Segment = {
   color: string;
 };
 
-// 6 segments — 3 winners (50% OFF) alternating with 3 "Try Again"
+// 6 segments — every spin wins
 const SEGMENTS: Segment[] = [
-  { label: "50% OFF", win: true, color: "hsl(var(--primary))" },
-  { label: "Try Again", win: false, color: "hsl(var(--petal))" },
-  { label: "50% OFF", win: true, color: "hsl(var(--primary))" },
-  { label: "Try Again", win: false, color: "hsl(var(--petal))" },
-  { label: "50% OFF", win: true, color: "hsl(var(--primary))" },
-  { label: "Try Again", win: false, color: "hsl(var(--petal))" },
+  { label: "", win: true, color: "hsl(var(--primary))" },
+  { label: "", win: true, color: "hsl(var(--petal))" },
+  { label: "", win: true, color: "hsl(var(--primary))" },
+  { label: "", win: true, color: "hsl(var(--petal))" },
+  { label: "", win: true, color: "hsl(var(--primary))" },
+  { label: "", win: true, color: "hsl(var(--petal))" },
 ];
 
 const WIN_CODE = "fd50";
@@ -153,11 +153,6 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
         </div>
       )}
 
-      {alreadySpun && result && !result.win && (
-        <p className="text-foreground/80 font-body text-center max-w-md">
-          So close! Better luck next time.
-        </p>
-      )}
 
       {alreadySpun && !result && (
         <p className="text-foreground/70 font-body text-center text-sm">
