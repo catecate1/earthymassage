@@ -133,6 +133,15 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
         <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${hubSize} rounded-full bg-card border-4 border-primary/40 shadow-soft flex items-center justify-center`}>
           <Gift className={`${iconSize} text-primary`} />
         </div>
+
+        {/* Revealed prize on landed segment */}
+        {alreadySpun && result?.win && (
+          <div className="absolute left-1/2 top-[22%] -translate-x-1/2 z-10 pointer-events-none bg-card/90 rounded-full px-3 py-1 border border-primary/20 shadow-soft">
+            <span className={`font-display font-bold ${textSize} text-primary whitespace-nowrap`}>
+              50% OFF
+            </span>
+          </div>
+        )}
       </div>
 
       {!alreadySpun && (
