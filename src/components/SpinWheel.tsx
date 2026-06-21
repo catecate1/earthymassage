@@ -25,9 +25,10 @@ const SEG_ANGLE = 360 / SEGMENTS.length;
 
 interface SpinWheelProps {
   compact?: boolean;
+  testMode?: boolean;
 }
 
-const SpinWheel = ({ compact = false }: SpinWheelProps) => {
+const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
   const sizeClass = compact ? "w-52 h-52 sm:w-56 sm:h-56" : "w-72 h-72 sm:w-80 sm:h-80";
   const hubSize = compact ? "w-9 h-9" : "w-12 h-12";
   const iconSize = compact ? "w-4 h-4" : "w-5 h-5";
