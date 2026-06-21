@@ -10,14 +10,14 @@ type Segment = {
   color: string;
 };
 
-// 6 segments — every spin wins
+// 6 segments — 3 red (win), 3 petal (no win)
 const SEGMENTS: Segment[] = [
   { label: "", win: true, color: "hsl(var(--primary))" },
-  { label: "", win: true, color: "hsl(var(--petal))" },
+  { label: "", win: false, color: "hsl(var(--petal))" },
   { label: "", win: true, color: "hsl(var(--primary))" },
-  { label: "", win: true, color: "hsl(var(--petal))" },
+  { label: "", win: false, color: "hsl(var(--petal))" },
   { label: "", win: true, color: "hsl(var(--primary))" },
-  { label: "", win: true, color: "hsl(var(--petal))" },
+  { label: "", win: false, color: "hsl(var(--petal))" },
 ];
 
 const WIN_CODE = "fd50";
