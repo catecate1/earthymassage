@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-spa.jpg";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import SunRayClock from "@/components/SunRayClock";
 
 const HeroSection = () => {
   return (
