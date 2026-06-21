@@ -25,9 +25,10 @@ const SEG_ANGLE = 360 / SEGMENTS.length;
 
 interface SpinWheelProps {
   compact?: boolean;
+  testMode?: boolean;
 }
 
-const SpinWheel = ({ compact = false }: SpinWheelProps) => {
+const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
   const sizeClass = compact ? "w-52 h-52 sm:w-56 sm:h-56" : "w-72 h-72 sm:w-80 sm:h-80";
   const hubSize = compact ? "w-9 h-9" : "w-12 h-12";
   const iconSize = compact ? "w-4 h-4" : "w-5 h-5";
@@ -39,6 +40,7 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
   const wheelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (testMode) return;
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
@@ -52,10 +54,10 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
         setAlreadySpun(true);
       }
     }
-  }, []);
+  }, [testMode]);
 
   const handleSpin = () => {
-    if (spinning || alreadySpun) return;
+    if (spinning || (!testMode && alreadySpun)) return;
     setSpinning(true);
 
     const targetIndex = Math.floor(Math.random() * SEGMENTS.length);
@@ -69,11 +71,19 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
       setSpinning(false);
       setResult(SEGMENTS[targetIndex]);
       setAlreadySpun(true);
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({ resultIndex: targetIndex, rotation: finalRotation, ts: Date.now() }),
-      );
+      if (!testMode) {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({ resultIndex: targetIndex, rotation: finalRotation, ts: Date.now() }),
+        );
+      }
     }, 4200);
+  };
+
+  const handleReset = () => {
+    setAlreadySpun(false);
+    setResult(null);
+    setRotation(0);
   };
 
   const conic = SEGMENTS.map((s, i) => {
@@ -144,9 +154,9 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
         )}
       </div>
 
-      {!alreadySpun && (
+      {(!alreadySpun || testMode) && (
         <Button onClick={handleSpin} disabled={spinning} size="lg" className="px-10">
-          {spinning ? "Spinning..." : "Spin to Win!"}
+          {spinning ? "Spinning..." : alreadySpun ? "Spin Again" : "Spin to Win!"}
         </Button>
       )}
 

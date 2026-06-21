@@ -47,6 +47,7 @@ const specials = [
 
 
 const Specials = () => {
+  const isTestMode = new URLSearchParams(window.location.search).has("test");
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -71,7 +72,7 @@ const Specials = () => {
                 appointments on June 21, 22, or 23, 2026. One spin per device.
               </p>
             </div>
-            <SpinWheel />
+            <SpinWheel testMode={isTestMode} />
           </div>
         </section>
       )}
