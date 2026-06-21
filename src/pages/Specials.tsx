@@ -1,10 +1,19 @@
 import { motion } from "framer-motion";
-import { Star, Users, Tag, ArrowRight, Gift, Sun } from "lucide-react";
+import { Star, Users, Tag, ArrowRight, Gift, Sun, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import SpinWheel from "@/components/SpinWheel";
+
+// First Day of Summer special: only show June 21 & 22, 2026
+const isSummerSpecialActive = () => {
+  const now = new Date();
+  const start = new Date(2026, 5, 21, 0, 0, 0);
+  const end = new Date(2026, 5, 22, 23, 59, 59);
+  return now >= start && now <= end;
+};
 
 const specials = [
 {
@@ -45,6 +54,27 @@ const Specials = () => {
         title="Current Specials"
         subtitle="Take advantage of these limited-time offers and treat yourself." />
       
+
+      {isSummerSpecialActive() && (
+        <section className="py-12 bg-petal/30 border-b border-border/30">
+          <div className="container">
+            <div className="max-w-3xl mx-auto text-center mb-8">
+              <span className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-body px-3 py-1 rounded-full mb-4">
+                <Sparkles className="w-3 h-3" /> First Day of Summer · June 21 & 22, 2026 Only
+              </span>
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-3">
+                Spin to Win 50% Off!
+              </h2>
+              <p className="text-muted-foreground font-body">
+                In celebration of the first day of summer, spin the wheel for a chance to win
+                50% off a 60, 75, or 90-minute Classic Swedish session. Valid only for
+                appointments on June 21 or June 22, 2026. One spin per device.
+              </p>
+            </div>
+            <SpinWheel />
+          </div>
+        </section>
+      )}
 
       <section className="py-16 bg-background">
         <div className="container">
