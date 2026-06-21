@@ -7,11 +7,11 @@ import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import SpinWheel from "@/components/SpinWheel";
 
-// First Day of Summer special: only show June 21 & 22, 2026
+// First Day of Summer special: show June 21–23, 2026
 const isSummerSpecialActive = () => {
   const now = new Date();
   const start = new Date(2026, 5, 21, 0, 0, 0);
-  const end = new Date(2026, 5, 22, 23, 59, 59);
+  const end = new Date(2026, 5, 23, 23, 59, 59);
   return now >= start && now <= end;
 };
 
@@ -60,7 +60,7 @@ const Specials = () => {
           <div className="container">
             <div className="max-w-3xl mx-auto text-center mb-8">
               <span className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-body px-3 py-1 rounded-full mb-4">
-                <Sparkles className="w-3 h-3" /> First Day of Summer · June 21 & 22, 2026 Only
+                <Sparkles className="w-3 h-3" /> First Day of Summer · June 21–23, 2026 Only
               </span>
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-3">
                 Spin to Win 50% Off!
@@ -68,7 +68,7 @@ const Specials = () => {
               <p className="text-muted-foreground font-body">
                 In celebration of the first day of summer, spin the wheel for a chance to win
                 50% off a 60, 75, or 90-minute Classic Swedish session. Valid only for
-                appointments on June 21 or June 22, 2026. One spin per device.
+                appointments on June 21, 22, or 23, 2026. One spin per device.
               </p>
             </div>
             <SpinWheel />
