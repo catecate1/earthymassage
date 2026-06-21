@@ -2,26 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Gift } from "lucide-react";
 
-const STORAGE_KEY = "earthy_spin_wheel_v2";
+const STORAGE_KEY = "earthy_spin_wheel_fd50";
 
 type Segment = {
   label: string;
-  code: string;
-  amount: string;
-  duration: string;
+  win: boolean;
   color: string;
 };
 
-// 6 segments alternating between two accent colors — everyone wins
+// 6 segments — 3 winners (50% OFF) alternating with 3 "Try Again"
 const SEGMENTS: Segment[] = [
-  { label: "$10 OFF", code: "as10", amount: "$10", duration: "60-minute", color: "hsl(var(--primary))" },
-  { label: "$20 OFF", code: "as21", amount: "$20", duration: "75-minute", color: "hsl(var(--petal))" },
-  { label: "$30 OFF", code: "as32", amount: "$30", duration: "90-minute", color: "hsl(var(--primary))" },
-  { label: "$10 OFF", code: "as10", amount: "$10", duration: "60-minute", color: "hsl(var(--petal))" },
-  { label: "$20 OFF", code: "as21", amount: "$20", duration: "75-minute", color: "hsl(var(--primary))" },
-  { label: "$30 OFF", code: "as32", amount: "$30", duration: "90-minute", color: "hsl(var(--petal))" },
+  { label: "50% OFF", win: true, color: "hsl(var(--primary))" },
+  { label: "Try Again", win: false, color: "hsl(var(--petal))" },
+  { label: "50% OFF", win: true, color: "hsl(var(--primary))" },
+  { label: "Try Again", win: false, color: "hsl(var(--petal))" },
+  { label: "50% OFF", win: true, color: "hsl(var(--primary))" },
+  { label: "Try Again", win: false, color: "hsl(var(--petal))" },
 ];
 
+const WIN_CODE = "fd50";
 const SEG_ANGLE = 360 / SEGMENTS.length;
 
 interface SpinWheelProps {
@@ -142,16 +141,22 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
         </Button>
       )}
 
-      {alreadySpun && result && (
+      {alreadySpun && result?.win && (
         <div className="text-center space-y-2 max-w-md">
-          <p className="font-display text-2xl text-primary">You won {result.amount} off!</p>
+          <p className="font-display text-2xl text-primary">You won 50% off!</p>
           <p className="text-foreground/80 font-body">
             Enter code{" "}
-            <span className="font-semibold text-primary tracking-wide">{result.code}</span>{" "}
-            at checkout for {result.amount} off a standard rate{" "}
-            <span className="whitespace-nowrap">{result.duration} Classic Swedish session.</span>
+            <span className="font-semibold text-primary tracking-wide">{WIN_CODE}</span>{" "}
+            at checkout for 50% off a standard rate 60, 75, or 90-minute Classic Swedish session.
+            Valid for appointments on June 21 or June 22, 2026 only.
           </p>
         </div>
+      )}
+
+      {alreadySpun && result && !result.win && (
+        <p className="text-foreground/80 font-body text-center max-w-md">
+          So close! Better luck next time.
+        </p>
       )}
 
       {alreadySpun && !result && (
