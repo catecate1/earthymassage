@@ -40,6 +40,7 @@ const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
   const wheelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (testMode) return;
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
@@ -53,7 +54,7 @@ const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
         setAlreadySpun(true);
       }
     }
-  }, []);
+  }, [testMode]);
 
   const handleSpin = () => {
     if (spinning || alreadySpun) return;
