@@ -153,11 +153,6 @@ const SpinWheel = ({ compact = false }: SpinWheelProps) => {
         </div>
       )}
 
-      {alreadySpun && result && !result.win && (
-        <p className="text-foreground/80 font-body text-center max-w-md">
-          So close! Better luck next time.
-        </p>
-      )}
 
       {alreadySpun && !result && (
         <p className="text-foreground/70 font-body text-center text-sm">
