@@ -57,7 +57,7 @@ const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
   }, [testMode]);
 
   const handleSpin = () => {
-    if (spinning || alreadySpun) return;
+    if (spinning || (!testMode && alreadySpun)) return;
     setSpinning(true);
 
     const targetIndex = Math.floor(Math.random() * SEGMENTS.length);
@@ -71,11 +71,19 @@ const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
       setSpinning(false);
       setResult(SEGMENTS[targetIndex]);
       setAlreadySpun(true);
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({ resultIndex: targetIndex, rotation: finalRotation, ts: Date.now() }),
-      );
+      if (!testMode) {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({ resultIndex: targetIndex, rotation: finalRotation, ts: Date.now() }),
+        );
+      }
     }, 4200);
+  };
+
+  const handleReset = () => {
+    setAlreadySpun(false);
+    setResult(null);
+    setRotation(0);
   };
 
   const conic = SEGMENTS.map((s, i) => {
