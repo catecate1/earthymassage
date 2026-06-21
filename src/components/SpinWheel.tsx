@@ -10,14 +10,14 @@ type Segment = {
   color: string;
 };
 
-// 6 segments — every spin wins
+// 6 segments — 3 red (win), 3 petal (no win)
 const SEGMENTS: Segment[] = [
   { label: "", win: true, color: "hsl(var(--primary))" },
-  { label: "", win: true, color: "hsl(var(--petal))" },
+  { label: "", win: false, color: "hsl(var(--petal))" },
   { label: "", win: true, color: "hsl(var(--primary))" },
-  { label: "", win: true, color: "hsl(var(--petal))" },
+  { label: "", win: false, color: "hsl(var(--petal))" },
   { label: "", win: true, color: "hsl(var(--primary))" },
-  { label: "", win: true, color: "hsl(var(--petal))" },
+  { label: "", win: false, color: "hsl(var(--petal))" },
 ];
 
 const WIN_CODE = "fd50";
@@ -172,6 +172,15 @@ const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
         </div>
       )}
 
+
+      {alreadySpun && result && !result.win && (
+        <div className="text-center space-y-2 max-w-md">
+          <p className="font-display text-2xl text-foreground/80">Not this time!</p>
+          <p className="text-foreground/70 font-body">
+            You landed on a blank segment. Better luck next promotion!
+          </p>
+        </div>
+      )}
 
       {alreadySpun && !result && (
         <p className="text-foreground/70 font-body text-center text-sm">
