@@ -154,9 +154,9 @@ const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
         )}
       </div>
 
-      {!alreadySpun && (
+      {(!alreadySpun || testMode) && (
         <Button onClick={handleSpin} disabled={spinning} size="lg" className="px-10">
-          {spinning ? "Spinning..." : "Spin to Win!"}
+          {spinning ? "Spinning..." : alreadySpun ? "Spin Again" : "Spin to Win!"}
         </Button>
       )}
 
