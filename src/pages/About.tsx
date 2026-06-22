@@ -3,16 +3,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import massageRoom from "@/assets/massage-room.jpg";
-import studioTable from "@/assets/studio-table.jpg.asset.json";
-import studioCorner from "@/assets/studio-corner.jpg.asset.json";
-import studioEntry from "@/assets/studio-entry.jpg.asset.json";
-
-const studioPhotos = [
-  { src: studioTable.url, alt: "Massage table with assortment of massage tools" },
-  { src: studioCorner.url, alt: "Quiet corner of the studio with chair and mirror" },
-  { src: studioEntry.url, alt: "Studio entryway with water cooler and plant" },
-];
-
 const About = () => {
   return (
     <div className="min-h-screen">
@@ -68,42 +58,6 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-secondary/30">
-        <div className="container max-w-5xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="font-display text-3xl md:text-4xl text-foreground text-center mb-10">
-            A peek inside the studio
-          </motion.h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {studioPhotos.map((photo, i) => (
-              <motion.div
-                key={photo.src}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative overflow-hidden rounded-lg shadow-card aspect-[3/4]">
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover"
-                  loading="lazy" />
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                  <span
-                    className="font-display text-white/40 text-2xl md:text-3xl tracking-widest -rotate-[20deg] select-none"
-                    style={{ textShadow: "0 1px 3px rgba(0,0,0,0.35)" }}>
-                    Earthy Massage
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
 
       <Footer />
