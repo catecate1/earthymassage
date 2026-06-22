@@ -52,21 +52,6 @@ const WhatIs = () => {
             </p>
           </motion.div>
 
-          {/* Chi */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
-            <h2 className="font-display text-3xl text-foreground text-center mb-6">What Is Chi?</h2>
-            <p className="font-body text-muted-foreground leading-relaxed max-w-2xl mx-auto text-left">
-              Chi (also spelled Qi) is a concept rooted in traditional Chinese philosophy that describes the vital life energy flowing through all living things. Think of it as the body's natural current—when it moves freely, we feel balanced and well; when it becomes blocked or stagnant, we may feel tension, fatigue, or discomfort.
-            </p>
-          </motion.div>
-
-
           {/* Techniques */}
           <h2 className="font-display text-3xl text-foreground text-center mb-10">The Five Core Techniques</h2>
           <div className="space-y-4 mb-20">
