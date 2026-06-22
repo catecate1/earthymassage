@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound.tsx";
 import Admin from "./pages/Admin.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 import VisitorTracker from "./components/VisitorTracker.tsx";
+import SunRayClock from "./components/SunRayClock.tsx";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,9 @@ const App = () => (
         </Routes>
         <VisitorTracker />
         <ChatWidget />
+        <div className="fixed top-32 right-4 z-40 pointer-events-none">
+          <SunRayClock size={160} className="drop-shadow-2xl" />
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
