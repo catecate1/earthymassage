@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-spa.jpg";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import SunRayClock from "@/components/SunRayClock";
 
 const HeroSection = () => {
   return (
@@ -18,15 +17,6 @@ const HeroSection = () => {
 
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/50 via-foreground/20 to-transparent" />
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9, rotate: -10 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        className="absolute top-32 right-4 z-20"
-      >
-        <SunRayClock size={160} className="drop-shadow-2xl" />
-      </motion.div>
 
       <div className="container relative z-10 py-20 flex flex-col lg:flex-row items-center gap-10">
         <motion.div
