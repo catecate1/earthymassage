@@ -64,9 +64,6 @@ const WhatIs = () => {
             <p className="font-body text-muted-foreground leading-relaxed max-w-2xl mx-auto text-left">
               Chi (also spelled Qi) is a concept rooted in traditional Chinese philosophy that describes the vital life energy flowing through all living things. Think of it as the body's natural current—when it moves freely, we feel balanced and well; when it becomes blocked or stagnant, we may feel tension, fatigue, or discomfort.
             </p>
-            <p className="font-body text-muted-foreground leading-relaxed max-w-2xl mx-auto text-left">
-              During a massage, the gentle pressure and flowing strokes help encourage this energy to move again. It's not about forcing anything—just creating the space for your body to settle into its own rhythm and find its way back to ease.
-            </p>
           </motion.div>
 
 
