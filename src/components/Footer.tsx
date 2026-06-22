@@ -8,6 +8,7 @@ const footerLinks = [
   { label: "Services", to: "/services" },
   { label: "Specials", to: "/specials" },
   { label: "What's New", to: "/whats-new" },
+  { label: "Wellness Notes", to: "/wellness-notes" },
   { label: "Availability", to: "/availability" },
   { label: "Testimonials", to: "/testimonials" },
   { label: "Informed Choices", to: "/informed-choices" },
