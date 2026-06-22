@@ -23,7 +23,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, scale: 0.9, rotate: -10 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        className="absolute top-4 right-4 z-20"
+        className="absolute top-24 right-4 z-20"
       >
         <SunRayClock size={120} className="drop-shadow-2xl" />
       </motion.div>
