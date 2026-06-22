@@ -23,9 +23,9 @@ const HeroSection = () => {
         initial={{ opacity: 0, scale: 0.9, rotate: -10 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        className="absolute top-24 right-4 z-20"
+        className="absolute top-32 right-4 z-20"
       >
-        <SunRayClock size={120} className="drop-shadow-2xl" />
+        <SunRayClock size={160} className="drop-shadow-2xl" />
       </motion.div>
 
       <div className="container relative z-10 py-20 flex flex-col lg:flex-row items-center gap-10">
