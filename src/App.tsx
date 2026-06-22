@@ -52,6 +52,9 @@ const App = () => (
         </Routes>
         <VisitorTracker />
         <ChatWidget />
+        <div className="fixed top-32 right-4 z-40 pointer-events-none">
+          <SunRayClock size={160} className="drop-shadow-2xl" />
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
