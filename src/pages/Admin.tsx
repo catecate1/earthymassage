@@ -385,6 +385,9 @@ const Admin = () => {
     setConfirmPassword("");
     setShowPasswordDialog(false);
     toast({ title: "Password updated", description: "Use your new password next time you sign in." });
+  };
+
+
 
   const deleteOne = async (id: string) => {
     if (!confirm("Delete this chat log? This cannot be undone.")) return;
