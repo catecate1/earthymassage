@@ -408,10 +408,26 @@ const Admin = () => {
   const filtered = logs.filter((l) => {
     if (!filter.trim()) return true;
     const f = filter.toLowerCase();
+    const tag = l.visitor_token ? tags[l.visitor_token] : undefined;
     return (
       (l.ip_address ?? "").toLowerCase().includes(f) ||
       l.user_message.toLowerCase().includes(f) ||
-      (l.ai_reply ?? "").toLowerCase().includes(f)
+      (l.ai_reply ?? "").toLowerCase().includes(f) ||
+      (tag?.name ?? "").toLowerCase().includes(f) ||
+      (tag?.notes ?? "").toLowerCase().includes(f)
+    );
+  });
+
+  const filteredVisitors = visitors.filter((v) => {
+    if (!visitorFilter.trim()) return true;
+    const f = visitorFilter.toLowerCase();
+    const tag = tags[v.visitor_token];
+    return (
+      (v.ip_address ?? "").toLowerCase().includes(f) ||
+      (v.current_page ?? "").toLowerCase().includes(f) ||
+      v.visitor_token.toLowerCase().includes(f) ||
+      (tag?.name ?? "").toLowerCase().includes(f) ||
+      (tag?.notes ?? "").toLowerCase().includes(f)
     );
   });
 
