@@ -42,6 +42,10 @@ const Admin = () => {
   const [session, setSession] = useState<unknown>(null);
   const [logs, setLogs] = useState<ChatLog[]>([]);
   const [visitors, setVisitors] = useState<VisitorSession[]>([]);
+  const [tags, setTags] = useState<Record<string, VisitorTag>>({});
+  const [tagDrafts, setTagDrafts] = useState<Record<string, { name: string; notes: string }>>({});
+  const [savingTagToken, setSavingTagToken] = useState<string | null>(null);
+  const [visitorFilter, setVisitorFilter] = useState("");
   const [, setNowTick] = useState(0);
   const [logsLoading, setLogsLoading] = useState(false);
   const [filter, setFilter] = useState("");
