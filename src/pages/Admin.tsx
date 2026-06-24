@@ -46,6 +46,8 @@ const Admin = () => {
   const [tagDrafts, setTagDrafts] = useState<Record<string, { name: string; notes: string }>>({});
   const [savingTagToken, setSavingTagToken] = useState<string | null>(null);
   const [visitorFilter, setVisitorFilter] = useState("");
+  const [visitorPageSize, setVisitorPageSize] = useState<number>(20);
+  const [logsPageSize, setLogsPageSize] = useState<number>(20);
   const [, setNowTick] = useState(0);
   const [logsLoading, setLogsLoading] = useState(false);
   const [filter, setFilter] = useState("");
@@ -71,7 +73,7 @@ const Admin = () => {
       .from("chat_logs")
       .select("*")
       .order("created_at", { ascending: false })
-      .limit(200);
+      .limit(2000);
     setLogsLoading(false);
     if (error) {
       toast({ title: "Couldn't load logs", description: error.message, variant: "destructive" });
@@ -422,14 +424,20 @@ const Admin = () => {
     if (!visitorFilter.trim()) return true;
     const f = visitorFilter.toLowerCase();
     const tag = tags[v.visitor_token];
+    const pagesText = (v.pages ?? []).map((p) => p.path).join(" ").toLowerCase();
     return (
       (v.ip_address ?? "").toLowerCase().includes(f) ||
       (v.current_page ?? "").toLowerCase().includes(f) ||
+      pagesText.includes(f) ||
       v.visitor_token.toLowerCase().includes(f) ||
+      (v.user_agent ?? "").toLowerCase().includes(f) ||
       (tag?.name ?? "").toLowerCase().includes(f) ||
       (tag?.notes ?? "").toLowerCase().includes(f)
     );
   });
+
+  const visibleVisitors = visitorPageSize === 0 ? filteredVisitors : filteredVisitors.slice(0, visitorPageSize);
+  const visibleLogs = logsPageSize === 0 ? filtered : filtered.slice(0, logsPageSize);
 
   if (!session) {
     return (
@@ -512,6 +520,18 @@ const Admin = () => {
                 onChange={(e) => setVisitorFilter(e.target.value)}
                 className="w-64"
               />
+              <select
+                value={visitorPageSize}
+                onChange={(e) => setVisitorPageSize(Number(e.target.value))}
+                className="h-10 rounded-xl border border-input bg-background px-2 text-sm font-body"
+                aria-label="Visitors to show"
+              >
+                <option value={10}>Show 10</option>
+                <option value={20}>Show 20</option>
+                <option value={50}>Show 50</option>
+                <option value={100}>Show 100</option>
+                <option value={0}>Show all</option>
+              </select>
             </div>
           </div>
           {filteredVisitors.length === 0 ? (
@@ -520,7 +540,7 @@ const Admin = () => {
             </p>
           ) : (
             <ul className="space-y-2">
-              {filteredVisitors.map((v) => {
+              {visibleVisitors.map((v) => {
                 const ageMs = Date.now() - new Date(v.last_seen).getTime();
                 const live = ageMs < 2 * 60_000;
                 const mins = Math.floor(ageMs / 60_000);
@@ -612,11 +632,23 @@ const Admin = () => {
             <h2 className="font-heading text-xl text-foreground">Chat logs</h2>
             <div className="flex items-center gap-2">
               <Input
-                placeholder="Filter by IP or text…"
+                placeholder="Filter by name, notes, IP, text…"
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
                 className="w-56"
               />
+              <select
+                value={logsPageSize}
+                onChange={(e) => setLogsPageSize(Number(e.target.value))}
+                className="h-10 rounded-xl border border-input bg-background px-2 text-sm font-body"
+                aria-label="Logs to show"
+              >
+                <option value={10}>Show 10</option>
+                <option value={20}>Show 20</option>
+                <option value={50}>Show 50</option>
+                <option value={100}>Show 100</option>
+                <option value={0}>Show all</option>
+              </select>
               <Button variant="outline" onClick={loadLogs} disabled={logsLoading}>
                 {logsLoading ? "Loading…" : "Refresh"}
               </Button>
@@ -632,7 +664,7 @@ const Admin = () => {
             </p>
           ) : (
             <ul className="space-y-3">
-              {filtered.map((l) => {
+              {visibleLogs.map((l) => {
                 const tag = l.visitor_token ? tags[l.visitor_token] : undefined;
                 return (
                 <li key={l.id} className="rounded-xl border border-border bg-background p-3">
