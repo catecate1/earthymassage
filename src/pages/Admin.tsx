@@ -632,11 +632,23 @@ const Admin = () => {
             <h2 className="font-heading text-xl text-foreground">Chat logs</h2>
             <div className="flex items-center gap-2">
               <Input
-                placeholder="Filter by IP or text…"
+                placeholder="Filter by name, notes, IP, text…"
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
                 className="w-56"
               />
+              <select
+                value={logsPageSize}
+                onChange={(e) => setLogsPageSize(Number(e.target.value))}
+                className="h-10 rounded-xl border border-input bg-background px-2 text-sm font-body"
+                aria-label="Logs to show"
+              >
+                <option value={10}>Show 10</option>
+                <option value={20}>Show 20</option>
+                <option value={50}>Show 50</option>
+                <option value={100}>Show 100</option>
+                <option value={0}>Show all</option>
+              </select>
               <Button variant="outline" onClick={loadLogs} disabled={logsLoading}>
                 {logsLoading ? "Loading…" : "Refresh"}
               </Button>
@@ -652,7 +664,7 @@ const Admin = () => {
             </p>
           ) : (
             <ul className="space-y-3">
-              {filtered.map((l) => {
+              {visibleLogs.map((l) => {
                 const tag = l.visitor_token ? tags[l.visitor_token] : undefined;
                 return (
                 <li key={l.id} className="rounded-xl border border-border bg-background p-3">
