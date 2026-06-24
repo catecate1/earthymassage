@@ -124,13 +124,11 @@ const Admin = () => {
   useEffect(() => {
     if (!session) return;
     const load = async () => {
-      const since = new Date(Date.now() - 60 * 60_000).toISOString();
       const { data } = await supabase
         .from("visitor_sessions")
         .select("*")
-        .gte("last_seen", since)
         .order("last_seen", { ascending: false })
-        .limit(100);
+        .limit(1000);
       setVisitors((data ?? []) as VisitorSession[]);
     };
     load();
@@ -148,7 +146,7 @@ const Admin = () => {
           const row = payload.new as VisitorSession;
           setVisitors((cur) => {
             const without = cur.filter((v) => v.id !== row.id);
-            return [row, ...without].slice(0, 100);
+            return [row, ...without].slice(0, 1000);
           });
         },
       )
@@ -161,6 +159,74 @@ const Admin = () => {
       clearInterval(tick);
     };
   }, [session]);
+
+  // Load visitor tags (name + notes per visitor_token)
+  useEffect(() => {
+    if (!session) return;
+    const load = async () => {
+      const { data } = await supabase.from("visitor_tags").select("visitor_token,name,notes");
+      const map: Record<string, VisitorTag> = {};
+      (data ?? []).forEach((t) => {
+        map[(t as VisitorTag).visitor_token] = t as VisitorTag;
+      });
+      setTags(map);
+    };
+    load();
+    const channel = supabase
+      .channel("admin-visitor-tags")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "visitor_tags" },
+        (payload) => {
+          if (payload.eventType === "DELETE") {
+            const row = payload.old as { visitor_token?: string };
+            if (row?.visitor_token) {
+              setTags((cur) => {
+                const next = { ...cur };
+                delete next[row.visitor_token!];
+                return next;
+              });
+            }
+            return;
+          }
+          const row = payload.new as VisitorTag;
+          setTags((cur) => ({ ...cur, [row.visitor_token]: row }));
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [session]);
+
+  const saveTag = async (visitor_token: string) => {
+    const draft = tagDrafts[visitor_token] ?? {
+      name: tags[visitor_token]?.name ?? "",
+      notes: tags[visitor_token]?.notes ?? "",
+    };
+    setSavingTagToken(visitor_token);
+    const { data, error } = await supabase
+      .from("visitor_tags")
+      .upsert(
+        {
+          visitor_token,
+          name: draft.name.trim() || null,
+          notes: draft.notes.trim() || null,
+        },
+        { onConflict: "visitor_token" },
+      )
+      .select("visitor_token,name,notes")
+      .maybeSingle();
+    setSavingTagToken(null);
+    if (error) {
+      toast({ title: "Save failed", description: error.message, variant: "destructive" });
+      return;
+    }
+    if (data) setTags((cur) => ({ ...cur, [visitor_token]: data as VisitorTag }));
+    toast({ title: "Saved", description: "Visitor name and notes updated." });
+  };
+
+
 
 
 
