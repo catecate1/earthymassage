@@ -14,6 +14,13 @@ type ChatLog = {
   owner_reply: string | null;
   owner_replied_at: string | null;
   owner_online: boolean;
+  visitor_token: string | null;
+};
+
+type VisitorTag = {
+  visitor_token: string;
+  name: string | null;
+  notes: string | null;
 };
 
 type VisitorSession = {
