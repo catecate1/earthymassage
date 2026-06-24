@@ -359,12 +359,14 @@ const Admin = () => {
   };
 
   const deleteOne = async (id: string) => {
+    if (!confirm("Delete this chat log? This cannot be undone.")) return;
     const { error } = await supabase.from("chat_logs").delete().eq("id", id);
     if (error) {
       toast({ title: "Delete failed", description: error.message, variant: "destructive" });
       return;
     }
     setLogs((l) => l.filter((x) => x.id !== id));
+    toast({ title: "Log deleted" });
   };
 
   const deleteAll = async () => {
