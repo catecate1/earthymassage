@@ -73,7 +73,7 @@ const Admin = () => {
       .from("chat_logs")
       .select("*")
       .order("created_at", { ascending: false })
-      .limit(200);
+      .limit(2000);
     setLogsLoading(false);
     if (error) {
       toast({ title: "Couldn't load logs", description: error.message, variant: "destructive" });
