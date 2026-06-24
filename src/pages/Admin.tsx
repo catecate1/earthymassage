@@ -520,6 +520,18 @@ const Admin = () => {
                 onChange={(e) => setVisitorFilter(e.target.value)}
                 className="w-64"
               />
+              <select
+                value={visitorPageSize}
+                onChange={(e) => setVisitorPageSize(Number(e.target.value))}
+                className="h-10 rounded-xl border border-input bg-background px-2 text-sm font-body"
+                aria-label="Visitors to show"
+              >
+                <option value={10}>Show 10</option>
+                <option value={20}>Show 20</option>
+                <option value={50}>Show 50</option>
+                <option value={100}>Show 100</option>
+                <option value={0}>Show all</option>
+              </select>
             </div>
           </div>
           {filteredVisitors.length === 0 ? (
@@ -528,7 +540,7 @@ const Admin = () => {
             </p>
           ) : (
             <ul className="space-y-2">
-              {filteredVisitors.map((v) => {
+              {visibleVisitors.map((v) => {
                 const ageMs = Date.now() - new Date(v.last_seen).getTime();
                 const live = ageMs < 2 * 60_000;
                 const mins = Math.floor(ageMs / 60_000);
