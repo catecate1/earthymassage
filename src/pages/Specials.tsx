@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import SpinWheel from "@/components/SpinWheel";
+
 
 // First Day of Summer special: show June 21–23, 2026
 const isSummerSpecialActive = () => {
