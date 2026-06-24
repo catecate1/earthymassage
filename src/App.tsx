@@ -20,6 +20,7 @@ import Directions from "./pages/Directions.tsx";
 import Anatomy from "./pages/Anatomy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Admin from "./pages/Admin.tsx";
+import ResetPassword from "./pages/ResetPassword.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 import VisitorTracker from "./components/VisitorTracker.tsx";
 import SunRayClock from "./components/SunRayClock.tsx";
@@ -49,6 +50,7 @@ const App = () => (
           <Route path="/directions" element={<Directions />} />
           <Route path="/anatomy" element={<Anatomy />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -38,6 +38,7 @@ const Admin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resettingPassword, setResettingPassword] = useState(false);
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [session, setSession] = useState<unknown>(null);
   const [logs, setLogs] = useState<ChatLog[]>([]);
@@ -332,14 +333,13 @@ const Admin = () => {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } =
-      mode === "signin"
-        ? await supabase.auth.signInWithPassword({ email, password })
-        : await supabase.auth.signUp({
-            email,
-            password,
-            options: { emailRedirectTo: `${window.location.origin}/admin` },
-          });
+    const { error } = await (mode === "signin"
+      ? supabase.auth.signInWithPassword({ email, password })
+      : supabase.auth.signUp({
+          email,
+          password,
+          options: { emailRedirectTo: `${window.location.origin}/admin` },
+        }));
     setLoading(false);
     if (error) {
       toast({ title: `${mode === "signin" ? "Sign in" : "Sign up"} failed`, description: error.message, variant: "destructive" });
@@ -349,6 +349,24 @@ const Admin = () => {
     } else {
       toast({ title: "Signed in", description: "You're now marked online." });
     }
+  };
+
+  const sendPasswordReset = async () => {
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) {
+      toast({ title: "Enter your email first", description: "Type your admin email, then request a password change.", variant: "destructive" });
+      return;
+    }
+    setResettingPassword(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(trimmedEmail, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setResettingPassword(false);
+    if (error) {
+      toast({ title: "Password email failed", description: error.message, variant: "destructive" });
+      return;
+    }
+    toast({ title: "Check your email", description: "Use the password-change link to set a new admin password." });
   };
 
   const signOut = async () => {
@@ -485,6 +503,16 @@ const Admin = () => {
             <button type="button" onClick={() => setMode(mode === "signin" ? "signup" : "signin")} className="w-full text-xs font-body text-muted-foreground hover:text-foreground">
               {mode === "signin" ? "First time? Create owner account" : "Already have an account? Sign in"}
             </button>
+            {mode === "signin" && (
+              <button
+                type="button"
+                onClick={sendPasswordReset}
+                disabled={resettingPassword}
+                className="w-full text-xs font-body font-semibold text-primary hover:text-primary/80 disabled:opacity-60"
+              >
+                {resettingPassword ? "Sending password email…" : "Change or reset password"}
+              </button>
+            )}
           </form>
         </div>
       </div>
