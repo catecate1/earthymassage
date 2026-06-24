@@ -500,31 +500,41 @@ const Admin = () => {
         <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <h2 className="font-heading text-xl text-foreground">
-              Live visitors{" "}
+              Visitors{" "}
               <span className="text-sm font-body text-muted-foreground">
-                ({visitors.filter((v) => Date.now() - new Date(v.last_seen).getTime() < 2 * 60_000).length} on site now)
+                ({visitors.filter((v) => Date.now() - new Date(v.last_seen).getTime() < 2 * 60_000).length} on site now · {visitors.length} total)
               </span>
             </h2>
-            <p className="text-xs font-body text-muted-foreground">
-              Updates in real time · shows last hour
-            </p>
+            <div className="flex items-center gap-2">
+              <Input
+                placeholder="Filter by name, notes, IP, page…"
+                value={visitorFilter}
+                onChange={(e) => setVisitorFilter(e.target.value)}
+                className="w-64"
+              />
+            </div>
           </div>
-          {visitors.length === 0 ? (
+          {filteredVisitors.length === 0 ? (
             <p className="font-body text-sm text-muted-foreground py-6 text-center">
-              No visitors in the last hour.
+              {visitors.length === 0 ? "No visitors yet." : "No visitors match that filter."}
             </p>
           ) : (
             <ul className="space-y-2">
-              {visitors.map((v) => {
+              {filteredVisitors.map((v) => {
                 const ageMs = Date.now() - new Date(v.last_seen).getTime();
                 const live = ageMs < 2 * 60_000;
                 const mins = Math.floor(ageMs / 60_000);
-                const ago = ageMs < 60_000 ? "just now" : `${mins} min ago`;
+                const ago = ageMs < 60_000 ? "just now" : mins < 60 ? `${mins} min ago` : new Date(v.last_seen).toLocaleString();
                 const recentPages = (v.pages ?? []).slice(-8);
+                const tag = tags[v.visitor_token];
+                const draft = tagDrafts[v.visitor_token] ?? {
+                  name: tag?.name ?? "",
+                  notes: tag?.notes ?? "",
+                };
                 return (
                   <li key={v.id} className="rounded-xl border border-border bg-background p-3">
                     <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-body text-muted-foreground mb-1">
-                      <span className="flex items-center gap-2">
+                      <span className="flex items-center gap-2 flex-wrap">
                         <span
                           className={`inline-block h-2 w-2 rounded-full ${live ? "bg-green-500" : "bg-muted-foreground/40"}`}
                           aria-hidden
@@ -533,6 +543,11 @@ const Admin = () => {
                           {live ? "On site now" : `Last seen ${ago}`}
                         </span>
                         <span>· IP {v.ip_address ?? "unknown"}</span>
+                        {tag?.name && (
+                          <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 font-semibold">
+                            {tag.name}
+                          </span>
+                        )}
                       </span>
                       <span>First seen {new Date(v.first_seen).toLocaleString()}</span>
                     </div>
@@ -546,8 +561,39 @@ const Admin = () => {
                         {recentPages.map((p) => p.path).join(" → ")}
                       </p>
                     )}
+                    <div className="mt-3 grid gap-2 sm:grid-cols-[1fr_2fr_auto] items-start">
+                      <Input
+                        placeholder="Name (e.g. Jane S.)"
+                        value={draft.name}
+                        onChange={(e) =>
+                          setTagDrafts((d) => ({
+                            ...d,
+                            [v.visitor_token]: { ...draft, name: e.target.value },
+                          }))
+                        }
+                      />
+                      <textarea
+                        placeholder="Notes about this visitor…"
+                        value={draft.notes}
+                        onChange={(e) =>
+                          setTagDrafts((d) => ({
+                            ...d,
+                            [v.visitor_token]: { ...draft, notes: e.target.value },
+                          }))
+                        }
+                        className="min-h-10 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm font-body text-foreground outline-none focus:ring-2 focus:ring-primary/30"
+                      />
+                      <Button
+                        type="button"
+                        size="sm"
+                        onClick={() => saveTag(v.visitor_token)}
+                        disabled={savingTagToken === v.visitor_token}
+                      >
+                        {savingTagToken === v.visitor_token ? "Saving…" : "Save"}
+                      </Button>
+                    </div>
                     {v.user_agent && (
-                      <p className="text-[10px] font-body text-muted-foreground/70 mt-1 truncate" title={v.user_agent}>
+                      <p className="text-[10px] font-body text-muted-foreground/70 mt-2 truncate" title={v.user_agent}>
                         {v.user_agent}
                       </p>
                     )}
@@ -557,6 +603,7 @@ const Admin = () => {
             </ul>
           )}
         </div>
+
 
 
 
