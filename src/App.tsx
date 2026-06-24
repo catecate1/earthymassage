@@ -19,10 +19,6 @@ import Policies from "./pages/Policies.tsx";
 import Directions from "./pages/Directions.tsx";
 import Anatomy from "./pages/Anatomy.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import Admin from "./pages/Admin.tsx";
-import ResetPassword from "./pages/ResetPassword.tsx";
-import ChatWidget from "./components/ChatWidget.tsx";
-import VisitorTracker from "./components/VisitorTracker.tsx";
 import SunRayClock from "./components/SunRayClock.tsx";
 
 const queryClient = new QueryClient();
@@ -49,13 +45,9 @@ const App = () => (
           <Route path="/policies" element={<Policies />} />
           <Route path="/directions" element={<Directions />} />
           <Route path="/anatomy" element={<Anatomy />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <VisitorTracker />
-        <ChatWidget />
         <div className="fixed top-32 right-24 z-40 pointer-events-none">
           <SunRayClock size={160} className="drop-shadow-2xl" />
         </div>
