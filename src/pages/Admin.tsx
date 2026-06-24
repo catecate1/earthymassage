@@ -632,20 +632,36 @@ const Admin = () => {
             </p>
           ) : (
             <ul className="space-y-3">
-              {filtered.map((l) => (
+              {filtered.map((l) => {
+                const tag = l.visitor_token ? tags[l.visitor_token] : undefined;
+                return (
                 <li key={l.id} className="rounded-xl border border-border bg-background p-3">
                   <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-body text-muted-foreground mb-2">
-                    <span>
-                      {new Date(l.created_at).toLocaleString()} · IP {l.ip_address ?? "unknown"} ·{" "}
-                      {l.owner_online ? "Deb online" : "AI replied"}
+                    <span className="flex flex-wrap items-center gap-2">
+                      <span>
+                        {new Date(l.created_at).toLocaleString()} · IP {l.ip_address ?? "unknown"} ·{" "}
+                        {l.owner_online ? "Deb online" : "AI replied"}
+                      </span>
+                      {tag?.name && (
+                        <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 font-semibold">
+                          {tag.name}
+                        </span>
+                      )}
                     </span>
-                    <button
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="destructive"
                       onClick={() => deleteOne(l.id)}
-                      className="text-destructive hover:underline"
                     >
                       Delete
-                    </button>
+                    </Button>
                   </div>
+                  {tag?.notes && (
+                    <p className="text-xs font-body text-muted-foreground mb-2 italic">
+                      <span className="font-semibold not-italic text-foreground">Note:</span> {tag.notes}
+                    </p>
+                  )}
                   <p className="text-sm font-body"><span className="font-semibold">Visitor:</span> {l.user_message}</p>
                   {l.ai_reply && (
                     <p className="text-sm font-body mt-1 text-muted-foreground"><span className="font-semibold text-foreground">Reply:</span> {l.ai_reply}</p>
