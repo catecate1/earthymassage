@@ -364,6 +364,28 @@ const Admin = () => {
     toast({ title: "Signed out", description: "You're now offline." });
   };
 
+  const changePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newPassword.length < 6) {
+      toast({ title: "Password too short", description: "Use at least 6 characters.", variant: "destructive" });
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      toast({ title: "Passwords don't match", variant: "destructive" });
+      return;
+    }
+    setChangingPassword(true);
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    setChangingPassword(false);
+    if (error) {
+      toast({ title: "Couldn't change password", description: error.message, variant: "destructive" });
+      return;
+    }
+    setNewPassword("");
+    setConfirmPassword("");
+    setShowPasswordDialog(false);
+    toast({ title: "Password updated", description: "Use your new password next time you sign in." });
+
   const deleteOne = async (id: string) => {
     if (!confirm("Delete this chat log? This cannot be undone.")) return;
     const { error } = await supabase.from("chat_logs").delete().eq("id", id);
