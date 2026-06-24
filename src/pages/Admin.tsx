@@ -767,6 +767,45 @@ const Admin = () => {
           )}
         </div>
       </div>
+
+      {showPasswordDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={() => !changingPassword && setShowPasswordDialog(false)}>
+          <form
+            onClick={(e) => e.stopPropagation()}
+            onSubmit={changePassword}
+            className="w-full max-w-sm rounded-2xl border border-border bg-card p-6 shadow-lg space-y-4"
+          >
+            <h3 className="font-heading text-xl text-foreground">Change password</h3>
+            <Input
+              type="password"
+              placeholder="New password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              autoComplete="new-password"
+              minLength={6}
+              required
+              autoFocus
+            />
+            <Input
+              type="password"
+              placeholder="Confirm new password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              autoComplete="new-password"
+              minLength={6}
+              required
+            />
+            <div className="flex justify-end gap-2">
+              <Button type="button" variant="ghost" onClick={() => setShowPasswordDialog(false)} disabled={changingPassword}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={changingPassword}>
+                {changingPassword ? "Saving…" : "Update password"}
+              </Button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
