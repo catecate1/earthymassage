@@ -55,6 +55,10 @@ const Admin = () => {
   const [savingReplyId, setSavingReplyId] = useState<string | null>(null);
   const [onlineStatus, setOnlineStatus] = useState<"checking" | "online" | "error">("checking");
   const [heartbeatError, setHeartbeatError] = useState("");
+  const [showPasswordDialog, setShowPasswordDialog] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [changingPassword, setChangingPassword] = useState(false);
   const [showOnline, setShowOnline] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
     const v = window.localStorage.getItem("owner_show_online");
@@ -360,6 +364,31 @@ const Admin = () => {
     toast({ title: "Signed out", description: "You're now offline." });
   };
 
+  const changePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newPassword.length < 6) {
+      toast({ title: "Password too short", description: "Use at least 6 characters.", variant: "destructive" });
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      toast({ title: "Passwords don't match", variant: "destructive" });
+      return;
+    }
+    setChangingPassword(true);
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    setChangingPassword(false);
+    if (error) {
+      toast({ title: "Couldn't change password", description: error.message, variant: "destructive" });
+      return;
+    }
+    setNewPassword("");
+    setConfirmPassword("");
+    setShowPasswordDialog(false);
+    toast({ title: "Password updated", description: "Use your new password next time you sign in." });
+  };
+
+
+
   const deleteOne = async (id: string) => {
     if (!confirm("Delete this chat log? This cannot be undone.")) return;
     const { error } = await supabase.from("chat_logs").delete().eq("id", id);
@@ -501,6 +530,7 @@ const Admin = () => {
             >
               Show offline
             </Button>
+            <Button onClick={() => setShowPasswordDialog(true)} variant="outline">Change password</Button>
             <Button onClick={signOut} variant="secondary">Sign out</Button>
           </div>
         </div>
@@ -737,6 +767,45 @@ const Admin = () => {
           )}
         </div>
       </div>
+
+      {showPasswordDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={() => !changingPassword && setShowPasswordDialog(false)}>
+          <form
+            onClick={(e) => e.stopPropagation()}
+            onSubmit={changePassword}
+            className="w-full max-w-sm rounded-2xl border border-border bg-card p-6 shadow-lg space-y-4"
+          >
+            <h3 className="font-heading text-xl text-foreground">Change password</h3>
+            <Input
+              type="password"
+              placeholder="New password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              autoComplete="new-password"
+              minLength={6}
+              required
+              autoFocus
+            />
+            <Input
+              type="password"
+              placeholder="Confirm new password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              autoComplete="new-password"
+              minLength={6}
+              required
+            />
+            <div className="flex justify-end gap-2">
+              <Button type="button" variant="ghost" onClick={() => setShowPasswordDialog(false)} disabled={changingPassword}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={changingPassword}>
+                {changingPassword ? "Saving…" : "Update password"}
+              </Button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
