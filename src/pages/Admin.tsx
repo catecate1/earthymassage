@@ -424,14 +424,20 @@ const Admin = () => {
     if (!visitorFilter.trim()) return true;
     const f = visitorFilter.toLowerCase();
     const tag = tags[v.visitor_token];
+    const pagesText = (v.pages ?? []).map((p) => p.path).join(" ").toLowerCase();
     return (
       (v.ip_address ?? "").toLowerCase().includes(f) ||
       (v.current_page ?? "").toLowerCase().includes(f) ||
+      pagesText.includes(f) ||
       v.visitor_token.toLowerCase().includes(f) ||
+      (v.user_agent ?? "").toLowerCase().includes(f) ||
       (tag?.name ?? "").toLowerCase().includes(f) ||
       (tag?.notes ?? "").toLowerCase().includes(f)
     );
   });
+
+  const visibleVisitors = visitorPageSize === 0 ? filteredVisitors : filteredVisitors.slice(0, visitorPageSize);
+  const visibleLogs = logsPageSize === 0 ? filtered : filtered.slice(0, logsPageSize);
 
   if (!session) {
     return (
