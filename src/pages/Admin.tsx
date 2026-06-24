@@ -501,6 +501,7 @@ const Admin = () => {
             >
               Show offline
             </Button>
+            <Button onClick={() => setShowPasswordDialog(true)} variant="outline">Change password</Button>
             <Button onClick={signOut} variant="secondary">Sign out</Button>
           </div>
         </div>
