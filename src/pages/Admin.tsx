@@ -46,6 +46,8 @@ const Admin = () => {
   const [tagDrafts, setTagDrafts] = useState<Record<string, { name: string; notes: string }>>({});
   const [savingTagToken, setSavingTagToken] = useState<string | null>(null);
   const [visitorFilter, setVisitorFilter] = useState("");
+  const [visitorPageSize, setVisitorPageSize] = useState<number>(20);
+  const [logsPageSize, setLogsPageSize] = useState<number>(20);
   const [, setNowTick] = useState(0);
   const [logsLoading, setLogsLoading] = useState(false);
   const [filter, setFilter] = useState("");
