@@ -55,6 +55,10 @@ const Admin = () => {
   const [savingReplyId, setSavingReplyId] = useState<string | null>(null);
   const [onlineStatus, setOnlineStatus] = useState<"checking" | "online" | "error">("checking");
   const [heartbeatError, setHeartbeatError] = useState("");
+  const [showPasswordDialog, setShowPasswordDialog] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [changingPassword, setChangingPassword] = useState(false);
   const [showOnline, setShowOnline] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
     const v = window.localStorage.getItem("owner_show_online");
