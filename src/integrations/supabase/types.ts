@@ -107,6 +107,33 @@ export type Database = {
         }
         Relationships: []
       }
+      visitor_tags: {
+        Row: {
+          created_at: string
+          id: string
+          name: string | null
+          notes: string | null
+          updated_at: string
+          visitor_token: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          notes?: string | null
+          updated_at?: string
+          visitor_token: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          notes?: string | null
+          updated_at?: string
+          visitor_token?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

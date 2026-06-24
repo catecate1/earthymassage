@@ -14,6 +14,13 @@ type ChatLog = {
   owner_reply: string | null;
   owner_replied_at: string | null;
   owner_online: boolean;
+  visitor_token: string | null;
+};
+
+type VisitorTag = {
+  visitor_token: string;
+  name: string | null;
+  notes: string | null;
 };
 
 type VisitorSession = {
@@ -35,6 +42,10 @@ const Admin = () => {
   const [session, setSession] = useState<unknown>(null);
   const [logs, setLogs] = useState<ChatLog[]>([]);
   const [visitors, setVisitors] = useState<VisitorSession[]>([]);
+  const [tags, setTags] = useState<Record<string, VisitorTag>>({});
+  const [tagDrafts, setTagDrafts] = useState<Record<string, { name: string; notes: string }>>({});
+  const [savingTagToken, setSavingTagToken] = useState<string | null>(null);
+  const [visitorFilter, setVisitorFilter] = useState("");
   const [, setNowTick] = useState(0);
   const [logsLoading, setLogsLoading] = useState(false);
   const [filter, setFilter] = useState("");
@@ -113,13 +124,11 @@ const Admin = () => {
   useEffect(() => {
     if (!session) return;
     const load = async () => {
-      const since = new Date(Date.now() - 60 * 60_000).toISOString();
       const { data } = await supabase
         .from("visitor_sessions")
         .select("*")
-        .gte("last_seen", since)
         .order("last_seen", { ascending: false })
-        .limit(100);
+        .limit(1000);
       setVisitors((data ?? []) as VisitorSession[]);
     };
     load();
@@ -137,7 +146,7 @@ const Admin = () => {
           const row = payload.new as VisitorSession;
           setVisitors((cur) => {
             const without = cur.filter((v) => v.id !== row.id);
-            return [row, ...without].slice(0, 100);
+            return [row, ...without].slice(0, 1000);
           });
         },
       )
@@ -150,6 +159,74 @@ const Admin = () => {
       clearInterval(tick);
     };
   }, [session]);
+
+  // Load visitor tags (name + notes per visitor_token)
+  useEffect(() => {
+    if (!session) return;
+    const load = async () => {
+      const { data } = await supabase.from("visitor_tags").select("visitor_token,name,notes");
+      const map: Record<string, VisitorTag> = {};
+      (data ?? []).forEach((t) => {
+        map[(t as VisitorTag).visitor_token] = t as VisitorTag;
+      });
+      setTags(map);
+    };
+    load();
+    const channel = supabase
+      .channel("admin-visitor-tags")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "visitor_tags" },
+        (payload) => {
+          if (payload.eventType === "DELETE") {
+            const row = payload.old as { visitor_token?: string };
+            if (row?.visitor_token) {
+              setTags((cur) => {
+                const next = { ...cur };
+                delete next[row.visitor_token!];
+                return next;
+              });
+            }
+            return;
+          }
+          const row = payload.new as VisitorTag;
+          setTags((cur) => ({ ...cur, [row.visitor_token]: row }));
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [session]);
+
+  const saveTag = async (visitor_token: string) => {
+    const draft = tagDrafts[visitor_token] ?? {
+      name: tags[visitor_token]?.name ?? "",
+      notes: tags[visitor_token]?.notes ?? "",
+    };
+    setSavingTagToken(visitor_token);
+    const { data, error } = await supabase
+      .from("visitor_tags")
+      .upsert(
+        {
+          visitor_token,
+          name: draft.name.trim() || null,
+          notes: draft.notes.trim() || null,
+        },
+        { onConflict: "visitor_token" },
+      )
+      .select("visitor_token,name,notes")
+      .maybeSingle();
+    setSavingTagToken(null);
+    if (error) {
+      toast({ title: "Save failed", description: error.message, variant: "destructive" });
+      return;
+    }
+    if (data) setTags((cur) => ({ ...cur, [visitor_token]: data as VisitorTag }));
+    toast({ title: "Saved", description: "Visitor name and notes updated." });
+  };
+
+
 
 
 
@@ -282,12 +359,14 @@ const Admin = () => {
   };
 
   const deleteOne = async (id: string) => {
+    if (!confirm("Delete this chat log? This cannot be undone.")) return;
     const { error } = await supabase.from("chat_logs").delete().eq("id", id);
     if (error) {
       toast({ title: "Delete failed", description: error.message, variant: "destructive" });
       return;
     }
     setLogs((l) => l.filter((x) => x.id !== id));
+    toast({ title: "Log deleted" });
   };
 
   const deleteAll = async () => {
@@ -329,10 +408,26 @@ const Admin = () => {
   const filtered = logs.filter((l) => {
     if (!filter.trim()) return true;
     const f = filter.toLowerCase();
+    const tag = l.visitor_token ? tags[l.visitor_token] : undefined;
     return (
       (l.ip_address ?? "").toLowerCase().includes(f) ||
       l.user_message.toLowerCase().includes(f) ||
-      (l.ai_reply ?? "").toLowerCase().includes(f)
+      (l.ai_reply ?? "").toLowerCase().includes(f) ||
+      (tag?.name ?? "").toLowerCase().includes(f) ||
+      (tag?.notes ?? "").toLowerCase().includes(f)
+    );
+  });
+
+  const filteredVisitors = visitors.filter((v) => {
+    if (!visitorFilter.trim()) return true;
+    const f = visitorFilter.toLowerCase();
+    const tag = tags[v.visitor_token];
+    return (
+      (v.ip_address ?? "").toLowerCase().includes(f) ||
+      (v.current_page ?? "").toLowerCase().includes(f) ||
+      v.visitor_token.toLowerCase().includes(f) ||
+      (tag?.name ?? "").toLowerCase().includes(f) ||
+      (tag?.notes ?? "").toLowerCase().includes(f)
     );
   });
 
@@ -405,31 +500,41 @@ const Admin = () => {
         <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <h2 className="font-heading text-xl text-foreground">
-              Live visitors{" "}
+              Visitors{" "}
               <span className="text-sm font-body text-muted-foreground">
-                ({visitors.filter((v) => Date.now() - new Date(v.last_seen).getTime() < 2 * 60_000).length} on site now)
+                ({visitors.filter((v) => Date.now() - new Date(v.last_seen).getTime() < 2 * 60_000).length} on site now · {visitors.length} total)
               </span>
             </h2>
-            <p className="text-xs font-body text-muted-foreground">
-              Updates in real time · shows last hour
-            </p>
+            <div className="flex items-center gap-2">
+              <Input
+                placeholder="Filter by name, notes, IP, page…"
+                value={visitorFilter}
+                onChange={(e) => setVisitorFilter(e.target.value)}
+                className="w-64"
+              />
+            </div>
           </div>
-          {visitors.length === 0 ? (
+          {filteredVisitors.length === 0 ? (
             <p className="font-body text-sm text-muted-foreground py-6 text-center">
-              No visitors in the last hour.
+              {visitors.length === 0 ? "No visitors yet." : "No visitors match that filter."}
             </p>
           ) : (
             <ul className="space-y-2">
-              {visitors.map((v) => {
+              {filteredVisitors.map((v) => {
                 const ageMs = Date.now() - new Date(v.last_seen).getTime();
                 const live = ageMs < 2 * 60_000;
                 const mins = Math.floor(ageMs / 60_000);
-                const ago = ageMs < 60_000 ? "just now" : `${mins} min ago`;
+                const ago = ageMs < 60_000 ? "just now" : mins < 60 ? `${mins} min ago` : new Date(v.last_seen).toLocaleString();
                 const recentPages = (v.pages ?? []).slice(-8);
+                const tag = tags[v.visitor_token];
+                const draft = tagDrafts[v.visitor_token] ?? {
+                  name: tag?.name ?? "",
+                  notes: tag?.notes ?? "",
+                };
                 return (
                   <li key={v.id} className="rounded-xl border border-border bg-background p-3">
                     <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-body text-muted-foreground mb-1">
-                      <span className="flex items-center gap-2">
+                      <span className="flex items-center gap-2 flex-wrap">
                         <span
                           className={`inline-block h-2 w-2 rounded-full ${live ? "bg-green-500" : "bg-muted-foreground/40"}`}
                           aria-hidden
@@ -438,6 +543,11 @@ const Admin = () => {
                           {live ? "On site now" : `Last seen ${ago}`}
                         </span>
                         <span>· IP {v.ip_address ?? "unknown"}</span>
+                        {tag?.name && (
+                          <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 font-semibold">
+                            {tag.name}
+                          </span>
+                        )}
                       </span>
                       <span>First seen {new Date(v.first_seen).toLocaleString()}</span>
                     </div>
@@ -451,8 +561,39 @@ const Admin = () => {
                         {recentPages.map((p) => p.path).join(" → ")}
                       </p>
                     )}
+                    <div className="mt-3 grid gap-2 sm:grid-cols-[1fr_2fr_auto] items-start">
+                      <Input
+                        placeholder="Name (e.g. Jane S.)"
+                        value={draft.name}
+                        onChange={(e) =>
+                          setTagDrafts((d) => ({
+                            ...d,
+                            [v.visitor_token]: { ...draft, name: e.target.value },
+                          }))
+                        }
+                      />
+                      <textarea
+                        placeholder="Notes about this visitor…"
+                        value={draft.notes}
+                        onChange={(e) =>
+                          setTagDrafts((d) => ({
+                            ...d,
+                            [v.visitor_token]: { ...draft, notes: e.target.value },
+                          }))
+                        }
+                        className="min-h-10 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm font-body text-foreground outline-none focus:ring-2 focus:ring-primary/30"
+                      />
+                      <Button
+                        type="button"
+                        size="sm"
+                        onClick={() => saveTag(v.visitor_token)}
+                        disabled={savingTagToken === v.visitor_token}
+                      >
+                        {savingTagToken === v.visitor_token ? "Saving…" : "Save"}
+                      </Button>
+                    </div>
                     {v.user_agent && (
-                      <p className="text-[10px] font-body text-muted-foreground/70 mt-1 truncate" title={v.user_agent}>
+                      <p className="text-[10px] font-body text-muted-foreground/70 mt-2 truncate" title={v.user_agent}>
                         {v.user_agent}
                       </p>
                     )}
@@ -462,6 +603,7 @@ const Admin = () => {
             </ul>
           )}
         </div>
+
 
 
 
@@ -490,20 +632,36 @@ const Admin = () => {
             </p>
           ) : (
             <ul className="space-y-3">
-              {filtered.map((l) => (
+              {filtered.map((l) => {
+                const tag = l.visitor_token ? tags[l.visitor_token] : undefined;
+                return (
                 <li key={l.id} className="rounded-xl border border-border bg-background p-3">
                   <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-body text-muted-foreground mb-2">
-                    <span>
-                      {new Date(l.created_at).toLocaleString()} · IP {l.ip_address ?? "unknown"} ·{" "}
-                      {l.owner_online ? "Deb online" : "AI replied"}
+                    <span className="flex flex-wrap items-center gap-2">
+                      <span>
+                        {new Date(l.created_at).toLocaleString()} · IP {l.ip_address ?? "unknown"} ·{" "}
+                        {l.owner_online ? "Deb online" : "AI replied"}
+                      </span>
+                      {tag?.name && (
+                        <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 font-semibold">
+                          {tag.name}
+                        </span>
+                      )}
                     </span>
-                    <button
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="destructive"
                       onClick={() => deleteOne(l.id)}
-                      className="text-destructive hover:underline"
                     >
                       Delete
-                    </button>
+                    </Button>
                   </div>
+                  {tag?.notes && (
+                    <p className="text-xs font-body text-muted-foreground mb-2 italic">
+                      <span className="font-semibold not-italic text-foreground">Note:</span> {tag.notes}
+                    </p>
+                  )}
                   <p className="text-sm font-body"><span className="font-semibold">Visitor:</span> {l.user_message}</p>
                   {l.ai_reply && (
                     <p className="text-sm font-body mt-1 text-muted-foreground"><span className="font-semibold text-foreground">Reply:</span> {l.ai_reply}</p>
@@ -541,7 +699,8 @@ const Admin = () => {
                     </p>
                   )}
                 </li>
-              ))}
+                );
+              })}
             </ul>
           )}
         </div>
