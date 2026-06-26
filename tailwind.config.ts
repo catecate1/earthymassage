@@ -72,6 +72,11 @@ export default {
           DEFAULT: "hsl(var(--rose))",
           light: "hsl(var(--rose-light))",
         },
+        patriotic: {
+          red: "hsl(var(--patriotic-red))",
+          blue: "hsl(var(--patriotic-blue))",
+          white: "hsl(var(--patriotic-white))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
