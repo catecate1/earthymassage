@@ -10,8 +10,8 @@ const sections = [
     title: "What to Expect",
     items: [
       "A brief health intake form will be completed before your first session.",
-      "You will be draped with your choice of a bath sized towel to cover the midsection or sheet for the entire body — the area being worked on is uncovered.",
       "You may undress to your comfort level.",
+      "You will be draped with your choice of a bath sized towel to cover the midsection or sheet for the entire body — the area being worked on is uncovered.",
     ],
   },
   {
