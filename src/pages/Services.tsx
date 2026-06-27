@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import swedishMassage from "@/assets/swedish-massage.jpg";
+import swedishMassage from "@/assets/massage-therapist-apron.jpg";
 
 const services = [
   {
