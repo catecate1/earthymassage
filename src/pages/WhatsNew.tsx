@@ -9,6 +9,11 @@ const updates = [
     title: "New Hours",
     body: "8am - 6pm Monday - Saturday",
   },
+  {
+    date: "June 2026",
+    title: "Extended Holiday Hours",
+    body: "During our July 4th special, hours are extended until 10pm.",
+  },
 ];
 
 const WhatsNew = () => {
