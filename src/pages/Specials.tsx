@@ -62,7 +62,8 @@ const Specials = () => {
             </div>
             <div className="p-8 text-center">
               <h2 className="font-display text-3xl md:text-4xl text-patriotic-red mb-2">July 4th Special</h2>
-              <p className="font-body text-muted-foreground mb-8">Celebrate Independence Day with big savings!</p>
+              <p className="font-body text-muted-foreground mb-2">Celebrate Independence Day with big savings!</p>
+              <p className="font-body text-sm text-patriotic-red font-semibold mb-6">Extended hours until 10pm during the special.</p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="rounded-lg border-2 border-patriotic-red/20 p-5 bg-background/50">
                   <p className="font-display text-lg text-foreground mb-1">60 Minutes</p>
