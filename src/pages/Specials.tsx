@@ -56,7 +56,7 @@ const Specials = () => {
             <div className="bg-patriotic-red py-3 px-6 text-center">
               <span className="inline-flex items-center gap-2 text-patriotic-white font-body text-sm font-semibold uppercase tracking-wider">
                 <Sparkles className="w-4 h-4" />
-                Limited Time — Now through July 4th
+                Limited Time — Now through July 5th
                 <Sparkles className="w-4 h-4" />
               </span>
             </div>
