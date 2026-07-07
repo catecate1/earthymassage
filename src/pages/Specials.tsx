@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Tag, ArrowRight, Gift } from "lucide-react";
+import { Star, Tag, ArrowRight, Gift, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
