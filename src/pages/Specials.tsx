@@ -47,7 +47,7 @@ const Specials = () => {
 
       <section className="py-16 bg-background">
         <div className="container">
-          <h2 className="text-center font-display text-2xl text-foreground mb-8">Early Bird Specials (8 AM – 12 PM)</h2>
+          <h2 className="text-center font-display text-2xl text-foreground mb-8">Christmas in July Early Bird Specials (8 AM – 12 PM)</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -56,20 +56,21 @@ const Specials = () => {
               transition={{ duration: 0.5, delay: 0 }}
               className="bg-card rounded-lg p-8 shadow-soft border border-border/30">
               <span className="inline-block bg-petal text-primary text-xs font-body px-3 py-1 rounded-full mb-4">
-                Early Bird
+                Christmas in July
               </span>
               <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4">
-                <Sun className="w-4 h-4 text-primary" />
+                <TreePine className="w-4 h-4 text-primary" />
               </div>
               <h3 className="font-display text-xl text-foreground mb-2">60 Minute Classic Swedish</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="font-display text-2xl text-primary">$10 Off</span>
+                <span className="font-display text-2xl text-primary">$30</span>
+                <span className="font-body text-sm text-muted-foreground line-through">$60</span>
               </div>
               <p className="text-muted-foreground font-body text-sm leading-relaxed mb-3">
-                Enjoy $10 off any 60-minute Classic Swedish session when you book between 8 AM and 12 PM.
+                Enjoy 50% off any 60-minute Classic Swedish session when you book between 8 AM and 12 PM.
               </p>
               <p className="text-muted-foreground font-body text-sm leading-relaxed font-semibold mb-6">
-                Enter code: <span className="text-primary">eb10</span>
+                Enter code: <span className="text-primary">cj50</span>
               </p>
               <Link to="/book">
                 <Button variant="outline" className="w-full border-border hover:bg-petal font-body text-sm group">
@@ -85,20 +86,21 @@ const Specials = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-card rounded-lg p-8 shadow-soft border border-border/30">
               <span className="inline-block bg-petal text-primary text-xs font-body px-3 py-1 rounded-full mb-4">
-                Early Bird
+                Christmas in July
               </span>
               <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4">
-                <Sun className="w-4 h-4 text-primary" />
+                <Snowflake className="w-4 h-4 text-primary" />
               </div>
               <h3 className="font-display text-xl text-foreground mb-2">75 Minute Classic Swedish</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="font-display text-2xl text-primary">$20 Off</span>
+                <span className="font-display text-2xl text-primary">$42.50</span>
+                <span className="font-body text-sm text-muted-foreground line-through">$85</span>
               </div>
               <p className="text-muted-foreground font-body text-sm leading-relaxed mb-3">
-                Enjoy $20 off any 75-minute Classic Swedish session when you book between 8 AM and 12 PM.
+                Enjoy 50% off any 75-minute Classic Swedish session when you book between 8 AM and 12 PM.
               </p>
               <p className="text-muted-foreground font-body text-sm leading-relaxed font-semibold mb-6">
-                Enter code: <span className="text-primary">eb20</span>
+                Enter code: <span className="text-primary">cj50</span>
               </p>
               <Link to="/book">
                 <Button variant="outline" className="w-full border-border hover:bg-petal font-body text-sm group">
@@ -114,20 +116,21 @@ const Specials = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-card rounded-lg p-8 shadow-soft border border-border/30">
               <span className="inline-block bg-petal text-primary text-xs font-body px-3 py-1 rounded-full mb-4">
-                Early Bird
+                Christmas in July
               </span>
               <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4">
-                <Sun className="w-4 h-4 text-primary" />
+                <Gift className="w-4 h-4 text-primary" />
               </div>
               <h3 className="font-display text-xl text-foreground mb-2">90 Minute Classic Swedish</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="font-display text-2xl text-primary">$30 Off</span>
+                <span className="font-display text-2xl text-primary">$57.50</span>
+                <span className="font-body text-sm text-muted-foreground line-through">$115</span>
               </div>
               <p className="text-muted-foreground font-body text-sm leading-relaxed mb-3">
-                Enjoy $30 off any 90-minute Classic Swedish session when you book between 8 AM and 12 PM.
+                Enjoy 50% off any 90-minute Classic Swedish session when you book between 8 AM and 12 PM.
               </p>
               <p className="text-muted-foreground font-body text-sm leading-relaxed font-semibold mb-6">
-                Enter code: <span className="text-primary">eb30</span>
+                Enter code: <span className="text-primary">cj50</span>
               </p>
               <Link to="/book">
                 <Button variant="outline" className="w-full border-border hover:bg-petal font-body text-sm group">
