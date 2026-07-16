@@ -47,7 +47,7 @@ const Specials = () => {
 
       <section className="py-16 bg-background">
         <div className="container">
-          <h2 className="text-center font-display text-2xl text-foreground mb-8">Christmas in July Early Bird Specials (8 AM – 12 PM)</h2>
+          <h2 className="text-center font-display text-2xl text-foreground mb-8">Christmas in July Early Bird Specials — 50% Off (8 AM – 12 PM)</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
