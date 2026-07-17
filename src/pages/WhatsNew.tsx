@@ -3,13 +3,7 @@ import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import { Sparkles, Calendar } from "lucide-react";
 
-const updates = [
-  {
-    date: "June 2026",
-    title: "Extended Holiday Hours",
-    body: "During our July 4th special, hours are extended until 10pm.",
-  },
-];
+const updates = [];
 
 const WhatsNew = () => {
   return (
