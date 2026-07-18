@@ -4,6 +4,7 @@ import PageHeader from "@/components/PageHeader";
 import { Quote } from "lucide-react";
 
 const testimonials = [
+  "Once again that was amazing massage! Thank you so much!",
   "That was amazing. See you next time!",
   "Deb I really enjoyed the massage. I will schedule another appointment on my way back.",
   "That was fabulous.",
