@@ -1,41 +1,8 @@
 import { motion } from "framer-motion";
-import { Star, Tag, ArrowRight, Gift, TreePine, Snowflake } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Gift } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-
-const specials = [
-{
-  badge: "New Clients",
-  icon: Star,
-  title: "First Visit Special",
-  salePrice: "$55",
-  originalPrice: "$60",
-  description: "New clients receive $5 off their first 60-minute Classic Swedish session. Experience the Healing Touch difference!",
-  code: "fa5"
-},
-{
-  badge: "New Clients",
-  icon: Tag,
-  title: "First Visit Special",
-  salePrice: "$75",
-  originalPrice: "$85",
-  description: "New clients receive $10 off their first 75-minute Classic Swedish session. Experience the Healing Touch difference!",
-  code: "fa10"
-},
-{
-  badge: "New Clients",
-  icon: Tag,
-  title: "First Visit Special",
-  salePrice: "$100",
-  originalPrice: "$115",
-  description: "New clients receive $15 off their first 90-minute Classic Swedish session. Experience the Healing Touch difference!",
-  code: "fa15"
-}];
-
-
 
 const Specials = () => {
   return (
