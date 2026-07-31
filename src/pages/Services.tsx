@@ -9,21 +9,21 @@ import swedishMassage from "@/assets/massage-therapist-apron.jpg";
 
 const services = [
   {
-    title: "Classic Swedish",
+    title: "Acupressure Meridian Body-Work",
     duration: "60 min",
     price: "$50",
     description: "Signature full-body acupressure meridian body-work. Flowing strokes promote deep relaxation and improved circulation.",
     popular: true,
   },
   {
-    title: "Classic Swedish Extended",
+    title: "Extended Acupressure Meridian Body-Work",
     duration: "75 min",
     price: "$60",
     description: "Signature full-body acupressure meridian body-work with a tad more work on the hamstrings, calves and feet. Flowing strokes promote deep relaxation and improved circulation.",
     popular: false,
   },
   {
-    title: "Extended Bliss",
+    title: "Restorative Acupressure Meridian Body-Work",
     duration: "90 min",
     price: "$70",
     description: "An indulgent session allowing extra time for each section of the body including the feet.",
