@@ -4,13 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 
-
-const techniques = [
-  { title: "Effleurage", description: "Long, gliding strokes that warm up the muscles and promote relaxation. This is the foundational technique of Swedish massage." },
-  { title: "Petrissage", description: "Kneading motions that work deeper into the muscles, helping to release knots and improve tissue elasticity." },
-  { title: "Tapotement", description: "Rhythmic tapping or percussion movements that stimulate and energize tired muscles." },
-  { title: "Friction", description: "Deep, circular movements that target specific areas of tension and help break down adhesions." },
-  { title: "Vibration", description: "Gentle shaking movements that help relax the body and relieve tension in smaller muscle groups." },
+const principles = [
+  { title: "Meridians", description: "Invisible channels where life energy flows through the body." },
+  { title: "Acupoints", description: "Specific spots along the meridians used to release blocked energy." },
+  { title: "Bodywork", description: "Hands-on pressure, stretching, or massage used to stimulate these points. [1]" },
 ];
 
 const benefits = [
@@ -22,13 +19,19 @@ const benefits = [
   { icon: Move, title: "Increased Flexibility", description: "Helps keep joints and muscles supple, improving range of motion." },
 ];
 
+const commonBenefits = [
+  "Reduces physical pain and muscle tension.",
+  "Lowers stress and helps the mind relax.",
+  "Improves overall blood flow and energy flow.",
+];
+
 const WhatIs = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
       <PageHeader
-        title="What Is Swedish Massage?"
-        subtitle="Discover the world's most popular massage technique and its remarkable benefits."
+        title="What Is Acupressure Meridian Body-Work?"
+        subtitle="Ancient principles, gentle hands-on work, and lasting relaxation."
       />
 
       <section className="py-16 bg-background">
@@ -41,34 +44,55 @@ const WhatIs = () => {
             className="space-y-6 font-body text-muted-foreground leading-relaxed mb-16"
           >
             <p>
-              Swedish massage is the most widely recognized and commonly practiced form of therapeutic massage.
-              Developed in the early 19th century by Per Henrik Ling, this technique uses a combination of long
-              flowing strokes, kneading, and circular movements to promote relaxation and improve circulation.
+              Acupressure meridian body-work is a gentle, holistic approach that blends traditional
+              meridian theory with hands-on bodywork. By working along the body's energy channels and
+              focusing on specific acupoints, this technique helps release tension, encourage balance,
+              and support the body's natural ability to heal.
             </p>
             <p>
-              Unlike deep tissue massage, Swedish massage uses lighter to moderate pressure, making it an excellent
-              choice for those new to massage, those seeking relaxation, or anyone looking to maintain overall wellness.
-              The technique works with the body's natural systems to encourage healing and balance.
+              Unlike deep tissue work, acupressure meridian body-work uses lighter to moderate pressure,
+              making it an excellent choice for those new to bodywork, those seeking relaxation, or anyone
+              looking to maintain overall wellness. The technique works with the body's natural systems to
+              encourage healing and balance.
             </p>
           </motion.div>
 
-          {/* Techniques */}
-          <h2 className="font-display text-3xl text-foreground text-center mb-10">The Five Core Techniques</h2>
+          {/* Core Principles */}
+          <h2 className="font-display text-3xl text-foreground text-center mb-10">Core Principles</h2>
           <div className="space-y-4 mb-20">
-            {techniques.map((t, i) => (
+            {principles.map((p, i) => (
               <motion.div
-                key={t.title}
+                key={p.title}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
                 className="bg-card rounded-lg p-6 shadow-soft border border-border/30"
               >
-                <h3 className="font-display text-lg text-foreground mb-2">{t.title}</h3>
-                <p className="text-muted-foreground font-body text-sm leading-relaxed">{t.description}</p>
+                <h3 className="font-display text-lg text-foreground mb-2">{p.title}</h3>
+                <p className="text-muted-foreground font-body text-sm leading-relaxed">{p.description}</p>
               </motion.div>
             ))}
           </div>
+
+          {/* Common Benefits */}
+          <h2 className="font-display text-3xl text-foreground text-center mb-10">Common Benefits</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-card rounded-lg p-6 shadow-soft border border-border/30 mb-20"
+          >
+            <ul className="space-y-3">
+              {commonBenefits.map((item, i) => (
+                <li key={i} className="font-body text-sm text-muted-foreground flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
 
           {/* Benefits */}
           <h2 className="font-display text-3xl text-foreground text-center mb-10">Benefits</h2>
