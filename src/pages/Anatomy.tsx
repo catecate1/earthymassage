@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -11,7 +11,9 @@ interface LightboxImage {
   src: string;
   alt: string;
   caption: string;
+  overlay?: ReactNode;
 }
+
 
 
 interface MuscleHotspot {
