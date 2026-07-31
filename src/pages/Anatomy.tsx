@@ -337,7 +337,7 @@ const Anatomy = () => {
                     <ZoomIn className="w-4 h-4" />
                   </div>
                   <svg
-                    className="absolute inset-0 w-full h-full z-10"
+                    className="absolute inset-0 w-full h-full z-10 pointer-events-none"
                     viewBox="0 0 100 100"
                     preserveAspectRatio="none"
                     style={{ overflow: "visible" }}
