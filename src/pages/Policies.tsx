@@ -22,7 +22,7 @@ const policies = [
   {
     icon: DollarSign,
     title: "Cash Policy",
-    text: "I do not accept $100 bills and do not make change.",
+    text: "I do not accept $50 or $100 bills and do not make change.",
   },
   {
     icon: CreditCard,
