@@ -166,7 +166,7 @@ const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
           <p className="text-foreground/80 font-body">
             Enter code{" "}
             <span className="font-semibold text-primary tracking-wide">{WIN_CODE}</span>{" "}
-            at checkout for 50% off a standard rate 60, 75, or 90-minute Classic Swedish session.
+            at checkout for 50% off a standard rate 60, 75, or 90-minute Classic acupressure meridian body-work session.
             Valid for appointments on June 21, 22, or 23, 2026 only.
           </p>
         </div>

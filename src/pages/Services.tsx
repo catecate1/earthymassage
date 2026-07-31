@@ -12,14 +12,14 @@ const services = [
     title: "Classic Swedish",
     duration: "60 min",
     price: "$50",
-    description: "Signature full-body Swedish massage. Flowing strokes promote deep relaxation and improved circulation.",
+    description: "Signature full-body acupressure meridian body-work. Flowing strokes promote deep relaxation and improved circulation.",
     popular: true,
   },
   {
     title: "Classic Swedish Extended",
     duration: "75 min",
     price: "$60",
-    description: "Signature full-body Swedish massage with a tad more work on the hamstrings, calves and feet. Flowing strokes promote deep relaxation and improved circulation.",
+    description: "Signature full-body acupressure meridian body-work with a tad more work on the hamstrings, calves and feet. Flowing strokes promote deep relaxation and improved circulation.",
     popular: false,
   },
   {
@@ -41,7 +41,7 @@ const Services = () => {
       <Navbar />
       <PageHeader
         title="Services"
-        subtitle="Swedish massage sessions crafted for your comfort and healing."
+        subtitle="Acupressure meridian body-work sessions crafted for your comfort and healing."
       />
 
       <section className="py-16 bg-background">
@@ -55,7 +55,7 @@ const Services = () => {
             >
               <img
                 src={swedishMassage}
-                alt="Swedish massage"
+                alt="Acupressure meridian body-work"
                 className="rounded-lg shadow-card w-full object-cover"
               />
             </motion.div>
