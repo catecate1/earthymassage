@@ -204,7 +204,7 @@ const AcupointOverlay = () => {
               y1={labelY}
               x2={pt.x}
               y2={pt.y}
-              stroke="hsl(var(--primary))"
+              stroke="hsl(var(--foreground))"
               strokeWidth="0.3"
               strokeOpacity="0.85"
               markerEnd="url(#acupoint-arrowhead)"
