@@ -172,7 +172,7 @@ const AcupointOverlay = () => {
             cx={pt.x}
             cy={pt.y}
             r="1.5"
-            fill="hsl(var(--primary))"
+            fill="hsl(var(--foreground))"
             fillOpacity="0.9"
           />
           <circle
@@ -180,7 +180,7 @@ const AcupointOverlay = () => {
             cy={pt.y}
             r="2.5"
             fill="none"
-            stroke="hsl(var(--primary))"
+            stroke="hsl(var(--foreground))"
             strokeOpacity="0.4"
             strokeWidth="0.5"
           />
