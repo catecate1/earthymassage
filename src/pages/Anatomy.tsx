@@ -468,6 +468,73 @@ const Anatomy = () => {
         </div>
       </section>
 
+      {/* Meridian & Acupoint Reference Lists */}
+      <section className="py-12 bg-petal/20 border-y border-border/30">
+        <div className="container max-w-5xl px-6">
+          <h2 className="font-display text-2xl text-foreground text-center mb-8">
+            Meridian & Acupoint Reference
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30">
+              <h3 className="font-display text-xl text-foreground mb-4 flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-primary" />
+                Twelve Primary Meridian Channels
+              </h3>
+              <ul className="grid grid-cols-2 gap-2 text-sm font-body text-muted-foreground">
+                {[
+                  "Lung",
+                  "Large Intestine",
+                  "Stomach",
+                  "Spleen",
+                  "Heart",
+                  "Small Intestine",
+                  "Bladder",
+                  "Kidney",
+                  "Pericardium",
+                  "Triple Burner",
+                  "Gall Bladder",
+                  "Liver",
+                ].map((m) => (
+                  <li key={m} className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-primary/60" />
+                    {m}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30">
+              <h3 className="font-display text-xl text-foreground mb-4 flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-primary" />
+                Key Acupoints Shown
+              </h3>
+              <ul className="grid grid-cols-2 gap-2 text-sm font-body text-muted-foreground">
+                {[
+                  "Yintang (between brows)",
+                  "Renzhong (upper lip)",
+                  "Shanzhong (chest center)",
+                  "Zhongwan (upper abdomen)",
+                  "Qihai (below navel)",
+                  "Guanyuan (lower abdomen)",
+                  "Lung",
+                  "Heart",
+                  "Stomach",
+                  "Liver",
+                  "Spleen",
+                  "Kidney",
+                  "Bladder",
+                ].map((pt) => (
+                  <li key={pt} className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-primary/60" />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Major Muscle Groups */}
       <section className="py-16 bg-background">
         <div className="container max-w-4xl">
