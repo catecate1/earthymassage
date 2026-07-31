@@ -190,8 +190,10 @@ const MuscleOverlay = ({
 const Anatomy = () => {
   const [activeFront, setActiveFront] = useState<MuscleHotspot | null>(null);
   const [activeBack, setActiveBack] = useState<MuscleHotspot | null>(null);
+  const [lightbox, setLightbox] = useState<LightboxImage | null>(null);
 
   const activeDetail = activeFront || activeBack;
+
 
   return (
     <div className="min-h-screen">
