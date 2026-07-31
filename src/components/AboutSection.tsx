@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const features = [
   {
     icon: Sparkles,
-    title: "Earthy Massage",
+    title: "Earthy Wellness",
     description: "Personalized Swedish massage tailored to your body's unique needs.",
   },
   {
@@ -27,7 +27,7 @@ const AboutSection = () => {
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
-            Why Choose <em className="italic text-primary">Earthy Massage</em>
+            Why Choose <em className="italic text-primary">Earthy Wellness</em>
           </h2>
           <div className="w-16 h-0.5 bg-primary mx-auto mt-2" />
         </div>

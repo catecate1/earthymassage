@@ -52,7 +52,7 @@ const policies = [
   {
     icon: AlertTriangle,
     title: "Harassment Policy",
-    text: "Any inappropriate behavior or requests will result in immediate termination of the session. The full session fee will be charged. Earthy Massage maintains a zero-tolerance policy.",
+    text: "Any inappropriate behavior or requests will result in immediate termination of the session. The full session fee will be charged. Earthy Wellness maintains a zero-tolerance policy.",
   },
   {
     icon: Phone,
