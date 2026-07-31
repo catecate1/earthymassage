@@ -120,7 +120,7 @@ const acupointPoints = [
   { x: 66, y: 40, label: "Stomach" },
   { x: 42, y: 46, label: "Liver" },
   { x: 58, y: 46, label: "Liver" },
-  { x: 50, y: 44, label: "Zhongwan" },
+  { x: 50, y: 40, label: "Zhongwan" },
   { x: 38, y: 56, label: "Spleen" },
   { x: 62, y: 56, label: "Spleen" },
   { x: 50, y: 64, label: "Qihai" },
