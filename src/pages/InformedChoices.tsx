@@ -22,7 +22,7 @@ const sections = [
   {
     icon: ShieldCheck,
     title: "What I Don't Do",
-    text: "I do NOT do Deep Tissue, Rolfing, Thai or focus work — I do not spend an extended period of time on any one section of the body. In short, if it isn't on the services page then it isn't available. I'm not trying to fix you. I'm trying to relax you.",
+    text: "I do NOT do Deep Tissue, Rolfing, Thai, sports massage or focus work — I do not spend an extended period of time on any one section of the body. In short, if it isn't on the services page then it isn't available. I'm not trying to fix you. I'm trying to relax you.",
   },
   {
     icon: Gift,
