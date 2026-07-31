@@ -256,15 +256,19 @@ const Anatomy = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <div className="relative inline-block max-w-sm w-full mx-auto overflow-visible">
+              <div className="relative inline-block max-w-sm w-full mx-auto overflow-visible group">
                 <img
                   src={anatomyBack}
                   alt="Posterior muscular system"
-                  className="rounded-lg shadow-card w-full object-cover"
+                  className="rounded-lg shadow-card w-full object-cover cursor-pointer hover:opacity-95 transition-opacity"
                   loading="lazy"
                   width={768}
                   height={1024}
+                  onClick={() => setLightbox({ src: anatomyBack, alt: "Posterior muscular system", caption: "Posterior (Back) View — click muscle labels to learn more" })}
                 />
+                <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-sm pointer-events-none" aria-hidden="true">
+                  <ZoomIn className="w-4 h-4" />
+                </div>
                 <MuscleOverlay
                   muscles={backMuscles}
                   activeId={activeBack?.id ?? null}
