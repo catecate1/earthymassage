@@ -127,7 +127,7 @@ const MuscleOverlay = ({
           <g
             key={m.id}
             onClick={() => onSelect(isActive ? null : m)}
-            className="cursor-pointer"
+            className="cursor-pointer pointer-events-auto"
             role="button"
             aria-label={m.name}
           >
