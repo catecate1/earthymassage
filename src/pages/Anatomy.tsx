@@ -188,10 +188,14 @@ const AcupointOverlay = () => {
       ))}
 
       {/* Labels with leader lines */}
-      {acupointPoints.map((pt) => {
+      {acupointPoints.map((pt, idx) => {
         const side = pt.x <= 50 ? "left" : "right";
-        const offset = pt.label === "Yintang" || pt.label === "Renzhong" || pt.label === "Shanzhong" || pt.label === "Zhongwan" || pt.label === "Qihai" || pt.label === "Guanyuan" ? 0 : 12;
-        const labelX = pt.x <= 50 ? pt.x - offset - (side === "left" ? 4 : 0) : pt.x + offset + (side === "right" ? 4 : 0);
+        const isCenter = pt.x === 50;
+        const centerSide = isCenter ? (idx % 2 === 0 ? "left" : "right") : side;
+        const offset = isCenter ? 5 : 16;
+        const labelX = isCenter
+          ? (centerSide === "left" ? pt.x - offset - 4 : pt.x + offset + 4)
+          : (side === "left" ? pt.x - offset : pt.x + offset);
         const labelY = pt.y;
         return (
           <g key={`label-${pt.label}-${pt.x}-${pt.y}`}>
@@ -208,7 +212,7 @@ const AcupointOverlay = () => {
             <text
               x={labelX}
               y={labelY}
-              textAnchor={side === "left" ? "end" : "start"}
+              textAnchor={centerSide === "left" ? "end" : "start"}
               dominantBaseline="middle"
               fill="hsl(var(--foreground))"
               fontSize="2.2"
