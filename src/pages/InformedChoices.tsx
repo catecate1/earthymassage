@@ -16,8 +16,8 @@ const sections = [
   },
   {
     icon: HandHelping,
-    title: "Who Is This Massage For?",
-    text: "It is for anyone genuinely interested in a good, thorough, caring, seamless massage. I do a slightly firm acupressure meridian body-work. It is great for relief from general aches and pains and very relaxing. A neck to ankle or toe massage which includes the pecs, abs, glutes, adductors and hamstrings.",
+    title: "Who Is This Body-Work For?",
+    text: "It is for anyone genuinely interested in a good, thorough, caring, seamless body-work session. I do a slightly firm acupressure meridian body-work. It is great for relief from general aches and pains and very relaxing. A neck to ankle or toe body-work session which includes the pecs, abs, glutes, adductors and hamstrings.",
   },
   {
     icon: ShieldCheck,
@@ -26,8 +26,8 @@ const sections = [
   },
   {
     icon: Gift,
-    title: "Purchasing Massage For Another",
-    text: "Never purchase a massage for another person as a treat or surprise. This isn't a fancy spa.",
+    title: "Purchasing Body-Work For Another",
+    text: "Never purchase a body-work session for another person as a treat or surprise. This isn't a fancy spa.",
   },
   {
     icon: Armchair,
@@ -50,7 +50,7 @@ const InformedChoices = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <PageHeader title="Informed Choices" subtitle="Everything you need to know before your massage" />
+      <PageHeader title="Informed Choices" subtitle="Everything you need to know before your session" />
 
       <section className="py-16">
         <div className="container max-w-4xl space-y-6">
