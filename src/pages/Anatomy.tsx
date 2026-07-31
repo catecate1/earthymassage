@@ -644,11 +644,14 @@ const Anatomy = () => {
               >
                 <X className="w-8 h-8" />
               </button>
-              <img
-                src={lightbox.src}
-                alt={lightbox.alt}
-                className="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl"
-              />
+              <div className="relative w-full">
+                <img
+                  src={lightbox.src}
+                  alt={lightbox.alt}
+                  className="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                />
+                {lightbox.overlay}
+              </div>
               {lightbox.caption && (
                 <p className="mt-3 text-center text-sm font-body text-muted-foreground">
                   {lightbox.caption}
