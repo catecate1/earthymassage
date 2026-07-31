@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="flex flex-col items-center gap-6">
           <Link to="/" className="flex items-center gap-2">
             <Flower2 className="w-4 h-4 text-primary" />
-            <span className="font-display text-lg text-cream">Earthy Massage </span>
+            <span className="font-display text-lg text-cream">Earthy Wellness </span>
           </Link>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {footerLinks.map((l) => (
@@ -53,7 +53,7 @@ const Footer = () => {
             ))}
           </div>
           <p className="font-body text-xs text-cream/30 text-center max-w-2xl">
-            Copyright © 2025 Earthy Massage. All rights reserved.
+            Copyright © 2025 Earthy Wellness. All rights reserved.
             <br /><br />
             No part of this work may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the copyright owner, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.
           </p>
