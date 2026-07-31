@@ -15,18 +15,18 @@ interface LightboxImage {
 }
 const MeridianOverlay = () => {
   const meridianLabels = [
-    { name: "Ren (Conception)", x: 50, y: 8, targetX: 50, targetY: 14 },
-    { name: "Lung", x: 32, y: 28, targetX: 40, targetY: 25 },
-    { name: "Large Intestine", x: 68, y: 28, targetX: 60, targetY: 25 },
-    { name: "Heart", x: 28, y: 38, targetX: 38, targetY: 32 },
-    { name: "Small Intestine", x: 72, y: 38, targetX: 62, targetY: 32 },
-    { name: "Pericardium", x: 50, y: 26, targetX: 50, targetY: 34 },
-    { name: "Spleen", x: 26, y: 50, targetX: 34, targetY: 40 },
-    { name: "Stomach", x: 74, y: 50, targetX: 66, targetY: 40 },
-    { name: "Liver", x: 28, y: 66, targetX: 42, targetY: 46 },
-    { name: "Gallbladder", x: 72, y: 66, targetX: 58, targetY: 46 },
-    { name: "Kidney", x: 30, y: 82, targetX: 44, targetY: 72 },
-    { name: "Bladder", x: 70, y: 82, targetX: 56, targetY: 72 },
+    { name: "Ren (Conception)", x: 50, y: 9, targetX: 50, targetY: 14 },
+    { name: "Lung", x: 30, y: 24, targetX: 40, targetY: 25 },
+    { name: "Large Intestine", x: 70, y: 24, targetX: 60, targetY: 25 },
+    { name: "Pericardium", x: 50, y: 31, targetX: 50, targetY: 34 },
+    { name: "Heart", x: 26, y: 38, targetX: 38, targetY: 32 },
+    { name: "Small Intestine", x: 74, y: 38, targetX: 62, targetY: 32 },
+    { name: "Spleen", x: 24, y: 52, targetX: 34, targetY: 40 },
+    { name: "Stomach", x: 76, y: 52, targetX: 66, targetY: 40 },
+    { name: "Liver", x: 26, y: 68, targetX: 42, targetY: 46 },
+    { name: "Gallbladder", x: 74, y: 68, targetX: 58, targetY: 46 },
+    { name: "Kidney", x: 28, y: 82, targetX: 44, targetY: 72 },
+    { name: "Bladder", x: 72, y: 82, targetX: 56, targetY: 72 },
   ];
 
   return (
