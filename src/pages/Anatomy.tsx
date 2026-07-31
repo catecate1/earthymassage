@@ -83,7 +83,7 @@ const MuscleOverlay = ({
 
   return (
     <svg
-      className="absolute inset-0 w-full h-full z-10"
+      className="absolute inset-0 w-full h-full z-10 pointer-events-none"
       viewBox="-15 0 130 100"
       preserveAspectRatio="none"
       style={{ overflow: "visible" }}
