@@ -36,7 +36,7 @@ const About = () => {
               </h2>
               <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
                 <p>
-                  Welcome to Earthy Wellness. I'm a licensed massage therapist specializing exclusively in Swedish massage — the gentle, flowing technique that promotes deep relaxation and overall wellness.
+                  Welcome to Earthy Wellness. I'm a licensed massage therapist specializing exclusively in acupressure meridian body-work — the gentle, flowing technique that promotes deep relaxation and overall wellness.
                 
                 </p>
                 <p>
