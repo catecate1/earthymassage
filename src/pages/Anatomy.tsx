@@ -155,7 +155,7 @@ const AcupointOverlay = () => {
       </defs>
 
       {/* Meridian guide lines (subtle) */}
-      <g fill="none" strokeWidth="0.5" strokeLinecap="round" stroke="hsl(var(--primary))" strokeOpacity="0.25">
+      <g fill="none" strokeWidth="0.5" strokeLinecap="round" stroke="hsl(var(--foreground))" strokeOpacity="0.25">
         <path d="M45 6 C40 18 38 32 40 45 C42 60 46 75 48 90" />
         <path d="M55 6 C60 18 62 32 60 45 C58 60 54 75 52 90" />
         <path d="M47 24 C35 28 28 38 30 52 C32 66 38 78 42 88" />
