@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X, ZoomIn } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import anatomyFront from "@/assets/anatomy-front.jpg";
 import anatomyBack from "@/assets/anatomy-back.jpg";
+
+interface LightboxImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 
 interface MuscleHotspot {
   id: string;
