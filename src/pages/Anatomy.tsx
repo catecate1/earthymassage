@@ -69,9 +69,9 @@ const MeridianOverlay = () => {
       </g>
 
       {/* Direction arrows along central meridian */}
-      <polygon points="48,26 50,22 52,26" fill="hsl(var(--primary))" fillOpacity="0.4" />
-      <polygon points="48,46 50,42 52,46" fill="hsl(var(--primary))" fillOpacity="0.4" />
-      <polygon points="48,70 50,66 52,70" fill="hsl(var(--primary))" fillOpacity="0.4" />
+      <polygon points="48,26 50,22 52,26" fill="hsl(var(--foreground))" fillOpacity="0.4" />
+      <polygon points="48,46 50,42 52,46" fill="hsl(var(--foreground))" fillOpacity="0.4" />
+      <polygon points="48,70 50,66 52,70" fill="hsl(var(--foreground))" fillOpacity="0.4" />
 
       {/* Labels with leader lines */}
       {meridianLabels.map((m) => {
@@ -83,7 +83,7 @@ const MeridianOverlay = () => {
               y1={m.y}
               x2={m.targetX}
               y2={m.targetY}
-              stroke="hsl(var(--primary))"
+              stroke="hsl(var(--foreground))"
               strokeWidth="0.4"
               strokeOpacity="0.85"
               markerEnd="url(#meridian-arrowhead)"
