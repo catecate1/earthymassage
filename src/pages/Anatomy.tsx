@@ -383,15 +383,18 @@ const Anatomy = () => {
               className="text-center"
             >
               <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30 inline-block w-full max-w-md">
-                <div className="relative inline-block w-full overflow-visible">
+                <div className="relative inline-block w-full overflow-visible group cursor-pointer" onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior anatomical figure showing key acupoints", caption: "Key Acupoints — anterior view" })}>
                   <img
                     src={anatomyFront}
                     alt="Anterior anatomical figure showing key acupoints"
-                    className="rounded-lg w-full object-cover"
+                    className="rounded-lg w-full object-cover hover:opacity-95 transition-opacity"
                     loading="lazy"
                     width={768}
                     height={1024}
                   />
+                  <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-sm pointer-events-none" aria-hidden="true">
+                    <ZoomIn className="w-4 h-4" />
+                  </div>
                   <svg
                     className="absolute inset-0 w-full h-full z-10"
                     viewBox="0 0 100 100"
