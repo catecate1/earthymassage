@@ -286,6 +286,206 @@ const Anatomy = () => {
         </div>
       </section>
 
+      {/* Meridians & Acupoints Diagrams */}
+      <section className="py-16 bg-background">
+        <div className="container max-w-6xl px-6">
+          <h2 className="font-display text-3xl text-foreground text-center mb-4">
+            Meridians & Acupoints
+          </h2>
+          <p className="text-muted-foreground font-body text-center mb-12 max-w-2xl mx-auto">
+            Meridians are the invisible channels where life energy flows. Acupoints are specific locations along these channels where pressure can release tension and restore balance.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Meridians diagram */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
+            >
+              <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30 inline-block w-full max-w-md">
+                <svg
+                  viewBox="0 0 200 320"
+                  className="w-full h-auto"
+                  role="img"
+                  aria-label="Diagram of the twelve meridian channels flowing through the front of the body"
+                >
+                  {/* Body silhouette */}
+                  <path
+                    d="M100 12
+                       C86 12 78 22 78 34
+                       C78 44 84 52 90 56
+                       C80 60 70 72 68 88
+                       C66 110 66 130 70 150
+                       C72 170 72 190 72 210
+                       C72 240 76 270 80 300
+                       C82 308 90 310 94 310
+                       L94 315
+                       C94 318 97 320 100 320
+                       C103 320 106 318 106 315
+                       L106 310
+                       C110 310 118 308 120 300
+                       C124 270 128 240 128 210
+                       C128 190 128 170 130 150
+                       C134 130 134 110 132 88
+                       C130 72 120 60 110 56
+                       C116 52 122 44 122 34
+                       C122 22 114 12 100 12
+                       Z"
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeOpacity="0.12"
+                    strokeWidth="1.5"
+                  />
+
+                  {/* Meridian channels */}
+                  <g fill="none" strokeWidth="2" strokeLinecap="round">
+                    <path d="M88 22 C82 60 75 110 78 160 C80 210 88 260 94 300" stroke="hsl(var(--primary))" strokeOpacity="0.55" />
+                    <path d="M112 22 C118 60 125 110 122 160 C120 210 112 260 106 300" stroke="hsl(var(--primary))" strokeOpacity="0.55" />
+                    <path d="M90 58 C72 70 60 100 62 140 C64 180 70 220 78 260" stroke="#b88a8a" strokeOpacity="0.6" />
+                    <path d="M110 58 C128 70 140 100 138 140 C136 180 130 220 122 260" stroke="#b88a8a" strokeOpacity="0.6" />
+                    <path d="M100 36 C96 70 94 120 96 170 C98 220 100 270 100 300" stroke="#8aa38a" strokeOpacity="0.6" />
+                    <path d="M78 88 C85 110 95 130 100 145 C105 130 115 110 122 88" stroke="#9a8fb8" strokeOpacity="0.6" />
+                    <path d="M100 100 C88 130 82 170 85 210 C88 250 95 280 100 300" stroke="#b8a08a" strokeOpacity="0.6" />
+                    <path d="M100 100 C112 130 118 170 115 210 C112 250 105 280 100 300" stroke="#b8a08a" strokeOpacity="0.6" />
+                    <path d="M72 120 C68 160 70 200 78 240" stroke="#8a9ab8" strokeOpacity="0.6" />
+                    <path d="M128 120 C132 160 130 200 122 240" stroke="#8a9ab8" strokeOpacity="0.6" />
+                    <path d="M80 70 C78 90 82 110 100 125 C118 110 122 90 120 70" stroke="#b88a9a" strokeOpacity="0.6" />
+                    <path d="M100 145 C82 160 78 185 80 210 C82 235 90 260 98 285" stroke="#8a9a8a" strokeOpacity="0.6" />
+                    <path d="M100 145 C118 160 122 185 120 210 C118 235 110 260 102 285" stroke="#8a9a8a" strokeOpacity="0.6" />
+                  </g>
+
+                  {/* Direction arrows along central meridian */}
+                  <polygon points="96,90 100,82 104,90" fill="hsl(var(--primary))" fillOpacity="0.4" />
+                  <polygon points="96,180 100,172 104,180" fill="hsl(var(--primary))" fillOpacity="0.4" />
+                  <polygon points="96,270 100,262 104,270" fill="hsl(var(--primary))" fillOpacity="0.4" />
+
+                  {/* Legend */}
+                  <text x="100" y="12" textAnchor="middle" fontSize="8" fontFamily="var(--font-body, sans-serif)" fill="hsl(var(--foreground))" fillOpacity="0.7">
+                    Front View
+                  </text>
+                </svg>
+              </div>
+              <h3 className="mt-4 font-display text-xl text-foreground">Meridian Channels</h3>
+              <p className="mt-1 text-sm font-body text-muted-foreground max-w-xs mx-auto">
+                Twelve primary pathways that carry energy through the body.
+              </p>
+            </motion.div>
+
+            {/* Acupoints diagram */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-center"
+            >
+              <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30 inline-block w-full max-w-md">
+                <svg
+                  viewBox="0 0 200 320"
+                  className="w-full h-auto"
+                  role="img"
+                  aria-label="Diagram showing key acupoints along the meridian channels on the front of the body"
+                >
+                  {/* Body silhouette */}
+                  <path
+                    d="M100 12
+                       C86 12 78 22 78 34
+                       C78 44 84 52 90 56
+                       C80 60 70 72 68 88
+                       C66 110 66 130 70 150
+                       C72 170 72 190 72 210
+                       C72 240 76 270 80 300
+                       C82 308 90 310 94 310
+                       L94 315
+                       C94 318 97 320 100 320
+                       C103 320 106 318 106 315
+                       L106 310
+                       C110 310 118 308 120 300
+                       C124 270 128 240 128 210
+                       C128 190 128 170 130 150
+                       C134 130 134 110 132 88
+                       C130 72 120 60 110 56
+                       C116 52 122 44 122 34
+                       C122 22 114 12 100 12
+                       Z"
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeOpacity="0.12"
+                    strokeWidth="1.5"
+                  />
+
+                  {/* Meridian guide lines (subtle) */}
+                  <g fill="none" strokeWidth="1.5" strokeLinecap="round" stroke="hsl(var(--primary))" strokeOpacity="0.2">
+                    <path d="M88 22 C82 60 75 110 78 160 C80 210 88 260 94 300" />
+                    <path d="M112 22 C118 60 125 110 122 160 C120 210 112 260 106 300" />
+                    <path d="M90 58 C72 70 60 100 62 140 C64 180 70 220 78 260" />
+                    <path d="M110 58 C128 70 140 100 138 140 C136 180 130 220 122 260" />
+                    <path d="M100 36 C96 70 94 120 96 170 C98 220 100 270 100 300" />
+                    <path d="M100 100 C88 130 82 170 85 210 C88 250 95 280 100 300" />
+                    <path d="M100 100 C112 130 118 170 115 210 C112 250 105 280 100 300" />
+                  </g>
+
+                  {/* Acupoints */}
+                  {[
+                    { x: 100, y: 34, label: "Yintang" },
+                    { x: 88, y: 56, label: "Lung" },
+                    { x: 112, y: 56, label: "Lung" },
+                    { x: 100, y: 82, label: "Renzhong" },
+                    { x: 78, y: 88, label: "Heart" },
+                    { x: 122, y: 88, label: "Heart" },
+                    { x: 100, y: 115, label: "Shanzhong" },
+                    { x: 70, y: 120, label: "Stomach" },
+                    { x: 130, y: 120, label: "Stomach" },
+                    { x: 88, y: 145, label: "Liver" },
+                    { x: 112, y: 145, label: "Liver" },
+                    { x: 100, y: 170, label: "Zhongwan" },
+                    { x: 78, y: 185, label: "Spleen" },
+                    { x: 122, y: 185, label: "Spleen" },
+                    { x: 100, y: 210, label: "Qihai" },
+                    { x: 84, y: 235, label: "Kidney" },
+                    { x: 116, y: 235, label: "Kidney" },
+                    { x: 100, y: 260, label: "Guanyuan" },
+                    { x: 90, y: 285, label: "Bladder" },
+                    { x: 110, y: 285, label: "Bladder" },
+                  ].map((pt) => (
+                    <g key={`${pt.label}-${pt.x}-${pt.y}`}>
+                      <circle
+                        cx={pt.x}
+                        cy={pt.y}
+                        r="3"
+                        fill="hsl(var(--primary))"
+                        fillOpacity="0.85"
+                      />
+                      <circle
+                        cx={pt.x}
+                        cy={pt.y}
+                        r="5"
+                        fill="none"
+                        stroke="hsl(var(--primary))"
+                        strokeOpacity="0.3"
+                        strokeWidth="1"
+                      />
+                    </g>
+                  ))}
+
+                  {/* Legend */}
+                  <text x="100" y="12" textAnchor="middle" fontSize="8" fontFamily="var(--font-body, sans-serif)" fill="hsl(var(--foreground))" fillOpacity="0.7">
+                    Front View
+                  </text>
+                </svg>
+              </div>
+              <h3 className="mt-4 font-display text-xl text-foreground">Key Acupoints</h3>
+              <p className="mt-1 text-sm font-body text-muted-foreground max-w-xs mx-auto">
+                Specific points where pressure can release blocked energy.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Major Muscle Groups */}
       <section className="py-16 bg-background">
         <div className="container max-w-4xl">
