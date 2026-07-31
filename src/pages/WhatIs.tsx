@@ -52,8 +52,8 @@ const WhatIs = () => {
             <p>
               Unlike deep tissue work, acupressure meridian body-work uses lighter to moderate pressure,
               making it an excellent choice for those new to bodywork, those seeking relaxation, or anyone
-              looking to maintain overall wellness. The technique works with the body's natural systems to
-              encourage healing and balance.
+              looking to maintain overall wellness. This work is very much like Swedish massage in its gentle,
+              flowing approach. The technique works with the body's natural systems to encourage healing and balance.
             </p>
           </motion.div>
 
