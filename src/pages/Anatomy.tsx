@@ -1,10 +1,119 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X, ZoomIn } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import anatomyFront from "@/assets/anatomy-front.jpg";
 import anatomyBack from "@/assets/anatomy-back.jpg";
+
+interface LightboxImage {
+  src: string;
+  alt: string;
+  caption: string;
+  overlay?: ReactNode;
+}
+const MeridianOverlay = () => (
+  <svg
+    className="absolute inset-0 w-full h-full z-10 pointer-events-none"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="none"
+    style={{ overflow: "visible" }}
+    role="img"
+    aria-label="Diagram of the twelve meridian channels flowing through the front of the body"
+  >
+    {/* Meridian channels */}
+    <g fill="none" strokeWidth="0.6" strokeLinecap="round">
+      <path d="M45 6 C40 18 38 32 40 45 C42 60 46 75 48 90" stroke="hsl(var(--primary))" strokeOpacity="0.5" />
+      <path d="M55 6 C60 18 62 32 60 45 C58 60 54 75 52 90" stroke="hsl(var(--primary))" strokeOpacity="0.5" />
+      <path d="M47 24 C35 28 28 38 30 52 C32 66 38 78 42 88" stroke="#b88a8a" strokeOpacity="0.55" />
+      <path d="M53 24 C65 28 72 38 70 52 C68 66 62 78 58 88" stroke="#b88a8a" strokeOpacity="0.55" />
+      <path d="M50 12 C48 28 47 48 48 65 C49 78 50 88 50 90" stroke="#8aa38a" strokeOpacity="0.55" />
+      <path d="M42 32 C45 38 48 42 50 45 C52 42 55 38 58 32" stroke="#9a8fb8" strokeOpacity="0.55" />
+      <path d="M50 34 C44 44 42 54 43 64 C44 74 47 84 50 90" stroke="#b8a08a" strokeOpacity="0.55" />
+      <path d="M50 34 C56 44 58 54 57 64 C56 74 53 84 50 90" stroke="#b8a08a" strokeOpacity="0.55" />
+      <path d="M36 40 C34 54 35 68 40 80" stroke="#8a9ab8" strokeOpacity="0.55" />
+      <path d="M64 40 C66 54 65 68 60 80" stroke="#8a9ab8" strokeOpacity="0.55" />
+      <path d="M44 28 C42 36 46 44 50 50 C54 44 58 36 56 28" stroke="#b88a9a" strokeOpacity="0.55" />
+      <path d="M50 50 C42 58 40 68 42 78 C44 86 48 92 50 92" stroke="#8a9a8a" strokeOpacity="0.55" />
+      <path d="M50 50 C58 58 60 68 58 78 C56 86 52 92 50 92" stroke="#8a9a8a" strokeOpacity="0.55" />
+    </g>
+
+    {/* Direction arrows along central meridian */}
+    <polygon points="48,26 50,22 52,26" fill="hsl(var(--primary))" fillOpacity="0.4" />
+    <polygon points="48,46 50,42 52,46" fill="hsl(var(--primary))" fillOpacity="0.4" />
+    <polygon points="48,70 50,66 52,70" fill="hsl(var(--primary))" fillOpacity="0.4" />
+  </svg>
+);
+
+const acupointPoints = [
+  { x: 50, y: 15, label: "Yintang" },
+  { x: 42, y: 26, label: "Lung" },
+  { x: 58, y: 26, label: "Lung" },
+  { x: 50, y: 18, label: "Renzhong" },
+  { x: 38, y: 32, label: "Heart" },
+  { x: 62, y: 32, label: "Heart" },
+  { x: 50, y: 34, label: "Shanzhong" },
+  { x: 34, y: 40, label: "Stomach" },
+  { x: 66, y: 40, label: "Stomach" },
+  { x: 42, y: 46, label: "Liver" },
+  { x: 58, y: 46, label: "Liver" },
+  { x: 50, y: 48, label: "Zhongwan" },
+  { x: 38, y: 56, label: "Spleen" },
+  { x: 62, y: 56, label: "Spleen" },
+  { x: 50, y: 64, label: "Qihai" },
+  { x: 44, y: 72, label: "Kidney" },
+  { x: 56, y: 72, label: "Kidney" },
+  { x: 50, y: 80, label: "Guanyuan" },
+  { x: 46, y: 88, label: "Bladder" },
+  { x: 54, y: 88, label: "Bladder" },
+];
+
+const AcupointOverlay = () => (
+  <svg
+    className="absolute inset-0 w-full h-full z-10 pointer-events-none"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="none"
+    style={{ overflow: "visible" }}
+    role="img"
+    aria-label="Diagram showing key acupoints along the meridian channels on the front of the body"
+  >
+    {/* Meridian guide lines (subtle) */}
+    <g fill="none" strokeWidth="0.5" strokeLinecap="round" stroke="hsl(var(--primary))" strokeOpacity="0.25">
+      <path d="M45 6 C40 18 38 32 40 45 C42 60 46 75 48 90" />
+      <path d="M55 6 C60 18 62 32 60 45 C58 60 54 75 52 90" />
+      <path d="M47 24 C35 28 28 38 30 52 C32 66 38 78 42 88" />
+      <path d="M53 24 C65 28 72 38 70 52 C68 66 62 78 58 88" />
+      <path d="M50 12 C48 28 47 48 48 65 C49 78 50 88 50 90" />
+      <path d="M50 34 C44 44 42 54 43 64 C44 74 47 84 50 90" />
+      <path d="M50 34 C56 44 58 54 57 64 C56 74 53 84 50 90" />
+    </g>
+
+    {/* Acupoints */}
+    {acupointPoints.map((pt) => (
+      <g key={`${pt.label}-${pt.x}-${pt.y}`}>
+        <circle
+          cx={pt.x}
+          cy={pt.y}
+          r="1.5"
+          fill="hsl(var(--primary))"
+          fillOpacity="0.9"
+        />
+        <circle
+          cx={pt.x}
+          cy={pt.y}
+          r="2.5"
+          fill="none"
+          stroke="hsl(var(--primary))"
+          strokeOpacity="0.4"
+          strokeWidth="0.5"
+        />
+      </g>
+    ))}
+  </svg>
+);
+
+
 
 interface MuscleHotspot {
   id: string;
@@ -75,7 +184,7 @@ const MuscleOverlay = ({
 
   return (
     <svg
-      className="absolute inset-0 w-full h-full z-10"
+      className="absolute inset-0 w-full h-full z-10 pointer-events-none"
       viewBox="-15 0 130 100"
       preserveAspectRatio="none"
       style={{ overflow: "visible" }}
@@ -119,7 +228,7 @@ const MuscleOverlay = ({
           <g
             key={m.id}
             onClick={() => onSelect(isActive ? null : m)}
-            className="cursor-pointer"
+            className="cursor-pointer pointer-events-auto"
             role="button"
             aria-label={m.name}
           >
@@ -182,8 +291,10 @@ const MuscleOverlay = ({
 const Anatomy = () => {
   const [activeFront, setActiveFront] = useState<MuscleHotspot | null>(null);
   const [activeBack, setActiveBack] = useState<MuscleHotspot | null>(null);
+  const [lightbox, setLightbox] = useState<LightboxImage | null>(null);
 
   const activeDetail = activeFront || activeBack;
+
 
   return (
     <div className="min-h-screen">
@@ -213,15 +324,19 @@ const Anatomy = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <div className="relative inline-block max-w-sm w-full mx-auto overflow-visible">
+              <div className="relative inline-block max-w-sm w-full mx-auto overflow-visible group">
                 <img
                   src={anatomyFront}
                   alt="Anterior muscular system"
-                  className="rounded-lg shadow-card w-full object-cover"
+                  className="rounded-lg shadow-card w-full object-cover cursor-pointer hover:opacity-95 transition-opacity"
                   loading="lazy"
                   width={768}
                   height={1024}
+                  onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior muscular system", caption: "Anterior (Front) View — click muscle labels to learn more", overlay: <MuscleOverlay muscles={frontMuscles} activeId={null} onSelect={() => {}} /> })}
                 />
+                <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-sm pointer-events-none" aria-hidden="true">
+                  <ZoomIn className="w-4 h-4" />
+                </div>
                 <MuscleOverlay
                   muscles={frontMuscles}
                   activeId={activeFront?.id ?? null}
@@ -242,15 +357,19 @@ const Anatomy = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <div className="relative inline-block max-w-sm w-full mx-auto overflow-visible">
+              <div className="relative inline-block max-w-sm w-full mx-auto overflow-visible group">
                 <img
                   src={anatomyBack}
                   alt="Posterior muscular system"
-                  className="rounded-lg shadow-card w-full object-cover"
+                  className="rounded-lg shadow-card w-full object-cover cursor-pointer hover:opacity-95 transition-opacity"
                   loading="lazy"
                   width={768}
                   height={1024}
+                  onClick={() => setLightbox({ src: anatomyBack, alt: "Posterior muscular system", caption: "Posterior (Back) View — click muscle labels to learn more", overlay: <MuscleOverlay muscles={backMuscles} activeId={null} onSelect={() => {}} /> })}
                 />
+                <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-sm pointer-events-none" aria-hidden="true">
+                  <ZoomIn className="w-4 h-4" />
+                </div>
                 <MuscleOverlay
                   muscles={backMuscles}
                   activeId={activeBack?.id ?? null}
@@ -306,45 +425,19 @@ const Anatomy = () => {
               className="text-center"
             >
               <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30 inline-block w-full max-w-md">
-                <div className="relative inline-block w-full overflow-visible">
+                <div className="relative inline-block w-full overflow-visible group cursor-pointer" onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior anatomical figure showing meridian channels", caption: "Meridian Channels — anterior view", overlay: <MeridianOverlay /> })}>
                   <img
                     src={anatomyFront}
                     alt="Anterior anatomical figure showing meridian channels"
-                    className="rounded-lg w-full object-cover"
+                    className="rounded-lg w-full object-cover hover:opacity-95 transition-opacity"
                     loading="lazy"
                     width={768}
                     height={1024}
                   />
-                  <svg
-                    className="absolute inset-0 w-full h-full z-10"
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                    style={{ overflow: "visible" }}
-                    role="img"
-                    aria-label="Diagram of the twelve meridian channels flowing through the front of the body"
-                  >
-                    {/* Meridian channels */}
-                    <g fill="none" strokeWidth="0.6" strokeLinecap="round">
-                      <path d="M45 6 C40 18 38 32 40 45 C42 60 46 75 48 90" stroke="hsl(var(--primary))" strokeOpacity="0.5" />
-                      <path d="M55 6 C60 18 62 32 60 45 C58 60 54 75 52 90" stroke="hsl(var(--primary))" strokeOpacity="0.5" />
-                      <path d="M47 24 C35 28 28 38 30 52 C32 66 38 78 42 88" stroke="#b88a8a" strokeOpacity="0.55" />
-                      <path d="M53 24 C65 28 72 38 70 52 C68 66 62 78 58 88" stroke="#b88a8a" strokeOpacity="0.55" />
-                      <path d="M50 12 C48 28 47 48 48 65 C49 78 50 88 50 90" stroke="#8aa38a" strokeOpacity="0.55" />
-                      <path d="M42 32 C45 38 48 42 50 45 C52 42 55 38 58 32" stroke="#9a8fb8" strokeOpacity="0.55" />
-                      <path d="M50 34 C44 44 42 54 43 64 C44 74 47 84 50 90" stroke="#b8a08a" strokeOpacity="0.55" />
-                      <path d="M50 34 C56 44 58 54 57 64 C56 74 53 84 50 90" stroke="#b8a08a" strokeOpacity="0.55" />
-                      <path d="M36 40 C34 54 35 68 40 80" stroke="#8a9ab8" strokeOpacity="0.55" />
-                      <path d="M64 40 C66 54 65 68 60 80" stroke="#8a9ab8" strokeOpacity="0.55" />
-                      <path d="M44 28 C42 36 46 44 50 50 C54 44 58 36 56 28" stroke="#b88a9a" strokeOpacity="0.55" />
-                      <path d="M50 50 C42 58 40 68 42 78 C44 86 48 92 50 92" stroke="#8a9a8a" strokeOpacity="0.55" />
-                      <path d="M50 50 C58 58 60 68 58 78 C56 86 52 92 50 92" stroke="#8a9a8a" strokeOpacity="0.55" />
-                    </g>
-
-                    {/* Direction arrows along central meridian */}
-                    <polygon points="48,26 50,22 52,26" fill="hsl(var(--primary))" fillOpacity="0.4" />
-                    <polygon points="48,46 50,42 52,46" fill="hsl(var(--primary))" fillOpacity="0.4" />
-                    <polygon points="48,70 50,66 52,70" fill="hsl(var(--primary))" fillOpacity="0.4" />
-                  </svg>
+                  <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-sm pointer-events-none" aria-hidden="true">
+                    <ZoomIn className="w-4 h-4" />
+                  </div>
+                  <MeridianOverlay />
                 </div>
               </div>
               <h3 className="mt-4 font-display text-xl text-foreground">Meridian Channels</h3>
@@ -362,77 +455,19 @@ const Anatomy = () => {
               className="text-center"
             >
               <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30 inline-block w-full max-w-md">
-                <div className="relative inline-block w-full overflow-visible">
+                <div className="relative inline-block w-full overflow-visible group cursor-pointer" onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior anatomical figure showing key acupoints", caption: "Key Acupoints — anterior view", overlay: <AcupointOverlay /> })}>
                   <img
                     src={anatomyFront}
                     alt="Anterior anatomical figure showing key acupoints"
-                    className="rounded-lg w-full object-cover"
+                    className="rounded-lg w-full object-cover hover:opacity-95 transition-opacity"
                     loading="lazy"
                     width={768}
                     height={1024}
                   />
-                  <svg
-                    className="absolute inset-0 w-full h-full z-10"
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                    style={{ overflow: "visible" }}
-                    role="img"
-                    aria-label="Diagram showing key acupoints along the meridian channels on the front of the body"
-                  >
-                    {/* Meridian guide lines (subtle) */}
-                    <g fill="none" strokeWidth="0.5" strokeLinecap="round" stroke="hsl(var(--primary))" strokeOpacity="0.25">
-                      <path d="M45 6 C40 18 38 32 40 45 C42 60 46 75 48 90" />
-                      <path d="M55 6 C60 18 62 32 60 45 C58 60 54 75 52 90" />
-                      <path d="M47 24 C35 28 28 38 30 52 C32 66 38 78 42 88" />
-                      <path d="M53 24 C65 28 72 38 70 52 C68 66 62 78 58 88" />
-                      <path d="M50 12 C48 28 47 48 48 65 C49 78 50 88 50 90" />
-                      <path d="M50 34 C44 44 42 54 43 64 C44 74 47 84 50 90" />
-                      <path d="M50 34 C56 44 58 54 57 64 C56 74 53 84 50 90" />
-                    </g>
-
-                    {/* Acupoints */}
-                    {[
-                      { x: 50, y: 15, label: "Yintang" },
-                      { x: 42, y: 26, label: "Lung" },
-                      { x: 58, y: 26, label: "Lung" },
-                      { x: 50, y: 18, label: "Renzhong" },
-                      { x: 38, y: 32, label: "Heart" },
-                      { x: 62, y: 32, label: "Heart" },
-                      { x: 50, y: 34, label: "Shanzhong" },
-                      { x: 34, y: 40, label: "Stomach" },
-                      { x: 66, y: 40, label: "Stomach" },
-                      { x: 42, y: 46, label: "Liver" },
-                      { x: 58, y: 46, label: "Liver" },
-                      { x: 50, y: 48, label: "Zhongwan" },
-                      { x: 38, y: 56, label: "Spleen" },
-                      { x: 62, y: 56, label: "Spleen" },
-                      { x: 50, y: 64, label: "Qihai" },
-                      { x: 44, y: 72, label: "Kidney" },
-                      { x: 56, y: 72, label: "Kidney" },
-                      { x: 50, y: 80, label: "Guanyuan" },
-                      { x: 46, y: 88, label: "Bladder" },
-                      { x: 54, y: 88, label: "Bladder" },
-                    ].map((pt) => (
-                      <g key={`${pt.label}-${pt.x}-${pt.y}`}>
-                        <circle
-                          cx={pt.x}
-                          cy={pt.y}
-                          r="1.5"
-                          fill="hsl(var(--primary))"
-                          fillOpacity="0.9"
-                        />
-                        <circle
-                          cx={pt.x}
-                          cy={pt.y}
-                          r="2.5"
-                          fill="none"
-                          stroke="hsl(var(--primary))"
-                          strokeOpacity="0.4"
-                          strokeWidth="0.5"
-                        />
-                      </g>
-                    ))}
-                  </svg>
+                  <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-sm pointer-events-none" aria-hidden="true">
+                    <ZoomIn className="w-4 h-4" />
+                  </div>
+                  <AcupointOverlay />
                 </div>
               </div>
               <h3 className="mt-4 font-display text-xl text-foreground">Key Acupoints</h3>
@@ -440,6 +475,73 @@ const Anatomy = () => {
                 Specific points where pressure can release blocked energy.
               </p>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meridian & Acupoint Reference Lists */}
+      <section className="py-12 bg-petal/20 border-y border-border/30">
+        <div className="container max-w-5xl px-6">
+          <h2 className="font-display text-2xl text-foreground text-center mb-8">
+            Meridian & Acupoint Reference
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30">
+              <h3 className="font-display text-xl text-foreground mb-4 flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-primary" />
+                Twelve Primary Meridian Channels
+              </h3>
+              <ul className="grid grid-cols-2 gap-2 text-sm font-body text-muted-foreground">
+                {[
+                  "Lung",
+                  "Large Intestine",
+                  "Stomach",
+                  "Spleen",
+                  "Heart",
+                  "Small Intestine",
+                  "Bladder",
+                  "Kidney",
+                  "Pericardium",
+                  "Triple Burner",
+                  "Gall Bladder",
+                  "Liver",
+                ].map((m) => (
+                  <li key={m} className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-primary/60" />
+                    {m}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30">
+              <h3 className="font-display text-xl text-foreground mb-4 flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-primary" />
+                Key Acupoints Shown
+              </h3>
+              <ul className="grid grid-cols-2 gap-2 text-sm font-body text-muted-foreground">
+                {[
+                  "Yintang (between brows)",
+                  "Renzhong (upper lip)",
+                  "Shanzhong (chest center)",
+                  "Zhongwan (upper abdomen)",
+                  "Qihai (below navel)",
+                  "Guanyuan (lower abdomen)",
+                  "Lung",
+                  "Heart",
+                  "Stomach",
+                  "Liver",
+                  "Spleen",
+                  "Kidney",
+                  "Bladder",
+                ].map((pt) => (
+                  <li key={pt} className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-primary/60" />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -515,6 +617,50 @@ const Anatomy = () => {
           </div>
         </div>
       </section>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm p-4"
+            onClick={() => setLightbox(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="relative w-full max-w-4xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setLightbox(null)}
+                className="absolute -top-12 right-0 p-2 text-foreground hover:text-primary transition-colors"
+                aria-label="Close image"
+              >
+                <X className="w-8 h-8" />
+              </button>
+              <div className="relative inline-block">
+                <img
+                  src={lightbox.src}
+                  alt={lightbox.alt}
+                  className="w-auto h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                />
+                {lightbox.overlay}
+              </div>
+              {lightbox.caption && (
+                <p className="mt-3 text-center text-sm font-body text-muted-foreground">
+                  {lightbox.caption}
+                </p>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Footer />
     </div>
