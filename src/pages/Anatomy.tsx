@@ -332,7 +332,7 @@ const Anatomy = () => {
             The Adductor Muscles
           </h2>
           <p className="text-muted-foreground font-body text-center mb-10 max-w-2xl mx-auto">
-            The adductor group runs along the inner thigh and is essential for hip stability and leg movement. Massage therapy can relieve tightness in these often-overlooked muscles.
+            The adductor group runs along the inner thigh and is essential for hip stability and leg movement. Acupressure meridian body-work can relieve tightness in these often-overlooked muscles.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
