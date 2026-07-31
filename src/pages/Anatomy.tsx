@@ -189,7 +189,7 @@ const Anatomy = () => {
     <div className="min-h-screen">
       <Navbar />
       <PageHeader
-        title="Anatomy & Massage"
+        title="Anatomy"
         subtitle="Tap any muscle point to learn how acupressure meridian body-work benefits that area."
       />
 
@@ -290,7 +290,7 @@ const Anatomy = () => {
       <section className="py-16 bg-background">
         <div className="container max-w-4xl">
           <h2 className="font-display text-3xl text-foreground text-center mb-4">
-            Major Muscle Groups & Massage Benefits
+            Major Muscle Groups
           </h2>
           <p className="text-muted-foreground font-body text-center mb-10 max-w-2xl mx-auto">
             Acupressure meridian body-work targets these key muscle groups to relieve tension, improve circulation, and restore balance to your body.
