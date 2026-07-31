@@ -92,7 +92,7 @@ const ContactSection = () => {
                   </label>
                   <select className="w-full rounded-md border border-border bg-background px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
                     <option value="">Choose a session</option>
-                    <option>Swedish Massage</option>
+                    <option>Acupressure Meridian Body-Work</option>
                     <option>Deep Tissue</option>
                     <option>Hot Stone Therapy</option>
                     <option>Prenatal Massage</option>

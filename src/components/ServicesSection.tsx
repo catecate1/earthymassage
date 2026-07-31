@@ -4,7 +4,7 @@ import { Leaf, Droplets, Sun, Heart } from "lucide-react";
 const services = [
   {
     icon: Leaf,
-    title: "Swedish Massage",
+    title: "Acupressure Meridian Body-Work",
     description: "Gentle, flowing strokes to promote deep relaxation and relieve everyday tension.",
     duration: "60 / 90 min",
     price: "From $95",
@@ -49,7 +49,7 @@ const ServicesSection = () => {
         <div className="text-center mb-4">
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">Our Services</h2>
           <p className="text-muted-foreground font-body max-w-lg mx-auto">
-            Swedish massage sessions crafted for your comfort and healing.
+            Acupressure meridian body-work sessions crafted for your comfort and healing.
           </p>
           <div className="w-16 h-0.5 bg-primary mx-auto mt-6 mb-12" />
         </div>

@@ -7,7 +7,7 @@ const features = [
   {
     icon: Sparkles,
     title: "Earthy Wellness",
-    description: "Personalized Swedish massage tailored to your body's unique needs.",
+    description: "Personalized acupressure meridian body-work tailored to your body's unique needs.",
   },
   {
     icon: Flower2,
@@ -60,7 +60,7 @@ const AboutSection = () => {
             Ready to <em className="italic text-primary">Relax?</em>
           </h2>
           <p className="font-body text-muted-foreground max-w-md mx-auto mb-8">
-            Your journey to wellness begins with a single step. Book your Swedish massage session today.
+            Your journey to wellness begins with a single step. Book your acupressure meridian body-work session today.
           </p>
           <Link to="/book">
             <Button

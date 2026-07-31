@@ -190,7 +190,7 @@ const Anatomy = () => {
       <Navbar />
       <PageHeader
         title="Anatomy & Massage"
-        subtitle="Tap any muscle point to learn how Swedish massage benefits that area."
+        subtitle="Tap any muscle point to learn how acupressure meridian body-work benefits that area."
       />
 
       {/* Interactive hint */}
@@ -293,7 +293,7 @@ const Anatomy = () => {
             Major Muscle Groups & Massage Benefits
           </h2>
           <p className="text-muted-foreground font-body text-center mb-10 max-w-2xl mx-auto">
-            Swedish massage targets these key muscle groups to relieve tension, improve circulation, and restore balance to your body.
+            Acupressure meridian body-work targets these key muscle groups to relieve tension, improve circulation, and restore balance to your body.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
