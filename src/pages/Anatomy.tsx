@@ -437,36 +437,7 @@ const Anatomy = () => {
                   <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-sm pointer-events-none" aria-hidden="true">
                     <ZoomIn className="w-4 h-4" />
                   </div>
-                  <svg
-                    className="absolute inset-0 w-full h-full z-10 pointer-events-none"
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                    style={{ overflow: "visible" }}
-                    role="img"
-                    aria-label="Diagram of the twelve meridian channels flowing through the front of the body"
-                  >
-                    {/* Meridian channels */}
-                    <g fill="none" strokeWidth="0.6" strokeLinecap="round">
-                      <path d="M45 6 C40 18 38 32 40 45 C42 60 46 75 48 90" stroke="hsl(var(--primary))" strokeOpacity="0.5" />
-                      <path d="M55 6 C60 18 62 32 60 45 C58 60 54 75 52 90" stroke="hsl(var(--primary))" strokeOpacity="0.5" />
-                      <path d="M47 24 C35 28 28 38 30 52 C32 66 38 78 42 88" stroke="#b88a8a" strokeOpacity="0.55" />
-                      <path d="M53 24 C65 28 72 38 70 52 C68 66 62 78 58 88" stroke="#b88a8a" strokeOpacity="0.55" />
-                      <path d="M50 12 C48 28 47 48 48 65 C49 78 50 88 50 90" stroke="#8aa38a" strokeOpacity="0.55" />
-                      <path d="M42 32 C45 38 48 42 50 45 C52 42 55 38 58 32" stroke="#9a8fb8" strokeOpacity="0.55" />
-                      <path d="M50 34 C44 44 42 54 43 64 C44 74 47 84 50 90" stroke="#b8a08a" strokeOpacity="0.55" />
-                      <path d="M50 34 C56 44 58 54 57 64 C56 74 53 84 50 90" stroke="#b8a08a" strokeOpacity="0.55" />
-                      <path d="M36 40 C34 54 35 68 40 80" stroke="#8a9ab8" strokeOpacity="0.55" />
-                      <path d="M64 40 C66 54 65 68 60 80" stroke="#8a9ab8" strokeOpacity="0.55" />
-                      <path d="M44 28 C42 36 46 44 50 50 C54 44 58 36 56 28" stroke="#b88a9a" strokeOpacity="0.55" />
-                      <path d="M50 50 C42 58 40 68 42 78 C44 86 48 92 50 92" stroke="#8a9a8a" strokeOpacity="0.55" />
-                      <path d="M50 50 C58 58 60 68 58 78 C56 86 52 92 50 92" stroke="#8a9a8a" strokeOpacity="0.55" />
-                    </g>
-
-                    {/* Direction arrows along central meridian */}
-                    <polygon points="48,26 50,22 52,26" fill="hsl(var(--primary))" fillOpacity="0.4" />
-                    <polygon points="48,46 50,42 52,46" fill="hsl(var(--primary))" fillOpacity="0.4" />
-                    <polygon points="48,70 50,66 52,70" fill="hsl(var(--primary))" fillOpacity="0.4" />
-                  </svg>
+                  <MeridianOverlay />
                 </div>
               </div>
               <h3 className="mt-4 font-display text-xl text-foreground">Meridian Channels</h3>
