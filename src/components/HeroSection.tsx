@@ -30,7 +30,7 @@ const HeroSection = () => {
             Find Your <em className="italic text-cream">Serenity</em>
           </h1>
           <p className="text-cream/80 font-body text-lg leading-relaxed mb-8 max-w-md opacity-100 font-medium">
-            Experience the gentle art of massage in a warm, welcoming space designed for deep relaxation and lasting
+            Experience this gentle art in a warm, welcoming space designed for deep relaxation and lasting
             renewal.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
