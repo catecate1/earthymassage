@@ -365,7 +365,7 @@ const Anatomy = () => {
                   loading="lazy"
                   width={768}
                   height={1024}
-                  onClick={() => setLightbox({ src: anatomyBack, alt: "Posterior muscular system", caption: "Posterior (Back) View — click muscle labels to learn more" })}
+                  onClick={() => setLightbox({ src: anatomyBack, alt: "Posterior muscular system", caption: "Posterior (Back) View — click muscle labels to learn more", overlay: <MuscleOverlay muscles={backMuscles} activeId={null} onSelect={() => {}} /> })}
                 />
                 <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-sm pointer-events-none" aria-hidden="true">
                   <ZoomIn className="w-4 h-4" />
