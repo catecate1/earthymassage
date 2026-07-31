@@ -425,7 +425,7 @@ const Anatomy = () => {
               className="text-center"
             >
               <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30 inline-block w-full max-w-md">
-                <div className="relative inline-block w-full overflow-visible group cursor-pointer" onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior anatomical figure showing meridian channels", caption: "Meridian Channels — anterior view" })}>
+                <div className="relative inline-block w-full overflow-visible group cursor-pointer" onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior anatomical figure showing meridian channels", caption: "Meridian Channels — anterior view", overlay: <MeridianOverlay /> })}>
                   <img
                     src={anatomyFront}
                     alt="Anterior anatomical figure showing meridian channels"
