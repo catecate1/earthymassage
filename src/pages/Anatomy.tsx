@@ -332,7 +332,7 @@ const Anatomy = () => {
                   loading="lazy"
                   width={768}
                   height={1024}
-                  onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior muscular system", caption: "Anterior (Front) View — click muscle labels to learn more" })}
+                  onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior muscular system", caption: "Anterior (Front) View — click muscle labels to learn more", overlay: <MuscleOverlay muscles={frontMuscles} activeId={null} onSelect={() => {}} /> })}
                 />
                 <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 text-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-sm pointer-events-none" aria-hidden="true">
                   <ZoomIn className="w-4 h-4" />
