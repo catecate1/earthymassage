@@ -47,7 +47,7 @@ const MeridianOverlay = () => {
           refY="2"
           orient="auto"
         >
-          <polygon points="0 0, 5 2, 0 4" fill="hsl(var(--primary))" />
+          <polygon points="0 0, 5 2, 0 4" fill="hsl(var(--foreground))" />
         </marker>
       </defs>
 
