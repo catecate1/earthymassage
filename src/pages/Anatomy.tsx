@@ -455,7 +455,7 @@ const Anatomy = () => {
               className="text-center"
             >
               <div className="bg-card rounded-xl p-6 shadow-soft border border-border/30 inline-block w-full max-w-md">
-                <div className="relative inline-block w-full overflow-visible group cursor-pointer" onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior anatomical figure showing key acupoints", caption: "Key Acupoints — anterior view" })}>
+                <div className="relative inline-block w-full overflow-visible group cursor-pointer" onClick={() => setLightbox({ src: anatomyFront, alt: "Anterior anatomical figure showing key acupoints", caption: "Key Acupoints — anterior view", overlay: <AcupointOverlay /> })}>
                   <img
                     src={anatomyFront}
                     alt="Anterior anatomical figure showing key acupoints"
