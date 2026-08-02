@@ -27,7 +27,7 @@ const ContactSection = () => {
             {[
               { icon: MapPin, label: "Location", text: "123 Blossom Lane, Suite 4, Springfield" },
               { icon: Phone, label: "Phone", text: "(555) 123-4567" },
-              { icon: Mail, label: "Email", text: "hello@earthymassage.com" },
+              { icon: Mail, label: "Email", text: "hello@earthy-wellness.com" },
               { icon: Clock, label: "Hours", text: "Mon–Sat: 9am – 7pm" },
             ].map((item) => (
               <div key={item.text} className="flex items-start gap-4">
