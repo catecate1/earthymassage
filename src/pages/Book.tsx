@@ -21,7 +21,7 @@ const Book = () => {
               </p>
               <Button asChild size="lg" className="text-lg px-10 py-6">
                 <a
-                  href="https://bookeo.com/earthymassage/customer"
+                  href="https://bookeo.com/earthy-wellness/customer"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
