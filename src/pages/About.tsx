@@ -58,7 +58,27 @@ const About = () => {
         </div>
       </section>
 
+      <section className="pb-20 bg-background">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-md mx-auto text-center">
 
+            <img
+              src={debPortrait.url}
+              alt="Deb, owner of Earthy Wellness"
+              className="rounded-lg shadow-card w-full object-cover"
+              loading="lazy" />
+
+            <p className="font-body text-muted-foreground text-sm mt-4 italic">
+              Deb — welcoming you to Earthy Wellness.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       <Footer />
     </div>);
