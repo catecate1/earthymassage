@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import massageRoom from "@/assets/massage-room.jpg";
+import debPortrait from "@/assets/deb-portrait.png.asset.json";
 const About = () => {
   return (
     <div className="min-h-screen">
@@ -58,7 +59,27 @@ const About = () => {
         </div>
       </section>
 
+      <section className="pb-20 bg-background">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-md mx-auto text-center">
 
+            <img
+              src={debPortrait.url}
+              alt="Deb, owner of Earthy Wellness"
+              className="rounded-lg shadow-card w-full object-cover"
+              loading="lazy" />
+
+            <p className="font-body text-muted-foreground text-sm mt-4 italic">
+              Deb — welcoming you to Earthy Wellness.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       <Footer />
     </div>);
