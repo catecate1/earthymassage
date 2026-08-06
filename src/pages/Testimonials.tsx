@@ -4,9 +4,11 @@ import PageHeader from "@/components/PageHeader";
 import { Quote } from "lucide-react";
 
 const testimonials = [
+  "I think that's one of the best massages I've ever had.",
+  "This is incredibly relaxing. Do you do two hours?",
+  "Wish I didn't have to travel so far to get your amazing massage.  Thanks again.",
   "Once again that was amazing massage! Thank you so much!",
   "That was amazing. See you next time!",
-  "Deb I really enjoyed the massage. I will schedule another appointment on my way back.",
   "That was fabulous.",
   "Do you paint or play an instrument? I could tell. It's important for a massage therapist to treat their work like a canvas. You do.",
   "Unbelievable. Profoundly relaxing.",
