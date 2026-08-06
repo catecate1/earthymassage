@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import swedishMassage from "@/assets/massage-therapist-apron.jpg";
+import massageRoom from "@/assets/massage-room.jpg";
 
 const services = [
   {
@@ -53,11 +54,19 @@ const Services = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <img
-                src={swedishMassage}
-                alt="Acupressure meridian body-work"
-                className="rounded-lg shadow-card w-full object-cover"
-              />
+              <div className="space-y-6">
+                <img
+                  src={massageRoom}
+                  alt="Massage table and treatment room"
+                  className="rounded-lg shadow-card w-full object-cover"
+                />
+                <img
+                  src={swedishMassage}
+                  alt="Acupressure meridian body-work"
+                  className="rounded-lg shadow-card w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
             </motion.div>
 
             <div className="space-y-4">
