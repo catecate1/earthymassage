@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import massageRoom from "@/assets/massage-room.jpg";
+import debPortrait from "@/assets/deb-portrait.png.asset.json";
 const About = () => {
   return (
     <div className="min-h-screen">
