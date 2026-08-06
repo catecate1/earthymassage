@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import massageRoom from "@/assets/massage-room.jpg";
 import debPortrait from "@/assets/deb-portrait.png.asset.json";
 const About = () => {
   return (
@@ -12,20 +11,7 @@ const About = () => {
 
       <section className="py-16 bg-background">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}>
-              
-              <img
-                src={massageRoom}
-                alt="Massage therapy space"
-                className="rounded-lg shadow-card w-full object-cover" />
-              
-            </motion.div>
-
+          <div className="max-w-3xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
