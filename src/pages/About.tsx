@@ -24,9 +24,6 @@ const About = () => {
                   alt="Deb, owner of Earthy Wellness"
                   className="rounded-lg shadow-card w-full object-cover"
                   loading="lazy" />
-                <p className="font-body text-muted-foreground text-sm mt-4 italic">
-                  Deb — welcoming you to Earthy Wellness.
-                </p>
               </motion.div>
 
               <motion.div
