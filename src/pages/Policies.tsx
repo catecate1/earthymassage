@@ -25,11 +25,6 @@ const policies = [
     text: "I do not accept $50 or $100 bills and do not make change.",
   },
   {
-    icon: CreditCard,
-    title: "Credit Cards",
-    text: "I do not process credit cards in the office.",
-  },
-  {
     icon: Weight,
     title: "Table Weight Limit",
     text: "I do not allow anyone weighing more than 300 lbs. on my table.",
