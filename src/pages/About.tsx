@@ -20,7 +20,7 @@ const About = () => {
                 transition={{ duration: 0.6 }}
                 className="text-center md:text-left">
                 <img
-                  src={debPortrait.url}
+                  src={debPortrait}
                   alt="Deb, owner of Earthy Wellness"
                   className="rounded-lg shadow-card w-full object-cover"
                   loading="lazy" />
