@@ -3,7 +3,13 @@ import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import { Sparkles, Calendar } from "lucide-react";
 
-const updates = [];
+const updates = [
+  {
+    date: "August 2026",
+    title: "Credit Cards Now Accepted In-Office",
+    body: "I now accept credit and debit cards right in the office at the time of your session, in addition to cash. Online card payments through booking are still available too.",
+  },
+];
 
 const WhatsNew = () => {
   return (
