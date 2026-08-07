@@ -4,7 +4,7 @@ import PageHeader from "@/components/PageHeader";
 import { CreditCard, DollarSign } from "lucide-react";
 
 const methods = [
-  { icon: CreditCard, title: "Credit & Debit Cards", desc: "Accepted online only — when booking your appointment or through the secure payment link in your confirmation email. Cards are not accepted in the office." },
+  { icon: CreditCard, title: "Credit & Debit Cards", desc: "Accepted online when booking your appointment or through the secure payment link in your confirmation email. Also accepted in the office at time of service." },
   { icon: DollarSign, title: "Cash", desc: "Cash payments accepted at time of service." },
 ];
 
