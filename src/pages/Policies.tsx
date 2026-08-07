@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import { Clock, Ban, DollarSign, CreditCard, Weight, AlertTriangle, RotateCcw, Link2, Phone } from "lucide-react";
+import { Clock, Ban, DollarSign, Weight, AlertTriangle, RotateCcw, Link2, Phone } from "lucide-react";
 
 const policies = [
   {
@@ -23,11 +23,6 @@ const policies = [
     icon: DollarSign,
     title: "Cash Policy",
     text: "I do not accept $50 or $100 bills and do not make change.",
-  },
-  {
-    icon: CreditCard,
-    title: "Credit Cards",
-    text: "I do not process credit cards in the office.",
   },
   {
     icon: Weight,
