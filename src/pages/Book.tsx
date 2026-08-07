@@ -16,7 +16,7 @@ const Book = () => {
           <div className="text-center space-y-8">
             <div className="space-y-4">
               <h2 className="text-2xl font-semibold text-primary">Ready to Book Your Session?</h2>
-              <p className="text-foreground/70">
+              <p className="text-muted-foreground">
                 Click below to view availability and schedule your appointment.
               </p>
               <Button asChild size="lg" className="text-lg px-10 py-6">
@@ -31,8 +31,8 @@ const Book = () => {
             </div>
 
             <div className="border-t border-primary/10 pt-8 space-y-3">
-              <p className="text-foreground/60 text-sm font-semibold">Prefer to reach us directly?</p>
-              <p className="text-foreground/70 text-sm">
+              <p className="text-muted-foreground text-sm font-semibold">Prefer to reach us directly?</p>
+              <p className="text-muted-foreground text-sm">
                 New clients please call. Existing clients can call or text.
               </p>
               <div className="flex justify-center gap-4 flex-wrap">
