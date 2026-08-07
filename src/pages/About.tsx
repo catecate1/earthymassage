@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import debPortrait from "@/assets/deb-portrait.png.asset.json";
+import debPortrait from "@/assets/deb-portrait.png"; // bundled image for self-hosted deployment
 const About = () => {
   return (
     <div className="min-h-screen">
