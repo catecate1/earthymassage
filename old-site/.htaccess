@@ -1,20 +1,6 @@
-# earthymassage.com - "we have moved" notice page ONLY.
-# No single-page-app rewriting here, so there is no redirect loop.
-
+# earthymassage.com notice page only.
+# There are deliberately no redirect or rewrite rules in this file.
 DirectoryIndex index.html
-
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-
-  # Leave real files and folders alone
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
-
-  # Any other old link shows the moved notice (no redirect, just the page)
-  RewriteRule ^ /index.html [L]
-</IfModule>
 
 <IfModule mod_headers.c>
   <FilesMatch "index\.html$">
