@@ -32,9 +32,16 @@ const services = [
   },
   {
     title: "Reiki",
+    duration: "30 min",
+    price: "$25",
+    description: "Gentle energy healing to encourage relaxation, balance, and a sense of calm from head to toe.",
+    popular: false,
+  },
+  {
+    title: "Reiki",
     duration: "60 min",
     price: "$50",
-    description: "Gentle energy healing to encourage relaxation, balance, and a sense of calm from head to toe.",
+    description: "A longer Reiki session for deeper relaxation and energetic balance.",
     popular: false,
   },
 ];
