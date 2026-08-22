@@ -20,7 +20,7 @@ const About = () => {
                 transition={{ duration: 0.6 }}
                 className="text-center md:text-left">
                 <img
-                  src={yogaButterflies.url}
+                  src={yogaButterflies}
                   alt="Meditating figure surrounded by butterflies, symbolizing peace and transformation"
                   className="rounded-lg shadow-card w-full object-cover"
                   loading="lazy" />
