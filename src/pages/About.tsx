@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import yogaButterflies from "@/assets/yoga-pose-butterflies.png.asset.json";
+import yogaButterflies from "@/assets/yoga-pose-butterflies.png";
 const About = () => {
   return (
     <div className="min-h-screen">
@@ -20,7 +20,7 @@ const About = () => {
                 transition={{ duration: 0.6 }}
                 className="text-center md:text-left">
                 <img
-                  src={yogaButterflies.url}
+                  src={yogaButterflies}
                   alt="Meditating figure surrounded by butterflies, symbolizing peace and transformation"
                   className="rounded-lg shadow-card w-full object-cover"
                   loading="lazy" />
