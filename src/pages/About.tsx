@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import debPortrait from "@/assets/deb-portrait.png"; // bundled image for self-hosted deployment
+import yogaButterflies from "@/assets/yoga-pose-butterflies.png.asset.json";
 const About = () => {
   return (
     <div className="min-h-screen">
