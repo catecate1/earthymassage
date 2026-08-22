@@ -20,8 +20,8 @@ const About = () => {
                 transition={{ duration: 0.6 }}
                 className="text-center md:text-left">
                 <img
-                  src={debPortrait}
-                  alt="Deb, owner of Earthy Wellness"
+                  src={yogaButterflies.url}
+                  alt="Meditating figure surrounded by butterflies, symbolizing peace and transformation"
                   className="rounded-lg shadow-card w-full object-cover"
                   loading="lazy" />
               </motion.div>
