@@ -45,15 +45,15 @@ const WhatIs = () => {
           >
             <p>
               Acupressure meridian body-work is a gentle, holistic approach that blends traditional
-              meridian theory with hands-on bodywork. By working along the body's energy channels and
+              meridian theory with hands-on bodywork.  By working along the body's energy channels and
               focusing on specific acupoints, this technique helps release tension, encourage balance,
               and support the body's natural ability to heal.
             </p>
             <p>
               Unlike deep tissue work, acupressure meridian body-work uses lighter to moderate pressure,
               making it an excellent choice for those new to bodywork, those seeking relaxation, or anyone
-              looking to maintain overall wellness. This work is very much like Swedish massage in its gentle,
-              flowing approach. The technique works with the body's natural systems to encourage healing and balance.
+              looking to maintain overall wellness.  This work is very much like Swedish massage in its gentle,
+              flowing approach.  The technique works with the body's natural systems to encourage healing and balance.
             </p>
           </motion.div>
 

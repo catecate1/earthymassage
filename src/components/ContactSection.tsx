@@ -11,7 +11,7 @@ const ContactSection = () => {
             Ready to <em className="italic text-primary">Relax?</em>
           </h2>
           <p className="font-body text-muted-foreground max-w-md mx-auto">
-            Your journey to wellness begins with a single step. Book your session today.
+            Your journey to wellness begins with a single step.  Book your session today.
           </p>
           <div className="w-16 h-0.5 bg-primary mx-auto mt-6" />
         </div>

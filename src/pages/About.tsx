@@ -37,16 +37,16 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
                   <p>
-                    Welcome to Earthy Wellness. I specialize exclusively in acupressure meridian body-work — the gentle,
+                    Welcome to Earthy Wellness.  I specialize exclusively in acupressure meridian body-work — the gentle,
                     flowing technique that promotes deep relaxation and overall wellness.
                   </p>
                   <p>
                     I have always had a keen interest in health and wellness and taken various related courses over the
-                    years including massage school. The human body is an amazing instrument. Take care of it and it will
+                    years including massage school.  The human body is an amazing instrument.  Take care of it and it will
                     take care of you.
                   </p>
                   <p>
-                    My studio is a calm, inviting space where you can truly let go and allow your body to heal. I use only
+                    My studio is a calm, inviting space where you can truly let go and allow your body to heal.  I use only
                     premium organic massage oils and maintain the highest standards of cleanliness and comfort.
                   </p>
                   <p>
