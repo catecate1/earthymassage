@@ -43,7 +43,7 @@ const Availability = () => {
             <div className="bg-petal rounded-lg p-6 text-center">
               <Sun className="w-6 h-6 text-primary mx-auto mb-3" />
               <h3 className="font-display text-lg text-foreground mb-2">Same-Day Appointments</h3>
-              <p className="font-body text-sm text-muted-foreground font-semibold">Please book at least two [2] hours in advance. Plan ahead.</p>
+              <p className="font-body text-sm text-muted-foreground font-semibold">Please book at least two [2] hours in advance.  Plan ahead.</p>
             </div>
             <div className="bg-petal rounded-lg p-6 text-center">
               <Phone className="w-6 h-6 text-primary mx-auto mb-3" />
