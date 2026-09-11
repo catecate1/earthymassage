@@ -177,7 +177,7 @@ const SpinWheel = ({ compact = false, testMode = false }: SpinWheelProps) => {
         <div className="text-center space-y-2 max-w-md">
           <p className="font-display text-2xl text-foreground">Not this time!</p>
           <p className="text-muted-foreground font-body">
-            You landed on a blank segment. Better luck next promotion!
+            You landed on a blank segment.  Better luck next promotion!
           </p>
         </div>
       )}
