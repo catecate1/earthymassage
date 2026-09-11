@@ -53,7 +53,7 @@ const Footer = () => {
             ))}
           </div>
           <p className="font-body text-xs text-cream/30 text-center max-w-2xl">
-            Copyright © 2025 Earthy Wellness. All rights reserved.
+            Copyright © 2026 Earthy Wellness. All rights reserved.
             <br /><br />
             No part of this work may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the copyright owner, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.
           </p>
