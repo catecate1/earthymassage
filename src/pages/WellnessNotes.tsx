@@ -33,6 +33,27 @@ const WellnessNotes = () => {
             </div>
           </motion.div>
 
+          {/* Chi and Systemic Health */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <Activity className="w-5 h-5 text-primary" />
+              <h2 className="font-display text-2xl text-foreground">Chi and Systemic Health</h2>
+            </div>
+            <div className="bg-card rounded-lg p-6 shadow-soft border border-border/40 space-y-4">
+              <p className="font-body text-muted-foreground leading-relaxed">
+                Because chi is thought to move through the whole body, a blockage in one area can affect how you feel overall. When energy isn't flowing smoothly, tension, stress, or fatigue can show up in unexpected places. Supporting chi isn't about forcing a fix—it's about helping the body return to its own natural rhythm.
+              </p>
+              <p className="font-body text-muted-foreground leading-relaxed">
+                Gentle bodywork, slow breathing, and rest all encourage chi to move more freely. As the body relaxes, circulation improves, the nervous system settles, and the whole system feels more balanced. It's a holistic way of caring for yourself—one that honors relaxation as a real and necessary part of health.
+              </p>
+            </div>
+          </motion.div>
+
           {/* Seed Oils */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
