@@ -4,17 +4,17 @@ import { Star } from "lucide-react";
 const testimonials = [
   {
     name: "Emily R.",
-    text: "Sarah's deep tissue massage changed my life. After years of back pain, I finally feel like myself again. Her space is so calming — I look forward to every visit.",
+    text: "Sarah's deep tissue massage changed my life.  After years of back pain, I finally feel like myself again.  Her space is so calming — I look forward to every visit.",
     rating: 5,
   },
   {
     name: "Michael T.",
-    text: "The hot stone therapy is absolutely incredible. Sarah has an intuitive understanding of where tension lives in the body. Cannot recommend enough!",
+    text: "The hot stone therapy is absolutely incredible.  Sarah has an intuitive understanding of where tension lives in the body.  Cannot recommend enough!",
     rating: 5,
   },
   {
     name: "Jessica L.",
-    text: "I started seeing Sarah during my pregnancy and it made such a difference. She's gentle, knowledgeable, and genuinely cares about her clients' well-being.",
+    text: "I started seeing Sarah during my pregnancy and it made such a difference.  She's gentle, knowledgeable, and genuinely cares about her clients' well-being.",
     rating: 5,
   },
 ];

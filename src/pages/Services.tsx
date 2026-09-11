@@ -13,14 +13,14 @@ const services = [
     title: "Acupressure Meridian Body-Work",
     duration: "60 min",
     price: "$50",
-    description: "Signature full-body acupressure meridian body-work. Flowing strokes promote deep relaxation and improved circulation.",
+    description: "Signature full-body acupressure meridian body-work.  Flowing strokes promote deep relaxation and improved circulation.",
     popular: true,
   },
   {
     title: "Extended Acupressure Meridian Body-Work",
     duration: "75 min",
     price: "$60",
-    description: "Signature full-body acupressure meridian body-work with a tad more work on the hamstrings, calves and feet. Flowing strokes promote deep relaxation and improved circulation.",
+    description: "Signature full-body acupressure meridian body-work with a tad more work on the hamstrings, calves and feet.  Flowing strokes promote deep relaxation and improved circulation.",
     popular: false,
   },
   {
@@ -33,7 +33,7 @@ const services = [
 ];
 
 const enhancements = [
-  { title: "Coming Soon", price: "", description: "New enhancements are on the way. Stay tuned!" },
+  { title: "Coming Soon", price: "", description: "New enhancements are on the way.  Stay tuned!" },
 ];
 
 const Services = () => {

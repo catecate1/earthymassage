@@ -17,32 +17,32 @@ const sections = [
   {
     icon: HandHelping,
     title: "Who Is This Body-Work For?",
-    text: "It is for anyone genuinely interested in a good, thorough, caring, seamless body-work session. I do a slightly firm acupressure meridian body-work. It is great for relief from general aches and pains and very relaxing. A neck to ankle or toe body-work session which includes the pecs, abs, glutes, adductors and hamstrings.",
+    text: "It is for anyone genuinely interested in a good, thorough, caring, seamless body-work session.  I do a slightly firm acupressure meridian body-work.  It is great for relief from general aches and pains and very relaxing.  A neck to ankle or toe body-work session which includes the pecs, abs, glutes, adductors and hamstrings.",
   },
   {
     icon: ShieldCheck,
     title: "What I Don't Do",
-    text: "I do NOT do Deep Tissue, Rolfing, Thai, sports massage or focus work — I do not spend an extended period of time on any one section of the body. In short, if it isn't on the services page then it isn't available. I'm not trying to fix you. I'm trying to relax you.",
+    text: "I do NOT do Deep Tissue, Rolfing, Thai, sports massage or focus work — I do not spend an extended period of time on any one section of the body.  In short, if it isn't on the services page then it isn't available.  I'm not trying to fix you.  I'm trying to relax you.",
   },
   {
     icon: Gift,
     title: "Purchasing Body-Work For Another",
-    text: "Never purchase a body-work session for another person as a treat or surprise. This isn't a fancy spa.",
+    text: "Never purchase a body-work session for another person as a treat or surprise.  This isn't a fancy spa.",
   },
   {
     icon: Armchair,
     title: "About The Table",
-    text: "The face cradle is built into the table and is not adjustable. I've added extra padding for comfort. During winter months or chilly days, the table is heated.",
+    text: "The face cradle is built into the table and is not adjustable.  I've added extra padding for comfort.  During winter months or chilly days, the table is heated.",
   },
   {
     icon: Droplets,
     title: "Water",
-    text: "Everyone gets a bottle of water. If you need more, ask.",
+    text: "Everyone gets a bottle of water.  If you need more, ask.",
   },
   {
     icon: Clock,
     title: "Same Day",
-    text: "Same day appointments are usually available. Give yourself a two (2) hour lead time.",
+    text: "Same day appointments are usually available.  Give yourself a two (2) hour lead time.",
   },
 ];
 

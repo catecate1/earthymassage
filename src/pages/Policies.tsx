@@ -7,7 +7,7 @@ const policies = [
   {
     icon: Clock,
     title: "Arrival Time",
-    text: "First-time visitors should arrive at least five [5] minutes early. This allows time for paperwork and a brief consultation.  Give yourself time to get lost.",
+    text: "First-time visitors should arrive at least five [5] minutes early.  This allows time for paperwork and a brief consultation.  Give yourself time to get lost.",
   },
   {
     icon: Ban,
@@ -17,7 +17,7 @@ const policies = [
   {
     icon: AlertTriangle,
     title: "Fragrance Free Zone",
-    text: "Perfumes and colognes are toxins. Do not be wearing any of that when you come in.",
+    text: "Perfumes and colognes are toxins.  Do not be wearing any of that when you come in.",
   },
   {
     icon: DollarSign,
@@ -32,7 +32,7 @@ const policies = [
   {
     icon: Clock,
     title: "Late Arrivals",
-    text: "If you are late I will try to go over the scheduled time but might not be able to due to other commitments. That means your time will be cut short but you still owe for the time blocked on the calendar. If you are more than five (5) minutes late and I haven't heard from you, the appointment will be cancelled.",
+    text: "If you are late I will try to go over the scheduled time but might not be able to due to other commitments.  That means your time will be cut short but you still owe for the time blocked on the calendar.  If you are more than five (5) minutes late and I haven't heard from you, the appointment will be cancelled.",
   },
   {
     icon: RotateCcw,
@@ -47,12 +47,12 @@ const policies = [
   {
     icon: AlertTriangle,
     title: "Harassment Policy",
-    text: "Any inappropriate behavior or requests will result in immediate termination of the session. The full session fee will be charged. Earthy Wellness maintains a zero-tolerance policy.",
+    text: "Any inappropriate behavior or requests will result in immediate termination of the session.  The full session fee will be charged.  Earthy Wellness maintains a zero-tolerance policy.",
   },
   {
     icon: Phone,
     title: "Contact Information",
-    text: "Any phone number you provide must be a mobile number with voicemail enabled. Landlines and numbers without voicemail will not be accepted.",
+    text: "Any phone number you provide must be a mobile number with voicemail enabled.  Landlines and numbers without voicemail will not be accepted.",
   },
 ];
 

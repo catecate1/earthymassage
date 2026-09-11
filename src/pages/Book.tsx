@@ -29,7 +29,7 @@ const Book = () => {
                       1
                     </span>
                     <p className="text-muted-foreground pt-1">
-                      First you log in or sign up. On the next page click on "New booking". Then you'll be brought to a services page. Click the service you want. The next page will ask if you want hot towels. Then the calendar page will open. Pay attention to what day you're choosing.
+                      First you log in or sign up.  On the next page click on "New booking".  Then you'll be brought to a services page.  Click the service you want.  The next page will ask if you want hot towels.  Then the calendar page will open.  Pay attention to what day you're choosing.
                     </p>
                   </li>
                   <li className="flex gap-4">
@@ -37,7 +37,7 @@ const Book = () => {
                       2
                     </span>
                     <p className="text-muted-foreground pt-1">
-                      At the next screen, review what you've entered, press the credit card icon or press "Pay later", read the cancellation policy, terms and conditions, and press "Confirm booking!". You'll receive a confirmation screen that states "Booking confirmed", a booking number and dollar amount due. You will also receive a confirmation email with a link to manage your appointment if it's NOT same day. The confirmation screen, confirmation email and reminder email are your confirmations. No person will call you to confirm. If you do not receive a confirmation screen, you do not have an appointment! Start over.
+                      At the next screen, review what you've entered, press the credit card icon or press "Pay later", read the cancellation policy, terms and conditions, and press "Confirm booking!".  You'll receive a confirmation screen that states "Booking confirmed", a booking number and dollar amount due.  You will also receive a confirmation email with a link to manage your appointment if it's NOT same day.  The confirmation screen, confirmation email and reminder email are your confirmations.  No person will call you to confirm.  If you do not receive a confirmation screen, you do not have an appointment!  Start over.
                     </p>
                   </li>
                   <li className="flex gap-4">
@@ -45,7 +45,7 @@ const Book = () => {
                       3
                     </span>
                     <p className="text-muted-foreground pt-1">
-                      It is your responsibility to check what you've entered. If you entered something incorrectly, use the link in your confirmation email to fix it. The link will not work less than 12 hours prior to appointments. If it's under 12 hours, you need to CALL.
+                      It is your responsibility to check what you've entered.  If you entered something incorrectly, use the link in your confirmation email to fix it.  The link will not work less than 12 hours prior to appointments.  If it's under 12 hours, you need to CALL.
                     </p>
                   </li>
                 </ol>
@@ -65,7 +65,7 @@ const Book = () => {
             <div className="border-t border-primary/10 pt-8 space-y-3">
               <p className="text-muted-foreground text-sm font-semibold">Prefer to reach us directly?</p>
               <p className="text-muted-foreground text-sm">
-                New clients please call. Existing clients can call or text.
+                New clients please call.  Existing clients can call or text.
               </p>
               <div className="flex justify-center gap-4 flex-wrap">
                 <Button asChild variant="outline">
