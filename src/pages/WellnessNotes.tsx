@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import { Flower2, Droplets } from "lucide-react";
+import { Flower2, Droplets, Activity } from "lucide-react";
 
 const WellnessNotes = () => {
   return (
@@ -29,6 +29,27 @@ const WellnessNotes = () => {
             <div className="bg-card rounded-lg p-6 shadow-soft border border-border/40">
               <p className="font-body text-muted-foreground leading-relaxed">
                 Chi (also spelled Qi) is a concept rooted in traditional Chinese philosophy that describes the vital life energy flowing through all living things. Think of it as the body's natural current—when it moves freely, we feel balanced and well; when it becomes blocked or stagnant, we may feel tension, fatigue, or discomfort.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Chi and Systemic Health */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <Activity className="w-5 h-5 text-primary" />
+              <h2 className="font-display text-2xl text-foreground">Chi and Systemic Health</h2>
+            </div>
+            <div className="bg-card rounded-lg p-6 shadow-soft border border-border/40 space-y-4">
+              <p className="font-body text-muted-foreground leading-relaxed">
+                Because chi is thought to move through the whole body, a blockage in one area can affect how you feel overall. When energy isn't flowing smoothly, tension, stress, or fatigue can show up in unexpected places. Supporting chi isn't about forcing a fix—it's about helping the body return to its own natural rhythm.
+              </p>
+              <p className="font-body text-muted-foreground leading-relaxed">
+                Gentle bodywork, slow breathing, and rest all encourage chi to move more freely. As the body relaxes, circulation improves, the nervous system settles, and the whole system feels more balanced. It's a holistic way of caring for yourself—one that honors relaxation as a real and necessary part of health.
               </p>
             </div>
           </motion.div>
