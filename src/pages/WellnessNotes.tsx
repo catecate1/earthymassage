@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import { Flower2, Droplets } from "lucide-react";
+import { Flower2, Droplets, Activity } from "lucide-react";
 
 const WellnessNotes = () => {
   return (
