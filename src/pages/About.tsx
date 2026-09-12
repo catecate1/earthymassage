@@ -57,19 +57,6 @@ const About = () => {
               </motion.div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mt-14 max-w-md mx-auto text-center">
-              <img
-                src={debPortrait}
-                alt="Deb, licensed body-work practitioner at Earthy Wellness"
-                className="rounded-lg shadow-card w-full object-cover"
-                loading="lazy" />
-              <p className="font-body text-muted-foreground mt-4 italic">Deb — Earthy Wellness</p>
-            </motion.div>
           </div>
         </div>
       </section>
