@@ -45,10 +45,10 @@ const About = () => {
                     years including massage school.  The human body is an amazing instrument.  Take care of it and it will
                     take care of you.
                   </p>
-                  <p>
-                    My studio is a calm, inviting space where you can truly let go and allow your body to heal.  I use only
-                    premium organic massage oils and maintain the highest standards of cleanliness and comfort.
-                  </p>
+                <p>
+                  My studio is a calm, inviting space where you can truly let go and allow your body to heal.  I use only
+                  premium organic oils and maintain the highest standards of cleanliness and comfort.
+                </p>
                 <p>
                   I'm a folksy person and welcome the opportunity to meet you and give you a great restful place in time.
                 </p>
