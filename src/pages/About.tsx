@@ -3,6 +3,20 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import yogaButterflies from "@/assets/yoga-pose-butterflies.png";
+import studioRoom from "@/assets/studio-room.jpg";
+import studioCorner from "@/assets/studio-corner.jpg";
+import studioEntrance from "@/assets/studio-entrance.jpg";
+import studioHall from "@/assets/studio-hall.jpg";
+import studioLinens from "@/assets/studio-linens.jpg";
+import studioExit from "@/assets/studio-exit.jpg";
+
+const studioPhotos = [
+{ src: studioEntrance, alt: "Hallway leading to the studio door with a welcome sign" },
+{ src: studioRoom, alt: "Treatment table with fresh linens and body-work tools" },
+{ src: studioCorner, alt: "Quiet corner with a chair, mirror and side table" },
+{ src: studioHall, alt: "Hallway with coffee station and warm lighting" },
+{ src: studioLinens, alt: "Cabinet with neatly folded fresh towels" },
+{ src: studioExit, alt: "Exit door with water cooler and plant" }];
 
 const About = () => {
   return (
@@ -55,6 +69,28 @@ const About = () => {
                 </div>
               </motion.div>
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-16">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-8 text-center">
+                A Look Around the Studio
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {studioPhotos.map((photo) =>
+                <div key={photo.src} className="overflow-hidden rounded-lg shadow-card bg-card">
+                    <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-64 object-cover"
+                    loading="lazy" />
+                  </div>
+                )}
+              </div>
+            </motion.div>
 
           </div>
         </div>
