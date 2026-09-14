@@ -1,10 +1,7 @@
-## Update Booking Page
+## Add the studio photos to About
 
-**What changes:** Replace the broken Bookeo widget and temporary notice in `src/pages/Book.tsx` with a clean page that has:
-
-1. A prominent "Book Now" button linking to `https://bookeo.com/earthymassage/customer` (opens in new tab)
-2. Secondary contact options (call/text 413-327-8496) for clients who prefer that
-3. Remove the `useEffect` script injection and `bookeo-container` div entirely
-4. Remove the `useEffect` import since it's no longer needed
-
-**File:** `src/pages/Book.tsx`
+- Keep the existing yoga-and-butterflies image and About text unchanged.
+- Add the three supplied studio photos at the bottom of the About page.
+- Use the existing reliable hosted copies so the photos appear after upload.
+- Fit all three into a neat, responsive gallery without stretching or cutting off important details.
+- Confirm the About page displays correctly on desktop and mobile.
