@@ -10,6 +10,13 @@ import massageRoom from "@/assets/massage-room.jpg";
 
 const services = [
   {
+    title: "ASMR Soft Touch Body-Work",
+    duration: "60 min",
+    price: "$50",
+    description: "A calming session of whisper-soft touch and gentle, rhythmic sounds to settle the nervous system and invite deep, dreamy relaxation.",
+    popular: false,
+  },
+  {
     title: "Acupressure Meridian Body-Work",
     duration: "60 min",
     price: "$50",
