@@ -13,7 +13,21 @@ const services = [
     title: "ASMR Soft Touch Body-Work",
     duration: "60 min",
     price: "$50",
-    description: "A calming session of whisper-soft touch and gentle, rhythmic sounds to settle the nervous system and invite deep, dreamy relaxation.",
+    description: "A quiet, no-talking session of whisper-soft touch and gentle, rhythmic sounds to settle the nervous system and invite deep, dreamy relaxation.",
+    popular: false,
+  },
+  {
+    title: "Foot Reflexology",
+    duration: "30 min",
+    price: "$30",
+    description: "A focused session for the feet using gentle pressure on reflex points to encourage relaxation and whole-body balance.",
+    popular: false,
+  },
+  {
+    title: "Foot Reflexology",
+    duration: "60 min",
+    price: "$50",
+    description: "A longer, more thorough foot reflexology session with extra time to soften tired feet and support overall calm.",
     popular: false,
   },
   {
