@@ -29,7 +29,7 @@ const Book = () => {
                       1
                     </span>
                     <p className="text-muted-foreground pt-1">
-                      First you log in or sign up.  On the next page click on "New booking".  Then you'll be brought to a services page.  Click the service you want.  The next page will ask if you want hot towels.  Then the calendar page will open.  Pay attention to what day you're choosing.
+                      First you log in or sign up.  On the next page click on "New booking".  Then you'll brought to the category page.  Choose a category.  On the next page choose your service.  Then the calendar page will open.  Pay attention to what day you're choosing.
                     </p>
                   </li>
                   <li className="flex gap-4">
