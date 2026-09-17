@@ -1,4 +1,4 @@
-import floralDivider from "@/assets/floral-divider.png";
+import fallDivider from "@/assets/fall-divider.png";
 
 interface PageHeaderProps {
   title: string;
