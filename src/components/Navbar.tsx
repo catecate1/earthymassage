@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Flower2, ChevronDown } from "lucide-react";
+import pumpkinIcon from "@/assets/pumpkin-icon.png";
+
 
 const mainLinks = [
 { label: "Home", to: "/" },
@@ -24,26 +26,16 @@ const moreLinks = [
 const allLinks = [...mainLinks, ...moreLinks, { label: "Book Online", to: "/book" }];
 
 const PumpkinIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="30"
-    height="30"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-primary w-[30px] h-[30px]"
-    aria-label="Pumpkin icon"
-  >
-    <path d="M12 5c-3 0-5.5 2.5-5.5 6.5S9 18 12 18s5.5-2.5 5.5-6.5S15 5 12 5z" />
-    <path d="M8.5 6C7 8 7 15 8.5 17" />
-    <path d="M15.5 6C17 8 17 15 15.5 17" />
-    <path d="M12 5V3" />
-    <path d="M12 5V18" />
-  </svg>
+  <img
+    src={pumpkinIcon}
+    alt="Pumpkin icon"
+    width={30}
+    height={30}
+    loading="lazy"
+    className="w-[30px] h-[30px] object-contain"
+  />
 );
+
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
