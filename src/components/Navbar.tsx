@@ -54,7 +54,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md border-b border-border/30">
       <div className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
-          {location.pathname === "/about" ? <PumpkinIcon /> : <Flower2 className="text-primary w-[30px] h-[30px]" />}
+          {location.pathname === "/" ? <Flower2 className="text-primary w-[30px] h-[30px]" /> : <PumpkinIcon />}
           <div className="flex flex-col leading-tight">
             <span className="font-display text-foreground tracking-wide text-2xl">Earthy Wellness</span>
             <em className="font-display text-foreground italic tracking-wide font-normal text-base">Home Of The Go-To-Sleep Body-Work</em>

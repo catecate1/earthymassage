@@ -1,4 +1,4 @@
-import floralDivider from "@/assets/floral-divider.png";
+import fallDivider from "@/assets/fall-divider.png";
 
 interface PageHeaderProps {
   title: string;
@@ -14,7 +14,7 @@ const PageHeader = ({ title, subtitle, dividerSrc }: PageHeaderProps) => {
         {subtitle && <p className="font-body text-muted-foreground max-w-xl mx-auto">{subtitle}</p>}
         <div className="w-16 h-0.5 bg-primary mx-auto mt-6 mb-4" />
         <img
-          src={dividerSrc || floralDivider}
+          src={dividerSrc || fallDivider}
           alt=""
           className="mx-auto max-w-md md:max-w-lg w-full h-auto"
           loading="lazy"
