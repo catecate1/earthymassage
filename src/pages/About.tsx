@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import yogaButterflies from "@/assets/yoga-pose-butterflies.png";
+import fallDivider from "@/assets/fall-divider.png";
 import studioRoom from "@/assets/studio-room.jpg";
 import studioCorner from "@/assets/studio-corner.jpg";
 import studioEntrance from "@/assets/studio-entrance.jpg";
