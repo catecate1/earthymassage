@@ -29,12 +29,13 @@ const PumpkinIcon = () => (
   <img
     src={pumpkinIcon}
     alt="Pumpkin icon"
-    width={30}
-    height={30}
+    width={48}
+    height={48}
     loading="lazy"
-    className="w-[30px] h-[30px] object-contain"
+    className="w-12 h-12 object-contain"
   />
 );
+
 
 
 const Navbar = () => {
