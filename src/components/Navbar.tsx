@@ -23,6 +23,28 @@ const moreLinks = [
 
 const allLinks = [...mainLinks, ...moreLinks, { label: "Book Online", to: "/book" }];
 
+const PumpkinIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-primary w-[30px] h-[30px]"
+    aria-label="Pumpkin icon"
+  >
+    <path d="M12 5c-3 0-5.5 2.5-5.5 6.5S9 18 12 18s5.5-2.5 5.5-6.5S15 5 12 5z" />
+    <path d="M8.5 6C7 8 7 15 8.5 17" />
+    <path d="M15.5 6C17 8 17 15 15.5 17" />
+    <path d="M12 5V3" />
+    <path d="M12 5V18" />
+  </svg>
+);
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
@@ -39,7 +61,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md border-b border-border/30">
       <div className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
-          <Flower2 className="text-primary w-[30px] h-[30px]" />
+          {location.pathname === "/about" ? <PumpkinIcon /> : <Flower2 className="text-primary w-[30px] h-[30px]" />}
           <div className="flex flex-col leading-tight">
             <span className="font-display text-foreground tracking-wide text-2xl">Earthy Wellness</span>
             <em className="font-display text-foreground italic tracking-wide font-normal text-base">Home Of The Go-To-Sleep Body-Work</em>
