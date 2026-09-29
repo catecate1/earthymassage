@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Flower2, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import pumpkinIcon from "@/assets/pumpkin-icon.png";
 
 
@@ -54,7 +54,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md border-b border-border/30">
       <div className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
-          {location.pathname === "/" ? <Flower2 className="text-primary w-[30px] h-[30px]" /> : <PumpkinIcon />}
+          <PumpkinIcon />
           <div className="flex flex-col leading-tight">
             <span className="font-display text-foreground tracking-wide text-2xl">Earthy Wellness</span>
             <em className="font-display text-foreground italic tracking-wide font-normal text-base">Home Of The Go-To-Sleep Body-Work</em>
