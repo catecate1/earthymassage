@@ -14,7 +14,7 @@ const Specials = () => {
 
       <section className="py-16 bg-background">
         <div className="container">
-          <h2 className="text-center font-display text-2xl text-foreground mb-8">Loyalty Reward</h2>
+
 
           <div className="grid md:grid-cols-1 gap-8 max-w-xl mx-auto">
             <motion.div
