@@ -16,8 +16,27 @@ const Specials = () => {
         <div className="container">
           <h2 className="text-center font-display text-2xl text-foreground mb-8">Loyalty Reward</h2>
 
+          <div className="grid md:grid-cols-1 gap-8 max-w-xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-card rounded-lg p-8 shadow-soft border border-border/30 text-center">
 
-
+              <span className="inline-block bg-petal text-primary font-body px-3 py-1 rounded-full mb-4 text-sm">
+                Early Bird Special
+              </span>
+              <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4 mx-auto">
+                <Gift className="w-4 h-4 text-primary" />
+              </div>
+              <h3 className="font-display text-xl text-foreground mb-2">90 Minute Acupressure Meridian Body-Work</h3>
+              <p className="font-display text-2xl text-primary mb-2">$10.00 Off</p>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed">
+                Between 8:00 AM and 11:00 AM only.  Use promo code <span className="font-bold text-foreground">eb10</span> when booking online.  Cannot be combined with other discounts.
+              </p>
+            </motion.div>
+          </div>
           <div className="grid md:grid-cols-1 gap-8 max-w-xl mx-auto mt-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
