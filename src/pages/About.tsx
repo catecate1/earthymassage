@@ -52,7 +52,7 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
                   <p>
-                    Welcome to Earthy Wellness.  I specialize exclusively in acupressure meridian body-work — the gentle,
+                    Welcome to Earthy Wellness.  I specialize exclusively in meridian body-work — the gentle,
                     flowing technique that promotes deep relaxation and overall wellness.
                   </p>
                   <p>
