@@ -63,7 +63,7 @@ const Services = () => {
       <Navbar />
       <PageHeader
         title="Services"
-        subtitle="Acupressure meridian body-work sessions crafted for your comfort and healing."
+        subtitle="Meridian body-work sessions crafted for your comfort and healing."
       />
 
       <section className="py-16 bg-background">
