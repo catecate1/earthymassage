@@ -111,3 +111,38 @@
     text-wrap: balance;
   }
 }
+
+/* Falling autumn leaves overlay */
+.leaf-fall {
+  position: absolute;
+  top: -40px;
+  animation-name: leaf-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@keyframes leaf-fall {
+  0% {
+    transform: translate3d(0, -40px, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(var(--leaf-sway), 25vh, 0) rotate(calc(var(--leaf-spin) * 0.25));
+  }
+  50% {
+    transform: translate3d(calc(var(--leaf-sway) * -0.7), 50vh, 0) rotate(calc(var(--leaf-spin) * 0.5));
+  }
+  75% {
+    transform: translate3d(var(--leaf-sway), 75vh, 0) rotate(calc(var(--leaf-spin) * 0.75));
+  }
+  100% {
+    transform: translate3d(0, 105vh, 0) rotate(var(--leaf-spin));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leaf-fall {
+    animation: none;
+    display: none;
+  }
+}
