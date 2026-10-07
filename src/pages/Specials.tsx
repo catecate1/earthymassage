@@ -30,7 +30,7 @@ const Specials = () => {
               <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4 mx-auto">
                 <Gift className="w-4 h-4 text-primary" />
               </div>
-              <h3 className="font-display text-xl text-foreground mb-2">90 Minute Acupressure Meridian Body-Work</h3>
+              <h3 className="font-display text-xl text-foreground mb-2">90 Minute Meridian Body-Work</h3>
               <p className="font-display text-2xl text-primary mb-2">$10.00 Off</p>
               <p className="text-muted-foreground font-body text-sm leading-relaxed">
                 Between 8:00 AM and 11:00 AM only.  Use promo code <span className="font-bold text-foreground">ebo10</span> when booking online.  Cannot be combined with other discounts.

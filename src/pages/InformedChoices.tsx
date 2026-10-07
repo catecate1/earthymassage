@@ -17,7 +17,7 @@ const sections = [
   {
     icon: HandHelping,
     title: "Who Is This Body-Work For?",
-    text: "It is for anyone genuinely interested in a good, thorough, caring, seamless body-work session.  I do a slightly firm acupressure meridian body-work.  It is great for relief from general aches and pains and very relaxing.  A neck to ankle or toe body-work session which includes the pecs, abs, glutes, adductors and hamstrings.",
+    text: "It is for anyone genuinely interested in a good, thorough, caring, seamless body-work session.  I do a slightly firm meridian body-work.  It is great for relief from general aches and pains and very relaxing.  A neck to ankle or toe body-work session which includes the pecs, abs, glutes, adductors and hamstrings.",
   },
   {
     icon: ShieldCheck,
