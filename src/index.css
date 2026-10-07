@@ -113,18 +113,35 @@
 }
 
 /* Falling autumn leaves overlay */
+.autumn-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  contain: strict;
+}
+
 .leaf-fall {
   position: absolute;
-  top: -40px;
-  animation-name: leaf-fall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  top: -110px;
+  left: var(--leaf-left);
+  width: var(--leaf-size);
+  height: var(--leaf-size);
+  animation: leaf-fall var(--leaf-duration) var(--leaf-delay) linear infinite;
   will-change: transform;
+}
+
+.leaf-fall img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 @keyframes leaf-fall {
   0% {
-    transform: translate3d(0, -40px, 0) rotate(0deg);
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
   25% {
     transform: translate3d(var(--leaf-sway), 25vh, 0) rotate(calc(var(--leaf-spin) * 0.25));
@@ -136,12 +153,22 @@
     transform: translate3d(var(--leaf-sway), 75vh, 0) rotate(calc(var(--leaf-spin) * 0.75));
   }
   100% {
-    transform: translate3d(0, 105vh, 0) rotate(var(--leaf-spin));
+    transform: translate3d(0, calc(100vh + 220px), 0) rotate(var(--leaf-spin));
+  }
+}
+
+@media (max-width: 640px) {
+  .leaf-fall {
+    width: calc(var(--leaf-size) * 0.8);
+    height: calc(var(--leaf-size) * 0.8);
+  }
+  .leaf-fall:nth-child(n + 11) {
+    display: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .leaf-fall {
+  .autumn-overlay {
     animation: none;
     display: none;
   }
