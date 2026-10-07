@@ -47,6 +47,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <FallingLeaves />
         <div className="fixed top-32 right-24 z-40 pointer-events-none">
           <SunRayClock size={160} className="drop-shadow-2xl" />
         </div>
