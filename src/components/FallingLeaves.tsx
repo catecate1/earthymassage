@@ -32,7 +32,7 @@ const FallingLeaves = () => (
         className="leaf-fall"
         style={{
           "--leaf-left": `${left}%`,
-          "--leaf-size": `${Math.round(size * 0.62)}px`,
+          "--leaf-size": `${Math.round(size * 0.48)}px`,
           "--leaf-duration": `${duration}s`,
           "--leaf-delay": `${delay}s`,
           "--leaf-sway": `${sway}px`,
