@@ -11,3 +11,4 @@
 - [x] Add realistic orange, orange-red, and yellow-red leaves with acorns across all pages.
 - [x] Verify animation, page interactions, and reduced-motion behavior without changing dependency versions.
 - [x] Make the falling artwork slightly smaller and add realistic oak and birch leaves alongside maples and acorns.
+- [x] Reduce the falling artwork to a third of its previous size (12-31px) and confirm the user is happy at 100% zoom.
