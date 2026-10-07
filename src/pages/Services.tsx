@@ -10,7 +10,7 @@ import massageRoom from "@/assets/massage-room.jpg";
 
 const services = [
   {
-    title: "ASMR Soft Touch Body-Work",
+    title: "Soft Touch Body-Work",
     duration: "60 min",
     price: "$50",
     description: "A quiet, no-talking session of whisper-soft touch and gentle, rhythmic sounds to settle the nervous system and invite deep, dreamy relaxation.",
@@ -31,21 +31,21 @@ const services = [
     popular: false,
   },
   {
-    title: "Acupressure Meridian Body-Work",
+    title: "Meridian Body-Work",
     duration: "60 min",
     price: "$50",
-    description: "Signature full-body acupressure meridian body-work.  Flowing strokes promote deep relaxation and improved circulation.",
+    description: "Signature full-body meridian body-work.  Flowing strokes promote deep relaxation and improved circulation.",
     popular: true,
   },
   {
-    title: "Extended Acupressure Meridian Body-Work",
+    title: "Extended Meridian Body-Work",
     duration: "75 min",
     price: "$65",
-    description: "Signature full-body acupressure meridian body-work with a tad more work on the hamstrings, calves and feet.  Flowing strokes promote deep relaxation and improved circulation.",
+    description: "Signature full-body meridian body-work with a tad more work on the hamstrings, calves and feet.  Flowing strokes promote deep relaxation and improved circulation.",
     popular: false,
   },
   {
-    title: "Restorative Acupressure Meridian Body-Work",
+    title: "Restorative Meridian Body-Work",
     duration: "90 min",
     price: "$95",
     description: "An indulgent session allowing extra time for each section of the body including the feet.",

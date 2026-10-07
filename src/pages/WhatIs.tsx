@@ -6,7 +6,6 @@ import PageHeader from "@/components/PageHeader";
 
 const principles = [
   { title: "Meridians", description: "Invisible channels where life energy flows through the body." },
-  { title: "Acupoints", description: "Specific spots along the meridians used to release blocked energy." },
   { title: "Bodywork", description: "Hands-on pressure, stretching, or gentle touch used to stimulate these points. [1]" },
 ];
 
