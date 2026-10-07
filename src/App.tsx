@@ -19,6 +19,7 @@ import Policies from "./pages/Policies.tsx";
 import Directions from "./pages/Directions.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import SunRayClock from "./components/SunRayClock.tsx";
+import FallingLeaves from "./components/FallingLeaves.tsx";
 
 const queryClient = new QueryClient();
 
