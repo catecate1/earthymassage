@@ -8,5 +8,5 @@
 - [x] Verify the build and preview the About page.
 
 ## Falling leaves
-- [ ] Add realistic orange, orange-red, and yellow-red leaves with acorns across all pages.
-- [ ] Verify animation, page interactions, and reduced-motion behavior without changing dependency versions.
+- [x] Add realistic orange, orange-red, and yellow-red leaves with acorns across all pages.
+- [x] Verify animation, page interactions, and reduced-motion behavior without changing dependency versions.
