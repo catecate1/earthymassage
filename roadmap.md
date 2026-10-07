@@ -6,3 +6,7 @@
   - [x] Replace the About page floral divider with darker leaves, bigger realistic corn stalks, and a square hay bale.
   - [x] Preserve the original floral divider asset for later use.
 - [x] Verify the build and preview the About page.
+
+## Falling leaves
+- [x] Add realistic orange, orange-red, and yellow-red leaves with acorns across all pages.
+- [x] Verify animation, page interactions, and reduced-motion behavior without changing dependency versions.
