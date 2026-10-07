@@ -29,7 +29,7 @@ const WhatIs = () => {
     <div className="min-h-screen">
       <Navbar />
       <PageHeader
-        title="What Is Acupressure Meridian Body-Work?"
+        title="What Is Meridian Body-Work?"
         subtitle="Ancient principles, gentle hands-on work, and lasting relaxation."
       />
 
