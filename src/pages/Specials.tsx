@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Gift, Phone, MessageSquare } from "lucide-react";
+import { Gift, Phone, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { contestEntriesOpen, specialsContest } from "@/lib/specials-contest";
@@ -48,13 +48,13 @@ const Specials = () => {
               {specialsContest.assignedWheelNumber && <p>You'll be assigned a number for the wheel.</p>}
               {specialsContest.viewingLinkAfterDrawing && <p>After the drawing, you'll receive a link to watch the wheel.</p>}
               <p className="font-bold text-foreground">
-                {entriesOpen ? "Call or text 413-327-8496 to enter." : "Entries are closed."}
+                {entriesOpen ? "Call 413-327-8496 or email contest@earthy-wellness.com with “60 min” in the subject." : "Entries are closed."}
               </p>
             </div>
             {entriesOpen && (
               <div className="flex flex-wrap justify-center gap-3 mt-6">
                 <Button asChild><a href="tel:4133278496"><Phone />Call to Enter</a></Button>
-                <Button asChild variant="outline"><a href="sms:4133278496"><MessageSquare />Text to Enter</a></Button>
+                <Button asChild variant="outline"><a href="mailto:contest@earthy-wellness.com?subject=60%20min"><Mail />Email to Enter</a></Button>
               </div>
             )}
           </div>
