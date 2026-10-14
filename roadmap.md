@@ -1,5 +1,10 @@
 # Roadmap
 
+## Specials contest and source cleanup
+- [ ] Remove the prohibited term from page-source metadata and any remaining website files.
+- [ ] Add the free 60-minute contest with October 16 entry deadline, 10-entry limit, eligibility, October 17 drawing, and wheel-link details.
+- [ ] Verify contest rules and the Specials page.
+
 - [x] Keep the home page unchanged.
 - [x] Add fall harvest touches to the About page only.
   - [x] Replace the navbar flower with an orange pumpkin icon on the About page.
