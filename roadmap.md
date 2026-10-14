@@ -5,6 +5,9 @@
 - [x] Add the free 60-minute contest with October 16 entry deadline, 10-entry limit, eligibility, October 17 drawing, and wheel-link details.
 - [x] Verify contest rules and the Specials page.
 
+## Contest entry channel
+- [x] Remove the texting option from contest entry; replace with an email link to contest@earthy-wellness.com with "60 min" in the subject.
+
 - [x] Keep the home page unchanged.
 - [x] Add fall harvest touches to the About page only.
   - [x] Replace the navbar flower with an orange pumpkin icon on the About page.
