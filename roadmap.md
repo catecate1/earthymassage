@@ -5,8 +5,6 @@
 - [x] Add the free 60-minute contest with October 16 entry deadline, 10-entry limit, eligibility, October 17 drawing, and wheel-link details.
 - [x] Verify contest rules and the Specials page.
 
-## Contest entry channel
-- [x] Remove the texting option from contest entry; replace with an email link to contest@earthy-wellness.com with "60 min" in the subject.
 
 - [x] Keep the home page unchanged.
 - [x] Add fall harvest touches to the About page only.
@@ -20,3 +18,6 @@
 - [x] Verify animation, page interactions, and reduced-motion behavior without changing dependency versions.
 - [x] Make the falling artwork slightly smaller and add realistic oak and birch leaves alongside maples and acorns.
 - [x] Reduce the falling artwork to a third of its previous size (12-31px) and confirm the user is happy at 100% zoom.
+
+## Contest entry channel
+- [x] Remove the texting option from contest entry; replace with an email link to contest@earthy-wellness.com with "60 min" in the subject.
