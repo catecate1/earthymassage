@@ -31,21 +31,21 @@ const services = [
     popular: false,
   },
   {
-    title: "Meridian Body-Work",
+    title: "Swedish Body-Work",
     duration: "60 min",
     price: "$50",
-    description: "Signature full-body meridian body-work.  Flowing strokes promote deep relaxation and improved circulation.",
+    description: "Signature full-body Swedish body-work.  Flowing strokes promote deep relaxation and improved circulation.",
     popular: true,
   },
   {
-    title: "Extended Meridian Body-Work",
+    title: "Extended Swedish Body-Work",
     duration: "75 min",
     price: "$65",
-    description: "Signature full-body meridian body-work with a tad more work on the hamstrings, calves and feet.  Flowing strokes promote deep relaxation and improved circulation.",
+    description: "Signature full-body Swedish body-work with a tad more work on the hamstrings, calves and feet.  Flowing strokes promote deep relaxation and improved circulation.",
     popular: false,
   },
   {
-    title: "Restorative Meridian Body-Work",
+    title: "Restorative Swedish Body-Work",
     duration: "90 min",
     price: "$95",
     description: "An indulgent session allowing extra time for each section of the body including the feet.",
@@ -63,7 +63,7 @@ const Services = () => {
       <Navbar />
       <PageHeader
         title="Services"
-        subtitle="Meridian body-work sessions crafted for your comfort and healing."
+        subtitle="Swedish body-work sessions crafted for your comfort and healing."
       />
 
       <section className="py-16 bg-background">

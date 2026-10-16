@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 
 const principles = [
-  { title: "Meridians", description: "Invisible channels where life energy flows through the body." },
+  { title: "Swedish", description: "Invisible channels where life energy flows through the body." },
   { title: "Bodywork", description: "Hands-on pressure, stretching, or gentle touch used to stimulate these points. [1]" },
 ];
 
@@ -29,7 +29,7 @@ const WhatIs = () => {
     <div className="min-h-screen">
       <Navbar />
       <PageHeader
-        title="What Is Meridian Body-Work?"
+        title="What Is Swedish Body-Work?"
         subtitle="Ancient principles, gentle hands-on work, and lasting relaxation."
       />
 
@@ -43,13 +43,13 @@ const WhatIs = () => {
             className="space-y-6 font-body text-muted-foreground leading-relaxed mb-16"
           >
             <p>
-              Meridian body-work is a gentle, holistic approach that blends traditional
-              meridian theory with hands-on bodywork.  By working along the body's energy channels and
+              Swedish body-work is a gentle, holistic approach that blends traditional
+              Swedish theory with hands-on bodywork.  By working along the body's energy channels and
               focusing on specific acupoints, this technique helps release tension, encourage balance,
               and support the body's natural ability to heal.
             </p>
             <p>
-              Unlike deep tissue work, meridian body-work uses lighter to moderate pressure,
+              Unlike deep tissue work, Swedish body-work uses lighter to moderate pressure,
               making it an excellent choice for those new to bodywork, those seeking relaxation, or anyone
               looking to maintain overall wellness.  This work is very much like Swedish massage in its gentle,
               flowing approach.  The technique works with the body's natural systems to encourage healing and balance.
