@@ -51,6 +51,7 @@ const Admin = () => {
   const [tags, setTags] = useState<Record<string, Tag>>({});
   const [online, setOnline] = useState(false);
   const [replies, setReplies] = useState<Record<string, string>>({});
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
@@ -119,6 +120,26 @@ const Admin = () => {
 
   const tagFor = (t: string | null) => (t ? tags[t]?.name : null);
 
+  const filteredVisits = visits.filter((v) => {
+    const q = search.trim().toLowerCase();
+    if (!q) return true;
+    const tag = tags[v.visitor_token];
+    const pages = Array.isArray(v.pages) ? (v.pages as { page: string }[]) : [];
+    const hay = [
+      v.ip_address,
+      v.user_agent,
+      v.visitor_token,
+      v.current_page,
+      ...pages.map((p) => p.page),
+      tag?.name,
+      tag?.notes,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+    return hay.includes(q);
+  });
+
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-5xl mx-auto">
@@ -159,8 +180,17 @@ const Admin = () => {
 
         {tab === "visitors" && (
           <div className="space-y-3">
+            <Input
+              placeholder="Search by IP, name, notes, or pages…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="max-w-sm"
+            />
             {visits.length === 0 && <p className="font-body text-muted-foreground">No visitors recorded yet.</p>}
-            {visits.map((v) => <VisitorRow key={v.id} v={v} tag={tags[v.visitor_token]} onSave={saveTag} />)}
+            {visits.length > 0 && filteredVisits.length === 0 && (
+              <p className="font-body text-muted-foreground">No visitors match your search.</p>
+            )}
+            {filteredVisits.map((v) => <VisitorRow key={v.id} v={v} tag={tags[v.visitor_token]} onSave={saveTag} />)}
           </div>
         )}
       </div>
