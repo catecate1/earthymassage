@@ -20,6 +20,8 @@ import Directions from "./pages/Directions.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import SunRayClock from "./components/SunRayClock.tsx";
 import FallingLeaves from "./components/FallingLeaves";
+import ChatWidget from "./components/ChatWidget";
+import Admin from "./pages/Admin.tsx";
 
 const queryClient = new QueryClient();
 
@@ -44,10 +46,12 @@ const App = () => (
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/policies" element={<Policies />} />
           <Route path="/directions" element={<Directions />} />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FallingLeaves />
+        <ChatWidget />
         <div className="fixed top-32 right-24 z-40 pointer-events-none">
           <SunRayClock size={160} className="drop-shadow-2xl" />
         </div>
