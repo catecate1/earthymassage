@@ -21,3 +21,8 @@
 
 ## Contest entry channel
 - [x] Remove the texting option from contest entry; replace with an email link to contest@earthy-wellness.com with "60 min" in the subject.
+
+## Swedish wording, chat, visitor tracking
+- [x] Replace "meridian" with "Swedish" site-wide.
+- [x] Add chat button on every page with owner replies.
+- [x] Add IP/page visitor tracking and an owner sign-in page (/admin) with chats, visitors, name tags, and notes.
