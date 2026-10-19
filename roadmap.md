@@ -1,5 +1,10 @@
 # Roadmap
 
+## Contest replaced with new early-bird special
+- [x] Remove the 60-minute contest from the Specials page.
+- [x] Add the 50% off 60-minute early-bird special (8:00 AM–12:00 PM, start times 8:00/9:30/11:00, code 5060).
+- [x] Remove the studio photos from the About page.
+
 ## Specials contest and source cleanup
 - [x] Remove the prohibited term from page-source metadata and any remaining website files.
 - [x] Add the free 60-minute contest with October 16 entry deadline, 10-entry limit, eligibility, October 17 drawing, and wheel-link details.
