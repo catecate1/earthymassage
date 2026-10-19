@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
-import { Gift, Phone, Mail } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { contestEntriesOpen, specialsContest } from "@/lib/specials-contest";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";

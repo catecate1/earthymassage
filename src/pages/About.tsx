@@ -4,20 +4,6 @@ import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import yogaButterflies from "@/assets/yoga-pose-butterflies.png";
 import fallDivider from "@/assets/fall-divider.png";
-import studioRoom from "@/assets/studio-room.jpg";
-import studioCorner from "@/assets/studio-corner.jpg";
-import studioEntrance from "@/assets/studio-entrance.jpg";
-import studioHall from "@/assets/studio-hall.jpg";
-import studioLinens from "@/assets/studio-linens.jpg";
-import studioExit from "@/assets/studio-exit.jpg";
-
-const studioPhotos = [
-{ src: studioEntrance, alt: "Hallway leading to the studio door with a welcome sign" },
-{ src: studioRoom, alt: "Treatment table with fresh linens and body-work tools" },
-{ src: studioCorner, alt: "Quiet corner with a chair, mirror and side table" },
-{ src: studioHall, alt: "Hallway with coffee station and warm lighting" },
-{ src: studioLinens, alt: "Cabinet with neatly folded fresh towels" },
-{ src: studioExit, alt: "Exit door with water cooler and plant" }];
 
 const About = () => {
   return (
