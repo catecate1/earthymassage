@@ -1,5 +1,8 @@
 # Roadmap
 
+## Early-bird terms
+- [x] Add "No back-to-back appointments" to the 5060 early-bird special on the Specials page.
+
 ## Contest replaced with new early-bird special
 - [x] Remove the 60-minute contest from the Specials page.
 - [x] Add the 50% off 60-minute early-bird special (8:00 AM–12:00 PM, start times 8:00/9:30/11:00, code 5060).
