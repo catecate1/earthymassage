@@ -57,27 +57,6 @@ const About = () => {
               </motion.div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mt-16">
-              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-8 text-center">
-                A Look Around the Studio
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {studioPhotos.map((photo) =>
-                <div key={photo.src} className="overflow-hidden rounded-lg shadow-card bg-card">
-                    <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-64 object-cover"
-                    loading="lazy" />
-                  </div>
-                )}
-              </div>
-            </motion.div>
 
           </div>
         </div>
