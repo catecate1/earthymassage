@@ -2,6 +2,7 @@
 
 ## Early-bird terms
 - [x] Add "No back-to-back appointments" to the 5060 early-bird special on the Specials page.
+- [x] Remove the $10 off 90-minute early-bird special (code ebo10) from the Specials page.
 
 ## Contest replaced with new early-bird special
 - [x] Remove the 60-minute contest from the Specials page.
