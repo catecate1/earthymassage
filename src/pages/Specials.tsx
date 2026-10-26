@@ -30,10 +30,10 @@ const Specials = () => {
               <div className="w-10 h-10 rounded-full bg-petal flex items-center justify-center mb-4 mx-auto">
                 <Gift className="w-4 h-4 text-primary" />
               </div>
-              <h3 className="font-display text-xl text-foreground mb-2">60 Minute Swedish Body-Work</h3>
-              <p className="font-display text-2xl text-primary mb-2">50% Off</p>
+              <h3 className="font-display text-xl text-foreground mb-2">75 Minute Swedish Body-Work</h3>
+              <p className="font-display text-2xl text-primary mb-2">35% Off</p>
               <p className="text-muted-foreground font-body text-sm leading-relaxed">
-                Between 8:00 AM and 12:00 PM only.  Start times available: 8:00 AM, 9:30 AM, and 11:00 AM.  Use promo code <span className="font-bold text-foreground">5060</span> when booking online.  Cannot be combined with other discounts.  No back-to-back appointments.
+                Between 8:00 AM and 12:00 PM only.  Start times available: 8:00 AM, 9:30 AM, and 11:00 AM.  Use promo code <span className="font-bold text-foreground">3565</span> when booking online.  Cannot be combined with other discounts.  No back-to-back appointments.
               </p>
             </motion.div>
           </div>

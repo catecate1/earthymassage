@@ -1,5 +1,8 @@
 # Roadmap
 
+## Early-bird terms updated
+- [x] Change the early-bird special to 75 minutes at 35% off with code 3565 (was 60 minutes at 50% off, code 5060).
+
 ## Early-bird terms
 - [x] Add "No back-to-back appointments" to the 5060 early-bird special on the Specials page.
 - [x] Remove the $10 off 90-minute early-bird special (code ebo10) from the Specials page.
