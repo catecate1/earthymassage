@@ -1,6 +1,7 @@
 # Roadmap
 
 ## Early-bird terms updated
+- [x] Remove the listed start times from the early-bird special; keep the 8:00 AM–12:00 PM window.
 - [x] Change the early-bird special to 75 minutes at 35% off with code 3565 (was 60 minutes at 50% off, code 5060).
 
 ## Early-bird terms
