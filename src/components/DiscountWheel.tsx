@@ -5,7 +5,6 @@ import {
   BLANK_RESULT_MESSAGE,
   SEGMENTS,
   SEGMENT_COUNT,
-  SPIN_COOLDOWN_MS,
   SPIN_DURATION_MS,
   STORAGE_KEY,
   canSpin,
@@ -49,14 +48,17 @@ function wedgePath(index: number): string {
     const radians = ((compass - 90) * Math.PI) / 180;
     return [100 + radius * Math.cos(radians), 100 + radius * Math.sin(radians)];
   };
-  const [x0, y0] = toXY(index * 45);
-  const [x1, y1] = toXY((index + 1) * 45);
+  const [x0, y0] = toXY(index * 45 - 22.5);
+  const [x1, y1] = toXY((index + 1) * 45 - 22.5);
+
   return `M100,100 L${x0.toFixed(2)},${y0.toFixed(2)} A96,96 0 0 1 ${x1.toFixed(2)},${y1.toFixed(2)} Z`;
 }
 
 function labelPlacement(index: number) {
-  const mid = index * 45 + 22.5;
-  const flipped = mid >= 180;
+  const mid = index * 45 - 22.5;
+  const compass = ((mid % 360) + 360) % 360;
+  const flipped = compass > 90 && compass < 270;
+
   return { angle: flipped ? mid - 270 : mid - 90, x: flipped ? 38 : 162 };
 }
 
@@ -90,9 +92,10 @@ const DiscountWheel = () => {
   const spin = () => {
     if (spinning || onCooldown) return;
     const index = pickSegmentIndex();
-    const mid = index * 45 + 22.5;
+    const mid = index * 45 - 22.5;
     const jitter = (Math.random() - 0.5) * 30;
-    const desired = (((360 - mid + jitter) % 360) + 360) % 360;
+    const desired = (((-mid + jitter) % 360) + 360) % 360;
+
     const current = ((rotation % 360) + 360) % 360;
     const delta = (((desired - current) % 360) + 360) % 360;
 
