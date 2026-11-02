@@ -61,13 +61,12 @@ function restAngle(index: number): number {
 }
 
 function labelPlacement(index: number) {
+  const mid = index * 45; // centre of this wedge, in compass degrees
+  const flipped = mid > 180;
 
-  const mid = index * 45 - 22.5;
-  const compass = ((mid % 360) + 360) % 360;
-  const flipped = compass > 90 && compass < 270;
-
-  return { angle: flipped ? mid - 270 : mid - 90, x: flipped ? 38 : 162 };
+  return { angle: flipped ? mid - 270 : mid - 90, x: flipped ? 44 : 156 };
 }
+
 
 const DiscountWheel = () => {
   const [record, setRecord] = useState<SpinRecord | null>(() => readRecord());
@@ -224,11 +223,6 @@ const DiscountWheel = () => {
         {onCooldown && (
           <p className="text-muted-foreground font-body text-xs mt-2">
             You can spin again in {formatCountdown(msLeft)}.
-          </p>
-        )}
-        {!record && !spinning && (
-          <p className="text-muted-foreground font-body text-xs mt-2">
-            Blank sections pay nothing — try again tomorrow.
           </p>
         )}
       </div>
