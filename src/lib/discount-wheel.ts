@@ -77,9 +77,10 @@ export function easternTime(
   return guess - zoneOffsetMs(guess);
 }
 
-/** The wheel runs this week only: Monday Nov 2 through Sunday Nov 8, 11:59 PM Eastern. */
-export const WHEEL_START_MS = easternTime(2026, 11, 2, 0, 0, 0);
+/** The wheel runs this week only: Sunday Nov 1 through Sunday Nov 8, 11:59 PM Eastern. */
+export const WHEEL_START_MS = easternTime(2026, 11, 1, 0, 0, 0);
 export const WHEEL_END_MS = easternTime(2026, 11, 8, 23, 59, 59);
+
 
 export function isWheelLive(now: number = Date.now()): boolean {
   return now >= WHEEL_START_MS && now <= WHEEL_END_MS;

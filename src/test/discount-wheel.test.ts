@@ -55,7 +55,7 @@ describe("discount wheel timing", () => {
     expect(canSpin(now - 12 * HOUR, now)).toBe(true);
   });
 
-  it("runs Monday November 2 through Sunday November 8 at 11:59 PM Eastern", () => {
+  it("runs Sunday November 1 through Sunday November 8 at 11:59 PM Eastern", () => {
     // 11:59:59 PM Eastern on Nov 8 2026 is 04:59:59 UTC on Nov 9 (EST, UTC-5).
     expect(WHEEL_END_MS).toBe(Date.UTC(2026, 10, 9, 4, 59, 59));
     expect(isWheelLive(WHEEL_START_MS)).toBe(true);
@@ -63,6 +63,12 @@ describe("discount wheel timing", () => {
     expect(isWheelLive(WHEEL_END_MS + 1000)).toBe(false);
     expect(isWheelLive(WHEEL_START_MS - 1000)).toBe(false);
   });
+
+  it("is already up on Monday morning, the day it is put on the site", () => {
+    expect(isWheelLive(easternTime(2026, 11, 2, 9, 0, 0))).toBe(true);
+    expect(isWheelLive(easternTime(2026, 11, 1, 20, 30, 0))).toBe(true);
+  });
+
 });
 
 describe("discount wheel wording", () => {
