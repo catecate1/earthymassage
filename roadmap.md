@@ -6,6 +6,9 @@
 - [x] One spin per visitor, then a 12-hour wait; a blank tells them to try again tomorrow.
 - [x] Show the wheel only through Sunday, November 8 at 11:59 PM.
 - [x] Verify spins, the 12-hour wait, and the wheel's appearance in the preview.
+- [x] Move the wheel labels into the middle of their own sections so none of them sits on the blank tan sections.
+- [x] Remove the small helper line below the spin button.
+
 
 
 ## Early-bird terms updated
