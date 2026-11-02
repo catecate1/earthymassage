@@ -141,9 +141,10 @@ const DiscountWheel = () => {
       </span>
       <h3 className="font-display text-xl text-foreground mb-2">Spin the Discount Wheel</h3>
       <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6">
-        Two 10% off 60-minute codes, two 10% off 75-minute codes, and four blank sections.
+        Spin the wheel to win 10% off 60 minutes or 10% off 75 minutes.
         One spin every 12 hours.  Through Sunday, November 8.
       </p>
+
 
       <div className="relative mx-auto w-full max-w-[300px] mb-6">
         <svg
@@ -220,7 +221,7 @@ const DiscountWheel = () => {
             )}
           </div>
         )}
-        {onCooldown && (
+        {onCooldown && !won && (
           <p className="text-muted-foreground font-body text-xs mt-2">
             You can spin again in {formatCountdown(msLeft)}.
           </p>
