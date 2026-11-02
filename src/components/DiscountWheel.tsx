@@ -128,6 +128,14 @@ const DiscountWheel = () => {
   const won = shown?.kind === "prize";
   const msLeft = record ? nextSpinAt(record.at) - now : 0;
 
+  let buttonLabel = "Spin the wheel";
+  if (spinning) {
+    buttonLabel = "Spinning...";
+  } else if (record) {
+    buttonLabel = onCooldown && won ? "Come back tomorrow" : "Spin again";
+  }
+
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -204,7 +212,7 @@ const DiscountWheel = () => {
       </div>
 
       <Button onClick={spin} disabled={spinning || onCooldown} className="font-body">
-        {spinning ? "Spinning..." : record ? "Spin again" : "Spin the wheel"}
+        {buttonLabel}
       </Button>
 
       <div aria-live="polite" className="mt-6 min-h-[3.5rem]">
