@@ -1,5 +1,13 @@
 # Roadmap
 
+## Discount wheel week
+- [x] Remove the 75-minute early-bird special (code 3565) from the Specials page.
+- [x] Add a spin-the-wheel offer: two 10% off 60-minute codes (ad1060), two 10% off 75-minute codes (ad7510), and four blank sections.
+- [x] One spin per visitor, then a 12-hour wait; a blank tells them to try again tomorrow.
+- [x] Show the wheel only through Sunday, November 8 at 11:59 PM.
+- [x] Verify spins, the 12-hour wait, and the wheel's appearance in the preview.
+
+
 ## Early-bird terms updated
 - [x] Remove the listed start times from the early-bird special; keep the 8:00 AM–12:00 PM window.
 - [x] Change the early-bird special to 75 minutes at 35% off with code 3565 (was 60 minutes at 50% off, code 5060).
