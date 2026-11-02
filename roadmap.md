@@ -8,6 +8,9 @@
 - [x] Verify spins, the 12-hour wait, and the wheel's appearance in the preview.
 - [x] Move the wheel labels into the middle of their own sections so none of them sits on the blank tan sections.
 - [x] Remove the small helper line below the spin button.
+- [x] Rephrase the line above the wheel: "Spin the wheel to win 10% off 60 minutes or 10% off 75 minutes."
+- [x] Show the "spin again" wording only after a blank; a winner waits out the 12 hours without being asked to spin again.
+
 
 
 

@@ -128,6 +128,14 @@ const DiscountWheel = () => {
   const won = shown?.kind === "prize";
   const msLeft = record ? nextSpinAt(record.at) - now : 0;
 
+  let buttonLabel = "Spin the wheel";
+  if (spinning) {
+    buttonLabel = "Spinning...";
+  } else if (record) {
+    buttonLabel = onCooldown && won ? "Come back tomorrow" : "Spin again";
+  }
+
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -141,9 +149,10 @@ const DiscountWheel = () => {
       </span>
       <h3 className="font-display text-xl text-foreground mb-2">Spin the Discount Wheel</h3>
       <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6">
-        Two 10% off 60-minute codes, two 10% off 75-minute codes, and four blank sections.
+        Spin the wheel to win 10% off 60 minutes or 10% off 75 minutes.
         One spin every 12 hours.  Through Sunday, November 8.
       </p>
+
 
       <div className="relative mx-auto w-full max-w-[300px] mb-6">
         <svg
@@ -203,7 +212,7 @@ const DiscountWheel = () => {
       </div>
 
       <Button onClick={spin} disabled={spinning || onCooldown} className="font-body">
-        {spinning ? "Spinning..." : record ? "Spin again" : "Spin the wheel"}
+        {buttonLabel}
       </Button>
 
       <div aria-live="polite" className="mt-6 min-h-[3.5rem]">
@@ -220,7 +229,7 @@ const DiscountWheel = () => {
             )}
           </div>
         )}
-        {onCooldown && (
+        {onCooldown && !won && (
           <p className="text-muted-foreground font-body text-xs mt-2">
             You can spin again in {formatCountdown(msLeft)}.
           </p>
