@@ -54,7 +54,14 @@ function wedgePath(index: number): string {
   return `M100,100 L${x0.toFixed(2)},${y0.toFixed(2)} A96,96 0 0 1 ${x1.toFixed(2)},${y1.toFixed(2)} Z`;
 }
 
+/** Rotation that parks a given section under the top pointer. */
+function restAngle(index: number): number {
+  const mid = index * 45 - 22.5;
+  return ((-mid % 360) + 360) % 360;
+}
+
 function labelPlacement(index: number) {
+
   const mid = index * 45 - 22.5;
   const compass = ((mid % 360) + 360) % 360;
   const flipped = compass > 90 && compass < 270;
@@ -63,16 +70,20 @@ function labelPlacement(index: number) {
 }
 
 const DiscountWheel = () => {
-  const [record, setRecord] = useState<SpinRecord | null>(null);
-  const [rotation, setRotation] = useState(0);
+  const [record, setRecord] = useState<SpinRecord | null>(() => readRecord());
+  const [rotation, setRotation] = useState(() => {
+    const stored = readRecord();
+    return stored ? restAngle(stored.index) : 0;
+  });
+
   const [spinning, setSpinning] = useState(false);
   const [now, setNow] = useState(() => Date.now());
   const [sweep, setSweep] = useState(SWEEP_MS);
   const timer = useRef<number | null>(null);
 
   useEffect(() => {
-    setRecord(readRecord());
     setNow(Date.now());
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setSweep(700);
     }
