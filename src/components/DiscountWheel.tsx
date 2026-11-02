@@ -93,7 +93,7 @@ const DiscountWheel = () => {
     if (spinning || onCooldown) return;
     const index = pickSegmentIndex();
     const mid = index * 45 - 22.5;
-    const jitter = (Math.random() - 0.5) * 30;
+    const jitter = (Math.random() - 0.5) * 14;
     const desired = (((-mid + jitter) % 360) + 360) % 360;
 
     const current = ((rotation % 360) + 360) % 360;
