@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import DiscountWheel from "@/components/DiscountWheel";
+import { isWheelLive } from "@/lib/discount-wheel";
+
 
 
 const Specials = () => {
@@ -18,9 +20,12 @@ const Specials = () => {
 
       <section className="py-16 bg-background">
         <div className="container">
-          <div className="grid md:grid-cols-1 gap-8 max-w-xl mx-auto mb-12">
-            <DiscountWheel />
-          </div>
+          {isWheelLive() && (
+            <div className="grid md:grid-cols-1 gap-8 max-w-xl mx-auto mb-12">
+              <DiscountWheel />
+            </div>
+          )}
+
 
           <div className="grid md:grid-cols-1 gap-8 max-w-xl mx-auto">
             <motion.div
