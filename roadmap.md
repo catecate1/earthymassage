@@ -1,5 +1,10 @@
 # Roadmap
 
+## Price-match special week
+- [x] Replace the discount wheel with a new special: 75-minute Swedish body-work for the 60-minute price ($50), November 9–14, 2026.
+- [x] Terms on the card: cannot be combined with other discounts; no back-to-back appointments. No promo code.
+- [x] Gate the card on its own tested date window so it disappears after Saturday, November 14; verify rendering with a future-dated preview check.
+
 ## Discount wheel week
 - [x] Remove the 75-minute early-bird special (code 3565) from the Specials page.
 - [x] Add a spin-the-wheel offer: two 10% off 60-minute codes (ad1060), two 10% off 75-minute codes (ad7510), and four blank sections.
