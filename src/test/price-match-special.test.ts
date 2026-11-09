@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  PRICE_MATCH_CODE,
   PRICE_MATCH_END_MS,
   PRICE_MATCH_START_MS,
   PRICE_MATCH_TERMS,
@@ -31,5 +32,10 @@ describe("price-match special window", () => {
   it("carries the no-combining and no-back-to-back terms", () => {
     expect(PRICE_MATCH_TERMS).toContain("Cannot be combined with other discounts");
     expect(PRICE_MATCH_TERMS).toContain("No back-to-back appointments");
+  });
+
+  it("shows the promo code 75f60", () => {
+    expect(PRICE_MATCH_CODE).toBe("75f60");
+    expect(PRICE_MATCH_TERMS).toContain("75f60");
   });
 });
