@@ -6,6 +6,12 @@ import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import DiscountWheel from "@/components/DiscountWheel";
 import { isWheelLive } from "@/lib/discount-wheel";
+import {
+  PRICE_MATCH_PRICE,
+  PRICE_MATCH_TERMS,
+  PRICE_MATCH_TITLE,
+  isPriceMatchLive,
+} from "@/lib/price-match-special";
 
 
 
