@@ -32,4 +32,9 @@ describe("price-match special window", () => {
     expect(PRICE_MATCH_TERMS).toContain("Cannot be combined with other discounts");
     expect(PRICE_MATCH_TERMS).toContain("No back-to-back appointments");
   });
+
+  it("shows the promo code 75f60", () => {
+    expect(PRICE_MATCH_CODE).toBe("75f60");
+    expect(PRICE_MATCH_TERMS).toContain("75f60");
+  });
 });

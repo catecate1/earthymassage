@@ -11,8 +11,9 @@ export const PRICE_MATCH_END_MS = easternTime(2026, 11, 14, 23, 59, 59);
 
 export const PRICE_MATCH_TITLE = "75 Minute Swedish Body-Work";
 export const PRICE_MATCH_PRICE = "60 Minute Price — $50";
+export const PRICE_MATCH_CODE = "75f60";
 export const PRICE_MATCH_TERMS =
-  "Monday, November 9 through Saturday, November 14 only. Cannot be combined with other discounts. No back-to-back appointments.";
+  "Monday, November 9 through Saturday, November 14 only. Use promo code 75f60 when booking online. Cannot be combined with other discounts. No back-to-back appointments.";
 
 export function isPriceMatchLive(now: number = Date.now()): boolean {
   return now >= PRICE_MATCH_START_MS && now <= PRICE_MATCH_END_MS;
