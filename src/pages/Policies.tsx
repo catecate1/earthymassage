@@ -45,11 +45,6 @@ const policies = [
     text: "You may not link to this website without my express written permission.",
   },
   {
-    icon: AlertTriangle,
-    title: "Harassment Policy",
-    text: "Any inappropriate behavior or requests will result in immediate termination of the session.  The full session fee will be charged.  Earthy Wellness maintains a zero-tolerance policy.",
-  },
-  {
     icon: Phone,
     title: "Contact Information",
     text: "Any phone number you provide must be a mobile number with voicemail enabled.  Landlines and numbers without voicemail will not be accepted.",

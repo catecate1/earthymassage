@@ -48,7 +48,7 @@ const About = () => {
                   </p>
                 <p>
                   My studio is a calm, inviting space where you can truly let go and allow your body to heal.  I use only
-                  premium organic oils and maintain the highest standards of cleanliness and comfort.
+                  premium organic oils and maintain the highest standards of comfort.
                 </p>
                 <p>
                   I'm a folksy person and welcome the opportunity to meet you and give you a great restful place in time.
