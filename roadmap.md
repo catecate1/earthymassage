@@ -1,5 +1,9 @@
 # Roadmap
 
+## Early-bird special week
+- [x] Add a new special: $10 off 90-minute Swedish body-work, November 16–20, 2026, appointments starting 8:00 AM–11:30 AM, promo code 1090.
+- [x] Gate the card on its own tested date window so it disappears after Friday, November 20; the expired price-match card stays hidden on its own window.
+
 ## About and Policies wording
 - [x] Remove "cleanliness and" from the About page studio sentence.
 - [x] Remove the harassment policy card from the Policies page.
