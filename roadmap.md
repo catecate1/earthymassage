@@ -7,6 +7,7 @@
 ## About and Policies wording
 - [x] Remove "cleanliness and" from the About page studio sentence.
 - [x] Remove the harassment policy card from the Policies page.
+- [x] Put the harassment policy card back on the Policies page (user changed their mind, November 18, 2026).
 
 ## Price-match special week
 - [x] Replace the discount wheel with a new special: 75-minute Swedish body-work for the 60-minute price ($50), November 9–14, 2026.
