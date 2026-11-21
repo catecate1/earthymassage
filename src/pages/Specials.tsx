@@ -18,6 +18,12 @@ import {
   EARLY_BIRD_TITLE,
   isEarlyBirdLive,
 } from "@/lib/early-bird-special";
+import {
+  THANKSGIVING_PRICE,
+  THANKSGIVING_TERMS,
+  THANKSGIVING_TITLE,
+  isThanksgivingLive,
+} from "@/lib/thanksgiving-special";
 
 
 
@@ -54,6 +60,27 @@ const Specials = () => {
                 <p className="font-display text-2xl text-primary mb-4">{EARLY_BIRD_PRICE}</p>
                 <p className="text-muted-foreground font-body text-sm leading-relaxed">
                   {EARLY_BIRD_TERMS}
+                </p>
+              </motion.div>
+            </div>
+          )}
+
+          {isThanksgivingLive() && (
+            <div className="grid md:grid-cols-1 gap-8 max-w-xl mx-auto mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-card rounded-lg p-8 shadow-soft border border-border/30 text-center">
+
+                <span className="inline-block bg-petal text-primary font-body px-3 py-1 rounded-full mb-4 text-sm">
+                  Thanksgiving Special
+                </span>
+                <h3 className="font-display text-xl text-foreground mb-2">{THANKSGIVING_TITLE}</h3>
+                <p className="font-display text-2xl text-primary mb-4">{THANKSGIVING_PRICE}</p>
+                <p className="text-muted-foreground font-body text-sm leading-relaxed">
+                  {THANKSGIVING_TERMS}
                 </p>
               </motion.div>
             </div>

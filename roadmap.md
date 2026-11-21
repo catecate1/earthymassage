@@ -1,5 +1,10 @@
 # Roadmap
 
+## Thanksgiving special week
+- [x] Add a new special: 40% off 60, 75, or 90-minute Swedish body-work, November 21–22, 2026, promo code tg679.
+- [x] Terms on the card: no back-to-back appointments; new clients must prepay online or by phone.
+- [x] Gate the card on its own tested date window so it disappears after Sunday, November 22.
+
 ## Early-bird special week
 - [x] Add a new special: $10 off 90-minute Swedish body-work, November 16–20, 2026, appointments starting 8:00 AM–11:30 AM, promo code 1090.
 - [x] Gate the card on its own tested date window so it disappears after Friday, November 20; the expired price-match card stays hidden on its own window.
