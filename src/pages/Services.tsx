@@ -12,7 +12,7 @@ const services = [
   {
     title: "Soft Touch Body-Work",
     duration: "60 min",
-    price: "$50",
+    price: "$60",
     description: "A quiet, no-talking session of whisper-soft touch and gentle, rhythmic sounds to settle the nervous system and invite deep, dreamy relaxation.",
     popular: false,
   },
@@ -26,7 +26,7 @@ const services = [
   {
     title: "Foot Reflexology",
     duration: "60 min",
-    price: "$50",
+    price: "$60",
     description: "A longer, more thorough foot reflexology session with extra time to soften tired feet and support overall calm.",
     popular: false,
   },
