@@ -10,8 +10,12 @@ import {
 import { easternTime } from "@/lib/discount-wheel";
 
 describe("black friday special", () => {
-  it("is live from Monday Nov 23 so clients can book ahead", () => {
-    expect(isBlackFridayLive(easternTime(2026, 11, 23, 0, 0, 0))).toBe(true);
+  it("is not live before Nov 25", () => {
+    expect(isBlackFridayLive(easternTime(2026, 11, 23, 0, 0, 0))).toBe(false);
+  });
+
+  it("is live from Wednesday Nov 25 so clients can book ahead", () => {
+    expect(isBlackFridayLive(easternTime(2026, 11, 25, 0, 0, 0))).toBe(true);
   });
 
   it("is live on Thanksgiving Day", () => {

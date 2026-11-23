@@ -1,5 +1,9 @@
 # Roadmap
 
+## Thanksgiving & Black Friday special
+- [x] Add $20 off 90-minute Swedish body-work, good Thursday Nov 26 and Friday Nov 27, 2026; new clients must prepay.
+- [x] Card shows from Wednesday, November 25 (user changed their mind on Nov 23: not now, the 25th instead) and comes down after Friday Nov 27.
+
 ## Thanksgiving special week
 - [x] Add a new special: 40% off 60, 75, or 90-minute Swedish body-work, November 21–22, 2026, promo code tg679.
 - [x] Terms on the card: no back-to-back appointments; new clients must prepay online or by phone.
