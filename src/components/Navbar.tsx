@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
-import pumpkinIcon from "@/assets/pumpkin-icon.png";
+import ChristmasTree from "@/components/ChristmasTree";
+import StringLights from "@/components/StringLights";
 
 
 const mainLinks = [
@@ -25,19 +26,6 @@ const moreLinks = [
 
 const allLinks = [...mainLinks, ...moreLinks, { label: "Book Online", to: "/book" }];
 
-const PumpkinIcon = () => (
-  <img
-    src={pumpkinIcon}
-    alt="Pumpkin icon"
-    width={48}
-    height={48}
-    loading="lazy"
-    className="w-12 h-12 object-contain"
-  />
-);
-
-
-
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
@@ -54,7 +42,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md border-b border-border/30">
       <div className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
-          <PumpkinIcon />
+          <ChristmasTree />
           <div className="flex flex-col leading-tight">
             <span className="font-display text-foreground tracking-wide text-2xl">Earthy Wellness</span>
             <em className="font-display text-foreground italic tracking-wide font-normal text-base">Home Of The Go-To-Sleep Body-Work</em>
@@ -112,6 +100,8 @@ const Navbar = () => {
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
+
+      <StringLights />
 
       {/* Mobile menu */}
       {open &&

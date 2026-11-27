@@ -76,3 +76,6 @@
 - [x] Replace "meridian" with "Swedish" site-wide.
 - [x] Add chat button on every page with owner replies.
 - [x] Add IP/page visitor tracking and an owner sign-in page (/admin) with chats, visitors, name tags, and notes.
+
+## Christmas theme
+- [x] Swap pumpkin for a Christmas tree, add big old-fashioned string lights, replace leaves with falling snowflakes.

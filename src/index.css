@@ -63,6 +63,13 @@
     --patriotic-blue: 215 70% 35%;
     --patriotic-white: 0 0% 100%;
 
+    --pine: 150 45% 24%;
+    --snow: 205 60% 97%;
+    --bulb-red: 0 75% 50%;
+    --bulb-green: 140 60% 38%;
+    --bulb-gold: 42 95% 55%;
+    --bulb-blue: 210 80% 52%;
+
     --font-display: 'Playfair Display', serif;
     --font-body: 'Lato', sans-serif;
 
@@ -173,3 +180,23 @@
     display: none;
   }
 }
+
+/* Snowflakes */
+.snow-flake { filter: drop-shadow(0 0 2px hsl(var(--pine) / 0.45)); opacity: 0.9; }
+
+/* String lights under the menu bar */
+.string-lights { position: absolute; left: 0; right: 0; top: 100%; height: 40px; pointer-events: none; }
+.string-wire { position: absolute; inset: 0 0 auto 0; width: 100%; height: 16px; }
+.bulb-row { border-top: 2px solid hsl(var(--pine)); display: flex; justify-content: space-around; padding: 0 0.5%; }
+.bulb {
+  width: 13px; height: 20px; margin-top: 7px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(circle at 40% 30%, hsl(var(--snow) / 0.8), hsl(var(--bulb)) 45%);
+  box-shadow: 0 0 10px 2px hsl(var(--bulb) / 0.7);
+  position: relative;
+  animation: bulb-glow 2.4s ease-in-out infinite;
+}
+.bulb::before { content: ""; position: absolute; top: -5px; left: 3px; width: 7px; height: 6px; border-radius: 2px; background: hsl(var(--pine)); }
+@media (max-width: 640px) { .bulb:nth-child(2n) { display: none; } }
+@keyframes bulb-glow { 0%,100% { opacity: 1; } 50% { opacity: 0.55; box-shadow: 0 0 4px 1px hsl(var(--bulb) / 0.4); } }
+@media (prefers-reduced-motion: reduce) { .bulb { animation: none; } }
