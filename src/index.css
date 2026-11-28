@@ -15,24 +15,24 @@
     --popover: 35 40% 96%;
     --popover-foreground: 20 15% 25%;
 
-    --primary: 345 55% 52%;
+    --primary: 356 68% 44%;
     --primary-foreground: 35 40% 98%;
 
-    --secondary: 345 40% 92%;
-    --secondary-foreground: 345 35% 40%;
+    --secondary: 356 62% 94%;
+    --secondary-foreground: 356 55% 28%;
 
     --muted: 30 20% 92%;
     --muted-foreground: 20 15% 32%;
 
-    --accent: 345 45% 88%;
-    --accent-foreground: 345 35% 30%;
+    --accent: 356 58% 90%;
+    --accent-foreground: 356 55% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 30 20% 88%;
     --input: 30 20% 88%;
-    --ring: 345 55% 52%;
+    --ring: 356 68% 44%;
 
     --radius: 0.75rem;
 
@@ -48,17 +48,17 @@
     /* Custom tokens */
     --sage: 145 25% 50%;
     --sage-light: 140 25% 94%;
-    --blush: 345 50% 92%;
-    --blush-dark: 345 55% 52%;
+    --blush: 356 60% 93%;
+    --blush-dark: 356 68% 44%;
     --cream: 35 45% 95%;
     --cream-dark: 35 30% 90%;
     --warm-gold: 38 50% 55%;
     --earth: 20 20% 35%;
-    --petal: 345 40% 95%;
+    --petal: 356 62% 96%;
     --spring-green: 135 30% 92%;
     --lavender: 270 25% 94%;
-    --rose: 345 55% 52%;
-    --rose-light: 345 45% 92%;
+    --rose: 356 68% 44%;
+    --rose-light: 356 60% 93%;
     --patriotic-red: 0 72% 41%;
     --patriotic-blue: 215 70% 35%;
     --patriotic-white: 0 0% 100%;
@@ -90,8 +90,8 @@
     --popover-foreground: 80 15% 92%;
     --primary: 145 35% 55%;
     --primary-foreground: 150 15% 8%;
-    --secondary: 340 20% 25%;
-    --secondary-foreground: 340 30% 85%;
+    --secondary: 356 30% 24%;
+    --secondary-foreground: 356 45% 88%;
     --muted: 150 10% 18%;
     --muted-foreground: 150 10% 60%;
     --accent: 38 35% 30%;
@@ -173,7 +173,7 @@
     width: calc(var(--leaf-size) * 0.8);
     height: calc(var(--leaf-size) * 0.8);
   }
-  .leaf-fall:nth-child(n + 11) {
+  .leaf-fall:nth-child(n + 18) {
     display: none;
   }
 }
