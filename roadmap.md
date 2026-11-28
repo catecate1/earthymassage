@@ -1,5 +1,9 @@
 # Roadmap
 
+## Swedish body-work description
+- [x] Rewrite the What Is page in plain Swedish body-work language, without energy-channel, acupoint, or medical-outcome wording.
+- [x] Verify the rewritten page in the preview.
+
 ## Christmas accent color
 - [x] Turn the pinkish/rose accents red for the holiday season (user request, Nov 27).
 - [x] User changed their mind on Nov 28: all accents and the sun-ray clock are green instead of red.

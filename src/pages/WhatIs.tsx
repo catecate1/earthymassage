@@ -5,23 +5,23 @@ import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 
 const principles = [
-  { title: "Swedish", description: "Invisible channels where life energy flows through the body." },
-  { title: "Bodywork", description: "Hands-on pressure, stretching, or gentle touch used to stimulate these points. [1]" },
+  { title: "Flowing Strokes", description: "Long, smooth strokes keep the session calm, connected, and unhurried." },
+  { title: "Slightly Firm Pressure", description: "I use slightly firm pressure and keep the work moving rather than spending an extended period on any one area." },
 ];
 
 const benefits = [
-  { icon: Activity, title: "Improved Circulation", description: "Long flowing strokes help move blood toward the heart, improving overall circulation." },
-  { icon: Heart, title: "Stress Relief", description: "Activates the parasympathetic nervous system, lowering cortisol and promoting calm." },
-  { icon: Brain, title: "Pain Reduction", description: "Gentle pressure releases muscle tension and reduces chronic pain conditions." },
-  { icon: Moon, title: "Better Sleep", description: "Regular sessions promote deeper, more restful sleep patterns." },
-  { icon: Eye, title: "Mental Clarity", description: "Reduces mental fatigue and enhances focus through deep relaxation." },
-  { icon: Move, title: "Increased Flexibility", description: "Helps keep joints and muscles supple, improving range of motion." },
+  { icon: Activity, title: "Improved Circulation", description: "Long, flowing strokes encourage circulation while keeping the session calm and comfortable." },
+  { icon: Heart, title: "Deep Relaxation", description: "A steady pace and connected strokes give your body and mind time to settle." },
+  { icon: Brain, title: "Everyday Aches", description: "Slightly firm pressure can ease general muscle tension and everyday aches without deep tissue work." },
+  { icon: Moon, title: "Time To Unwind", description: "A quiet session offers a welcome break from the pace and demands of your day." },
+  { icon: Eye, title: "A Mental Reset", description: "Setting aside time for yourself can help you slow down and feel more settled." },
+  { icon: Move, title: "Comfortable Movement", description: "Gentle, full-body work can leave tight muscles feeling looser and movement more comfortable." },
 ];
 
 const commonBenefits = [
-  "Reduces physical pain and muscle tension.",
-  "Lowers stress and helps the mind relax.",
-  "Improves overall blood flow and energy flow.",
+  "Helps you relax and step away from everyday stress.",
+  "Eases general muscle tension and everyday aches.",
+  "Encourages circulation with long, flowing strokes.",
 ];
 
 const WhatIs = () => {
@@ -30,7 +30,7 @@ const WhatIs = () => {
       <Navbar />
       <PageHeader
         title="What Is Swedish Body-Work?"
-        subtitle="Ancient principles, gentle hands-on work, and lasting relaxation."
+        subtitle="Long, flowing strokes, slightly firm pressure, and a calm, unhurried session."
       />
 
       <section className="py-16 bg-background">
@@ -43,21 +43,19 @@ const WhatIs = () => {
             className="space-y-6 font-body text-muted-foreground leading-relaxed mb-16"
           >
             <p>
-              Swedish body-work is a gentle, holistic approach that blends traditional
-              Swedish theory with hands-on bodywork.  By working along the body's energy channels and
-              focusing on specific acupoints, this technique helps release tension, encourage balance,
-              and support the body's natural ability to heal.
+              Swedish body-work is hands-on work built around long, flowing strokes and a steady,
+              comfortable pace.  My sessions are slightly firm and cover the body from neck to ankle
+              or toe, including the pecs, abs, glutes, adductors, and hamstrings.
             </p>
             <p>
-              Unlike deep tissue work, Swedish body-work uses lighter to moderate pressure,
-              making it an excellent choice for those new to bodywork, those seeking relaxation, or anyone
-              looking to maintain overall wellness.  This work is very much like Swedish massage in its gentle,
-              flowing approach.  The technique works with the body's natural systems to encourage healing and balance.
+              This is not deep tissue, Thai, sports massage, or extended focus work on one area.
+              It is a thorough, caring, seamless session that gives you time to relax.  I'm not trying
+              to fix you.  I'm trying to relax you.
             </p>
           </motion.div>
 
-          {/* Core Principles */}
-          <h2 className="font-display text-3xl text-foreground text-center mb-10">Core Principles</h2>
+          {/* What the work is like */}
+          <h2 className="font-display text-3xl text-foreground text-center mb-10">What The Work Is Like</h2>
           <div className="space-y-4 mb-20">
             {principles.map((p, i) => (
               <motion.div
@@ -94,7 +92,7 @@ const WhatIs = () => {
           </motion.div>
 
           {/* Benefits */}
-          <h2 className="font-display text-3xl text-foreground text-center mb-10">Benefits</h2>
+          <h2 className="font-display text-3xl text-foreground text-center mb-10">Potential Benefits</h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {benefits.map((b, i) => (
               <motion.div
