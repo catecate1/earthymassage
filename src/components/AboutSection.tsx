@@ -65,7 +65,7 @@ const AboutSection = () => {
           <Link to="/book">
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-body tracking-wide text-base px-10 py-6"
+              className="holiday-link-button font-body tracking-wide text-base px-10 py-6"
             >
               Schedule Now
             </Button>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-spa.jpg";
+import heroImage from "@/assets/hero-christmas.jpg";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -10,7 +10,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Serene massage therapy setting with botanicals"
+          alt="Massage therapy setting with red towels, smooth stones and a little Christmas tree"
           className="w-full h-full object-cover"
           loading="eager" />
         
@@ -37,7 +37,7 @@ const HeroSection = () => {
             <Link to="/book">
               <Button
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-body tracking-wide text-base px-8 py-6">
+                className="holiday-link-button font-body tracking-wide text-base px-8 py-6">
                 
                 Book Your Session <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -46,7 +46,7 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground border-none font-body tracking-wide text-base px-8 py-6">
+                className="holiday-link-button border-none font-body tracking-wide text-base px-8 py-6">
                 
                 Explore Services
               </Button>

@@ -9,19 +9,6 @@ const particles = [
   [45, 26, 29, -3, -36, -130],
 ];
 
-const Flake = () => (
-  <svg viewBox="-12 -12 24 24" className="h-full w-full">
-    <g stroke="hsl(var(--snow))" strokeWidth="1.6" strokeLinecap="round" fill="none">
-      {[0, 60, 120].map((r) => (
-        <g key={r} transform={`rotate(${r})`}>
-          <line x1="0" y1="-11" x2="0" y2="11" />
-          <path d="M-3,-8 L0,-5 L3,-8 M-3,8 L0,5 L3,8" />
-        </g>
-      ))}
-    </g>
-  </svg>
-);
-
 const FallingLeaves = () => (
   <div className="autumn-overlay" aria-hidden="true">
     {particles.map(([left, size, duration, delay, sway, spin], index) => (
@@ -30,15 +17,13 @@ const FallingLeaves = () => (
         className="leaf-fall snow-flake"
         style={{
           "--leaf-left": `${left}%`,
-          "--leaf-size": `${size}px`,
+          "--leaf-size": `${Math.round(size / 4)}px`,
           "--leaf-duration": `${duration}s`,
           "--leaf-delay": `${delay}s`,
           "--leaf-sway": `${sway}px`,
           "--leaf-spin": `${spin}deg`,
         } as CSSProperties}
-      >
-        <Flake />
-      </div>
+      />
     ))}
   </div>
 );

@@ -1,5 +1,10 @@
 # Roadmap
 
+## Christmas homepage refinements
+- [x] Replace the pumpkin in the homepage photograph with a little Christmas tree and recolor the towels red.
+- [x] Make homepage link buttons green and use small, soft, round falling snow across the site.
+- [x] Verify the updated homepage on desktop and mobile.
+
 ## Thanksgiving & Black Friday special
 - [x] Add $20 off 90-minute Swedish body-work, good Thursday Nov 26 and Friday Nov 27, 2026; new clients must prepay.
 - [x] Card shows from Wednesday, November 25 (user changed their mind on Nov 23: not now, the 25th instead) and comes down after Friday Nov 27.
