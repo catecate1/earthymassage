@@ -1,5 +1,9 @@
 # Roadmap
 
+## Christmas accent color
+- [x] Turn the pinkish/rose accents red for the holiday season (user request, Nov 27).
+- [x] User changed their mind on Nov 28: all accents and the sun-ray clock are green instead of red.
+
 ## Christmas throughout the site
 - [x] Replace the shared hay-and-corn header with snowy Christmas trees on a darker background, including About.
 - [x] Make site-wide buttons green while keeping destructive actions recognizable.
