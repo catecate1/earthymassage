@@ -98,3 +98,7 @@
 ## Christmas theme
 - [x] Swap pumpkin for a Christmas tree, add big old-fashioned string lights, replace leaves with falling snowflakes.
 - [x] Change all pinkish accent text and the clock to red, and add more falling snow.
+
+## Christmas string lights
+- [x] Make the bulbs solid, bright, flat colors with no glow, halo or twinkle (Nov 28).
+- [x] Keep all four bulb colors visible on a phone by shrinking bulbs instead of hiding every other one.

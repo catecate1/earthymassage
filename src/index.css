@@ -69,10 +69,10 @@
     --holiday-button-foreground: 0 0% 100%;
     --holiday-header-background: 127 14% 76%;
     --snow: 205 60% 97%;
-    --bulb-red: 0 75% 50%;
-    --bulb-green: 140 60% 38%;
-    --bulb-gold: 42 95% 55%;
-    --bulb-blue: 210 80% 52%;
+    --bulb-red: 356 95% 55%;
+    --bulb-green: 140 90% 45%;
+    --bulb-gold: 48 100% 55%;
+    --bulb-blue: 215 95% 55%;
 
     --font-display: 'Playfair Display', serif;
     --font-body: 'Lato', sans-serif;
@@ -222,12 +222,11 @@ button.text-primary {
 .bulb {
   width: 13px; height: 20px; margin-top: 7px;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  background: radial-gradient(circle at 40% 30%, hsl(var(--snow) / 0.8), hsl(var(--bulb)) 45%);
-  box-shadow: 0 0 10px 2px hsl(var(--bulb) / 0.7);
+  background: hsl(var(--bulb));
   position: relative;
-  animation: bulb-glow 2.4s ease-in-out infinite;
 }
 .bulb::before { content: ""; position: absolute; top: -5px; left: 3px; width: 7px; height: 6px; border-radius: 2px; background: hsl(var(--pine)); }
-@media (max-width: 640px) { .bulb:nth-child(2n) { display: none; } }
-@keyframes bulb-glow { 0%,100% { opacity: 1; } 50% { opacity: 0.55; box-shadow: 0 0 4px 1px hsl(var(--bulb) / 0.4); } }
-@media (prefers-reduced-motion: reduce) { .bulb { animation: none; } }
+@media (max-width: 640px) {
+  .bulb { width: 9px; height: 14px; margin-top: 5px; }
+  .bulb::before { top: -4px; left: 2px; width: 5px; height: 4px; }
+}
