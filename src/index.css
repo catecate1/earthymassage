@@ -173,7 +173,7 @@
     width: calc(var(--leaf-size) * 0.8);
     height: calc(var(--leaf-size) * 0.8);
   }
-  .leaf-fall:nth-child(n + 18) {
+  .leaf-fall:nth-child(n + 71) {
     display: none;
   }
 }
@@ -190,7 +190,7 @@
   border-radius: 50%;
   background: radial-gradient(circle, hsl(var(--snow)) 25%, hsl(var(--snow) / 0.8) 50%, hsl(var(--snow) / 0) 75%);
   filter: blur(0.4px);
-  opacity: 0.85;
+  opacity: 0.95;
 }
 
 .holiday-link-button.holiday-link-button {

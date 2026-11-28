@@ -102,3 +102,7 @@
 ## Christmas string lights
 - [x] Make the bulbs solid, bright, flat colors with no glow, halo or twinkle (Nov 28).
 - [x] Keep all four bulb colors visible on a phone by shrinking bulbs instead of hiding every other one.
+
+## Heavier snowfall
+- [x] Increase falling snow from 28 to 110 flakes on desktop (70 on a phone) and make them a touch more visible (Nov 28).
+- [x] Verify the flake count, page overflow, and console errors on desktop and mobile.
