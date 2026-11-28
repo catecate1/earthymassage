@@ -1,5 +1,10 @@
 # Roadmap
 
+## Christmas throughout the site
+- [x] Replace the shared hay-and-corn header with snowy Christmas trees on a darker background, including About.
+- [x] Make site-wide buttons green while keeping destructive actions recognizable.
+- [x] Verify the headers and button interactions on desktop and mobile.
+
 ## Christmas homepage refinements
 - [x] Replace the pumpkin in the homepage photograph with a little Christmas tree and recolor the towels red.
 - [x] Make homepage link buttons green and use small, soft, round falling snow across the site.

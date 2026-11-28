@@ -3,13 +3,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import yogaButterflies from "@/assets/yoga-pose-butterflies.png";
-import fallDivider from "@/assets/fall-divider.png";
 
 const About = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <PageHeader title="About" subtitle="Dedicated to your wellness journey through the healing power of touch." dividerSrc={fallDivider} />
+      <PageHeader title="About" subtitle="Dedicated to your wellness journey through the healing power of touch." />
 
       <section className="py-16 pb-20 bg-background">
         <div className="container">

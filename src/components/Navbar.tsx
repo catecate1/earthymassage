@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import ChristmasTree from "@/components/ChristmasTree";
 import StringLights from "@/components/StringLights";
+import { Button } from "@/components/ui/button";
 
 
 const mainLinks = [
@@ -63,12 +64,12 @@ const Navbar = () => {
             onMouseEnter={() => { clearTimeout((window as any).__moreTimer); setMoreOpen(true); }}
             onMouseLeave={() => { (window as any).__moreTimer = setTimeout(() => setMoreOpen(false), 300); }}
           >
-            <button
+            <Button variant="ghost"
               onClick={() => setMoreOpen((v) => !v)}
               className="font-body text-sm tracking-wide text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
             >
               More <ChevronDown className="w-5 h-5 -mr-2" /><ChevronDown className="w-5 h-5" />
-            </button>
+            </Button>
             {moreOpen &&
             <div className="absolute top-full right-0 pt-2">
               <div className="bg-card rounded-lg shadow-card border border-border/40 py-2 min-w-[180px]">
@@ -96,9 +97,9 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground">
+        <Button variant="ghost" size="icon" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)} className="lg:hidden text-foreground">
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        </Button>
       </div>
 
       <StringLights />

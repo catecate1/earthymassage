@@ -67,6 +67,7 @@
     --holiday-button: 145 48% 28%;
     --holiday-button-hover: 145 48% 22%;
     --holiday-button-foreground: 0 0% 100%;
+    --holiday-header-background: 127 14% 76%;
     --snow: 205 60% 97%;
     --bulb-red: 0 75% 50%;
     --bulb-green: 140 60% 38%;
@@ -199,6 +200,19 @@
 .holiday-link-button.holiday-link-button:hover {
   background-color: hsl(var(--holiday-button-hover));
   color: hsl(var(--holiday-button-foreground));
+}
+
+.holiday-text-button.holiday-text-button,
+button.text-primary {
+  color: hsl(var(--holiday-button));
+}
+
+.holiday-page-header {
+  background-color: hsl(var(--holiday-header-background));
+}
+
+.holiday-header-art {
+  mask-image: radial-gradient(ellipse at center, black 45%, transparent 73%);
 }
 
 /* String lights under the menu bar */

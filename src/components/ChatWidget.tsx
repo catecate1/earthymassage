@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { MessageCircle, X, Send } from "lucide-react";
 import { callVisitor } from "@/lib/visitor";
+import { Button } from "@/components/ui/button";
 
 type Msg = { id: string; user_message: string; owner_reply: string | null };
 
@@ -58,7 +59,7 @@ const ChatWidget = () => {
               <p className="font-display text-lg leading-tight">Chat with Deb</p>
               <p className="font-body text-xs opacity-90">{online ? "I'm here now" : "I'll reply when I'm back"}</p>
             </div>
-            <button onClick={() => setOpen(false)} aria-label="Close chat"><X className="w-5 h-5" /></button>
+            <Button variant="default" size="icon" onClick={() => setOpen(false)} aria-label="Close chat"><X className="w-5 h-5" /></Button>
           </div>
           <div className="h-72 overflow-y-auto p-3 space-y-2 bg-background">
             {msgs.length === 0 && (
@@ -86,16 +87,16 @@ const ChatWidget = () => {
               placeholder="Type a message…"
               className="flex-1 px-3 py-2 font-body text-sm bg-card text-foreground outline-none"
             />
-            <button disabled={sending} className="px-3 text-primary disabled:opacity-50" aria-label="Send"><Send className="w-4 h-4" /></button>
+            <Button type="submit" size="icon" disabled={sending} aria-label="Send"><Send className="w-4 h-4" /></Button>
           </form>
         </div>
       )}
-      <button
+      <Button
         onClick={() => setOpen((v) => !v)}
         className="ml-auto flex items-center gap-2 bg-primary text-primary-foreground rounded-full px-4 py-3 shadow-card font-body text-sm"
       >
         <MessageCircle className="w-5 h-5" /> Chat
-      </button>
+      </Button>
     </div>
   );
 };
